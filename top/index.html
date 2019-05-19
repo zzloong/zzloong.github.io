@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="AV.initialize(&quot;7CDtrbb4U7nQzOdctmXXnMqt-gzGzoHsz&quot;, &quot;ISgUUtg79U9Eq0ActHmVRtmN&quot;);    var time=0   var title=&quot;&quot;   var url=&quot;&quot;   var query = new AV.Query(&apos;Counter&apos;);   query.notEqualTo(&apos;id&apos;,0);   query.d">
+  <meta name="description" content="博客文章阅读量排行榜">
 <meta name="keywords" content="DevOps CICD">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Top">
 <meta property="og:url" content="https://michael728.github.io/top/index.html">
 <meta property="og:site_name" content="Michael翔">
-<meta property="og:description" content="AV.initialize(&quot;7CDtrbb4U7nQzOdctmXXnMqt-gzGzoHsz&quot;, &quot;ISgUUtg79U9Eq0ActHmVRtmN&quot;);    var time=0   var title=&quot;&quot;   var url=&quot;&quot;   var query = new AV.Query(&apos;Counter&apos;);   query.notEqualTo(&apos;id&apos;,0);   query.d">
+<meta property="og:description" content="博客文章阅读量排行榜">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-19T06:31:28.834Z">
+<meta property="og:updated_time" content="2019-05-19T06:49:33.428Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Top">
-<meta name="twitter:description" content="AV.initialize(&quot;7CDtrbb4U7nQzOdctmXXnMqt-gzGzoHsz&quot;, &quot;ISgUUtg79U9Eq0ActHmVRtmN&quot;);    var time=0   var title=&quot;&quot;   var url=&quot;&quot;   var query = new AV.Query(&apos;Counter&apos;);   query.notEqualTo(&apos;id&apos;,0);   query.d">
+<meta name="twitter:description" content="博客文章阅读量排行榜">
 
 
 
@@ -464,6 +464,8 @@
 
 <div class="post-meta">
   
+    <div class="post-description">博客文章阅读量排行榜</div>
+  
   
 
 
@@ -478,7 +480,7 @@
       <div class="post-body">
         
         
-          <p><div id="top"></div></p>
+          <!-- <div id="top"></div>
 <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
 <script>AV.initialize("7CDtrbb4U7nQzOdctmXXnMqt-gzGzoHsz", "ISgUUtg79U9Eq0ActHmVRtmN");</script>
 <script type="text/javascript">
@@ -502,7 +504,33 @@
   }, function (error) {
     console.log("error");
   });
+</script> -->
+<p><div id="top"></div></p>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script>AV.initialize("7CDtrbb4U7nQzOdctmXXnMqt-gzGzoHsz", "ISgUUtg79U9Eq0ActHmVRtmN");</script>
+<script type="text/javascript">
+  var time=0
+  var title=""
+  var url=""
+  var query = new AV.Query('Counter');
+  query.notEqualTo('id',0);
+  query.descending('time');
+  query.limit(1000);
+  query.find().then(function (todo) {
+    for (var i=0;i<1000;i++){
+      var result=todo[i].attributes;
+      time=result.time;
+      title=result.title;
+      url=result.url;
+      var content="<a href='"+"https://reuixiy.github.io"+url+"'>"+title+"</a>"+"<br />"+"<font color='#555'>"+"阅读次数："+time+"</font>"+"<br /><br />";
+      document.getElementById("top").innerHTML+=content
+    }
+  }, function (error) {
+    console.log("error");
+  });
 </script>
+
+<style>.post-description { display: none; }</style>
         
       </div>
       
