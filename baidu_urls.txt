@@ -9,7 +9,6 @@ https://michael728.github.io/2019/04/14/tools-mac-dev/
 https://michael728.github.io/2018/12/15/python-package-import-order/
 https://michael728.github.io/2018/12/15/python-debug-ipdb/
 https://michael728.github.io/2018/12/09/python-argparse-note/
-https://michael728.github.io/2018/12/08/tools-mac-daily/
 https://michael728.github.io/2018/12/02/tools-vim-basic/
 https://michael728.github.io/2018/12/02/tools-vim-plugin-config/
 https://michael728.github.io/2018/11/24/git-advance/
@@ -41,5 +40,5 @@ https://michael728.github.io/2015/11/30/hexo-next-optimize/
 https://michael728.github.io/2015/11/30/hexo-gitcafe-github-dns-goddaddy-set/
 https://michael728.github.io/2015/11/30/hexo-gitcafe-github-deploy/
 https://michael728.github.io/2015/11/28/tools-list-win/
-https://michael728.github.io/2015/11/26/python-pyenv-anaconda/
 https://michael728.github.io/2015/11/26/tools-chrome-extentions/
+https://michael728.github.io/2015/11/26/python-pyenv-anaconda/
