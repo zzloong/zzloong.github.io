@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://michael728.github.io/2016/09/03/blog-logfile/</loc>
+    
+    <lastmod>2019-05-19T10:24:21.917Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://michael728.github.io/2019/05/19/hexo-blog-full-note/</loc>
     
     <lastmod>2019-05-19T10:22:25.207Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>https://michael728.github.io/about/index.html</loc>
     
     <lastmod>2019-05-12T16:51:34.468Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://michael728.github.io/2016/09/03/blog-logfile/</loc>
-    
-    <lastmod>2019-05-11T13:45:03.961Z</lastmod>
     
   </url>
   

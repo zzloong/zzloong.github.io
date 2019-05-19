@@ -328,7 +328,7 @@
   <entry>
     <title><![CDATA[博客建站日志]]></title>
     <url>%2F2016%2F09%2F03%2Fblog-logfile%2F</url>
-    <content type="text"><![CDATA[建站日志 2019-05-11：博客增加了萌萌的「看板娘」，同时，评论系统改为 Valine2018-11-11：Github搭建的博客，启用https了，做了适配修改，同时升级了Next主题版本。2019-03-03：评论系统从 Disqus 改为了「来必力」2017-04-22：将博客评论由多说变为disqus，尽管需要FQ才能看到，但是没办法，多说要关闭了……2017-04-03：修改了工具总结，添加了几个这段时间发现的好软件2016-09-03：优化了sitemap 、添加了博客内搜索2016-09-03：增加了工具页面http://michaelxiang.me/tools/，激动人心 建站笔记 Hexo 搭建 Blog 精简笔记]]></content>
+    <content type="text"><![CDATA[建站日志 2019-05-18: 博客增加了「阅读」、「观影」、「一言」页面2019-05-11：博客增加了萌萌的「看板娘」，同时，评论系统改为 Valine2018-11-11：Github搭建的博客，启用https了，做了适配修改，同时升级了Next主题版本。2019-03-03：评论系统从 Disqus 改为了「来必力」2017-04-22：将博客评论由多说变为disqus，尽管需要FQ才能看到，但是没办法，多说要关闭了……2017-04-03：修改了工具总结，添加了几个这段时间发现的好软件2016-09-03：优化了sitemap 、添加了博客内搜索2016-09-03：增加了工具页面http://michaelxiang.me/tools/，激动人心 建站笔记 Hexo 搭建 Blog 精简笔记]]></content>
       <categories>
         <category>Tools</category>
       </categories>
@@ -438,8 +438,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>整理</tag>
+        <tag>Python</tag>
         <tag>ML</tag>
       </tags>
   </entry>
@@ -464,8 +464,8 @@
       </categories>
       <tags>
         <tag>List</tag>
-        <tag>Python</tag>
         <tag>整理</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
