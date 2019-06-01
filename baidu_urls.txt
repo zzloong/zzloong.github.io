@@ -1,3 +1,4 @@
+https://michael728.github.io/2019/06/01/docker-centos-install/
 https://michael728.github.io/2019/06/01/cloud-concept-region-az/
 https://michael728.github.io/2019/05/19/hexo-blog-full-note/
 https://michael728.github.io/2019/05/11/think-core-skill-programmer/
