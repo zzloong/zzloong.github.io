@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://michael728.github.io/2019/05/19/hexo-blog-full-note/</loc>
+    
+    <lastmod>2019-06-01T15:42:42.691Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://michael728.github.io/2019/06/01/docker-centos-install/</loc>
     
     <lastmod>2019-06-01T15:13:45.020Z</lastmod>
@@ -75,13 +82,6 @@
     <loc>https://michael728.github.io/tools/index.html</loc>
     
     <lastmod>2019-05-19T14:46:24.808Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://michael728.github.io/2019/05/19/hexo-blog-full-note/</loc>
-    
-    <lastmod>2019-05-19T10:29:55.959Z</lastmod>
     
   </url>
   
