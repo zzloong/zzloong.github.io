@@ -614,17 +614,6 @@
 
           
           
-            <span id="/2015/12/23/python-pandas-basic/" class="leancloud_visitors" data-flag-title="Python数据分析入门之pandas总结基础">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
 
           
             <span class="post-meta-divider">|</span>
@@ -1002,13 +991,6 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2018/12/09/python-argparse-note/" rel="bookmark">Python 标准库 argparse 的用法</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
       <div class="popular-posts-title"><a href="/2015/12/02/python-files-list/" rel="bookmark">Python入门资料大全(更新ing)</a></div>
       
     </li>
@@ -1023,6 +1005,13 @@
     <li class="popular-posts-item">
       
       
+      <div class="popular-posts-title"><a href="/2018/12/09/python-argparse-note/" rel="bookmark">Python 标准库 argparse 的用法</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
       <div class="popular-posts-title"><a href="/2018/12/15/python-debug-ipdb/" rel="bookmark">Python 调试模块 ipdb</a></div>
       
     </li>
@@ -1030,14 +1019,14 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2016/05/14/python-matplotlib-basic/" rel="bookmark">Python--matplotlib绘图可视化知识点整理</a></div>
+      <div class="popular-posts-title"><a href="/2018/12/15/python-package-import-order/" rel="bookmark">Python 模块的加载顺序</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2018/12/15/python-package-import-order/" rel="bookmark">Python 模块的加载顺序</a></div>
+      <div class="popular-posts-title"><a href="/2016/05/14/python-matplotlib-basic/" rel="bookmark">Python--matplotlib绘图可视化知识点整理</a></div>
       
     </li>
   
@@ -2157,71 +2146,6 @@
 
 
   
-  
-  <script>
-    
-    function addCount(Counter) {
-      var $visitors = $('.leancloud_visitors');
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
-        .done(function({ results }) {
-          if (results.length > 0) {
-            var counter = results[0];
-            
-            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
-            
-              .done(function() {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.time + 1);
-              })
-            
-              .fail(function ({ responseJSON }) {
-                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
-              })
-          } else {
-            
-              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
-                .done(function() {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(1);
-                })
-                .fail(function() {
-                  console.log('Failed to create');
-                });
-            
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + '7CDtrbb4U7nQzOdctmXXnMqt-gzGzoHsz')
-        .done(function({ api_server }) {
-          var Counter = function(method, url, data) {
-            return $.ajax({
-              method: method,
-              url: 'https://' + api_server + '/1.1' + url,
-              headers: {
-                'X-LC-Id': '7CDtrbb4U7nQzOdctmXXnMqt-gzGzoHsz',
-                'X-LC-Key': 'ISgUUtg79U9Eq0ActHmVRtmN',
-                'Content-Type': 'application/json',
-              },
-              data: data
-            });
-          };
-          
-            addCount(Counter);
-          
-        });
-    });
-  </script>
-
-
 
   
 

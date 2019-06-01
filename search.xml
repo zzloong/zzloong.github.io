@@ -45,7 +45,7 @@
   <entry>
     <title><![CDATA[shadowsocks+vps+mac]]></title>
     <url>%2F2019%2F04%2F27%2Ftools-ss-vps%2F</url>
-    <content type="text"><![CDATA[Vultr 选择的是日本的节点，发现速度比较不错，油管视频 720P 无压力！而且，感觉 Vultr 的界面也很清新，用着很方便。 我自搭梯子，选择的是：Shadowsocks-libev+开启simple-obs插键+BBR加速。 Vultr 通过我的链接注册充值，你我都可以获得 $10 账户返利，所以，如果有需要，就点击注册吧： Vultr 注册返利链接 VPSvultr速度比较： vultr-downloadspeedtests vultr中文网 一键安装脚本 秋水逸冰 Shadowsocks 一键安装脚本（四合一） 秋水逸冰 一键脚本搭建SS/搭建SSR服务并开启BBR加速 Vultr中文网-Vultr 一键搭建酸酸 Shad0ws0cks 图文教程（推荐） 123wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.shchmod +x shadowsocks-all.sh./shadowsocks-all.sh 2&gt;&amp;1 | tee shadowsocks-all.log Docker方式 docker文档 docker-ss-搜索结果 加速配置：我选用的 BBR 加速的方式 BBR 安装： 1wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh &amp;&amp; chmod +x bbr.sh &amp;&amp; ./bbr.sh 锐速安装，参考锐速破解版linux一键自动安装包： 1wget -N --no-check-certificate https://github.com/91yun/serverspeeder/raw/master/serverspeeder.sh &amp;&amp; bash serverspeeder.sh 客户端 Shadowsocks各种客户端 Mac 客户端下载 ShadowsocksX-NG-R/releases ShadowsocksX-NG/releases NG 客户端插键配置 插键选项： 1obfs=http;obfs-host=www.bing.com Android shadowsocks/shadowsocks-android 插键-shadowsocks/simple-obfs-android 服务端命令启动脚本后面的参数含义，从左至右依次为：启动，停止，重启，查看状态。 Shadowsocks-Python 版：/etc/init.d/shadowsocks-python start | stop | restart | status ShadowsocksR 版：/etc/init.d/shadowsocks-r start | stop | restart | status Shadowsocks-Go 版：/etc/init.d/shadowsocks-go start | stop | restart | status Shadowsocks-libev 版：/etc/init.d/shadowsocks-libev start | stop | restart | status 配置文件：1234567891011Shadowsocks-Python 版：/etc/shadowsocks-python/config.jsonShadowsocksR 版：/etc/shadowsocks-r/config.jsonShadowsocks-Go 版：/etc/shadowsocks-go/config.jsonShadowsocks-libev 版：/etc/shadowsocks-libev/config.json 参考 聪聪-SS/SSR 简介 写给非专业人士看的 Shadowsocks 简介]]></content>
+    <content type="text"><![CDATA[Vultr 选择的是日本的节点，发现速度比较不错，油管视频 720P 无压力！而且，感觉 Vultr 的界面也很清新，用着很方便。 我自搭梯子，选择的是：Shadowsocks-libev+开启simple-obs插键+BBR加速。 Vultr 通过我的链接注册充值，你我都可以获得 $10 账户返利，所以，如果有需要，就点击注册吧： Vultr 注册返利链接 VPSvultr速度比较： vultr-downloadspeedtests vultr中文网 一键安装脚本 秋水逸冰 Shadowsocks 一键安装脚本（四合一） 秋水逸冰 一键脚本搭建SS/搭建SSR服务并开启BBR加速 Vultr中文网-Vultr 一键搭建酸酸 Shad0ws0cks 图文教程（推荐） 123wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.shchmod +x shadowsocks-all.sh./shadowsocks-all.sh 2&gt;&amp;1 | tee shadowsocks-all.log Docker方式 docker文档 docker-ss-搜索结果 加速配置：我选用的 BBR 加速的方式 BBR 安装： 1wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh &amp;&amp; chmod +x bbr.sh &amp;&amp; ./bbr.sh 锐速安装，参考锐速破解版linux一键自动安装包： 1wget -N --no-check-certificate https://github.com/91yun/serverspeeder/raw/master/serverspeeder.sh &amp;&amp; bash serverspeeder.sh 客户端 Shadowsocks各种客户端 Mac 客户端下载 ShadowsocksX-NG-R/releases ShadowsocksX-NG/releases NG 客户端插键配置 插键选项： 1obfs=http;obfs-host=www.bing.com Android shadowsocks/shadowsocks-android 插键-shadowsocks/simple-obfs-android 服务端命令启动脚本后面的参数含义，从左至右依次为：启动，停止，重启，查看状态。 Shadowsocks-Python 版：/etc/init.d/shadowsocks-python start | stop | restart | status ShadowsocksR 版：/etc/init.d/shadowsocks-r start | stop | restart | status Shadowsocks-Go 版：/etc/init.d/shadowsocks-go start | stop | restart | status Shadowsocks-libev 版：/etc/init.d/shadowsocks-libev start | stop | restart | status 配置文件：1234567891011Shadowsocks-Python 版：/etc/shadowsocks-python/config.jsonShadowsocksR 版：/etc/shadowsocks-r/config.jsonShadowsocks-Go 版：/etc/shadowsocks-go/config.jsonShadowsocks-libev 版：/etc/shadowsocks-libev/config.json 参考 聪聪-SS/SSR 简介 写给非专业人士看的 Shadowsocks 简介 VPS+ShadowsocksR 搭建自己的 VPN]]></content>
       <categories>
         <category>Tools</category>
       </categories>
@@ -451,8 +451,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>整理</tag>
+        <tag>Python</tag>
         <tag>ML</tag>
       </tags>
   </entry>
@@ -477,8 +477,8 @@
       </categories>
       <tags>
         <tag>List</tag>
-        <tag>Python</tag>
         <tag>整理</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>

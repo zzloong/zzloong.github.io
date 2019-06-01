@@ -118,7 +118,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fyh2t0f4hgj328o0qcdpb.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1g2h75w3g2aj30ff08wq2y.jpg">
-<meta property="og:updated_time" content="2019-05-21T14:44:58.213Z">
+<meta property="og:updated_time" content="2019-06-01T04:35:13.723Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shadowsocks+vps+mac">
 <meta name="twitter:description" content="Vultr 选择的是日本的节点，发现速度比较不错，油管视频 720P 无压力！而且，感觉 Vultr 的界面也很清新，用着很方便。">
@@ -554,7 +554,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-21 22:44:58" itemprop="dateModified" datetime="2019-05-21T22:44:58+08:00">2019-05-21</time>
+                <time title="修改时间：2019-06-01 12:35:13" itemprop="dateModified" datetime="2019-06-01T12:35:13+08:00">2019-06-01</time>
               
             
           </span>
@@ -598,17 +598,6 @@
           
 
           
-          
-            <span id="/2019/04/27/tools-ss-vps/" class="leancloud_visitors" data-flag-title="shadowsocks+vps+mac">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
           
 
           
@@ -698,6 +687,7 @@
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://congcong0806.github.io/2018/04/20/SS/" target="_blank" rel="noopener">聪聪-SS/SSR 简介</a></li>
 <li><a href="http://vc2tea.com/whats-shadowsocks/" target="_blank" rel="noopener">写给非专业人士看的 Shadowsocks 简介</a></li>
+<li><a href="https://www.liaoyuqin.com/post/tools/ha-bi-da-ti-zi" target="_blank" rel="noopener">VPS+ShadowsocksR 搭建自己的 VPN</a></li>
 </ul>
 
       
@@ -1844,71 +1834,6 @@
 
 
   
-  
-  <script>
-    
-    function addCount(Counter) {
-      var $visitors = $('.leancloud_visitors');
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
-        .done(function({ results }) {
-          if (results.length > 0) {
-            var counter = results[0];
-            
-            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
-            
-              .done(function() {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.time + 1);
-              })
-            
-              .fail(function ({ responseJSON }) {
-                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
-              })
-          } else {
-            
-              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1 }))
-                .done(function() {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(1);
-                })
-                .fail(function() {
-                  console.log('Failed to create');
-                });
-            
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + '7CDtrbb4U7nQzOdctmXXnMqt-gzGzoHsz')
-        .done(function({ api_server }) {
-          var Counter = function(method, url, data) {
-            return $.ajax({
-              method: method,
-              url: 'https://' + api_server + '/1.1' + url,
-              headers: {
-                'X-LC-Id': '7CDtrbb4U7nQzOdctmXXnMqt-gzGzoHsz',
-                'X-LC-Key': 'ISgUUtg79U9Eq0ActHmVRtmN',
-                'Content-Type': 'application/json',
-              },
-              data: data
-            });
-          };
-          
-            addCount(Counter);
-          
-        });
-    });
-  </script>
-
-
 
   
 
