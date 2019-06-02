@@ -108,18 +108,20 @@
 
 
 
-  <meta name="description" content="前面已经介绍了 Docker 的安装方式，本文总结一下使用 Docker 的基本概念和常用命令。 基本概念镜像 Image镜像是一些打包好的已有的环境，可以被用来启动和创建容器 容器  Container容器是镜像的实例化 容器的UUIDUUID – 通用唯一标识符（Universally Unique Identifier） 容器有三种方式来进行标识：  长UUID 短UUID Name  UU">
+  <meta name="description" content="Docker 容器学习笔记系列：  Linux–CentOS 安装 Docker 教程 Docker 入门指南——常用命令  前面已经介绍了 Docker 的安装方式，本文总结一下使用 Docker 的基本概念和常用命令。 基本概念镜像 Image镜像是一些打包好的已有的环境，可以被用来启动和创建容器 容器  Container容器是镜像的实例化 容器的UUIDUUID – 通用唯一标识符（Un">
 <meta name="keywords" content="docker,commands">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker 入门指南——常用命令">
 <meta property="og:url" content="https://michael728.github.io/2019/06/02/docker-useful-often-commands/index.html">
 <meta property="og:site_name" content="Michael翔">
-<meta property="og:description" content="前面已经介绍了 Docker 的安装方式，本文总结一下使用 Docker 的基本概念和常用命令。 基本概念镜像 Image镜像是一些打包好的已有的环境，可以被用来启动和创建容器 容器  Container容器是镜像的实例化 容器的UUIDUUID – 通用唯一标识符（Universally Unique Identifier） 容器有三种方式来进行标识：  长UUID 短UUID Name  UU">
+<meta property="og:description" content="Docker 容器学习笔记系列：  Linux–CentOS 安装 Docker 教程 Docker 入门指南——常用命令  前面已经介绍了 Docker 的安装方式，本文总结一下使用 Docker 的基本概念和常用命令。 基本概念镜像 Image镜像是一些打包好的已有的环境，可以被用来启动和创建容器 容器  Container容器是镜像的实例化 容器的UUIDUUID – 通用唯一标识符（Un">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-02T06:14:42.177Z">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/6d9475f6ly1g3mthif5qvj20iu09l0t6.jpg">
+<meta property="og:updated_time" content="2019-06-02T06:58:19.512Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 入门指南——常用命令">
-<meta name="twitter:description" content="前面已经介绍了 Docker 的安装方式，本文总结一下使用 Docker 的基本概念和常用命令。 基本概念镜像 Image镜像是一些打包好的已有的环境，可以被用来启动和创建容器 容器  Container容器是镜像的实例化 容器的UUIDUUID – 通用唯一标识符（Universally Unique Identifier） 容器有三种方式来进行标识：  长UUID 短UUID Name  UU">
+<meta name="twitter:description" content="Docker 容器学习笔记系列：  Linux–CentOS 安装 Docker 教程 Docker 入门指南——常用命令  前面已经介绍了 Docker 的安装方式，本文总结一下使用 Docker 的基本概念和常用命令。 基本概念镜像 Image镜像是一些打包好的已有的环境，可以被用来启动和创建容器 容器  Container容器是镜像的实例化 容器的UUIDUUID – 通用唯一标识符（Un">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/6d9475f6ly1g3mthif5qvj20iu09l0t6.jpg">
 
 
 
@@ -534,7 +536,7 @@
                 
               
 
-              <time title="创建时间：2019-06-02 14:13:44 / 修改时间：14:14:42" itemprop="dateCreated datePublished" datetime="2019-06-02T14:13:44+08:00">2019-06-02</time>
+              <time title="创建时间：2019-06-02 14:13:44 / 修改时间：14:58:19" itemprop="dateCreated datePublished" datetime="2019-06-02T14:13:44+08:00">2019-06-02</time>
             
 
             
@@ -615,7 +617,13 @@
       
 
       
-        <p>前面已经介绍了 Docker 的安装方式，本文总结一下使用 Docker 的基本概念和常用命令。</p>
+        <p><img src="https://ws1.sinaimg.cn/large/6d9475f6ly1g3mthif5qvj20iu09l0t6.jpg" alt></p>
+<p>Docker 容器学习笔记系列：</p>
+<ul>
+<li><a href="https://michael728.github.io/2019/06/01/docker-centos-install/">Linux–CentOS 安装 Docker 教程</a></li>
+<li><a href>Docker 入门指南——常用命令</a></li>
+</ul>
+<p>前面已经介绍了 Docker 的安装方式，本文总结一下使用 Docker 的基本概念和常用命令。</p>
 <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="镜像-Image"><a href="#镜像-Image" class="headerlink" title="镜像 Image"></a>镜像 Image</h3><p>镜像是一些打包好的已有的环境，可以被用来启动和创建容器</p>
 <h3 id="容器-Container"><a href="#容器-Container" class="headerlink" title="容器  Container"></a>容器  Container</h3><p>容器是镜像的实例化</p>
 <h3 id="容器的UUID"><a href="#容器的UUID" class="headerlink" title="容器的UUID"></a>容器的UUID</h3><p>UUID – 通用唯一标识符（Universally Unique Identifier）</p>
@@ -626,7 +634,7 @@
 <li>Name</li>
 </ul>
 <p>UUID 是 Docker daemon 产生的，在一台主机上是唯一的，在创建容器的时候可以通过 <code>--name</code> 来指定容器的名字，如果不指定会自动分配一个字符串名称。</p>
-<p>通过docker ps、docker inspect等命令可以查看到容器的标识信息</p>
+<p>通过 <code>docker ps</code>、<code>docker inspect</code> 等命令可以查看到容器的标识信息</p>
 <h3 id="容器启动过程"><a href="#容器启动过程" class="headerlink" title="容器启动过程"></a>容器启动过程</h3><ol>
 <li>检查本地是否存在指定的镜像，不存在就从公有仓库下载</li>
 <li>利用镜像创建并启动一个容器</li>
@@ -636,36 +644,34 @@
 <li>执行用户指定的应用程序</li>
 <li>执行完毕后容器被终止</li>
 </ol>
-<hr>
-<h2 id="image-操作"><a href="#image-操作" class="headerlink" title="image 操作"></a>image 操作</h2><ul>
-<li><p>查看 <code>image</code> 列表：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker iamges</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>下载镜像：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull registry.domain.com/library/ubuntu:14.04</span><br></pre></td></tr></table></figure>
-</li>
+<h2 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h2><ul>
+<li>查看 <code>image</code> 列表：</li>
 </ul>
-<h2 id="创建镜像"><a href="#创建镜像" class="headerlink" title="创建镜像"></a>创建镜像</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 常用下面这种方式制作镜像，Dockerfile 文件更透明</span><br><span class="line">docker build [-f DockerfileName] -t image_name DockerfilePath</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker iamges</span><br></pre></td></tr></table></figure>
+<ul>
+<li>下载镜像：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull registry.domain.com/library/ubuntu:14.04</span><br></pre></td></tr></table></figure>
+<h3 id="创建镜像"><a href="#创建镜像" class="headerlink" title="创建镜像"></a>创建镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 常用下面这种方式制作镜像，Dockerfile 文件更透明</span><br><span class="line">docker build [-f DockerfileName] -t image_name DockerfilePath</span><br></pre></td></tr></table></figure>
 <p>这里 DockerfilePath 是 Context 上下文目录，在创建的时候会全部上传到 Docker Server 端，所以这个目录不要太大。</p>
 <p>参数说明：</p>
 <ul>
-<li><code>-f</code>/<code>--file</code>：Name of the Dockerfile (Default is ‘PATH/Dockerfile’)，Dockerfile的完整路径<ul>
-<li><code>-t</code>/<code>--tag</code>：Name and optionally a tag in the ‘name:tag’ format，指定了镜像名称，镜像的名字及tag，通常name:tag或者name格式</li>
-<li><code>--no-cache</code>：Do not use cache when building the image，<a href="https://www.centos.bz/2016/11/rebuild-docker-image-without-cache/" target="_blank" rel="noopener">这篇文章</a>介绍了使用这个参数的场景，构建镜像中有时候包含 git clone 命令，会默认使用缓存，新代码就不会下载了，所以，有时候需要加上这个参数；</li>
+<li><code>-f</code>/<code>--file</code>：Name of the Dockerfile (Default is ‘PATH/Dockerfile’)，Dockerfile的完整路径</li>
+<li><code>-t</code>/<code>--tag</code>：Name and optionally a tag in the ‘name:tag’ format，指定了镜像名称，镜像的名字及 tag，通常 <code>name:tag</code> 或者 <code>name</code> 格式</li>
+<li><code>--no-cache</code>：Do not use cache when building the image，<a href="https://www.centos.bz/2016/11/rebuild-docker-image-without-cache/" target="_blank" rel="noopener">这篇文章</a>介绍了使用这个参数的场景，构建镜像中有时候包含 <code>git clone</code> 命令，会默认使用缓存，新代码就不会下载了，所以，有时候需要加上这个参数；</li>
+<li><code>--pull</code>，默认 <code>false</code>。Always attempt to pull a newer version of the image，设置该选项，总是尝试 pull 镜像的最新版本</li>
 </ul>
+<p>其他的 <code>build</code> 参数，可以采用 <code>docker build -h</code> 查看。</p>
+<h3 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h3><p>删除 <code>image</code> 之前，需要先删除 <code>container</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br><span class="line">docker rm container_id/container_name</span><br></pre></td></tr></table></figure></p>
+<p>删除 <code>image</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker rmi  docker.io/tomcat:7.0.77-jre7</span><br><span class="line"># or</span><br><span class="line">docker rmi b39c68b7af30</span><br></pre></td></tr></table></figure></p>
+<p>删除虚悬镜像(<code>dangling image</code>)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$docker image ls -f dangling=true #列出虚悬镜像</span><br><span class="line"></span><br><span class="line">$ docker image prune</span><br><span class="line">WARNING! This will remove all dangling images.</span><br><span class="line">Are you sure you want to continue? [y/N] y</span><br></pre></td></tr></table></figure></p>
+<h3 id="迁移镜像"><a href="#迁移镜像" class="headerlink" title="迁移镜像"></a>迁移镜像</h3><ul>
+<li>保存镜像到文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save image_name -o file.tar</span><br></pre></td></tr></table></figure>
 </li>
-<li><code>--pull</code>，默认false。Always attempt to pull a newer version of the image，设置该选项，总是尝试pull镜像的最新版本</li>
 </ul>
-<p>其他的 build 参数，可以采用 <code>docker build -h</code> 查看。</p>
-<h2 id="删除image"><a href="#删除image" class="headerlink" title="删除image"></a>删除image</h2><p>删除 <code>image</code> 之前，需要先删除 <code>container</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br><span class="line">docker rm container_id</span><br></pre></td></tr></table></figure></p>
-<p>删除 <code>image</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker rmi  docker.io/tomcat:7.0.77-jre7   或者  docker rmi b39c68b7af30</span><br><span class="line">docker rmi michael/ubuntu:14.04</span><br></pre></td></tr></table></figure></p>
-<p>删除虚悬镜像(dangling image)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$docker image ls -f dangling=true #列出虚悬镜像</span><br><span class="line"></span><br><span class="line">$ docker image prune</span><br><span class="line">WARNING! This will remove all dangling images.</span><br><span class="line">Are you sure you want to continue? [y/N] y</span><br></pre></td></tr></table></figure></p>
-<h2 id="迁移镜像"><a href="#迁移镜像" class="headerlink" title="迁移镜像"></a>迁移镜像</h2><ul>
-<li><p>保存镜像到文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save image_name -o file.tar</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>加载一个 tar 包的镜像</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load -i file.tar</span><br></pre></td></tr></table></figure>
+<p>将镜像保存一个 <code>tar</code> 包文件了</p>
+<ul>
+<li>加载一个 tar 包的镜像<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load -i file.tar</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="Container-操作"><a href="#Container-操作" class="headerlink" title="Container 操作"></a>Container 操作</h2><ul>
@@ -691,8 +697,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs cid 2&gt;&amp;1 | grep &apos;^User: &apos; | tail -n1</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="容器运行"><a href="#容器运行" class="headerlink" title="容器运行"></a>容器运行</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name cidregistry.domain.com/library/ubuntu:14.04</span><br></pre></td></tr></table></figure>
-<p>如果直接 <code>docker run -it registry.domain.com/library/ubuntu</code> 是不行的，因为不加 tag ，默认就去运行 <code>latest</code> 版本，而本地没有 <code>latest</code> 版本，所以，需要将 <code>image</code>+<code>tag</code>，以冒号分隔拉去。</p>
+<h3 id="容器运行"><a href="#容器运行" class="headerlink" title="容器运行"></a>容器运行</h3><p>语法格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Usage:	docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</span><br></pre></td></tr></table></figure></p>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name cidregistry.domain.com/library/ubuntu:14.04</span><br></pre></td></tr></table></figure></p>
+<p>如果直接 <code>docker run -it registry.domain.com/library/ubuntu</code> 可能会出错，因为不加 <code>tag</code> ，默认就去运行 <code>latest</code> 版本，而本地没有 <code>latest</code> 版本，所以，需要将 <code>image</code>+<code>tag</code>，以冒号分隔拉去。</p>
 <ul>
 <li><code>-i</code> 交互操作</li>
 <li><code>-t</code> 终端</li>
@@ -705,33 +712,25 @@
 </ul>
 <p>当处于一个容器中时，利用<code>exit</code>退出容器</p>
 <ul>
-<li><p>启动已终止（stop）容器：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker restart 3e8 # 3e8 为容器的 id 号，不需要全写，也可以用容器名替代</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>附着到正在运行的容器中，退出时会导致容器终止</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach cid</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进入正在运行的容器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it cid /bin/bash</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在容器中运行一段程序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run ubuntu apt-get update</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>拷贝文件出来</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp cid:/container_path to_path</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除容器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker rm cid</span><br><span class="line"></span><br><span class="line"># 强制删除</span><br><span class="line">docker rm -f cid</span><br><span class="line"></span><br><span class="line"># 删除所有容器</span><br><span class="line"># -q 表示只列出容器的 id 值</span><br><span class="line">docker rm `docker ps -a -q`</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>状态修改</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start/stop/kill/restart cid</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改容器名字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rename old new</span><br></pre></td></tr></table></figure>
+<li>在容器中运行一段程序<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run ubuntu apt-get update</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="修改容器，制作镜像"><a href="#修改容器，制作镜像" class="headerlink" title="修改容器，制作镜像"></a>修改容器，制作镜像</h2><p>image 相当于类，container 相当于实例，不过可以动态给实例安装新软件，然后把这个 container 用 commit 命令固化成一个 image：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit -m &quot;修改yum源&quot; -a &quot;michaelxiang&quot; cid registry.domain.com/ci/centos-os:latest</span><br></pre></td></tr></table></figure></p>
-<h2 id="推送镜像"><a href="#推送镜像" class="headerlink" title="推送镜像"></a>推送镜像</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker login registry.domain.com -u username -p password</span><br><span class="line">docker push registry.domain.com/michael/IMAGE[:TAG]</span><br></pre></td></tr></table></figure>
+<h3 id="启动已终止（stop）容器："><a href="#启动已终止（stop）容器：" class="headerlink" title="启动已终止（stop）容器："></a>启动已终止（stop）容器：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker restart 3e8 # 3e8 为容器的 id 号，不需要全写，也可以用容器名替代</span><br></pre></td></tr></table></figure>
+<h3 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h3><ul>
+<li><p>进入正在运行的容器，退出不会造成容器停止：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it cid /bin/bash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>附着到正在运行的容器中，退出时会导致容器终止，不常用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach cid</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="从容器拷贝文件出来"><a href="#从容器拷贝文件出来" class="headerlink" title="从容器拷贝文件出来"></a>从容器拷贝文件出来</h3><p>拷贝文件出来<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp cid:/container_path to_path</span><br></pre></td></tr></table></figure></p>
+<h3 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker rm cid</span><br><span class="line"># 强制删除</span><br><span class="line">docker rm -f cid</span><br><span class="line"># 删除所有容器</span><br><span class="line"># -q 表示只列出容器的 id 值</span><br><span class="line">docker rm `docker ps -a -q`</span><br></pre></td></tr></table></figure>
+<h3 id="容器运行状态修改"><a href="#容器运行状态修改" class="headerlink" title="容器运行状态修改"></a>容器运行状态修改</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start/stop/kill/restart cid</span><br></pre></td></tr></table></figure>
+<h3 id="更改容器名字"><a href="#更改容器名字" class="headerlink" title="更改容器名字"></a>更改容器名字</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rename old new</span><br></pre></td></tr></table></figure>
+<h2 id="修改容器，制作镜像"><a href="#修改容器，制作镜像" class="headerlink" title="修改容器，制作镜像"></a>修改容器，制作镜像</h2><p><code>image</code> 相当于类，<code>container</code> 相当于实例，不过可以动态给实例安装新软件，然后把这个 <code>container</code> 用 <code>commit</code> 命令固化成一个 <code>image</code>：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit -m "修改yum源" -a "michaelxiang" cid registry.domain.com/ci/centos-os:latest</span><br></pre></td></tr></table></figure></p>
+<p>这种制作镜像的方式并不推荐，因为不如 Dockerfile 方式透明。</p>
+<h2 id="推送镜像"><a href="#推送镜像" class="headerlink" title="推送镜像"></a>推送镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker login registry.domain.com -u username -p password</span><br><span class="line">docker push registry.domain.com/michael/IMAGE[:TAG]</span><br></pre></td></tr></table></figure>
 <p>如果支持 accesstoken 权限认证：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker login registry.domain.com -u test -p ACCESSTOKEN:XXXXXXXXXXXXX:ACCESSTOKEN</span><br></pre></td></tr></table></figure></p>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>你可以通过以下命令来便捷的查看镜像、容器、数据卷所占用的空间：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker system df</span><br></pre></td></tr></table></figure></p>
 <h2 id="docker-配置"><a href="#docker-配置" class="headerlink" title="docker 配置"></a>docker 配置</h2><h3 id="daemon-json-文件"><a href="#daemon-json-文件" class="headerlink" title="daemon.json 文件"></a>daemon.json 文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;insecure-registries&quot;: [&quot;registry.xxx.com&quot;],</span><br><span class="line">    &quot;registry-mirrors&quot;: [&quot;https://xxxx.mirror.swr.myhuaweicloud.com&quot;],</span><br><span class="line">    &quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;],</span><br><span class="line">    &quot;storage-driver&quot;: &quot;overlay2&quot;,</span><br><span class="line">    &quot;storage-opts&quot;: [</span><br><span class="line">                &quot;overlay2.override_kernel_check=true&quot;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1342,7 +1341,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#镜像-Image"><span class="nav-number">1.1.</span> <span class="nav-text">镜像 Image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器-Container"><span class="nav-number">1.2.</span> <span class="nav-text">容器  Container</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器的UUID"><span class="nav-number">1.3.</span> <span class="nav-text">容器的UUID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器启动过程"><span class="nav-number">1.4.</span> <span class="nav-text">容器启动过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#image-操作"><span class="nav-number">2.</span> <span class="nav-text">image 操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建镜像"><span class="nav-number">3.</span> <span class="nav-text">创建镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除image"><span class="nav-number">4.</span> <span class="nav-text">删除image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迁移镜像"><span class="nav-number">5.</span> <span class="nav-text">迁移镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Container-操作"><span class="nav-number">6.</span> <span class="nav-text">Container 操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#容器运行"><span class="nav-number">7.</span> <span class="nav-text">容器运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改容器，制作镜像"><span class="nav-number">8.</span> <span class="nav-text">修改容器，制作镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推送镜像"><span class="nav-number">9.</span> <span class="nav-text">推送镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">10.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-配置"><span class="nav-number">11.</span> <span class="nav-text">docker 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#daemon-json-文件"><span class="nav-number">11.1.</span> <span class="nav-text">daemon.json 文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FAQ"><span class="nav-number">12.</span> <span class="nav-text">FAQ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q1：Docker-空间问题"><span class="nav-number">12.1.</span> <span class="nav-text">Q1：Docker 空间问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">13.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#镜像-Image"><span class="nav-number">1.1.</span> <span class="nav-text">镜像 Image</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器-Container"><span class="nav-number">1.2.</span> <span class="nav-text">容器  Container</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器的UUID"><span class="nav-number">1.3.</span> <span class="nav-text">容器的UUID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器启动过程"><span class="nav-number">1.4.</span> <span class="nav-text">容器启动过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#镜像"><span class="nav-number">2.</span> <span class="nav-text">镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建镜像"><span class="nav-number">2.1.</span> <span class="nav-text">创建镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除镜像"><span class="nav-number">2.2.</span> <span class="nav-text">删除镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迁移镜像"><span class="nav-number">2.3.</span> <span class="nav-text">迁移镜像</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Container-操作"><span class="nav-number">3.</span> <span class="nav-text">Container 操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#容器运行"><span class="nav-number">3.1.</span> <span class="nav-text">容器运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动已终止（stop）容器："><span class="nav-number">3.2.</span> <span class="nav-text">启动已终止（stop）容器：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进入容器"><span class="nav-number">3.3.</span> <span class="nav-text">进入容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从容器拷贝文件出来"><span class="nav-number">3.4.</span> <span class="nav-text">从容器拷贝文件出来</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除容器"><span class="nav-number">3.5.</span> <span class="nav-text">删除容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器运行状态修改"><span class="nav-number">3.6.</span> <span class="nav-text">容器运行状态修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更改容器名字"><span class="nav-number">3.7.</span> <span class="nav-text">更改容器名字</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改容器，制作镜像"><span class="nav-number">4.</span> <span class="nav-text">修改容器，制作镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推送镜像"><span class="nav-number">5.</span> <span class="nav-text">推送镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">6.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-配置"><span class="nav-number">7.</span> <span class="nav-text">docker 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#daemon-json-文件"><span class="nav-number">7.1.</span> <span class="nav-text">daemon.json 文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FAQ"><span class="nav-number">8.</span> <span class="nav-text">FAQ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q1：Docker-空间问题"><span class="nav-number">8.1.</span> <span class="nav-text">Q1：Docker 空间问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">9.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
