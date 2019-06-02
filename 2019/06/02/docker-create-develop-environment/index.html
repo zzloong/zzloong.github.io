@@ -108,17 +108,18 @@
 
 
 
-  <meta name="description" content="DevOps CICD Blog 持续学习">
-<meta name="keywords" content="DevOps CICD">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Michael翔">
-<meta property="og:url" content="https://michael728.github.io/tags/Life/index.html">
+  <meta name="description" content="Docker 容器学习笔记系列：  Linux–CentOS 安装 Docker 教程 Docker 入门指南——常用命令  Docker 容器学习笔记系列：  Linux–CentOS 安装 Docker 教程 Docker 入门指南——常用命令  个人在开发时能方便快捷的搭建对应的测试环境，比如搭建一个 Redis 数据库、MongoDB 数据库、Elasticsearch 服务。这样就不用拿">
+<meta name="keywords" content="容器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用容器 Docker 创建开发环境">
+<meta property="og:url" content="https://michael728.github.io/2019/06/02/docker-create-develop-environment/index.html">
 <meta property="og:site_name" content="Michael翔">
-<meta property="og:description" content="DevOps CICD Blog 持续学习">
+<meta property="og:description" content="Docker 容器学习笔记系列：  Linux–CentOS 安装 Docker 教程 Docker 入门指南——常用命令  Docker 容器学习笔记系列：  Linux–CentOS 安装 Docker 教程 Docker 入门指南——常用命令  个人在开发时能方便快捷的搭建对应的测试环境，比如搭建一个 Redis 数据库、MongoDB 数据库、Elasticsearch 服务。这样就不用拿">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-02T13:10:27.831Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Michael翔">
-<meta name="twitter:description" content="DevOps CICD Blog 持续学习">
+<meta name="twitter:title" content="使用容器 Docker 创建开发环境">
+<meta name="twitter:description" content="Docker 容器学习笔记系列：  Linux–CentOS 安装 Docker 教程 Docker 入门指南——常用命令  Docker 容器学习笔记系列：  Linux–CentOS 安装 Docker 教程 Docker 入门指南——常用命令  个人在开发时能方便快捷的搭建对应的测试环境，比如搭建一个 Redis 数据库、MongoDB 数据库、Elasticsearch 服务。这样就不用拿">
 
 
 
@@ -128,7 +129,7 @@
 
   
   
-  <link rel="canonical" href="https://michael728.github.io/tags/Life/">
+  <link rel="canonical" href="https://michael728.github.io/2019/06/02/docker-create-develop-environment/">
 
 
 
@@ -138,7 +139,7 @@
   };
 </script>
 
-  <title>标签: Life | Michael翔</title>
+  <title>使用容器 Docker 创建开发环境 | Michael翔</title>
   
 
 
@@ -197,7 +198,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -256,7 +257,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -470,124 +471,406 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>Life<small>标签</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://michael728.github.io/2019/06/02/docker-create-develop-environment/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Michael翔">
+      <meta itemprop="description" content="DevOps CICD Blog 持续学习">
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Michael翔">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2016/07/25/life-about-intern-in-Shanghai/" itemprop="url">
-            
-              <span itemprop="name">在魔都实习生活</span>
-            
-          </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">使用容器 Docker 创建开发环境
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-07-25T21:29:08+08:00" content="2016-07-25">
-          07-25
-        </time>
-      </div>
+              
+            
+          </h2>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-02 15:41:19 / 修改时间：21:10:27" itemprop="dateCreated datePublished" datetime="2019-06-02T15:41:19+08:00">2019-06-02</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/容器/" itemprop="url" rel="index"><span itemprop="name">容器</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/06/02/docker-create-develop-environment/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/02/docker-create-develop-environment/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/06/02/docker-create-develop-environment/" class="leancloud_visitors" data-flag-title="使用容器 Docker 创建开发环境">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2015/12/20/life-20151220/" itemprop="url">
-            
-              <span itemprop="name">杂文-2015/12/20</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2015-12-20T23:16:43+08:00" content="2015-12-20">
-          12-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <p>Docker 容器学习笔记系列：</p>
+<ul>
+<li><a href="https://michael728.github.io/2019/06/01/docker-centos-install/">Linux–CentOS 安装 Docker 教程</a></li>
+<li><a href="https://michael728.github.io/2019/06/02/docker-useful-often-commands/">Docker 入门指南——常用命令</a></li>
+</ul>
+<p>Docker 容器学习笔记系列：</p>
+<ul>
+<li><a href="https://michael728.github.io/2019/06/01/docker-centos-install/">Linux–CentOS 安装 Docker 教程</a></li>
+<li><a href="https://michael728.github.io/2019/06/02/docker-useful-often-commands/">Docker 入门指南——常用命令</a></li>
+</ul>
+<p>个人在开发时能方便快捷的搭建对应的测试环境，比如搭建一个 Redis 数据库、MongoDB 数据库、Elasticsearch 服务。这样就不用拿公共的基础设施做测试了，避免损坏数据、破坏了线上环境。</p>
+<p>本文就介绍如何利用容器 Docker 来快速搭建开发测试环境。</p>
+<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h3 id="简单创建"><a href="#简单创建" class="headerlink" title="简单创建"></a>简单创建</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--name mysql \</span><br><span class="line">-p 3306:3306 \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=123456 \</span><br><span class="line">mysql:5.7</span><br></pre></td></tr></table></figure>
+<p>参数说明：</p>
+<ul>
+<li><code>-d</code>：以后台方式运行</li>
+<li><code>--name</code>：将运行的容器命名为 <code>mysql</code></li>
+<li><code>-p</code>：端口映射，<code>host_ip:container_ip</code>，将主机的 3306 端口映射为 容器内部的 3306 端口，数据库连接时，是连接的你的 <code>host_ip</code>，这二者的顺序不要搞混</li>
+<li><code>-e</code>：设置环境变量，指定 <code>root</code> 账号的密码为 <code>123456</code></li>
+</ul>
+<p>上面这种方式运行后，我们将容器中的 mysql 数据和配置文件拷贝到宿主机上。（获取原始配置文件）。</p>
+<p>因为没有将宿主机和容器相关目录挂载，这样会导致容器如果被删除，数据会丢失。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 创建好目录，不然会报错</span><br><span class="line">mkdir -p /dada/docker_local/mysql</span><br><span class="line"></span><br><span class="line"># 将容器中的 mysql 配置文件复制到宿主机中指定路径下，路径你可以根据需要，自行修改</span><br><span class="line">docker cp mysql:/etc/mysql/mysql.conf.d/mysqld.cnf /data/docker_local/mysql/config</span><br><span class="line"></span><br><span class="line"># 将容器中的 mysql 存储目录复制到宿主机中</span><br><span class="line">docker cp mysql:/var/lib/mysql/ /data/docker_local/mysql/data</span><br></pre></td></tr></table></figure>
+<p>这里放一份默认的配置文件 <code>mysqld.cnf</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">pid-file        = /var/run/mysqld/mysqld.pid</span><br><span class="line">socket          = /var/run/mysqld/mysqld.sock</span><br><span class="line">datadir         = /var/lib/mysql</span><br><span class="line">#log-error      = /var/log/mysql/error.log</span><br><span class="line"># By default we only accept connections from localhost</span><br><span class="line">#bind-address   = 127.0.0.1</span><br><span class="line"># Disabling symbolic-links is recommended to prevent assorted security risks</span><br><span class="line">symbolic-links=0</span><br></pre></td></tr></table></figure></p>
+<p>完成上面的操作之后，将已经运行的容器删除：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm mysql</span><br></pre></td></tr></table></figure></p>
+<h3 id="正式创建"><a href="#正式创建" class="headerlink" title="正式创建"></a>正式创建</h3><p>接下来正式运行 MySQL 容器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--name mysql \</span><br><span class="line">-p 3306:3306 \</span><br><span class="line">-v /data/docker_local/mysql/config/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf \</span><br><span class="line">-v /data/docker_local/mysql/data/mysql:/var/lib/mysql \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=123456 \</span><br><span class="line">mysql:5.7</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><code>-v</code>  将宿主机中的文件挂载到将容器中，容器中产生的数据会持久化下来，语法：<code>-v [host-src:]container-dest[:&lt;options&gt;]</code></li>
+</ul>
+<p>其实，如果你一开始就有了默认的配置文件，那么，就可以跳过之前的步骤，直接运行正式的创建 MySQL 容器的命令。</p>
+<h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><h3 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 创建持久化目录</span><br><span class="line">mkdir -p /data/docker_local/mongo/configdb</span><br><span class="line">mkdir -p /data/docker_local/mongo/data/db</span><br><span class="line"></span><br><span class="line">docker run -d \</span><br><span class="line">--name mongo \</span><br><span class="line">-v /data/docker_local/mongo/configdb:/data/configdb \</span><br><span class="line">-v /data/docker_local/mongo/data/db:/data/db \</span><br><span class="line">-p 27017:27017 \</span><br><span class="line">mongo:4 \</span><br><span class="line">--auth</span><br></pre></td></tr></table></figure>
+<p>启动参数含义在 MySQL 启动时已经见过了，除了 <code>auth</code>：</p>
+<ul>
+<li><code>--auth</code>：开启权限验证模式。默认情况下，mongo 数据库没有添加认证约束，为了增强数据库的安全性，我们需要对数据库添加授权认证</li>
+</ul>
+<h3 id="添加管理员账号"><a href="#添加管理员账号" class="headerlink" title="添加管理员账号"></a>添加管理员账号</h3><ul>
+<li>进入容器<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it mongo mongo admin</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>进入容器 <code>mongo</code>，运行命令 <code>mongo admin</code>，实现了：</p>
+<ul>
+<li>进入 mongo 命令行</li>
+<li>切换为 admin 数据库</li>
+</ul>
+<p>创建一个拥有最高权限的 root 账号：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.createUser(&#123; user: &apos;admin&apos;, pwd: &apos;123456&apos;, roles: [ &#123; role: &quot;root&quot;, db: &quot;admin&quot; &#125; ] &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>role 角色参数：</p>
+<ul>
+<li><code>Read</code>：允许用户读取指定数据库</li>
+<li><code>readWrite</code>：允许用户读写指定数据库</li>
+<li><code>dbAdmin</code>：允许用户在指定数据库中执行管理函数，如索引创建、删除，查看统计或访问system.profile</li>
+<li><code>userAdmin</code>：允许用户向system.users集合写入，可以找指定数据库里创建、删除和管理用户</li>
+<li><code>clusterAdmin</code>：只在admin数据库中可用，赋予用户所有分片和复制集相关函数的管理权限</li>
+<li><code>readAnyDatabase</code>：只在admin数据库中可用，赋予用户所有数据库的读权限</li>
+<li><code>readWriteAnyDatabase</code>：只在admin数据库中可用，赋予用户所有数据库的读写权限</li>
+<li><code>userAdminAnyDatabase</code>：只在admin数据库中可用，赋予用户所有数据库的userAdmin权限</li>
+<li><code>dbAdminAnyDatabase</code>：只在admin数据库中可用，赋予用户所有数据库的dbAdmin权限</li>
+<li><code>root</code>：只在admin数据库中可用。超级账号，超级权限</li>
+</ul>
+<h3 id="创建访问指定数据库的用户"><a href="#创建访问指定数据库的用户" class="headerlink" title="创建访问指定数据库的用户"></a>创建访问指定数据库的用户</h3><p>管理员已经创建成功后，我们需要重新连接 mongo 数据库，用管理员进行登录，并为目标数据库创建目标用户</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 进入容器，并切换到 admin 数据库</span><br><span class="line">docker exec -it mongo mongo admin</span><br><span class="line"><span class="meta">#</span> 授权 admin</span><br><span class="line">db.auth("admin", "123456");</span><br><span class="line"><span class="meta">#</span> 创建访问指定数据库的用户</span><br><span class="line">use beta;</span><br><span class="line">db.createUser(&#123; user: 'test', pwd:'test', roles: [ &#123;role:"readWrite",db:"beta"&#125;]&#125;);</span><br><span class="line">db.auth("test","test");</span><br><span class="line"><span class="meta">#</span> 尝试插入一条数据</span><br><span class="line">use beta</span><br><span class="line">db.test.insertOne(&#123;name:"michael",age:"28"&#125;)</span><br><span class="line"><span class="meta">#</span> 搜索 test collection 全部记录</span><br><span class="line">db.test.find()</span><br></pre></td></tr></table></figure>
+<p>test 用户可以对(也只能对) beta 库进行操作</p>
+<p>补充：</p>
+<ul>
+<li>查看容器运行日志：<code>docker logs mysql</code></li>
+</ul>
+<h2 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h2><p><code>docker-compse</code> 俗称 Docker 三剑客，这里试试用它来同时启动 MySQL、MongoDB 吧：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">version: "2"</span><br><span class="line">services:</span><br><span class="line">    mongodb:</span><br><span class="line">        image: mongo:4</span><br><span class="line">        container_name: mongodb # 容器名</span><br><span class="line">        ports:</span><br><span class="line">            - "27017:27017"</span><br><span class="line">        volumes:</span><br><span class="line">            - "/data/docker_local/mongo/configdb:/data/configdb"</span><br><span class="line">            - "/data/docker_local/mongo/data/db:/data/db"</span><br><span class="line">        command: --auth # 开启授权验证</span><br><span class="line">    mysql:</span><br><span class="line">        image: mysql:5.7</span><br><span class="line">        container_name: mysqldb # 容器名</span><br><span class="line">        ports:</span><br><span class="line">            - "3306:3306"</span><br><span class="line">        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci #设置utf8字符集</span><br><span class="line">        restart: always</span><br><span class="line">        environment:</span><br><span class="line">          MYSQL_ROOT_PASSWORD: 123456 #root管理员用户密码</span><br><span class="line">          MYSQL_USER: test   #创建test用户</span><br><span class="line">          MYSQL_PASSWORD: test  #设置test用户的密码</span><br><span class="line">        volumes:</span><br><span class="line">            - "/data/docker_local/mysql/config/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf"</span><br><span class="line">            - "/data/docker_local/mysql/data/mysql:/var/lib/mysql"</span><br></pre></td></tr></table></figure>
+<p>进入到上面编写的docker-compose.yml文件的目录，运行命令：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 启动所有服务</span><br><span class="line">docker-compose up -d</span><br><span class="line"><span class="meta">#</span> 单启动 mysql</span><br><span class="line">docker-compose up -d mysql</span><br><span class="line"><span class="meta">#</span> 暂停 mysql</span><br><span class="line">docker-compose stop mysql</span><br><span class="line"><span class="meta">#</span> 删除所有容器和镜像</span><br><span class="line">docker-compose down</span><br></pre></td></tr></table></figure></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://bestzuo.cn/posts/3822108690.html" target="_blank" rel="noopener">使用Docker快速搭建各种测试环境</a> 本文主要参考</li>
+<li><a href="http://luoxia.me/code/2017/04/01/docker%E5%88%9D%E6%AD%A5%E5%AE%9E%E8%B7%B5/" target="_blank" rel="noopener">Docker初步实践</a></li>
+<li><a href="http://www.spoofer.top/2017/08/07/docker-compose%E5%AE%89%E8%A3%85mysql5.7" target="_blank" rel="noopener">docker-compose 安装mysql5.7</a></li>
+<li><a href="https://juejin.im/post/5a2e4bd66fb9a044fa19cfb7" target="_blank" rel="noopener">使用 Docker Compose 搭建 MySQL 数据库主从复制实例</a></li>
+</ul>
 
       
     </div>
 
+    
+      
+
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2019/06/01/docker-centos-install/" rel="bookmark">Linux——CentOS 安装 Docker 教程</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2019/06/02/docker-useful-often-commands/" rel="bookmark">Docker 入门指南——常用命令</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
+
+    
+    
+    
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Michael翔 wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎订阅 ヾﾉ≧∀≦)o</div>
+</div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>我知道是不会有人点的，但万一有人想不开呢👇</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.jpg" alt="Michael翔 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="Michael翔 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Michael翔</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://michael728.github.io/2019/06/02/docker-create-develop-environment/" title="使用容器 Docker 创建开发环境">https://michael728.github.io/2019/06/02/docker-create-develop-environment/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
+            <a href="/tags/Env/" rel="tag"># Env</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/02/docker-useful-often-commands/" rel="next" title="Docker 入门指南——常用命令">
+                <i class="fa fa-chevron-left"></i> Docker 入门指南——常用命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -607,8 +890,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -988,6 +1280,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL"><span class="nav-number">1.</span> <span class="nav-text">MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单创建"><span class="nav-number">1.1.</span> <span class="nav-text">简单创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正式创建"><span class="nav-number">1.2.</span> <span class="nav-text">正式创建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB"><span class="nav-number">2.</span> <span class="nav-text">MongoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建容器"><span class="nav-number">2.1.</span> <span class="nav-text">创建容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加管理员账号"><span class="nav-number">2.2.</span> <span class="nav-text">添加管理员账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建访问指定数据库的用户"><span class="nav-number">2.3.</span> <span class="nav-text">创建访问指定数据库的用户</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-compose"><span class="nav-number">3.</span> <span class="nav-text">docker-compose</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -1127,6 +1436,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
 
   
 
@@ -1176,6 +1489,8 @@
 
 
 
+
+  
 
 
   
