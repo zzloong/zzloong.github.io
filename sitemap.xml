@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://michael728.github.io/2016/09/03/blog-logfile/</loc>
+    
+    <lastmod>2019-06-02T03:17:06.868Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://michael728.github.io/2015/11/28/tools-list-win/</loc>
     
-    <lastmod>2019-06-02T02:46:08.888Z</lastmod>
+    <lastmod>2019-06-02T02:48:38.082Z</lastmod>
     
   </url>
   
@@ -145,13 +152,6 @@
     <loc>https://michael728.github.io/2015/11/26/python-pyenv-anaconda/</loc>
     
     <lastmod>2019-05-19T15:41:08.901Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://michael728.github.io/2016/09/03/blog-logfile/</loc>
-    
-    <lastmod>2019-05-19T10:24:21.917Z</lastmod>
     
   </url>
   
