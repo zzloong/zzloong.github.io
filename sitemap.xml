@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://michael728.github.io/2019/06/01/docker-centos-install/</loc>
+    
+    <lastmod>2019-06-02T03:45:12.539Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://michael728.github.io/2016/09/03/blog-logfile/</loc>
     
     <lastmod>2019-06-02T03:17:06.868Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://michael728.github.io/2019/06/01/tools-dev-program-flowchart/</loc>
     
     <lastmod>2019-06-01T16:38:40.984Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://michael728.github.io/2019/06/01/docker-centos-install/</loc>
-    
-    <lastmod>2019-06-01T16:37:53.939Z</lastmod>
     
   </url>
   
