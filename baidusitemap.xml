@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://michael728.github.io/2018/12/02/tools-vim-plugin-config/</loc>
+    <lastmod>2019-06-03</lastmod>
+  </url>  <url>
+    <loc>https://michael728.github.io/2018/12/02/tools-vim-basic/</loc>
+    <lastmod>2019-06-03</lastmod>
+  </url>  <url>
     <loc>https://michael728.github.io/2019/06/02/docker-useful-often-commands/</loc>
     <lastmod>2019-06-03</lastmod>
   </url>  <url>
@@ -35,12 +41,6 @@
     <lastmod>2019-06-01</lastmod>
   </url>  <url>
     <loc>https://michael728.github.io/2018/10/28/tools-vscode/</loc>
-    <lastmod>2019-06-01</lastmod>
-  </url>  <url>
-    <loc>https://michael728.github.io/2018/12/02/tools-vim-plugin-config/</loc>
-    <lastmod>2019-06-01</lastmod>
-  </url>  <url>
-    <loc>https://michael728.github.io/2018/12/02/tools-vim-basic/</loc>
     <lastmod>2019-06-01</lastmod>
   </url>  <url>
     <loc>https://michael728.github.io/2019/04/27/tools-ss-vps/</loc>
