@@ -112,7 +112,7 @@
 <meta name="keywords" content="DevOps CICD">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Michael翔">
-<meta property="og:url" content="https://michael728.github.io/tags/Docker/index.html">
+<meta property="og:url" content="https://michael728.github.io/tags/docker/index.html">
 <meta property="og:site_name" content="Michael翔">
 <meta property="og:description" content="DevOps CICD Blog 持续学习">
 <meta property="og:locale" content="zh-CN">
@@ -128,7 +128,7 @@
 
   
   
-  <link rel="canonical" href="https://michael728.github.io/tags/Docker/">
+  <link rel="canonical" href="https://michael728.github.io/tags/docker/">
 
 
 
@@ -138,7 +138,7 @@
   };
 </script>
 
-  <title>标签: Docker | Michael翔</title>
+  <title>标签: docker | Michael翔</title>
   
 
 
@@ -518,7 +518,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h2>Docker<small>标签</small>
+        <h2>docker<small>标签</small>
         </h2>
       </div>
 
@@ -530,17 +530,43 @@
 
       <h3 class="post-title">
         
-          <a class="post-title-link" href="/2019/06/02/docker-useful-often-commands/" itemprop="url">
+          <a class="post-title-link" href="/2019/06/02/docker-create-develop-environment/" itemprop="url">
             
-              <span itemprop="name">Docker 入门指南——常用命令</span>
+              <span itemprop="name">使用容器 Docker 创建开发环境</span>
             
           </a>
         
       </h3>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-02T14:13:44+08:00" content="2019-06-02">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-06-02T15:41:19+08:00" content="2019-06-02">
           06-02
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h3 class="post-title">
+        
+          <a class="post-title-link" href="/2019/06/01/docker-centos-install/" itemprop="url">
+            
+              <span itemprop="name">Linux——CentOS 安装 Docker 教程</span>
+            
+          </a>
+        
+      </h3>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-06-01T17:54:52+08:00" content="2019-06-01">
+          06-01
         </time>
       </div>
 
@@ -599,7 +625,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-count">51</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -805,7 +831,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">69</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">71</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1551,37 +1581,6 @@
       var yPosition = window.pageYOffset || document.documentElement.scrollTop;
       ta.style.top = yPosition + 'px'; // Prevent page scroll
       ta.style.position = 'absolute';
-      ta.style.opacity = '0';
-      ta.readOnly = true;
-      ta.value = code;
-      document.body.appendChild(ta);
-      ta.select();
-      ta.setSelectionRange(0, code.length);
-      ta.readOnly = false;
-      var result = document.execCommand('copy');
-      
-        if (result) $(this).text('复制成功');
-        else $(this).text('复制失败');
-      
-      ta.blur(); // For iOS
-      $(this).blur();
-    })).on('mouseleave', function(e) {
-      var $b = $(this).find('.copy-btn');
-      setTimeout(function() {
-        $b.text('复制');
-      }, 300);
-    }).append(e);
-  })
-</script>
-
-
-  
-
-  
-
-</body>
-</html>
-ition = 'absolute';
       ta.style.opacity = '0';
       ta.readOnly = true;
       ta.value = code;

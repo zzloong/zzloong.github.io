@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://michael728.github.io/2019/06/04/cicd-docker-jenkins/</loc>
+    <lastmod>2019-06-04</lastmod>
+  </url>  <url>
+    <loc>https://michael728.github.io/2018/10/11/cicd-jenkins-01/</loc>
+    <lastmod>2019-06-04</lastmod>
+  </url>  <url>
     <loc>https://michael728.github.io/2018/12/02/tools-vim-plugin-config/</loc>
     <lastmod>2019-06-03</lastmod>
   </url>  <url>
@@ -105,9 +111,6 @@
   </url>  <url>
     <loc>https://michael728.github.io/2018/11/16/plan-reading/</loc>
     <lastmod>2018-12-15</lastmod>
-  </url>  <url>
-    <loc>https://michael728.github.io/2018/10/11/cicd-jenkins-01/</loc>
-    <lastmod>2018-12-10</lastmod>
   </url>  <url>
     <loc>https://michael728.github.io/2018/12/09/python-argparse-note/</loc>
     <lastmod>2018-12-09</lastmod>
