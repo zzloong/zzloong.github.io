@@ -108,18 +108,20 @@
 
 
 
-  <meta name="description" content="本文介绍如何利用 Docker 方式创建 rabbitmq 集群。 rabbitmq 介绍在利用 Docker 创建 rabbitmq 容器之前，先了解一下常用的运行命令。  建立集群时，节点中的 Erlang Cookie 值要一致，默认情况下，文件在 /var/lib/rabbitmq/.erlang.cookie。 erlang 是通过主机名来连接服务，必须保证各个主机名之间可以 ping">
+  <meta name="description" content="本文介绍如何利用 Docker 方式创建 rabbitmq 集群。 rabbitmq 介绍在利用 Docker 创建 rabbitmq 容器之前，先了解 rabbitmq 的基础知识。 集群模式RabbitMQ 的 Cluster 集群模式一般分为两种，普通模式和镜像模式。  普通模式：默认的集群模式，以两个节点（rabbit01、rabbit02）为例来进行说明。对于 Queue 来说，消息实体">
 <meta name="keywords" content="DevOps CICD">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用 Docker-compose 配置 rabbitmq 集群服务器">
 <meta property="og:url" content="https://michael728.github.io/2019/06/07/docker-rabbitmq-env/index.html">
 <meta property="og:site_name" content="Michael翔">
-<meta property="og:description" content="本文介绍如何利用 Docker 方式创建 rabbitmq 集群。 rabbitmq 介绍在利用 Docker 创建 rabbitmq 容器之前，先了解一下常用的运行命令。  建立集群时，节点中的 Erlang Cookie 值要一致，默认情况下，文件在 /var/lib/rabbitmq/.erlang.cookie。 erlang 是通过主机名来连接服务，必须保证各个主机名之间可以 ping">
+<meta property="og:description" content="本文介绍如何利用 Docker 方式创建 rabbitmq 集群。 rabbitmq 介绍在利用 Docker 创建 rabbitmq 容器之前，先了解 rabbitmq 的基础知识。 集群模式RabbitMQ 的 Cluster 集群模式一般分为两种，普通模式和镜像模式。  普通模式：默认的集群模式，以两个节点（rabbit01、rabbit02）为例来进行说明。对于 Queue 来说，消息实体">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-07T15:27:55.453Z">
+<meta property="og:image" content="http://img.mknight.cn/medivh/1553134452790.png">
+<meta property="og:updated_time" content="2019-06-07T17:08:06.053Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 Docker-compose 配置 rabbitmq 集群服务器">
-<meta name="twitter:description" content="本文介绍如何利用 Docker 方式创建 rabbitmq 集群。 rabbitmq 介绍在利用 Docker 创建 rabbitmq 容器之前，先了解一下常用的运行命令。  建立集群时，节点中的 Erlang Cookie 值要一致，默认情况下，文件在 /var/lib/rabbitmq/.erlang.cookie。 erlang 是通过主机名来连接服务，必须保证各个主机名之间可以 ping">
+<meta name="twitter:description" content="本文介绍如何利用 Docker 方式创建 rabbitmq 集群。 rabbitmq 介绍在利用 Docker 创建 rabbitmq 容器之前，先了解 rabbitmq 的基础知识。 集群模式RabbitMQ 的 Cluster 集群模式一般分为两种，普通模式和镜像模式。  普通模式：默认的集群模式，以两个节点（rabbit01、rabbit02）为例来进行说明。对于 Queue 来说，消息实体">
+<meta name="twitter:image" content="http://img.mknight.cn/medivh/1553134452790.png">
 
 
 
@@ -534,12 +536,24 @@
                 
               
 
-              <time title="创建时间：2019-06-07 20:49:11 / 修改时间：23:27:55" itemprop="dateCreated datePublished" datetime="2019-06-07T20:49:11+08:00">2019-06-07</time>
+              <time title="创建时间：2019-06-07 20:49:11" itemprop="dateCreated datePublished" datetime="2019-06-07T20:49:11+08:00">2019-06-07</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-08 01:08:06" itemprop="dateModified" datetime="2019-06-08T01:08:06+08:00">2019-06-08</time>
               
             
           </span>
@@ -598,8 +612,22 @@
 
       
         <p>本文介绍如何利用 Docker 方式创建 rabbitmq 集群。</p>
-<h2 id="rabbitmq-介绍"><a href="#rabbitmq-介绍" class="headerlink" title="rabbitmq 介绍"></a>rabbitmq 介绍</h2><p>在利用 Docker 创建 rabbitmq 容器之前，先了解一下常用的运行命令。</p>
-<ul>
+<h2 id="rabbitmq-介绍"><a href="#rabbitmq-介绍" class="headerlink" title="rabbitmq 介绍"></a>rabbitmq 介绍</h2><p>在利用 Docker 创建 rabbitmq 容器之前，先了解 rabbitmq 的基础知识。</p>
+<h3 id="集群模式"><a href="#集群模式" class="headerlink" title="集群模式"></a>集群模式</h3><p>RabbitMQ 的 Cluster 集群模式一般分为两种，普通模式和镜像模式。</p>
+<ol>
+<li><p>普通模式：默认的集群模式，以两个节点（rabbit01、rabbit02）为例来进行说明。对于 Queue 来说，消息实体只存在于其中一个节点 rabbit01（或者 rabbit02），rabbit01 和 rabbit02 两个节点仅有相同的元数据，即队列的结构。当消息进入 rabbit01 节点的 Queue 后，consumer 从 rabbit02 节点消费时，RabbitMQ 会临时在 rabbit01、rabbit02 间进行消息传输，把 A 中的消息实体取出并经过 B 发送给 consumer。所以 consumer 应尽量连接每一个节点，从中取消息。即对于同一个逻辑队列，要在多个节点建立物理 Queue。否则无论 consumer 连 rabbit01 或 rabbit02，出口总在 rabbit01，会产生瓶颈。当 rabbit01 节点故障后，rabbit02 节点无法取到 rabbit01 节点中还未消费的消息实体。如果做了消息持久化，那么得等 rabbit01 节点恢复，然后才可被消费；如果没有持久化的话，就会产生消息丢失的现象。</p>
+</li>
+<li><p>镜像模式：将需要消费的队列变为镜像队列，存在于多个节点，这样就可以实现 RabbitMQ 的 HA 高可用性。作用就是消息实体会主动在镜像节点之间实现同步，而不是像普通模式那样，在 consumer 消费数据时临时读取。缺点就是，集群内部的同步通讯会占用大量的网络带宽。</p>
+</li>
+</ol>
+<h3 id="节点类型"><a href="#节点类型" class="headerlink" title="节点类型"></a>节点类型</h3><ul>
+<li>RAM node：内存节点将所有的队列、交换机、绑定、用户、权限和 vhost 的元数据定义存储在内存中，好处是可以使得像交换机和队列声明等操作更加的快速</li>
+<li>Disk node：将元数据存储在磁盘中，单节点系统只允许磁盘类型的节点，防止重启 RabbitMQ 的时候，丢失系统的配置信息</li>
+</ul>
+<div class="note warning no-icon">
+            <p>RabbitMQ 要求在集群中至少有一个磁盘节点，所有其他节点可以是内存节点，当节点加入或者离开集群时，必须要将该变更通知到至少一个磁盘节点。如果集群中唯一的一个磁盘节点崩溃的话，集群仍然可以保持运行，但是无法进行其他操作（增删改查），直到节点恢复。<br>解决方案：设置两个磁盘节点，至少有一个是可用的，可以保存元数据的更改。</p>
+          </div>
+<h3 id="安装知识点"><a href="#安装知识点" class="headerlink" title="安装知识点"></a>安装知识点</h3><ul>
 <li>建立集群时，节点中的 Erlang Cookie 值要一致，默认情况下，文件在 <code>/var/lib/rabbitmq/.erlang.cookie</code>。</li>
 <li>erlang 是通过主机名来连接服务，必须保证各个主机名之间可以 ping 通。可以通过编辑 <code>/etc/hosts</code> 来手工添加主机名和 IP 对应关系。如果主机名 ping 不通，rabbitmq 服务启动会失败。</li>
 </ul>
@@ -629,6 +657,25 @@
 <p>运行 <code>docker-compose up -d</code> 运行，如果 docker-compose.yml 命名为其他名字，可以通过 <code>-f</code> 参数指定文件。</p>
 <p>如上方式，会在主机上创建若干 volume，下面是一些关于 volume 的操作：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">删除不使用的本地 volumes</span><br><span class="line">docker volume prune</span><br><span class="line">docker volume ls</span><br><span class="line">docker volume rm &lt;volume name&gt;</span><br></pre></td></tr></table></figure>
+<p>如上创建好之后，是属于普通模式的集群。如果要设置为「镜像模式」，可以参考 <a href="https://blog.csdn.net/winy_lm/article/details/81128181" target="_blank" rel="noopener">Rabbitmq镜像集群部署</a>，比较简单，在管理界面配置：</p>
+<p><img src="http://img.mknight.cn/medivh/1553134452790.png" alt></p>
+<ul>
+<li>Virtual host： 可选参数，针对指定vhost下的queue进行设置</li>
+<li>Name: policy的名称</li>
+<li>Pattern: queue的匹配模式(正则表达式)</li>
+<li>Definition：镜像定义，包括三个部分ha-mode, ha-params, ha-sync-mode<ul>
+<li>ha-mode:指明镜像队列的模式，有效值为 all/exactly/nodes<ul>
+<li>all：表示在集群中所有的节点上进行镜像</li>
+<li>exactly：表示在指定个数的节点上进行镜像，节点的个数由ha-params指定</li>
+<li>nodes：表示在指定的节点上进行镜像，节点名称通过ha-params指定</li>
+</ul>
+</li>
+<li>ha-params：ha-mode模式需要用到的参数</li>
+<li>ha-sync-mode：进行队列中消息的同步方式，有效值为automatic和manual</li>
+</ul>
+</li>
+<li>priority：可选参数，policy的优先级</li>
+</ul>
 <h2 id="其他方式"><a href="#其他方式" class="headerlink" title="其他方式"></a>其他方式</h2><h3 id="创建容器节点"><a href="#创建容器节点" class="headerlink" title="创建容器节点"></a>创建容器节点</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --hostname rabbit1 --name myrabbit1 -p 15672:15672 -p 5672:5672 -e RABBITMQ_ERLANG_COOKIE='rabbitcookie' rabbitmq:3.6.15-management</span><br><span class="line">docker run -d --hostname rabbit2 --name myrabbit2 -p 5673:5672 --link myrabbit1:rabbit1 -e RABBITMQ_ERLANG_COOKIE='rabbitcookie' rabbitmq:3.6.15-management</span><br><span class="line">docker run -d --hostname rabbit3 --name myrabbit3 -p 5674:5672 --link myrabbit1:rabbit1 --link myrabbit2:rabbit2 -e RABBITMQ_ERLANG_COOKIE='rabbitcookie' rabbitmq:3.6.15-management</span><br></pre></td></tr></table></figure>
 <ul>
 <li>多个容器之间使用 <code>--link</code> 连接，此属性不能少；<code>--link &lt;docker-name or docker-id&gt;:alias</code>,<code>alias</code> 是源容器在 link 下的别名</li>
@@ -651,7 +698,11 @@
 <li><a href="https://www.cnblogs.com/vipstone/p/9362388.html" target="_blank" rel="noopener">王磊的博客-RabbitMQ系列（五）使用Docker部署RabbitMQ集群</a></li>
 <li><a href="https://blog.csdn.net/fqydhk/article/details/80624547" target="_blank" rel="noopener">docker-compose配置rabbitmq集群服务器</a></li>
 <li><a href="https://www.rabbitmq.com/clustering.html#peer-discovery-how-does-it-work" target="_blank" rel="noopener">官宣-Clustering Guide</a></li>
+</ul>
+<p>MQ 使用：</p>
+<ul>
 <li><a href="https://ddatsh.com/post/dev/mq/rabbitmq-block/" target="_blank" rel="noopener">rabbbitmq 堆积分析</a></li>
+<li><a href="https://juejin.im/post/5cef3cc36fb9a07f070e1057" target="_blank" rel="noopener">RabbitMQ使用教程（四）如何通过持久化保证消息99.99%不丢失？</a></li>
 </ul>
 <p>容器间的通信：</p>
 <ul>
@@ -685,14 +736,14 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2016/05/03/SQL/" rel="bookmark">SQL基础语法笔记教程整理</a></div>
+      <div class="popular-posts-title"><a href="/2015/12/24/algorithm-GA-basic/" rel="bookmark">遗传算法GA(Genetic Algorithm)入门知识梳理</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2015/12/24/algorithm-GA-basic/" rel="bookmark">遗传算法GA(Genetic Algorithm)入门知识梳理</a></div>
+      <div class="popular-posts-title"><a href="/2018/09/16/blog-interesting/" rel="bookmark">那些有趣的博客</a></div>
       
     </li>
   
@@ -1269,7 +1320,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#rabbitmq-介绍"><span class="nav-number">1.</span> <span class="nav-text">rabbitmq 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-compose"><span class="nav-number">2.</span> <span class="nav-text">docker-compose</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他方式"><span class="nav-number">3.</span> <span class="nav-text">其他方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建容器节点"><span class="nav-number">3.1.</span> <span class="nav-text">创建容器节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加入-RabbitMQ-节点到集群"><span class="nav-number">3.2.</span> <span class="nav-text">加入 RabbitMQ 节点到集群</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#rabbitmq-介绍"><span class="nav-number">1.</span> <span class="nav-text">rabbitmq 介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#集群模式"><span class="nav-number">1.1.</span> <span class="nav-text">集群模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节点类型"><span class="nav-number">1.2.</span> <span class="nav-text">节点类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装知识点"><span class="nav-number">1.3.</span> <span class="nav-text">安装知识点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-compose"><span class="nav-number">2.</span> <span class="nav-text">docker-compose</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他方式"><span class="nav-number">3.</span> <span class="nav-text">其他方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建容器节点"><span class="nav-number">3.1.</span> <span class="nav-text">创建容器节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加入-RabbitMQ-节点到集群"><span class="nav-number">3.2.</span> <span class="nav-text">加入 RabbitMQ 节点到集群</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
