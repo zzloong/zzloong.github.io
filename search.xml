@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[使用 Docker-compose 配置 rabbitmq 集群服务器]]></title>
+    <url>%2F2019%2F06%2F07%2Fdocker-rabbitmq-env%2F</url>
+    <content type="text"><![CDATA[本文介绍如何利用 Docker 方式创建 rabbitmq 集群。 rabbitmq 介绍在利用 Docker 创建 rabbitmq 容器之前，先了解一下常用的运行命令。 建立集群时，节点中的 Erlang Cookie 值要一致，默认情况下，文件在 /var/lib/rabbitmq/.erlang.cookie。 erlang 是通过主机名来连接服务，必须保证各个主机名之间可以 ping 通。可以通过编辑 /etc/hosts 来手工添加主机名和 IP 对应关系。如果主机名 ping 不通，rabbitmq 服务启动会失败。 123$ rabbitmqctl stop_app # 停止rabbitmq服务$ rabbitmqctl join_cluster rabbit@node1 # node2和node1构成集群, node2必须能通过node1的主机名ping通$ rabbitmqctl start_app # 开启rabbitmq服务 –ram 指的是作为内存节点,要是想做为磁盘节点的话,就不用加 –ram 这个参数了。在 RabbitMQ 集群里，必须至少有一个磁盘节点存在 1$ rabbitmqctl join_cluster --ram rabbit@node1 更改节点属性 123456$ rabbitmqctl stop_app # 停止rabbitmq服务$ rabbitmqctl change_cluster_node_type ram # 更改节点为内存节点Turning rabbit@node2 into a ram node$ rabbitmqctl change_cluster_node_type disc # 更改节点为磁盘节点Turning rabbit@node2 into a disc node$ rabbitmqctl start_app # 开启rabbitmq服务 查看集群的状态 1rabbitmqctl cluster_status 开启 web 管理工具 cluster 搭建起来后若在 web 管理工具中 rabbitmq_management 的 Overview 的 Nodes 部分看到 Node statistics not available 的信息，说明在该节点上web管理插件还未启用。 直接在显示提示信息的节点上运行： 1rabbitmq-plugins enable rabbitmq_management docker-compose基于 bitnami/bitnami-docker-rabbitmq 镜像，在一台机器上可以创建一个 rabbitmq cluster： docker-compose.yml 内容： 1234567891011121314151617181920212223242526272829303132333435363738version: '2'services: stats: image: bitnami/rabbitmq:3.7 environment: - RABBITMQ_NODE_TYPE=stats - RABBITMQ_NODE_NAME=rabbit@stats - RABBITMQ_ERL_COOKIE=s3cr3tc00ki3 ports: - '15672:15672' volumes: - 'rabbitmqstats_data:/bitnami' queue-disc1: image: bitnami/rabbitmq:3.7 environment: - RABBITMQ_NODE_TYPE=queue-disc - RABBITMQ_NODE_NAME=rabbit@queue-disc1 - RABBITMQ_CLUSTER_NODE_NAME=rabbit@stats - RABBITMQ_ERL_COOKIE=s3cr3tc00ki3 volumes: - 'rabbitmqdisc1_data:/bitnami' queue-ram1: image: bitnami/rabbitmq:3.7 environment: - RABBITMQ_NODE_TYPE=queue-ram - RABBITMQ_NODE_NAME=rabbit@queue-ram1 - RABBITMQ_CLUSTER_NODE_NAME=rabbit@stats - RABBITMQ_ERL_COOKIE=s3cr3tc00ki3 volumes: - 'rabbitmqram1_data:/bitnami'volumes: rabbitmqstats_data: driver: local rabbitmqdisc1_data: driver: local rabbitmqram1_data: driver: local docker-compose 语法格式： 1docker-compose [-f &lt;arg&gt;...] [options] [COMMAND] [ARGS...]` 运行 docker-compose up -d 运行，如果 docker-compose.yml 命名为其他名字，可以通过 -f 参数指定文件。 如上方式，会在主机上创建若干 volume，下面是一些关于 volume 的操作： 1234删除不使用的本地 volumesdocker volume prunedocker volume lsdocker volume rm &lt;volume name&gt; 其他方式创建容器节点123docker run -d --hostname rabbit1 --name myrabbit1 -p 15672:15672 -p 5672:5672 -e RABBITMQ_ERLANG_COOKIE='rabbitcookie' rabbitmq:3.6.15-managementdocker run -d --hostname rabbit2 --name myrabbit2 -p 5673:5672 --link myrabbit1:rabbit1 -e RABBITMQ_ERLANG_COOKIE='rabbitcookie' rabbitmq:3.6.15-managementdocker run -d --hostname rabbit3 --name myrabbit3 -p 5674:5672 --link myrabbit1:rabbit1 --link myrabbit2:rabbit2 -e RABBITMQ_ERLANG_COOKIE='rabbitcookie' rabbitmq:3.6.15-management 多个容器之间使用 --link 连接，此属性不能少；--link &lt;docker-name or docker-id&gt;:alias,alias 是源容器在 link 下的别名 Erlang Cookie值必须相同，也就是 RABBITMQ_ERLANG_COOKIE 参数的值必须相同； 要想知道 Erlang Cookie 位置，首先要取得 RabbitMQ 启动日志里面的 home dir 路径，作为根路径。使用：docker logs 容器名称 查看。 加入 RabbitMQ 节点到集群设置节点1： 12345docker exec -it myrabbit1 bashrabbitmqctl stop_apprabbitmqctl resetrabbitmqctl start_appexit 设置节点2，加入到集群： 123456docker exec -it myrabbit2 bashrabbitmqctl stop_apprabbitmqctl resetrabbitmqctl join_cluster --ram rabbit@rabbit1rabbitmqctl start_appexit 参数 --ram 表示设置为内存节点，忽略次参数默认为磁盘节点。 设置节点3，加入到集群： 123456docker exec -it myrabbit3 bashrabbitmqctl stop_apprabbitmqctl resetrabbitmqctl join_cluster --ram rabbit@rabbit1rabbitmqctl start_appexit 设置好之后，使用 http://物理机ip:15672 进行访问了，默认账号密码是 guest/guest 参考MQ： CentOs7.3 搭建 RabbitMQ 3.6 Cluster 集群服务与使用 王磊的博客-RabbitMQ系列（五）使用Docker部署RabbitMQ集群 docker-compose配置rabbitmq集群服务器 官宣-Clustering Guide rabbbitmq 堆积分析 容器间的通信： Docker容器与宿主机同网段互相通信 关于对docker run –link的理解 cizixs-docker 容器的网络模式 docker-compose： 如何写docker-compose.yml，Docker compose file 参考文档 官宣-Overview of docker-compose CLI Docker 三剑客之 Compose 项目]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[利用 Docker 安装 CICD 神器 Jenkins]]></title>
     <url>%2F2019%2F06%2F04%2Fcicd-docker-jenkins%2F</url>
     <content type="text"><![CDATA[Jenkins 学习系列： CentOS 安装 CICD 利器 Jenkins 利用 Docker 安装 CICD 神器 Jenkins 本文主要介绍如何利用 Docker 来快速搭建 Jenkins，相比较以前的方式，方便快捷很多！ 准备工作由于是基于 Docker 安装 Jenkins，因此，你的环境上必须要安装好 Dokcer，并配置好加速器，不然下载镜像速度可能会比较慢。怎么安装，可以参考如下文章： Linux–CentOS 安装 Docker 教程 Docker 入门指南——常用命令 使用容器 Docker 创建开发环境 Docker 命令运行 Jenkinsjenkinsci/blueocean 是官方推荐的镜像版本，集成了流水线插键，推荐： 123456789docker run \ -u root \ --name devops-jenkins \ -d \ -p 8080:8080 \ -p 50000:50000 \ -v /data/docker_local/jenkins-data:/var/jenkins_home \ -v /var/run/docker.sock:/var/run/docker.sock \ jenkinsci/blueocean:1.15.1 参数说明： -u root：（可选）由于默认的 jenkins用户无权访问 /var/run/docker.sock，您需要以 root 身份运行 Jenkins 以允许 Jenkins 在你流水线上生成 docker 容器执行步骤。这仅影响在 Jenkins 主节点上的运行，如果你计划在你的流水线执行机上去执行，那这不是必须的。 jenkinsci/blueocean 容器的端口 8080 到主机上的端口 8080。 第一个数字代表主机上的端口，而最后一个代表容器的端口。因此，如果您为此选项指定 -p 49000:8080 ，您将通过端口主机端口 49000 访问 Jenkins 更多对参数的说明，访问Installing Jenkins Docker-Compose 运行 Jenkins12345678910111213version: "3"services: jenkins: image: jenkinsci/blueocean:1.15.1 container_name: devops-jenkins # 容器名 user: root restart: always ports: - "8080:8080" - "50000:50000" volumes: - "/data/docker_local/jenkins-data:/var/jenkins_home" - "/var/run/docker.sock:/var/run/docker.sock" 配置配置插键代理为了提高插键的下载速度，插键高级配置中，配置国内的代理： https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json 有一个页面，专门查看 Jenkins 镜像状态的： the status of Jenkins mirrors 常用命令查看 Jenkins 的运行日志： 1docker logs -f jenkins 归档 awesome-docker-service-for-me 参考 官宣-安装Jenkins-中文 发现翻译的并不是特别好，推荐看英文 K8S牛刀小试CI之Jenkins on Docker篇(二)/)]]></content>
@@ -8,9 +13,9 @@
         <category>DevOps</category>
       </categories>
       <tags>
+        <tag>cicd</tag>
         <tag>DevOps</tag>
         <tag>Jenkins</tag>
-        <tag>cicd</tag>
         <tag>Docker</tag>
       </tags>
   </entry>
@@ -319,9 +324,9 @@
         <category>DevOps</category>
       </categories>
       <tags>
-        <tag>CICD</tag>
         <tag>DevOps</tag>
         <tag>Jenkins</tag>
+        <tag>CICD</tag>
       </tags>
   </entry>
   <entry>

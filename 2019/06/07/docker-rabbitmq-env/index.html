@@ -108,17 +108,18 @@
 
 
 
-  <meta name="description" content="DevOps CICD Blog 持续学习">
+  <meta name="description" content="本文介绍如何利用 Docker 方式创建 rabbitmq 集群。 rabbitmq 介绍在利用 Docker 创建 rabbitmq 容器之前，先了解一下常用的运行命令。  建立集群时，节点中的 Erlang Cookie 值要一致，默认情况下，文件在 /var/lib/rabbitmq/.erlang.cookie。 erlang 是通过主机名来连接服务，必须保证各个主机名之间可以 ping">
 <meta name="keywords" content="DevOps CICD">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Michael翔">
-<meta property="og:url" content="https://michael728.github.io/tags/正则/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Docker-compose 配置 rabbitmq 集群服务器">
+<meta property="og:url" content="https://michael728.github.io/2019/06/07/docker-rabbitmq-env/index.html">
 <meta property="og:site_name" content="Michael翔">
-<meta property="og:description" content="DevOps CICD Blog 持续学习">
+<meta property="og:description" content="本文介绍如何利用 Docker 方式创建 rabbitmq 集群。 rabbitmq 介绍在利用 Docker 创建 rabbitmq 容器之前，先了解一下常用的运行命令。  建立集群时，节点中的 Erlang Cookie 值要一致，默认情况下，文件在 /var/lib/rabbitmq/.erlang.cookie。 erlang 是通过主机名来连接服务，必须保证各个主机名之间可以 ping">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-07T15:27:55.453Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Michael翔">
-<meta name="twitter:description" content="DevOps CICD Blog 持续学习">
+<meta name="twitter:title" content="使用 Docker-compose 配置 rabbitmq 集群服务器">
+<meta name="twitter:description" content="本文介绍如何利用 Docker 方式创建 rabbitmq 集群。 rabbitmq 介绍在利用 Docker 创建 rabbitmq 容器之前，先了解一下常用的运行命令。  建立集群时，节点中的 Erlang Cookie 值要一致，默认情况下，文件在 /var/lib/rabbitmq/.erlang.cookie。 erlang 是通过主机名来连接服务，必须保证各个主机名之间可以 ping">
 
 
 
@@ -128,7 +129,7 @@
 
   
   
-  <link rel="canonical" href="https://michael728.github.io/tags/正则/">
+  <link rel="canonical" href="https://michael728.github.io/2019/06/07/docker-rabbitmq-env/">
 
 
 
@@ -138,7 +139,7 @@
   };
 </script>
 
-  <title>标签: 正则 | Michael翔</title>
+  <title>使用 Docker-compose 配置 rabbitmq 集群服务器 | Michael翔</title>
   
 
 
@@ -197,7 +198,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -256,7 +257,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -470,98 +471,381 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>正则<small>标签</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://michael728.github.io/2019/06/07/docker-rabbitmq-env/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Michael翔">
+      <meta itemprop="description" content="DevOps CICD Blog 持续学习">
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Michael翔">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2016/07/28/python-regx/" itemprop="url">
-            
-              <span itemprop="name">Python正则表达式学习摘要及资料</span>
-            
-          </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">使用 Docker-compose 配置 rabbitmq 集群服务器
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-07-28T23:08:34+08:00" content="2016-07-28">
-          07-28
-        </time>
-      </div>
+              
+            
+          </h2>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-07 20:49:11 / 修改时间：23:27:55" itemprop="dateCreated datePublished" datetime="2019-06-07T20:49:11+08:00">2019-06-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/06/07/docker-rabbitmq-env/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/07/docker-rabbitmq-env/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/06/07/docker-rabbitmq-env/" class="leancloud_visitors" data-flag-title="使用 Docker-compose 配置 rabbitmq 集群服务器">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文介绍如何利用 Docker 方式创建 rabbitmq 集群。</p>
+<h2 id="rabbitmq-介绍"><a href="#rabbitmq-介绍" class="headerlink" title="rabbitmq 介绍"></a>rabbitmq 介绍</h2><p>在利用 Docker 创建 rabbitmq 容器之前，先了解一下常用的运行命令。</p>
+<ul>
+<li>建立集群时，节点中的 Erlang Cookie 值要一致，默认情况下，文件在 <code>/var/lib/rabbitmq/.erlang.cookie</code>。</li>
+<li>erlang 是通过主机名来连接服务，必须保证各个主机名之间可以 ping 通。可以通过编辑 <code>/etc/hosts</code> 来手工添加主机名和 IP 对应关系。如果主机名 ping 不通，rabbitmq 服务启动会失败。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rabbitmqctl stop_app # 停止rabbitmq服务</span><br><span class="line"><span class="meta">$</span> rabbitmqctl join_cluster rabbit@node1 # node2和node1构成集群, node2必须能通过node1的主机名ping通</span><br><span class="line"><span class="meta">$</span> rabbitmqctl start_app # 开启rabbitmq服务</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>–ram</code> 指的是作为内存节点,要是想做为磁盘节点的话,就不用加 <code>–ram</code> 这个参数了。在 RabbitMQ 集群里，必须至少有一个磁盘节点存在</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rabbitmqctl join_cluster --ram rabbit@node1</span><br></pre></td></tr></table></figure>
+<ul>
+<li>更改节点属性</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> rabbitmqctl stop_app  # 停止rabbitmq服务</span><br><span class="line"><span class="meta">$</span> rabbitmqctl change_cluster_node_type ram # 更改节点为内存节点</span><br><span class="line">Turning rabbit@node2 into a ram node</span><br><span class="line"><span class="meta">$</span> rabbitmqctl change_cluster_node_type disc # 更改节点为磁盘节点</span><br><span class="line">Turning rabbit@node2 into a disc node</span><br><span class="line"><span class="meta">$</span> rabbitmqctl start_app # 开启rabbitmq服务</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看集群的状态</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmqctl cluster_status</span><br></pre></td></tr></table></figure>
+<ul>
+<li>开启 web 管理工具</li>
+</ul>
+<p>cluster 搭建起来后若在 web 管理工具中 rabbitmq_management 的 Overview 的 Nodes 部分看到 <code>Node statistics not available</code> 的信息，说明在该节点上web管理插件还未启用。 直接在显示提示信息的节点上运行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rabbitmq-plugins enable rabbitmq_management</span><br></pre></td></tr></table></figure>
+<h2 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h2><p>基于 <a href="https://github.com/bitnami/bitnami-docker-rabbitmq" target="_blank" rel="noopener">bitnami/bitnami-docker-rabbitmq</a> 镜像，在一台机器上可以创建一个 rabbitmq cluster：</p>
+<p>docker-compose.yml 内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">version: '2'</span><br><span class="line">services:</span><br><span class="line">  stats:</span><br><span class="line">    image: bitnami/rabbitmq:3.7</span><br><span class="line">    environment:</span><br><span class="line">      - RABBITMQ_NODE_TYPE=stats</span><br><span class="line">      - RABBITMQ_NODE_NAME=rabbit@stats</span><br><span class="line">      - RABBITMQ_ERL_COOKIE=s3cr3tc00ki3</span><br><span class="line">    ports:</span><br><span class="line">      - '15672:15672'</span><br><span class="line">    volumes:</span><br><span class="line">      - 'rabbitmqstats_data:/bitnami'</span><br><span class="line">  queue-disc1:</span><br><span class="line">    image: bitnami/rabbitmq:3.7</span><br><span class="line">    environment:</span><br><span class="line">      - RABBITMQ_NODE_TYPE=queue-disc</span><br><span class="line">      - RABBITMQ_NODE_NAME=rabbit@queue-disc1</span><br><span class="line">      - RABBITMQ_CLUSTER_NODE_NAME=rabbit@stats</span><br><span class="line">      - RABBITMQ_ERL_COOKIE=s3cr3tc00ki3</span><br><span class="line">    volumes:</span><br><span class="line">      - 'rabbitmqdisc1_data:/bitnami'</span><br><span class="line">  queue-ram1:</span><br><span class="line">    image: bitnami/rabbitmq:3.7</span><br><span class="line">    environment:</span><br><span class="line">      - RABBITMQ_NODE_TYPE=queue-ram</span><br><span class="line">      - RABBITMQ_NODE_NAME=rabbit@queue-ram1</span><br><span class="line">      - RABBITMQ_CLUSTER_NODE_NAME=rabbit@stats</span><br><span class="line">      - RABBITMQ_ERL_COOKIE=s3cr3tc00ki3</span><br><span class="line">    volumes:</span><br><span class="line">      - 'rabbitmqram1_data:/bitnami'</span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">  rabbitmqstats_data:</span><br><span class="line">    driver: local</span><br><span class="line">  rabbitmqdisc1_data:</span><br><span class="line">    driver: local</span><br><span class="line">  rabbitmqram1_data:</span><br><span class="line">    driver: local</span><br></pre></td></tr></table></figure>
+<p>docker-compose 语法格式：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose [-f &lt;arg&gt;...] [options] [COMMAND] [ARGS...]`</span><br></pre></td></tr></table></figure>
+<p>运行 <code>docker-compose up -d</code> 运行，如果 docker-compose.yml 命名为其他名字，可以通过 <code>-f</code> 参数指定文件。</p>
+<p>如上方式，会在主机上创建若干 volume，下面是一些关于 volume 的操作：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">删除不使用的本地 volumes</span><br><span class="line">docker volume prune</span><br><span class="line">docker volume ls</span><br><span class="line">docker volume rm &lt;volume name&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="其他方式"><a href="#其他方式" class="headerlink" title="其他方式"></a>其他方式</h2><h3 id="创建容器节点"><a href="#创建容器节点" class="headerlink" title="创建容器节点"></a>创建容器节点</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --hostname rabbit1 --name myrabbit1 -p 15672:15672 -p 5672:5672 -e RABBITMQ_ERLANG_COOKIE='rabbitcookie' rabbitmq:3.6.15-management</span><br><span class="line">docker run -d --hostname rabbit2 --name myrabbit2 -p 5673:5672 --link myrabbit1:rabbit1 -e RABBITMQ_ERLANG_COOKIE='rabbitcookie' rabbitmq:3.6.15-management</span><br><span class="line">docker run -d --hostname rabbit3 --name myrabbit3 -p 5674:5672 --link myrabbit1:rabbit1 --link myrabbit2:rabbit2 -e RABBITMQ_ERLANG_COOKIE='rabbitcookie' rabbitmq:3.6.15-management</span><br></pre></td></tr></table></figure>
+<ul>
+<li>多个容器之间使用 <code>--link</code> 连接，此属性不能少；<code>--link &lt;docker-name or docker-id&gt;:alias</code>,<code>alias</code> 是源容器在 link 下的别名</li>
+<li>Erlang Cookie值必须相同，也就是 <code>RABBITMQ_ERLANG_COOKIE</code> 参数的值必须相同；</li>
+</ul>
+<p>要想知道 Erlang Cookie 位置，首先要取得 RabbitMQ 启动日志里面的 <code>home dir</code> 路径，作为根路径。使用：<code>docker logs 容器名称</code> 查看。</p>
+<h3 id="加入-RabbitMQ-节点到集群"><a href="#加入-RabbitMQ-节点到集群" class="headerlink" title="加入 RabbitMQ 节点到集群"></a>加入 RabbitMQ 节点到集群</h3><p>设置节点1：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it myrabbit1 bash</span><br><span class="line">rabbitmqctl stop_app</span><br><span class="line">rabbitmqctl reset</span><br><span class="line">rabbitmqctl start_app</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+<p>设置节点2，加入到集群：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it myrabbit2 bash</span><br><span class="line">rabbitmqctl stop_app</span><br><span class="line">rabbitmqctl reset</span><br><span class="line">rabbitmqctl join_cluster --ram rabbit@rabbit1</span><br><span class="line">rabbitmqctl start_app</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+<ul>
+<li>参数 <code>--ram</code> 表示设置为内存节点，忽略次参数默认为磁盘节点。</li>
+</ul>
+<p>设置节点3，加入到集群：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it myrabbit3 bash</span><br><span class="line">rabbitmqctl stop_app</span><br><span class="line">rabbitmqctl reset</span><br><span class="line">rabbitmqctl join_cluster --ram rabbit@rabbit1</span><br><span class="line">rabbitmqctl start_app</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+<p>设置好之后，使用 <code>http://物理机ip:15672</code> 进行访问了，默认账号密码是 <code>guest/guest</code></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>MQ：</p>
+<ul>
+<li><a href="https://segmentfault.com/a/1190000010702020" target="_blank" rel="noopener">CentOs7.3 搭建 RabbitMQ 3.6 Cluster 集群服务与使用</a></li>
+<li><a href="https://www.cnblogs.com/vipstone/p/9362388.html" target="_blank" rel="noopener">王磊的博客-RabbitMQ系列（五）使用Docker部署RabbitMQ集群</a></li>
+<li><a href="https://blog.csdn.net/fqydhk/article/details/80624547" target="_blank" rel="noopener">docker-compose配置rabbitmq集群服务器</a></li>
+<li><a href="https://www.rabbitmq.com/clustering.html#peer-discovery-how-does-it-work" target="_blank" rel="noopener">官宣-Clustering Guide</a></li>
+<li><a href="https://ddatsh.com/post/dev/mq/rabbitmq-block/" target="_blank" rel="noopener">rabbbitmq 堆积分析</a></li>
+</ul>
+<p>容器间的通信：</p>
+<ul>
+<li><a href="http://www.louisvv.com/archives/695.html" target="_blank" rel="noopener">Docker容器与宿主机同网段互相通信</a></li>
+<li><a href="https://www.jianshu.com/p/21d66ca6115e" target="_blank" rel="noopener">关于对docker run –link的理解</a></li>
+<li><a href="https://cizixs.com/2016/06/12/docker-network-modes-explained/" target="_blank" rel="noopener">cizixs-docker 容器的网络模式</a></li>
+</ul>
+<p>docker-compose：</p>
+<ul>
+<li><a href="https://deepzz.com/post/docker-compose-file.html" target="_blank" rel="noopener">如何写docker-compose.yml，Docker compose file 参考文档</a></li>
+<li><a href="https://docs.docker.com/compose/reference/overview/" target="_blank" rel="noopener">官宣-Overview of docker-compose CLI</a></li>
+<li><a href="https://yeasy.gitbooks.io/docker_practice/compose/commands.html" target="_blank" rel="noopener">Docker 三剑客之 Compose 项目</a></li>
+</ul>
 
       
     </div>
 
+    
+      
+
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2018/11/16/plan-reading/" rel="bookmark">【计划】阅读</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2016/05/03/SQL/" rel="bookmark">SQL基础语法笔记教程整理</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2015/12/24/algorithm-GA-basic/" rel="bookmark">遗传算法GA(Genetic Algorithm)入门知识梳理</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
+
+    
+    
+    
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Michael翔 wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎订阅 ヾﾉ≧∀≦)o</div>
+</div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>我知道是不会有人点的，但万一有人想不开呢👇</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.jpg" alt="Michael翔 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="Michael翔 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Michael翔</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://michael728.github.io/2019/06/07/docker-rabbitmq-env/" title="使用 Docker-compose 配置 rabbitmq 集群服务器">https://michael728.github.io/2019/06/07/docker-rabbitmq-env/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/04/cicd-docker-jenkins/" rel="next" title="利用 Docker 安装 CICD 神器 Jenkins">
+                <i class="fa fa-chevron-left"></i> 利用 Docker 安装 CICD 神器 Jenkins
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -581,8 +865,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -966,6 +1259,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#rabbitmq-介绍"><span class="nav-number">1.</span> <span class="nav-text">rabbitmq 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-compose"><span class="nav-number">2.</span> <span class="nav-text">docker-compose</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他方式"><span class="nav-number">3.</span> <span class="nav-text">其他方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建容器节点"><span class="nav-number">3.1.</span> <span class="nav-text">创建容器节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加入-RabbitMQ-节点到集群"><span class="nav-number">3.2.</span> <span class="nav-text">加入 RabbitMQ 节点到集群</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -1105,6 +1415,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
 
   
 
@@ -1154,6 +1468,8 @@
 
 
 
+
+  
 
 
   
