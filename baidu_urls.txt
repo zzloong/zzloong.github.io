@@ -1,3 +1,5 @@
+https://michael728.github.io/2019/06/08/cicd-centos-install-nginx/
+https://michael728.github.io/2019/06/08/cicd-nginx-basic/
 https://michael728.github.io/2019/06/07/docker-rabbitmq-env/
 https://michael728.github.io/2019/06/04/cicd-docker-jenkins/
 https://michael728.github.io/2019/06/02/docker-create-develop-environment/
@@ -48,5 +50,5 @@ https://michael728.github.io/2015/11/30/hexo-next-optimize/
 https://michael728.github.io/2015/11/30/hexo-gitcafe-github-dns-goddaddy-set/
 https://michael728.github.io/2015/11/30/hexo-gitcafe-github-deploy/
 https://michael728.github.io/2015/11/28/tools-list-win/
-https://michael728.github.io/2015/11/26/tools-chrome-extentions/
 https://michael728.github.io/2015/11/26/python-pyenv-anaconda/
+https://michael728.github.io/2015/11/26/tools-chrome-extentions/

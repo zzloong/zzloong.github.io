@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://michael728.github.io/2019/06/08/cicd-nginx-basic/</loc>
+    <lastmod>2019-06-08</lastmod>
+  </url>  <url>
+    <loc>https://michael728.github.io/2019/06/08/cicd-centos-install-nginx/</loc>
+    <lastmod>2019-06-08</lastmod>
+  </url>  <url>
+    <loc>https://michael728.github.io/2019/06/02/docker-create-develop-environment/</loc>
+    <lastmod>2019-06-08</lastmod>
+  </url>  <url>
+    <loc>https://michael728.github.io/2019/04/14/linux-useful-shell-commands-in-work/</loc>
+    <lastmod>2019-06-08</lastmod>
+  </url>  <url>
+    <loc>https://michael728.github.io/2018/07/05/linux-useful-commands-in-work/</loc>
+    <lastmod>2019-06-08</lastmod>
+  </url>  <url>
+    <loc>https://michael728.github.io/2019/04/14/tools-dev-mac/</loc>
+    <lastmod>2019-06-08</lastmod>
+  </url>  <url>
     <loc>https://michael728.github.io/2019/06/07/docker-rabbitmq-env/</loc>
     <lastmod>2019-06-07</lastmod>
   </url>  <url>
@@ -18,9 +36,6 @@
   </url>  <url>
     <loc>https://michael728.github.io/2018/12/02/tools-vim-basic/</loc>
     <lastmod>2019-06-03</lastmod>
-  </url>  <url>
-    <loc>https://michael728.github.io/2019/06/02/docker-create-develop-environment/</loc>
-    <lastmod>2019-06-02</lastmod>
   </url>  <url>
     <loc>https://michael728.github.io/2019/06/01/docker-centos-install/</loc>
     <lastmod>2019-06-02</lastmod>
@@ -64,9 +79,6 @@
     <loc>https://michael728.github.io/2018/12/08/tools-daily-mac/</loc>
     <lastmod>2019-06-01</lastmod>
   </url>  <url>
-    <loc>https://michael728.github.io/2019/04/14/tools-dev-mac/</loc>
-    <lastmod>2019-06-01</lastmod>
-  </url>  <url>
     <loc>https://michael728.github.io/2019/05/19/hexo-blog-full-note/</loc>
     <lastmod>2019-06-01</lastmod>
   </url>  <url>
@@ -79,17 +91,11 @@
     <loc>https://michael728.github.io/2015/11/26/python-pyenv-anaconda/</loc>
     <lastmod>2019-05-19</lastmod>
   </url>  <url>
-    <loc>https://michael728.github.io/2019/04/14/linux-useful-shell-commands-in-work/</loc>
-    <lastmod>2019-04-30</lastmod>
-  </url>  <url>
     <loc>https://michael728.github.io/2019/04/23/linux-lvm-partion/</loc>
     <lastmod>2019-04-30</lastmod>
   </url>  <url>
     <loc>https://michael728.github.io/2015/12/20/life-20151220/</loc>
     <lastmod>2019-04-27</lastmod>
-  </url>  <url>
-    <loc>https://michael728.github.io/2018/07/05/linux-useful-commands-in-work/</loc>
-    <lastmod>2019-04-23</lastmod>
   </url>  <url>
     <loc>https://michael728.github.io/2019/04/18/note-spring/</loc>
     <lastmod>2019-04-19</lastmod>
