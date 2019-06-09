@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://michael728.github.io/2019/06/07/docker-rabbitmq-env/</loc>
+    
+    <lastmod>2019-06-09T14:54:45.201Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://michael728.github.io/2019/06/02/docker-create-develop-environment/</loc>
     
     <lastmod>2019-06-08T05:01:28.865Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://michael728.github.io/2019/06/08/cicd-centos-install-nginx/</loc>
     
     <lastmod>2019-06-08T02:59:13.647Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://michael728.github.io/2019/06/07/docker-rabbitmq-env/</loc>
-    
-    <lastmod>2019-06-08T02:49:56.757Z</lastmod>
     
   </url>
   
