@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://michael728.github.io/think/index.html</loc>
+    
+    <lastmod>2019-06-10T14:36:50.162Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://michael728.github.io/2019/06/07/docker-rabbitmq-env/</loc>
     
-    <lastmod>2019-06-09T14:54:45.201Z</lastmod>
+    <lastmod>2019-06-09T14:57:04.983Z</lastmod>
     
   </url>
   
@@ -215,13 +222,6 @@
     <loc>https://michael728.github.io/2015/11/26/python-pyenv-anaconda/</loc>
     
     <lastmod>2019-05-19T15:41:08.901Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://michael728.github.io/think/index.html</loc>
-    
-    <lastmod>2019-05-19T10:15:48.758Z</lastmod>
     
   </url>
   
