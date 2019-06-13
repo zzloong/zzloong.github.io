@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://michael728.github.io/"/>
-  <updated>2019-06-08T02:59:13.647Z</updated>
+  <updated>2019-06-13T16:19:11.463Z</updated>
   <id>https://michael728.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>docker-compose-install-sonarqube</title>
+    <link href="https://michael728.github.io/2019/06/13/docker-compose-install-sonarqube/"/>
+    <id>https://michael728.github.io/2019/06/13/docker-compose-install-sonarqube/</id>
+    <published>2019-06-13T14:37:10.000Z</published>
+    <updated>2019-06-13T16:19:11.463Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a><h2 id="sonarqube"><a href="#sonarqube" class="headerlink" title="sonarqube"></a>sonarqube</h2><p>命令</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube:7.7-community</span><br><span class="line">docker cp sonarqube:/opt/sonarqube/conf /data/sonar</span><br><span class="line">docker cp sonarqube:/opt/sonarqube/extensions /data/sonar</span><br><span class="line">wget -P /data/sonar/extensions/plugins https://github.com/SonarQubeCommunity/sonar-l10n-zh/releases/download/sonar-l10n-zh-plugin-1.27/sonar-l10n-zh-plugin-1.27.jar</span><br><span class="line">docker stop sonarqube</span><br><span class="line">docker rm sonarqube</span><br></pre></td></tr></table></figure><h2 id="配置数据库"><a href="#配置数据库" class="headerlink" title="配置数据库"></a>配置数据库</h2><p>我使用的是 MySQL 数据库，为了实现权限分离，创建了单独的 sonar 数据库和对应的账号：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>docker exec -it devops-mysql</span><br><span class="line"><span class="meta">#</span>mysql -u root -p</span><br><span class="line"><span class="meta">mysql&gt;</span> CREATE DATABASE sonar CHARACTER SET utf8 COLLATE utf8_general_ci;</span><br><span class="line"><span class="meta">mysql&gt;</span> CREATE USER 'sonar' IDENTIFIED BY 'sonar';</span><br><span class="line"><span class="meta">mysql&gt;</span> GRANT ALL ON sonar.* TO 'sonar'@'%' IDENTIFIED BY 'sonar';</span><br><span class="line"><span class="meta">mysql&gt;</span> GRANT ALL ON sonar.* TO 'sonar'@'localhost' IDENTIFIED BY 'sonar';</span><br><span class="line"><span class="meta">mysql&gt;</span> FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure><p>数据库我也是用 docker 创建的，可以参考之前的文章<a href="https://michael728.github.io/2019/06/02/docker-create-develop-environment/">使用容器 Docker 创建开发环境</a>。</p><h2 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name sonarqube \</span><br><span class="line">    -p 9000:9000 \</span><br><span class="line">    -e sonar.jdbc.username=root \</span><br><span class="line">    -e sonar.jdbc.password=123456 \</span><br><span class="line">    -e sonar.jdbc.url="jdbc:mysql://192.168.3.43:3306/sonar?useUnicode=true&amp;characterEncoding=utf8&amp;rewriteBatchedStatements=true&amp;useConfigs=maxPerformance&amp;useSSL=false" \</span><br><span class="line">    -v /data/sonar/extensions:/opt/sonarqube/extensions \</span><br><span class="line">    sonarqube:7.7-community</span><br></pre></td></tr></table></figure><blockquote><p>Use of the environment variables SONARQUBE_JDBC_USERNAME, SONARQUBE_JDBC_PASSWORD and SONARQUBE_JDBC_URL is deprecated, and will stop working in future releases.</p></blockquote><p>网上一些教程还是采用的旧的环境变量，官网已经说快要废弃了。</p><h2 id="docker-compose-方式"><a href="#docker-compose-方式" class="headerlink" title="docker-compose 方式"></a>docker-compose 方式</h2><p>我在本地的机器上，一开始用 docker-compose 的方式创建了一个 MySQL 的容器了。我在采用 docker-compose 的方式时，一开始尝试配置它替代默认的 H2 数据库。但是却怎么也无法连接上。后来查阅了一些文章才知道，如果你 MySQL 和 sonarqube 服务是在一个 docker-compose.yml 文件中的话，那么他们会处于同样的容器网络中，sonarqube 是可以连接上的。并且，连接的时候，可以用 <code>jdbc:mysql://mysql:3306</code> 表示 jdbc url。</p><p>如果是在同一台机器上，MySQL 容器已经创建好了，和 sonarqube 不是同一个 docker-compose.yml 方式创建的，那么，这时候就需要一些额外的配置，才能让两个容器实现网络互通。</p><h3 id="external"><a href="#external" class="headerlink" title="external"></a>external</h3><p><code>external: true</code> 加上这行表示我这个服务用的网络是用外部的网络，不用自动创建。否则，会按照规则默认创建网络的，例如 <code>db_default</code>、<code>sonarqube_default</code> 这些网络就是默认创建的。如果这个时候没有对应的外部网络，会弹出如下的提示：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Creating network "db_default" with the default driver</span><br><span class="line">ERROR: Network mysql_net declared as external, but could not be found. Please create the network manually using `docker network create mysql_net` and try again.</span><br></pre></td></tr></table></figure><p><img src="https://ws1.sinaimg.cn/large/6d9475f6ly1g3zz5vx1d7j21ki0ykn7l.jpg" alt></p><p>注意点：对于 compose 3.3 及更低版本，外部不能与其他网络配置键（driver，driver_opts，ipam，internal）一起使用。版本 3.4 及更高版本不再存在此限制。</p><p>external 字段比较有用，<a href="https://docs.docker.com/compose/compose-file/#external-1" target="_blank" rel="noopener">官网有详细介绍</a>。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://hub.docker.com/_/sonarqube/" target="_blank" rel="noopener">官宣-dockerhub-sonarqube</a></li><li><a href="https://docs.docker.com/compose/compose-file/compose-file-v2/#networks" target="_blank" rel="noopener">compose-file-v2/#network</a></li><li><a href="https://docs.docker.com/compose/networking/" target="_blank" rel="noopener">compose/networking</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;sonarqube&quot;&gt;&lt;a href=&quot;#sonarqube&quot; class=&quot;headerlink&quot; title=&quot;sonarqube&quot;&gt;&lt;/a&gt;sonarqube&lt;/h2&gt;&lt;p&gt;命令&lt;/p&gt;
+&lt;figure class=&quot;hi
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>CentOS Nginx 安装及配置</title>
@@ -116,11 +139,11 @@
       <category term="DevOps" scheme="https://michael728.github.io/categories/DevOps/"/>
     
     
-      <category term="cicd" scheme="https://michael728.github.io/tags/cicd/"/>
-    
       <category term="DevOps" scheme="https://michael728.github.io/tags/DevOps/"/>
     
       <category term="Jenkins" scheme="https://michael728.github.io/tags/Jenkins/"/>
+    
+      <category term="cicd" scheme="https://michael728.github.io/tags/cicd/"/>
     
       <category term="Docker" scheme="https://michael728.github.io/tags/Docker/"/>
     
@@ -533,31 +556,6 @@
       <category term="debug" scheme="https://michael728.github.io/tags/debug/"/>
     
       <category term="method" scheme="https://michael728.github.io/tags/method/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python 标准库 argparse 的用法</title>
-    <link href="https://michael728.github.io/2018/12/09/python-argparse-note/"/>
-    <id>https://michael728.github.io/2018/12/09/python-argparse-note/</id>
-    <published>2018-12-09T15:34:01.000Z</published>
-    <updated>2018-12-09T15:44:13.480Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="https://ws1.sinaimg.cn/mw690/6d9475f6ly1fy0x6l6n0hj20hs0a0403.jpg" alt></p><p>argparse 是 Python 内置的一个用于命令项选项与参数解析的模块。Python 也有第三方的库可用于命令行解析，而且功能也更加强大，比如 <a href="http://docopt.org/" target="_blank" rel="noopener">docopt</a>，<a href="https://click.palletsprojects.com/en/5.x/" target="_blank" rel="noopener">Click</a></p><a id="more"></a><h2 id="Argparse"><a href="#Argparse" class="headerlink" title="Argparse"></a>Argparse</h2><p>主要有三个步骤：</p><ul><li>创建 ArgumentParser() 对象</li><li>调用 add_argument() 方法添加参数</li><li>使用 parse_args() 解析添加的参数</li></ul><h2 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h2><h3 id="add-argument"><a href="#add-argument" class="headerlink" title="add_argument"></a>add_argument</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ArgumentParser.add_argument(name <span class="keyword">or</span> flags...[, action][, nargs][, const][, default][, type][, choices][, required]</span><br><span class="line">[, help][, metavar][, dest])</span><br></pre></td></tr></table></figure><p>每个参数解释如下:</p><ul><li>name or flags - 选项字符串的名字或者列表，例如 foo 或者 -f, –foo。</li><li>action - 命令行遇到参数时的动作，默认值是 store。<ul><li>store_const，表示赋值为const；</li><li>append，将遇到的值存储成列表，也就是如果参数重复则会保存多个值;</li><li>append_const，将参数规范中定义的一个值保存到一个列表；</li><li>count，存储遇到的次数；此外，也可以继承 argparse.Action 自定义参数解析；</li></ul></li><li>nargs - 应该读取的命令行参数个数，可以是具体的数字，或者是?号，当不指定值时对于 Positional argument 使用 default，对于 Optional argument 使用 const；或者是 * 号，表示 0 或多个参数；或者是 + 号表示 1 或多个参数。</li><li>const - 一个在 action 和 nargs 选项所需的常量值。</li><li>default - 不指定参数时的默认值。</li><li>type - 命令行参数应该被转换成的类型。</li><li>choices - 参数可允许的值的一个容器。</li><li>required - 可选参数是否可以省略 (仅针对可选参数)。</li><li>help - 参数的帮助信息，当指定为 argparse.SUPPRESS 时表示不显示该参数的帮助信息.</li><li>metavar - 在 usage 说明中的参数名称，对于必选参数默认就是参数名称（上面的 name or flags），对于可选参数默认是全大写的参数名称.</li><li>dest - parse_args() 方法返回的对象所添加的属性的名称。默认情况下，对于可选参数选取最长的名称，中划线转换为下划线.</li></ul><h2 id="官方示例"><a href="#官方示例" class="headerlink" title="官方示例"></a>官方示例</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建了 ArgumentParser 对象，该对象具有解析命令行转为 Python 数据类型的全部信息</span></span><br><span class="line">parser = argparse.ArgumentParser(description=<span class="string">'Process some integers.'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 增加参数</span></span><br><span class="line">parser.add_argument(<span class="string">'integers'</span>, metavar=<span class="string">'N'</span>, type=int, nargs=<span class="string">'+'</span>,</span><br><span class="line">                    help=<span class="string">'an integer for the accumulator'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'--sum'</span>, dest=<span class="string">'accumulate'</span>, action=<span class="string">'store_const'</span>,</span><br><span class="line">                    const=sum, default=max,</span><br><span class="line">                    help=<span class="string">'sum the integers (default: find the max)'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'--foo'</span>, action=<span class="string">'store_true'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'--bar'</span>, action=<span class="string">'store_false'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用 parse_args() 会返回对象的两个属性，integers 和 accumulate。 integers 属性是一个列表</span></span><br><span class="line"><span class="comment"># 如果在命令行中指定了 --sum，例如 python a.py 1 --sum ，则 accumulate 属性将是 sum() 函数，</span></span><br><span class="line"><span class="comment"># 如果没有加上 --sum，例如 python a.py 1，则 accumulate 为 max() 函数</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>parser.parse_args([<span class="string">'--sum'</span>, <span class="string">'7'</span>, <span class="string">'-1'</span>, <span class="string">'42'</span>])</span><br><span class="line">Namespace(accumulate=&lt;built-<span class="keyword">in</span> function sum&gt;, integers=[<span class="number">7</span>, <span class="number">-1</span>, <span class="number">42</span>])</span><br></pre></td></tr></table></figure><p>这里的 <code>store_const</code> 可以这么理解，它对应的属性是可以手动赋值的，比如这里的 <code>accumulate</code>，该属性值是自动获取：</p><ul><li>如果参数中使用了 <code>--sum</code>，那么后面不赋值，accumulate 也会根据取 const 指定的值取值；</li><li>如果参数中没有出现 <code>--sum</code>，那么这个可选参数会去 <code>default</code> 指定的值，如果不指定默认值，会取值 <code>None</code></li></ul><p>这里的 <code>store_false</code> 可以这么理解，它对应的属性也是不可以赋值的，是自动获取的：</p><ul><li>命令行使用了 <code>--foo</code>，这个属性就为 <code>True</code>，否则为 <code>False</code></li><li>命令行使用了 <code>--bar</code>，这个属性就为 <code>False</code>，否则就为 <code>True</code></li></ul><h2 id="互斥示例"><a href="#互斥示例" class="headerlink" title="互斥示例"></a>互斥示例</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">group = parser.add_mutually_exclusive_group()</span><br><span class="line">group.add_argument(<span class="string">"-v"</span>, <span class="string">"--verbose"</span>, action=<span class="string">"store_true"</span>)</span><br><span class="line">group.add_argument(<span class="string">"-q"</span>, <span class="string">"--quiet"</span>, action=<span class="string">"store_true"</span>)</span><br></pre></td></tr></table></figure><h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><p>本文示例代码可见：</p><ul><li><a href="https://github.com/Michael728/python-useful-modules/tree/master/learn_argparse" target="_blank" rel="noopener">python-useful-modules/learn_argparse/</a></li></ul><p>参考：</p><ul><li><a href="http://wiki.jikexueyuan.com/project/explore-python/Standard-Modules/argparse.html" target="_blank" rel="noopener">极客学院-argparse</a></li><li><a href="https://docs.python.org/3/library/argparse.html" target="_blank" rel="noopener">官宣-Python argparse</a></li><li><a href="https://zhuanlan.zhihu.com/p/34395749" target="_blank" rel="noopener">知乎-Python-argparse-命令行与参数解析</a></li><li><a href="https://www.jianshu.com/p/fef2d215b91d" target="_blank" rel="noopener">简书-python argparse用法总结</a> 理解了 store 和 互斥参数</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;https://ws1.sinaimg.cn/mw690/6d9475f6ly1fy0x6l6n0hj20hs0a0403.jpg&quot; alt&gt;&lt;/p&gt;
-&lt;p&gt;argparse 是 Python 内置的一个用于命令项选项与参数解析的模块。Python 也有第三方的库可用于命令行解析，而且功能也更加强大，比如 &lt;a href=&quot;http://docopt.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;docopt&lt;/a&gt;，&lt;a href=&quot;https://click.palletsprojects.com/en/5.x/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Click&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Python" scheme="https://michael728.github.io/categories/Python/"/>
-    
-    
-      <category term="Python" scheme="https://michael728.github.io/tags/Python/"/>
-    
-      <category term="cli" scheme="https://michael728.github.io/tags/cli/"/>
     
   </entry>
   
