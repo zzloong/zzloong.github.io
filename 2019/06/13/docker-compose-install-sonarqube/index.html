@@ -108,22 +108,20 @@
 
 
 
-  <meta name="description" content="sonarqube命令 123456docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube:7.7-communitydocker cp sonarqube:/opt/sonarqube/conf /data/sonardocker cp sonarqube:/opt/sonarqube/extensions /dat">
-<meta name="keywords" content="DevOps CICD">
+  <meta name="description" content="前言在 CICD 流水线中，代码质量其实是很关键的一环。SonarQube 是一个「持续代码质量」检测的服务。在 DevOps 持续集成中对把控代码质量很有帮助。它可以">
+<meta name="keywords" content="代码质量">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker-compose-install-sonarqube">
+<meta property="og:title" content="使用 Docker Compose 方式搭建 SonarQube 服务">
 <meta property="og:url" content="https://michael728.github.io/2019/06/13/docker-compose-install-sonarqube/index.html">
 <meta property="og:site_name" content="Michael翔">
-<meta property="og:description" content="sonarqube命令 123456docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube:7.7-communitydocker cp sonarqube:/opt/sonarqube/conf /data/sonardocker cp sonarqube:/opt/sonarqube/extensions /dat">
+<meta property="og:description" content="前言在 CICD 流水线中，代码质量其实是很关键的一环。SonarQube 是一个「持续代码质量」检测的服务。在 DevOps 持续集成中对把控代码质量很有帮助。它可以">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://ws1.sinaimg.cn/mw690/6d9475f6ly1g413yjfb2fj21e206o75z.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/mw690/6d9475f6ly1g41480356uj21do06etag.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/6d9475f6ly1g3zz5vx1d7j21ki0ykn7l.jpg">
-<meta property="og:updated_time" content="2019-06-14T15:59:06.461Z">
+<meta property="og:image" content="https://ws1.sinaimg.cn/mw690/6d9475f6ly1g4165ysbgkj21gc0y27fl.jpg">
+<meta property="og:updated_time" content="2019-06-14T17:01:50.860Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="docker-compose-install-sonarqube">
-<meta name="twitter:description" content="sonarqube命令 123456docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube:7.7-communitydocker cp sonarqube:/opt/sonarqube/conf /data/sonardocker cp sonarqube:/opt/sonarqube/extensions /dat">
-<meta name="twitter:image" content="https://ws1.sinaimg.cn/mw690/6d9475f6ly1g413yjfb2fj21e206o75z.jpg">
+<meta name="twitter:title" content="使用 Docker Compose 方式搭建 SonarQube 服务">
+<meta name="twitter:description" content="前言在 CICD 流水线中，代码质量其实是很关键的一环。SonarQube 是一个「持续代码质量」检测的服务。在 DevOps 持续集成中对把控代码质量很有帮助。它可以">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/mw690/6d9475f6ly1g4165ysbgkj21gc0y27fl.jpg">
 
 
 
@@ -143,7 +141,7 @@
   };
 </script>
 
-  <title>docker-compose-install-sonarqube | Michael翔</title>
+  <title>使用 Docker Compose 方式搭建 SonarQube 服务 | Michael翔</title>
   
 
 
@@ -512,7 +510,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">docker-compose-install-sonarqube
+          <h2 class="post-title" itemprop="name headline">使用 Docker Compose 方式搭建 SonarQube 服务
 
               
             
@@ -555,11 +553,29 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-14 23:59:06" itemprop="dateModified" datetime="2019-06-14T23:59:06+08:00">2019-06-14</time>
+                <time title="修改时间：2019-06-15 01:01:50" itemprop="dateModified" datetime="2019-06-15T01:01:50+08:00">2019-06-15</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/DevOps/" itemprop="url" rel="index"><span itemprop="name">DevOps</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -582,7 +598,7 @@
 
           
           
-            <span id="/2019/06/13/docker-compose-install-sonarqube/" class="leancloud_visitors" data-flag-title="docker-compose-install-sonarqube">
+            <span id="/2019/06/13/docker-compose-install-sonarqube/" class="leancloud_visitors" data-flag-title="使用 Docker Compose 方式搭建 SonarQube 服务">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -613,9 +629,9 @@
       
 
       
-        <a id="more"></a>
-<h2 id="sonarqube"><a href="#sonarqube" class="headerlink" title="sonarqube"></a>sonarqube</h2><p>命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube:7.7-community</span><br><span class="line">docker cp sonarqube:/opt/sonarqube/conf /data/sonar</span><br><span class="line">docker cp sonarqube:/opt/sonarqube/extensions /data/sonar</span><br><span class="line">wget -P /data/sonar/extensions/plugins https://github.com/SonarQubeCommunity/sonar-l10n-zh/releases/download/sonar-l10n-zh-plugin-1.27/sonar-l10n-zh-plugin-1.27.jar</span><br><span class="line">docker stop sonarqube</span><br><span class="line">docker rm sonarqube</span><br></pre></td></tr></table></figure>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在 CICD 流水线中，代码质量其实是很关键的一环。<a href="https://www.sonarqube.org/" target="_blank" rel="noopener">SonarQube</a> 是一个「持续代码质量」检测的服务。在 DevOps 持续集成中对把控代码质量很有帮助。它可以</p>
+<a id="more"></a>
+<h2 id="命令行启动"><a href="#命令行启动" class="headerlink" title="命令行启动"></a>命令行启动</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube:7.7-community</span><br><span class="line">docker cp sonarqube:/opt/sonarqube/conf /data/sonar</span><br><span class="line">docker cp sonarqube:/opt/sonarqube/extensions /data/sonar</span><br><span class="line">wget -P /data/sonar/extensions/plugins https://github.com/SonarQubeCommunity/sonar-l10n-zh/releases/download/sonar-l10n-zh-plugin-1.27/sonar-l10n-zh-plugin-1.27.jar</span><br><span class="line">docker stop sonarqube</span><br><span class="line">docker rm sonarqube</span><br></pre></td></tr></table></figure>
 <h2 id="配置数据库"><a href="#配置数据库" class="headerlink" title="配置数据库"></a>配置数据库</h2><p>我使用的是 MySQL 数据库，为了实现权限分离，创建了单独的 sonar 数据库和对应的账号：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>docker exec -it devops-mysql</span><br><span class="line"><span class="meta">#</span>mysql -u root -p</span><br><span class="line"><span class="meta">mysql&gt;</span> CREATE DATABASE sonar CHARACTER SET utf8 COLLATE utf8_general_ci;</span><br><span class="line"><span class="meta">mysql&gt;</span> CREATE USER 'sonar' IDENTIFIED BY 'sonar';</span><br><span class="line"><span class="meta">mysql&gt;</span> GRANT ALL ON sonar.* TO 'sonar'@'%' IDENTIFIED BY 'sonar';</span><br><span class="line"><span class="meta">mysql&gt;</span> GRANT ALL ON sonar.* TO 'sonar'@'localhost' IDENTIFIED BY 'sonar';</span><br><span class="line"><span class="meta">mysql&gt;</span> FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
 <p>数据库我也是用 docker 创建的，可以参考之前的文章<a href="https://michael728.github.io/2019/06/02/docker-create-develop-environment/">使用容器 Docker 创建开发环境</a>。</p>
@@ -624,84 +640,17 @@
 <p>Use of the environment variables SONARQUBE_JDBC_USERNAME, SONARQUBE_JDBC_PASSWORD and SONARQUBE_JDBC_URL is deprecated, and will stop working in future releases.</p>
 </blockquote>
 <p>网上一些教程还是采用的旧的环境变量，官网已经说快要废弃了。</p>
-<h2 id="docker-compose-方式"><a href="#docker-compose-方式" class="headerlink" title="docker-compose 方式"></a>docker-compose 方式</h2><p>首先引出一个我遇到的问题：</p>
-<p>我在本地的机器上，一开始用 docker-compose 的方式创建了一个 MySQL 的容器了。然后在再利用另一份 docker-compose.yml 文件创建 sonarqube 容器是，尝试配置 MySQL 替代 sonarqube 默认采用的 H2 数据库。但是 sonarqube 却怎么也无法连接上 MySQL。</p>
-<p>为了解决这个网络不通的问题，先得了解一下 Compose 方式下的网络基础。</p>
-<h2 id="networks"><a href="#networks" class="headerlink" title="networks"></a>networks</h2><p>关于 Compose 的网络，官网有专门的一节进行介绍。查看<a href="https://docs.docker.com/compose/networking/" target="_blank" rel="noopener">Networking in Compose</a></p>
-<blockquote>
-<p>By default Compose sets up a single network for your app. Each container for a service joins the default network and is both reachable by other containers on that network, and discoverable by them at a hostname identical to the container name.</p>
-</blockquote>
-<p>Compose 默认给你的 app 设置一个网络。 service 中的每个容器默认都加入这个网络，容器之间彼此是互通的。并且，可以利用容器名字识别到。</p>
-<div class="note warning no-icon">
-            <p>Note: 你 app 的网络默认情况下是和你的 <code>project name</code> 有关的。这个 <code>project name</code> 其实就是你 docker-compose.yml 文件存放的那个目录的名字。比如，目录名叫 <code>db</code>，那么默认情况下会创建一个叫 <code>db_default</code> 的网络。你可以使用 <code>--project-name</code> 或 <code>COMPSE_PROJECT_NAME</code> 环境变量。</p>
-          </div>
-<p>举个栗子,<code>docker-compose.yml</code>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">version: "3"</span><br><span class="line">services:</span><br><span class="line">  web:</span><br><span class="line">    build: .</span><br><span class="line">    ports:</span><br><span class="line">      - "8000:8000"</span><br><span class="line">  db:</span><br><span class="line">    image: postgres</span><br><span class="line">    ports:</span><br><span class="line">      - "8001:5432"</span><br></pre></td></tr></table></figure>
-<p>假设，上面这个文件放在 <code>myapp</code> 文件夹下。那么，当你 <code>docker-compose up -d</code> 之后：</p>
-<ul>
-<li>一个叫 <code>myapp_default</code> 网络被创建；</li>
-<li>一个使用 web 配置的容器会被创建，它以 <code>web</code> 的名字加入了 <code>myapp_default</code> 这个网络；</li>
-<li>一个使用 db 配置的容器会被创建，它以 <code>db</code> 的名字加入了 <code>myapp_default</code> 网络；</li>
-</ul>
-<blockquote>
-<p>Each container can now look up the hostname web or db and get back the appropriate container’s IP address</p>
-</blockquote>
-<p>现在，每个容器都可以查找主机名 <code>web</code> 或 <code>db</code>，并获取相应容器的 IP 地址。例如，<code>web</code> 应用的代码可以使用 URL <code>postgres://db:5432</code> 连接数据库并使用它。</p>
-<p>重要的是要注意 <code>HOST_PORT</code> 和 <code>CONTAINER_PORT</code> 之间的区别。前者是指的是宿主机的端口，后者指的是容器中的端口。容器网络中的服务间使用的是 <code>CONTAINER_PORT</code> 通信。<code>HOST_PORT</code> 定义了是为了容器网络外被调用的。所以，前面才使用的是 <code>postgres://db:5432</code> 而不是 <code>postgres://db:8001</code>。因为他们属于同一个容器网络中。</p>
-<p>在官网的 <a href="https://docs.docker.com/compose/compose-file/compose-file-v2/#networks" target="_blank" rel="noopener">Compose file version 2 reference</a> 一段中，也有相关网络介绍。</p>
-<div class="note success no-icon">
-            <p>Networks to join, referencing entries under the top-level networks key.</p>
-          </div>
-<p>这句话需要注意到，<code>services</code> 下级的服务中 <code>networks</code> 指定的网络不是指要创建的网络，而是这个服务要加入的网络。</p>
-<p>所以说，这时候如果你指定了一个没有的网络，就会报错啦，类似这种：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR: Service "mongodb" uses an undefined network "mogo_net"</span><br></pre></td></tr></table></figure>
-<p>需要定义才能加入。经过试验，我在 Compose 文件中，使用 top-level 的 <code>networks</code> 定义一下网络，运行时，会自动创建网络：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">version: "2"</span><br><span class="line">services:</span><br><span class="line">    mongodb:</span><br><span class="line">        image: mongo:4</span><br><span class="line">        container_name: devops-mongo # 容器名</span><br><span class="line">        ports:</span><br><span class="line">            - "27017:27017"</span><br><span class="line">        volumes:</span><br><span class="line">            - "/data/docker_local/mongo/configdb:/data/configdb"</span><br><span class="line">            - "/data/docker_local/mongo/data/db:/data/db"</span><br><span class="line">        command: --auth # 开启授权验证</span><br><span class="line">        networks:</span><br><span class="line">            - mongo_net</span><br><span class="line">networks:</span><br><span class="line">  mongo_net:</span><br></pre></td></tr></table></figure>
-<p><img src="https://ws1.sinaimg.cn/mw690/6d9475f6ly1g413yjfb2fj21e206o75z.jpg" alt></p>
-<p>发现这时候没有报错了，但是它自动创建的网络好像也不叫 <code>mong_net</code> 而是根据规则，创建的 <code>db_mongo_net</code> 的网络。虽然不报错，但是我觉得有点别扭，查看了一下，可以利用 <code>name</code> 的标签定义一下网络。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">version: "2.1"</span><br><span class="line">services:</span><br><span class="line">    mongodb:</span><br><span class="line">        image: mongo:4</span><br><span class="line">        container_name: devops-mongo # 容器名</span><br><span class="line">        ports:</span><br><span class="line">            - "27017:27017"</span><br><span class="line">        volumes:</span><br><span class="line">            - "/data/docker_local/mongo/configdb:/data/configdb"</span><br><span class="line">            - "/data/docker_local/mongo/data/db:/data/db"</span><br><span class="line">        command: --auth # 开启授权验证</span><br><span class="line">        networks:</span><br><span class="line">            - mongo_net</span><br><span class="line">networks:</span><br><span class="line">  mongo_net:</span><br><span class="line">    name: mongo_net</span><br></pre></td></tr></table></figure>
-<p>这时候启动时，日志显示就比较符合预期了：</p>
-<p><img src="https://ws1.sinaimg.cn/mw690/6d9475f6ly1g41480356uj21do06etag.jpg" alt></p>
-<p>「好奇心宝宝」附身，如果我 name 指定想要的值，上一层，有必要一致吗？</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">version: "2.1"</span><br><span class="line">services:</span><br><span class="line">    mongodb:</span><br><span class="line">        image: mongo:4</span><br><span class="line">        container_name: devops-mongo # 容器名</span><br><span class="line">        ports:</span><br><span class="line">            - "27017:27017"</span><br><span class="line">        volumes:</span><br><span class="line">            - "/data/docker_local/mongo/configdb:/data/configdb"</span><br><span class="line">            - "/data/docker_local/mongo/data/db:/data/db"</span><br><span class="line">        command: --auth # 开启授权验证</span><br><span class="line">        networks:</span><br><span class="line">            - mongo_net</span><br><span class="line">networks:</span><br><span class="line">  default:</span><br><span class="line">    name: mongo_net</span><br></pre></td></tr></table></figure>
-<p>上面的这种改法会报错：<code>ERROR: Service &quot;mongodb&quot; uses an undefined network &quot;mongo_net&quot;</code>。所以，顶层的 <code>networks</code> 下一层及的网络名称，要和服务中要加入的名称保持一致才行。这样一试，貌似对上面创建的 <code>db_mongo_net</code> 的网络而不报错的现象理解了。省略了 <code>name</code>, 那么 <code>name</code> 就按照默认规则创建网络了，其实就是类似于：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">version: "2.1"</span><br><span class="line">services:</span><br><span class="line">    mongodb:</span><br><span class="line">        image: mongo:4</span><br><span class="line">        container_name: devops-mongo # 容器名</span><br><span class="line">        ports:</span><br><span class="line">            - "27017:27017"</span><br><span class="line">        volumes:</span><br><span class="line">            - "/data/docker_local/mongo/configdb:/data/configdb"</span><br><span class="line">            - "/data/docker_local/mongo/data/db:/data/db"</span><br><span class="line">        command: --auth # 开启授权验证</span><br><span class="line">        networks:</span><br><span class="line">            - mongo_net</span><br><span class="line">networks:</span><br><span class="line">  mongo_net:</span><br><span class="line">    name: db_mongo_net</span><br></pre></td></tr></table></figure>
-<div class="note warning no-icon">
-            <p>注意点：name 这个标签，这样的用法需要在 Compose 2.1 版本及以上才能使用</p>
-          </div>
-<p>通过上面的对比，对 networks 有了初步了解了。那么，Compose 文件中式还不是一定要创建网络才行呢？可不可以利用已有的网络呢？后面的 external 会有介绍。</p>
-<p>PS：通过 <code>docker network ls/rm/create ..</code> 等命令，可以查看或操作容器的网络。</p>
-<h3 id="links"><a href="#links" class="headerlink" title="links"></a>links</h3><blockquote>
-<p>Links allow you to define extra aliases by which a service is reachable from another service. They are not required to enable services to communicate - by default, any service can reach any other service at that service’s name. In the following example, db is reachable from web at the hostnames db and database:</p>
-</blockquote>
-<p>通过链接，您可以给某个 service 定义别名，通过该别名可以从其他服务访问服务。默认情况下，任何服务都可以通过该服务的名称访问任何其他服务。下面的例子中，<code>db</code> 是一个服务名，在 <code>web</code> 服务中，给 <code>db</code> 定义了一个别名 <code>database</code>。那么，在 <code>web</code> 服务中，既可以通过 <code>db</code> 又可以通过 <code>databse</code> 查找到主机名了。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">version: "3"</span><br><span class="line">services:</span><br><span class="line"></span><br><span class="line">  web:</span><br><span class="line">    build: .</span><br><span class="line">    links:</span><br><span class="line">      - "db:database"</span><br><span class="line">  db:</span><br><span class="line">    image: postgres</span><br></pre></td></tr></table></figure>
-<h3 id="Specify-custom-networks"><a href="#Specify-custom-networks" class="headerlink" title="Specify custom networks"></a>Specify custom networks</h3><blockquote>
-<p>Instead of just using the default app network, you can specify your own networks with the top-level networks key. This lets you create more complex topologies and specify custom network drivers and options. You can also use it to connect services to externally-created networks which aren’t managed by Compose.</p>
-</blockquote>
-<p>为了不使用默认的网络，你可以使用 compsose 文件的 top-level 关键字 <code>networks</code> 自定义网络。这让你可以创建更复杂的拓扑并指定自定义网络驱动程序和选项。 你还可以使用它将服务连接到不由 Compose 管理的外部创建的网络。</p>
-<blockquote>
-<p>Here’s an example Compose file defining two custom networks. The proxy service is isolated from the db service, because they do not share a network in common - only app can talk to both.</p>
-</blockquote>
-<p>这里有一个例子，自定义了两个网络。 <code>proxy</code> 服务和 <code>db</code> 服务是隔离的。因为它俩不共享一个网络，只有 <code>app</code> 服务能够和他俩都能通信。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">version: "3"</span><br><span class="line">services:</span><br><span class="line"></span><br><span class="line">  proxy:</span><br><span class="line">    build: ./proxy</span><br><span class="line">    networks:</span><br><span class="line">      - frontend</span><br><span class="line">  app:</span><br><span class="line">    build: ./app</span><br><span class="line">    networks:</span><br><span class="line">      - frontend</span><br><span class="line">      - backend</span><br><span class="line">  db:</span><br><span class="line">    image: postgres</span><br><span class="line">    networks:</span><br><span class="line">      - backend</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  frontend:</span><br><span class="line">    # Use a custom driver</span><br><span class="line">    driver: custom-driver-1</span><br><span class="line">  backend:</span><br><span class="line">    # Use a custom driver which takes special options</span><br><span class="line">    driver: custom-driver-2</span><br><span class="line">    driver_opts:</span><br><span class="line">      foo: "1"</span><br><span class="line">      bar: "2"</span><br></pre></td></tr></table></figure>
-<h2 id="external"><a href="#external" class="headerlink" title="external"></a>external</h2><p><code>external: true</code> 加上这行表示我这个服务用的网络是用外部的网络，不用自动创建。否则，会按照规则默认创建网络的，例如 <code>db_default</code>、<code>sonarqube_default</code> 这些网络就是默认创建的。如果这个时候没有对应的外部网络，会弹出如下的提示：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Creating network "db_default" with the default driver</span><br><span class="line">ERROR: Network mysql_net declared as external, but could not be found. Please create the network manually using `docker network create mysql_net` and try again.</span><br></pre></td></tr></table></figure>
-<p><img src="https://ws1.sinaimg.cn/large/6d9475f6ly1g3zz5vx1d7j21ki0ykn7l.jpg" alt></p>
-<p>注意点：对于 compose 3.3 及更低版本，外部不能与其他网络配置键（driver，driver_opts，ipam，internal）一起使用。版本 3.4 及更高版本不再存在此限制。</p>
-<p>external 字段比较有用，<a href="https://docs.docker.com/compose/compose-file/#external-1" target="_blank" rel="noopener">官网有详细介绍</a>。</p>
-<h3 id="Use-a-pre-existing-network"><a href="#Use-a-pre-existing-network" class="headerlink" title="Use a pre-existing network"></a>Use a pre-existing network</h3><p>如果你想要你的容器加入到一个已存在的网络中，使用 <code>external</code> 选项:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">networks:</span><br><span class="line">  default:</span><br><span class="line">    external:</span><br><span class="line">      name: my-pre-existing-network</span><br></pre></td></tr></table></figure>
-<p>这时候不会去创建 <code>[projectname]_default</code> 网络, Compose 获取查找叫做 <code>my-pre-existing-network</code> 的网络，然后将你的容器与它相连。</p>
-<h2 id="Compose-方式创建-sonarqube-容器应用"><a href="#Compose-方式创建-sonarqube-容器应用" class="headerlink" title="Compose 方式创建 sonarqube 容器应用"></a>Compose 方式创建 sonarqube 容器应用</h2><p>如果你 MySQL 和 sonarqube 服务是在一个 docker-compose.yml 文件中的话，那么它们默认会处于同一个容器网络中，sonarqube 是可以连接上的。</p>
+<h2 id="Compose-方式启动"><a href="#Compose-方式启动" class="headerlink" title="Compose 方式启动"></a>Compose 方式启动</h2><p>如果你 MySQL 和 sonarqube 服务是在一个 docker-compose.yml 文件中的话，那么它们默认会处于同一个容器网络中，sonarqube 是可以连接上的。</p>
 <p>如果是在同一台机器上，MySQL 容器已经创建好了，和 sonarqube 不是同一个 docker-compose.yml 方式创建的，那么，这时候就需要配置，才能让两个容器实现网络互通。</p>
 <p>sonarqube 的 docker-compose.yml：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">version: "2"</span><br><span class="line">services:</span><br><span class="line">    sonar:</span><br><span class="line">        image: sonarqube:7.7-community</span><br><span class="line">        container_name: devops-sonar</span><br><span class="line">        ports:</span><br><span class="line">            - "9000:9000"</span><br><span class="line">            - "9002:9002"</span><br><span class="line">        volumes:</span><br><span class="line">            - "/data/sonar/conf:/opt/sonarqube/conf"</span><br><span class="line">            - "/data/sonar/extensions:/opt/sonarqube/extensions"</span><br><span class="line">            - "/data/sonar/logs:/opt/sonarqube/logs"</span><br><span class="line">            # - "/data/sonar/data:/opt/sonarqube/data"</span><br><span class="line">        environment:</span><br><span class="line">          sonar.jdbc.username: sonar #root管理员用户密码</span><br><span class="line">          sonar.jdbc.password: sonar   #创建test用户</span><br><span class="line">          sonar.jdbc.url: "jdbc:mysql://devops-mysql:3306/sonar?useUnicode=true&amp;characterEncoding=utf8&amp;rewriteBatchedStatements=true&amp;useConfigs=maxPerformance&amp;useSSL=false"</span><br><span class="line">        restart: always</span><br><span class="line">        networks:</span><br><span class="line">         - mysql_net</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  mysql_net:</span><br><span class="line">    external: true</span><br></pre></td></tr></table></figure>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://hub.docker.com/_/sonarqube/" target="_blank" rel="noopener">官宣-dockerhub-sonarqube</a></li>
-<li><a href="https://docs.docker.com/compose/compose-file/compose-file-v2/#networks" target="_blank" rel="noopener">compose-file-v2/#network</a></li>
-<li><a href="https://docs.docker.com/compose/networking/" target="_blank" rel="noopener">compose/networking</a> 专门讲解了 compose networking</li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">version: "2.4"</span><br><span class="line">services:</span><br><span class="line">    sonar:</span><br><span class="line">        image: sonarqube:7.7-community</span><br><span class="line">        container_name: devops-sonar</span><br><span class="line">        ports:</span><br><span class="line">            - "9000:9000"</span><br><span class="line">            - "9002:9002"</span><br><span class="line">        volumes:</span><br><span class="line">            - "/data/sonar/conf:/opt/sonarqube/conf"</span><br><span class="line">            - "/data/sonar/extensions:/opt/sonarqube/extensions"</span><br><span class="line">            - "/data/sonar/logs:/opt/sonarqube/logs"</span><br><span class="line">            - "/data/sonar/data:/opt/sonarqube/data"</span><br><span class="line">        environment:</span><br><span class="line">          sonar.jdbc.username: sonar #root管理员用户密码</span><br><span class="line">          sonar.jdbc.password: sonar   #创建test用户</span><br><span class="line">          sonar.jdbc.url: "jdbc:mysql://devops-mysql:3306/sonar?useUnicode=true&amp;characterEncoding=utf8&amp;rewriteBatchedStatements=true&amp;useConfigs=maxPerformance&amp;useSSL=false"</span><br><span class="line">        restart: always</span><br><span class="line">        networks:</span><br><span class="line">         - db_net</span><br><span class="line"></span><br><span class="line">networks:</span><br><span class="line">  db_net:</span><br><span class="line">    external: true</span><br></pre></td></tr></table></figure>
+<p><img src="https://ws1.sinaimg.cn/mw690/6d9475f6ly1g4165ysbgkj21gc0y27fl.jpg" alt></p>
+<p>可以发现，这时候 sonarqube 网络和 MySQL 网络是通的，而且，使用 <code>service name</code> 或者 <code>container name</code> 都可以查询到主机。因此，<code>sonar.jdbc.url</code> 可以配置成：</p>
+<ul>
+<li><code>jdbc:mysql://mysql:3306/sonar?useUnicode=true&amp;characterEncoding=utf8&amp;rewriteBatchedStatements=true&amp;useConfigs=maxPerformance&amp;useSSL=false</code></li>
+<li><code>jdbc:mysql://devops-mysql:3306/sonar?useUnicode=true&amp;characterEncoding=utf8&amp;rewriteBatchedStatements=true&amp;useConfigs=maxPerformance&amp;useSSL=false</code></li>
 </ul>
+<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><p>本文的 <code>docker-compose</code> 文件，归档在：<a href="https://github.com/Michael728/awesome-docker-service-for-me" target="_blank" rel="noopener">awesome-docker-service-for-me</a></p>
 
       
     </div>
@@ -715,21 +664,35 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2019/04/18/note-spring/" rel="bookmark">笔记-玩转Spring全家桶</a></div>
+      <div class="popular-posts-title"><a href="/2019/06/04/cicd-docker-jenkins/" rel="bookmark">利用 Docker 安装 CICD 神器 Jenkins</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2016/05/03/SQL/" rel="bookmark">SQL基础语法笔记教程整理</a></div>
+      <div class="popular-posts-title"><a href="/2018/10/11/cicd-jenkins-01/" rel="bookmark">CentOS 安装 CICD 利器 Jenkins</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/2018/09/16/blog-interesting/" rel="bookmark">那些有趣的博客</a></div>
+      <div class="popular-posts-title"><a href="/2019/06/15/docker-compose-networks/" rel="bookmark">Docker Compose 方式下的容器网络基础知识点</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2019/06/08/cicd-centos-install-nginx/" rel="bookmark">CentOS Nginx 安装及配置</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2019/06/08/cicd-nginx-basic/" rel="bookmark">Nginx 基础知识学习</a></div>
       
     </li>
   
@@ -805,7 +768,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://michael728.github.io/2019/06/13/docker-compose-install-sonarqube/" title="docker-compose-install-sonarqube">https://michael728.github.io/2019/06/13/docker-compose-install-sonarqube/</a>
+    <a href="https://michael728.github.io/2019/06/13/docker-compose-install-sonarqube/" title="使用 Docker Compose 方式搭建 SonarQube 服务">https://michael728.github.io/2019/06/13/docker-compose-install-sonarqube/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -815,6 +778,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DevOps/" rel="tag"># DevOps</a>
+          
+            <a href="/tags/Docker/" rel="tag"># Docker</a>
+          
+            <a href="/tags/CICD/" rel="tag"># CICD</a>
+          
+            <a href="/tags/代码质量/" rel="tag"># 代码质量</a>
+          
+        </div>
       
 
       
@@ -855,6 +830,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/15/docker-compose-networks/" rel="prev" title="Docker Compose 方式下的容器网络基础知识点">
+                Docker Compose 方式下的容器网络基础知识点 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -929,7 +908,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">55</span>
+                    <span class="site-state-item-count">56</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1145,7 +1124,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">74</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">76</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1312,7 +1295,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#sonarqube"><span class="nav-number">1.</span> <span class="nav-text">sonarqube</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置数据库"><span class="nav-number">2.</span> <span class="nav-text">配置数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接数据库"><span class="nav-number">3.</span> <span class="nav-text">连接数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-compose-方式"><span class="nav-number">4.</span> <span class="nav-text">docker-compose 方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#networks"><span class="nav-number">5.</span> <span class="nav-text">networks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#links"><span class="nav-number">5.1.</span> <span class="nav-text">links</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Specify-custom-networks"><span class="nav-number">5.2.</span> <span class="nav-text">Specify custom networks</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#external"><span class="nav-number">6.</span> <span class="nav-text">external</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Use-a-pre-existing-network"><span class="nav-number">6.1.</span> <span class="nav-text">Use a pre-existing network</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Compose-方式创建-sonarqube-容器应用"><span class="nav-number">7.</span> <span class="nav-text">Compose 方式创建 sonarqube 容器应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令行启动"><span class="nav-number">2.</span> <span class="nav-text">命令行启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置数据库"><span class="nav-number">3.</span> <span class="nav-text">配置数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接数据库"><span class="nav-number">4.</span> <span class="nav-text">连接数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Compose-方式启动"><span class="nav-number">5.</span> <span class="nav-text">Compose 方式启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码"><span class="nav-number">6.</span> <span class="nav-text">示例代码</span></a></li></ol></div>
             
 
           </div>
