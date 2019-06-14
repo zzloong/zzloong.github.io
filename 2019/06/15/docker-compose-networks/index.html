@@ -108,22 +108,22 @@
 
 
 
-  <meta name="description" content="前言本周使用 Docker Compose 方式搭建了 sonarqube 的服务，并进行了总结。遇到的问题： 我在本地的机器上，一开始用 Compose 的方式创建了一个 MySQL 的容器了。然后在再利用另一份 docker-compose.yml 文件创建 sonarqube 容器时，尝试配置 MySQL 替代 sonarqube 默认采用的 H2 数据库。但是 sonarqube 却怎么也">
+  <meta name="description" content="前言本周使用 Docker Compose 方式搭建了 sonarqube 的服务，并进行了总结。遇到的问题：">
 <meta name="keywords" content="容器,通信,网络">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker Compose 方式下的容器网络基础知识点">
 <meta property="og:url" content="https://michael728.github.io/2019/06/15/docker-compose-networks/index.html">
 <meta property="og:site_name" content="Michael翔">
-<meta property="og:description" content="前言本周使用 Docker Compose 方式搭建了 sonarqube 的服务，并进行了总结。遇到的问题： 我在本地的机器上，一开始用 Compose 的方式创建了一个 MySQL 的容器了。然后在再利用另一份 docker-compose.yml 文件创建 sonarqube 容器时，尝试配置 MySQL 替代 sonarqube 默认采用的 H2 数据库。但是 sonarqube 却怎么也">
+<meta property="og:description" content="前言本周使用 Docker Compose 方式搭建了 sonarqube 的服务，并进行了总结。遇到的问题：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ws1.sinaimg.cn/mw690/6d9475f6ly1g415cdupwjj20fa0faq3q.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/mw690/6d9475f6ly1g413yjfb2fj21e206o75z.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/mw690/6d9475f6ly1g41480356uj21do06etag.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/mw690/6d9475f6ly1g415nm7o6jj21ki0ykn7l.jpg">
-<meta property="og:updated_time" content="2019-06-14T17:01:38.157Z">
+<meta property="og:updated_time" content="2019-06-14T17:13:34.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker Compose 方式下的容器网络基础知识点">
-<meta name="twitter:description" content="前言本周使用 Docker Compose 方式搭建了 sonarqube 的服务，并进行了总结。遇到的问题： 我在本地的机器上，一开始用 Compose 的方式创建了一个 MySQL 的容器了。然后在再利用另一份 docker-compose.yml 文件创建 sonarqube 容器时，尝试配置 MySQL 替代 sonarqube 默认采用的 H2 数据库。但是 sonarqube 却怎么也">
+<meta name="twitter:description" content="前言本周使用 Docker Compose 方式搭建了 sonarqube 的服务，并进行了总结。遇到的问题：">
 <meta name="twitter:image" content="https://ws1.sinaimg.cn/mw690/6d9475f6ly1g415cdupwjj20fa0faq3q.jpg">
 
 
@@ -539,7 +539,7 @@
                 
               
 
-              <time title="创建时间：2019-06-15 00:17:12 / 修改时间：01:01:38" itemprop="dateCreated datePublished" datetime="2019-06-15T00:17:12+08:00">2019-06-15</time>
+              <time title="创建时间：2019-06-15 00:17:12 / 修改时间：01:13:34" itemprop="dateCreated datePublished" datetime="2019-06-15T00:17:12+08:00">2019-06-15</time>
             
 
             
@@ -620,11 +620,11 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本周使用 <a href>Docker Compose 方式搭建了 sonarqube 的服务</a>，并进行了总结。遇到的问题：</p>
+        <p><img src="https://ws1.sinaimg.cn/mw690/6d9475f6ly1g415cdupwjj20fa0faq3q.jpg" alt></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本周使用 <a href="https://michael728.github.io/2019/06/13/docker-compose-install-sonarqube/">Docker Compose 方式搭建了 sonarqube 的服务</a>，并进行了总结。遇到的问题：</p>
+<a id="more"></a>
 <p>我在本地的机器上，一开始用 Compose 的方式创建了一个 MySQL 的容器了。然后在再利用另一份 <code>docker-compose.yml</code> 文件创建 sonarqube 容器时，尝试配置 MySQL 替代 sonarqube 默认采用的 H2 数据库。但是 sonarqube 却怎么也无法连接上 MySQL。</p>
 <p>为了解决这个网络不通的问题，需要了解一下容器间网络通信的基础。</p>
-<p><img src="https://ws1.sinaimg.cn/mw690/6d9475f6ly1g415cdupwjj20fa0faq3q.jpg" alt></p>
-<a id="more"></a>
 <h2 id="networks"><a href="#networks" class="headerlink" title="networks"></a>networks</h2><p>关于 Compose 的网络，官网有专门的一节进行介绍。查看<a href="https://docs.docker.com/compose/networking/" target="_blank" rel="noopener">Networking in Compose</a></p>
 <blockquote>
 <p>By default Compose sets up a single network for your app. Each container for a service joins the default network and is both reachable by other containers on that network, and discoverable by them at a hostname identical to the container name.</p>
