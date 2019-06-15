@@ -116,10 +116,12 @@
 <meta property="og:site_name" content="Michael翔">
 <meta property="og:description" content="DevOpS 环节中，代码托管是必不可少的。本文介绍如何利用 docker-compose 搭建 Gitlab 服务。官网 虽然有介绍，但是资料比较老，不太推荐。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-15T06:09:31.886Z">
+<meta property="og:image" content="https://ws1.sinaimg.cn/mw690/6d9475f6ly1g41uqkxowbj20ze0b775y.jpg">
+<meta property="og:updated_time" content="2019-06-15T07:29:29.632Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用 Dockcer-Compose 安装 Gitlab 服务">
 <meta name="twitter:description" content="DevOpS 环节中，代码托管是必不可少的。本文介绍如何利用 docker-compose 搭建 Gitlab 服务。官网 虽然有介绍，但是资料比较老，不太推荐。">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/mw690/6d9475f6ly1g41uqkxowbj20ze0b775y.jpg">
 
 
 
@@ -534,7 +536,7 @@
                 
               
 
-              <time title="创建时间：2019-06-15 13:38:59 / 修改时间：14:09:31" itemprop="dateCreated datePublished" datetime="2019-06-15T13:38:59+08:00">2019-06-15</time>
+              <time title="创建时间：2019-06-15 13:38:59 / 修改时间：15:29:29" itemprop="dateCreated datePublished" datetime="2019-06-15T13:38:59+08:00">2019-06-15</time>
             
 
             
@@ -599,9 +601,14 @@
       
         <p>DevOpS 环节中，代码托管是必不可少的。本文介绍如何利用 docker-compose 搭建 Gitlab 服务。<a href="https://docs.gitlab.com/omnibus/docker/#install-gitlab-using-docker-compose" target="_blank" rel="noopener">官网</a> 虽然有介绍，但是资料比较老，不太推荐。</p>
 <a id="more"></a>
-<h2 id="gitlab-镜像"><a href="#gitlab-镜像" class="headerlink" title="gitlab 镜像"></a>gitlab 镜像</h2><p>gitlab 分为 <code>gitlab-ce</code> 和 <code>gitlab-ee</code> 两个版本。前者为社区版，后者为企业收费版。本文的镜像，使用的是社区版本。社区办的镜像，可以在<a href="https://hub.docker.com/r/gitlab/gitlab-ce" target="_blank" rel="noopener">gitlab/gitlab-ce
-</a> 查看，</p>
-<h2 id="docker-compose-示例"><a href="#docker-compose-示例" class="headerlink" title="docker-compose 示例"></a>docker-compose 示例</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">version: "3"</span><br><span class="line">services:</span><br><span class="line">    web:</span><br><span class="line">        image: 'gitlab/gitlab-ce:latest'</span><br><span class="line">        restart: always</span><br><span class="line">        hostname: 'gitlab.michael.com'</span><br><span class="line">        ports:</span><br><span class="line">            - '81:80'</span><br><span class="line">            - '443:443'</span><br><span class="line">            - '23:22'</span><br><span class="line">        environment:</span><br><span class="line">           GITLAB_OMNIBUS_CONFIG: |</span><br><span class="line">              external_url "http://gitlab.michael.com"</span><br><span class="line">               gitlab_rails['gitlab_shell_ssh_port'] = 23</span><br><span class="line">        volumes:</span><br><span class="line">            - '/data/gitlab/config:/etc/gitlab'</span><br><span class="line">            - '/data/gitlab/logs:/var/log/gitlab'</span><br><span class="line">            - '/data/gitlab/data:/var/opt/gitlab'</span><br></pre></td></tr></table></figure>
+<h2 id="gitlab-镜像"><a href="#gitlab-镜像" class="headerlink" title="gitlab 镜像"></a>gitlab 镜像</h2><p>gitlab 分为两个版本：</p>
+<ul>
+<li><code>gitlab-ce</code> 社区版</li>
+<li><code>gitlab-ee</code> 企业收费版</li>
+</ul>
+<p>本文的镜像，使用的是社区版本。社区办的镜像，可以在<a href="https://hub.docker.com/r/gitlab/gitlab-ce" target="_blank" rel="noopener">gitlab/gitlab-ce
+</a> 查看。</p>
+<h2 id="docker-compose-示例"><a href="#docker-compose-示例" class="headerlink" title="docker-compose 示例"></a>docker-compose 示例</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">version: "3"</span><br><span class="line">services:</span><br><span class="line">    web:</span><br><span class="line">        image: 'gitlab/gitlab-ce:latest'</span><br><span class="line">        restart: always</span><br><span class="line">        hostname: 'gitlab.michael.com'</span><br><span class="line">        ports:</span><br><span class="line">            - '81:80'</span><br><span class="line">            - '443:443'</span><br><span class="line">            - '23:22'</span><br><span class="line">        environment:</span><br><span class="line">           GITLAB_OMNIBUS_CONFIG: |</span><br><span class="line">              external_url "http://gitlab.michael.com"</span><br><span class="line">              gitlab_rails['gitlab_shell_ssh_port'] = 23</span><br><span class="line">        volumes:</span><br><span class="line">            - '/data/gitlab/config:/etc/gitlab'</span><br><span class="line">            - '/data/gitlab/logs:/var/log/gitlab'</span><br><span class="line">            - '/data/gitlab/data:/var/opt/gitlab'</span><br></pre></td></tr></table></figure>
 <p>为了在我机器上 <code>192.168.3.66</code> 能够识别这个域名，我通过配置 <code>hosts</code> 文件，将容器的宿主机 IP 和这个域名做了映射：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.3.43 gitlab.michael.com</span><br></pre></td></tr></table></figure>
 <h2 id="配置详解"><a href="#配置详解" class="headerlink" title="配置详解"></a>配置详解</h2><h3 id="ports"><a href="#ports" class="headerlink" title="ports"></a>ports</h3><p>端口 <code>81:80</code> 的配置是因为我容器的宿主机的 80 端口是给 Nginx 用了。在同一台机器上，为了不引起端口冲突，将 81 端口和容器的 80 端口映射。 访问 gitlab 服务下面地址皆可：</p>
@@ -612,13 +619,58 @@
 <p>这样的网址并不优美，因此，我在 Nginx 中增加了一个 <code>gitlab.conf</code> 的配置文件，这样就可以直接使用 <code>gitlab.michael.com</code> 访问了：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">upstream  gitlab&#123;</span><br><span class="line">    # 域名对应 gitlab配置中的 external_url</span><br><span class="line">    # 端口对应 gitlab 配置中的 nginx['listen_port']，通过环境变量可设置</span><br><span class="line">    server 192.168.3.43:81;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">server&#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    # 此域名是提供给最终用户的访问地址</span><br><span class="line">    server_name gitlab.michael.com;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        # 这个大小的设置非常重要，如果 git 版本库里面有大文件，设置的太小，文件push 会失败，根据情况调整</span><br><span class="line">        client_max_body_size 50m;</span><br><span class="line"></span><br><span class="line">        proxy_redirect off;</span><br><span class="line">        #以下确保 gitlab中项目的 url 是域名而不是 http://git，不可缺少</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        # 反向代理到 gitlab 内置的 nginx</span><br><span class="line">        proxy_pass http://gitlab;</span><br><span class="line">        index index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>关于使用容器搭建 Nginx 可参考之前的文章：<a href="https://michael728.github.io/2019/06/02/docker-create-develop-environment/">使用容器 Docker 创建开发环境</a></p>
+<p>端口 <code>&#39;23:22&#39;</code> 表示将宿主机的端口 23 和容器的端口 22 映射。ssh 默认端口就是 22，我们使用 ssh 协议登录宿主机时，就是用的 22 端口。因此，如果 <code>22:22</code> 这种映射的话，会影响登录宿主机的。也有文章修改了宿主机的 sshd 默认端口，但是我没有这么做。有需要的话，可以查看<a href="https://juejin.im/post/5a4c9ff36fb9a04507700fcc" target="_blank" rel="noopener">通过 docker 搭建自用的 gitlab 服务</a></p>
+<p><code>gitlab_rails[&#39;gitlab_shell_ssh_port&#39;] = 23</code> 这个环境变量的设置很关键，当我们选择 ssh 协议方式克隆代码库时，复制的地址将会自动变为：<code>ssh://git@gitlab.michael.com:23/root/gitlab-demo.git</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> michael @ Michael-MBP in ~/Code/00-Temp [15:25:21]</span><br><span class="line"><span class="meta">$</span> git clone ssh://git@gitlab.michael.com:23/root/gitlab-demo.git</span><br><span class="line">Cloning into 'gitlab-demo'...</span><br><span class="line">remote: Enumerating objects: 6, done.</span><br><span class="line">remote: Counting objects: 100% (6/6), done.</span><br><span class="line">remote: Compressing objects: 100% (2/2), done.</span><br><span class="line">remote: Total 6 (delta 0), reused 0 (delta 0)</span><br><span class="line">Receiving objects: 100% (6/6), done.</span><br></pre></td></tr></table></figure>
 <h3 id="external-url"><a href="#external-url" class="headerlink" title="external_url"></a>external_url</h3><p>这里的 <code>external_url</code> 配置的是外部 URL，会影响项目的访问地址，如果不配置，项目的访问地址会是一个随机字符串，在云服务器上搭建时尤其要注意这一点。</p>
 <p>例如，新建项目的 HTTP 地址为：<code>http://gitlab.michael.com/root/gitlab-demo</code>，这里的地址中的 <code>gitlab.michael.com</code> 就是我在 <code>docker-compose.yml</code> 文件中配置的环境变量。</p>
 <div class="note info no-icon">
             <p>我发现仅配置了 <code>hostname</code> 为域名时，外部 URL 默认和这个域名保持了一致，也实现了 <code>external_url</code> 的作用。</p>
           </div>
+<h3 id="开启邮件服务"><a href="#开启邮件服务" class="headerlink" title="开启邮件服务"></a>开启邮件服务</h3><p>我们在使用 github 等类似的平台工具的时候都会用到邮件服务，比如你在 github 上进行注册、密码重置、有人给你的开源项目提 issue 等等的时候，你通常都会收到邮件提醒。 gitlab 肯定也会有这个功能的，下面我们就来开启这个功能，在此之前需要准备一个邮箱账号，这个账号是用来负责发送邮件的，需要开启 smtp 协议支持。本文以 163 邮箱为例：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">version: "3"</span><br><span class="line">services:</span><br><span class="line">    gitlab:</span><br><span class="line">        image: 'gitlab/gitlab-ce:latest'</span><br><span class="line">        restart: always</span><br><span class="line">        hostname: 'gitlab.michael.com'</span><br><span class="line">        container_name: 'devops-gitlab'</span><br><span class="line">        ports:</span><br><span class="line">            - '81:80'</span><br><span class="line">            - '443:443'</span><br><span class="line">            - '23:22'</span><br><span class="line">        environment:</span><br><span class="line">            GITLAB_OMNIBUS_CONFIG: |</span><br><span class="line">                external_url "http://gitlab.michael.com"</span><br><span class="line">                gitlab_rails['gitlab_shell_ssh_port'] = 23</span><br><span class="line">                gitlab_rails['time_zone'] = 'Asia/Shanghai'</span><br><span class="line">                # email setting</span><br><span class="line">                gitlab_rails['smtp_enable'] = true</span><br><span class="line">                gitlab_rails['smtp_address'] = "smtp.163.com"</span><br><span class="line">                gitlab_rails['smtp_port'] = 25</span><br><span class="line">                gitlab_rails['smtp_user_name'] = "michael_show728@163.com"</span><br><span class="line">                gitlab_rails['smtp_password'] = "wyyx123456"</span><br><span class="line">                gitlab_rails['smtp_domain'] = "163.com"</span><br><span class="line">                gitlab_rails['smtp_authentication'] = "login"</span><br><span class="line">                gitlab_rails['smtp_enable_starttls_auto'] = true</span><br><span class="line">                gitlab_rails['gitlab_email_from'] = "michael_show728@163.com"</span><br><span class="line">                gitlab_rails['smtp_tls'] = false</span><br><span class="line">                gitlab_rails['smtp_openssl_verify_mode'] = 'peer'</span><br><span class="line">                user["git_user_email"] = "michael_show728@163.com"</span><br><span class="line">        volumes:</span><br><span class="line">            - '/data/gitlab/config:/etc/gitlab'</span><br><span class="line">            - '/data/gitlab/logs:/var/log/gitlab'</span><br><span class="line">            - '/data/gitlab/data:/var/opt/gitlab'</span><br></pre></td></tr></table></figure>
+<p>说明：</p>
+<ul>
+<li><code>gitlab_rails[&#39;smtp_address&#39;]</code> ：SMTP服务地址，不同的服务商不同</li>
+<li><code>gitlab_rails[&#39;smtp_port&#39;]</code> ：服务端口</li>
+<li><code>gitlab_rails[&#39;smtp_user_name&#39;]</code> ：用户名，自己注册的</li>
+<li><code>gitlab_rails[&#39;smtp_password&#39;]</code> ：客户端授权秘钥（获取方式，下图讲解）</li>
+<li><code>gitlab_rails[&#39;gitlab_email_from&#39;]</code> ：发出邮件的用户，注意跟用户名保持一致</li>
+<li><code>user[&quot;git_user_email&quot;]</code> ：发出用户，注意跟用户名保持一致</li>
+</ul>
+<p>亲测，当你使用管理员账户登录时，添加用户之后，上面的配置能够成功发送邮件：</p>
+<p><img src="https://ws1.sinaimg.cn/mw690/6d9475f6ly1g41uqkxowbj20ze0b775y.jpg" alt></p>
+<h3 id="数据持久化"><a href="#数据持久化" class="headerlink" title="数据持久化"></a>数据持久化</h3><p>通过挂卷的方式，将 gitlab 的相关数据保存到宿主机上：</p>
+<table>
+<thead>
+<tr>
+<th>当地的位置</th>
+<th>容器的位置</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/data/gitlab/config</td>
+<td>/etc/gitlab</td>
+<td>用于存储GitLab配置文件</td>
+</tr>
+<tr>
+<td>/data/gitlab/logs</td>
+<td>/var/log/gitlab</td>
+<td>用于存储日志</td>
+</tr>
+<tr>
+<td>/data/gitlab/data</td>
+<td>/var/opt/gitlab</td>
+<td>用于存储应用数据</td>
+</tr>
+</tbody>
+</table>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://cnodejs.org/topic/5bb4caa69545eaf107b9c7e6" target="_blank" rel="noopener">使用docker-compose搭建gitlab</a> 挺全的，还介绍了 gitlab runner 的使用</li>
+<li><a href="https://juejin.im/post/5a4c9ff36fb9a04507700fcc" target="_blank" rel="noopener">掘金-通过 docker 搭建自用的 gitlab 服务</a></li>
+<li><a href="https://segmentfault.com/a/1190000014305359" target="_blank" rel="noopener">使用docker搭建gitlab环境</a> 邮箱配置参考</li>
 </ul>
 
       
@@ -1234,7 +1286,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#gitlab-镜像"><span class="nav-number">1.</span> <span class="nav-text">gitlab 镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-compose-示例"><span class="nav-number">2.</span> <span class="nav-text">docker-compose 示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置详解"><span class="nav-number">3.</span> <span class="nav-text">配置详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ports"><span class="nav-number">3.1.</span> <span class="nav-text">ports</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#external-url"><span class="nav-number">3.2.</span> <span class="nav-text">external_url</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#gitlab-镜像"><span class="nav-number">1.</span> <span class="nav-text">gitlab 镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-compose-示例"><span class="nav-number">2.</span> <span class="nav-text">docker-compose 示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置详解"><span class="nav-number">3.</span> <span class="nav-text">配置详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ports"><span class="nav-number">3.1.</span> <span class="nav-text">ports</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#external-url"><span class="nav-number">3.2.</span> <span class="nav-text">external_url</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开启邮件服务"><span class="nav-number">3.3.</span> <span class="nav-text">开启邮件服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据持久化"><span class="nav-number">3.4.</span> <span class="nav-text">数据持久化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
