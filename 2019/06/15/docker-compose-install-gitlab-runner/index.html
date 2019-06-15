@@ -108,17 +108,18 @@
 
 
 
-  <meta name="description" content="DevOps CICD Blog 持续学习">
+  <meta name="description" content="DevOpS 环节中，代码托管是必不可少的。本文介绍如何利用 docker-compose 搭建 Gitlab 服务。官网 虽然有介绍，但是资料比较老，不太推荐。">
 <meta name="keywords" content="DevOps CICD">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Michael翔">
-<meta property="og:url" content="https://michael728.github.io/tags/Blog/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Dockcer-Compose 安装 Gitlab 服务">
+<meta property="og:url" content="https://michael728.github.io/2019/06/15/docker-compose-install-gitlab-runner/index.html">
 <meta property="og:site_name" content="Michael翔">
-<meta property="og:description" content="DevOps CICD Blog 持续学习">
+<meta property="og:description" content="DevOpS 环节中，代码托管是必不可少的。本文介绍如何利用 docker-compose 搭建 Gitlab 服务。官网 虽然有介绍，但是资料比较老，不太推荐。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-15T06:09:31.886Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Michael翔">
-<meta name="twitter:description" content="DevOps CICD Blog 持续学习">
+<meta name="twitter:title" content="使用 Dockcer-Compose 安装 Gitlab 服务">
+<meta name="twitter:description" content="DevOpS 环节中，代码托管是必不可少的。本文介绍如何利用 docker-compose 搭建 Gitlab 服务。官网 虽然有介绍，但是资料比较老，不太推荐。">
 
 
 
@@ -128,7 +129,7 @@
 
   
   
-  <link rel="canonical" href="https://michael728.github.io/tags/Blog/">
+  <link rel="canonical" href="https://michael728.github.io/2019/06/15/docker-compose-install-gitlab-runner/">
 
 
 
@@ -138,7 +139,7 @@
   };
 </script>
 
-  <title>标签: Blog | Michael翔</title>
+  <title>使用 Dockcer-Compose 安装 Gitlab 服务 | Michael翔</title>
   
 
 
@@ -197,7 +198,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -256,7 +257,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -470,150 +471,336 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>Blog<small>标签</small>
-        </h2>
-      </div>
-
-      
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://michael728.github.io/2019/06/15/docker-compose-install-gitlab-runner/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Michael翔">
+      <meta itemprop="description" content="DevOps CICD Blog 持续学习">
+      <meta itemprop="image" content="/images/logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Michael翔">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/05/19/hexo-blog-full-note/" itemprop="url">
-            
-              <span itemprop="name">利用 Hexo + Github Pages 搭建博客并优化 Next 主题教程</span>
-            
-          </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">使用 Dockcer-Compose 安装 Gitlab 服务
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-19T10:10:51+08:00" content="2019-05-19">
-          05-19
-        </time>
-      </div>
+              
+            
+          </h2>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-15 13:38:59 / 修改时间：14:09:31" itemprop="dateCreated datePublished" datetime="2019-06-15T13:38:59+08:00">2019-06-15</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/06/15/docker-compose-install-gitlab-runner/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/15/docker-compose-install-gitlab-runner/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/06/15/docker-compose-install-gitlab-runner/" class="leancloud_visitors" data-flag-title="使用 Dockcer-Compose 安装 Gitlab 服务">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2018/09/16/blog-interesting/" itemprop="url">
-            
-              <span itemprop="name">那些有趣的博客</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-09-16T23:25:50+08:00" content="2018-09-16">
-          09-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-          <a class="post-title-link" href="/2016/09/03/blog-logfile/" itemprop="url">
-            
-              <span itemprop="name">博客建站日志</span>
-            
-          </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2016-09-03T22:12:53+08:00" content="2016-09-03">
-          09-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p>DevOpS 环节中，代码托管是必不可少的。本文介绍如何利用 docker-compose 搭建 Gitlab 服务。<a href="https://docs.gitlab.com/omnibus/docker/#install-gitlab-using-docker-compose" target="_blank" rel="noopener">官网</a> 虽然有介绍，但是资料比较老，不太推荐。</p>
+<a id="more"></a>
+<h2 id="gitlab-镜像"><a href="#gitlab-镜像" class="headerlink" title="gitlab 镜像"></a>gitlab 镜像</h2><p>gitlab 分为 <code>gitlab-ce</code> 和 <code>gitlab-ee</code> 两个版本。前者为社区版，后者为企业收费版。本文的镜像，使用的是社区版本。社区办的镜像，可以在<a href="https://hub.docker.com/r/gitlab/gitlab-ce" target="_blank" rel="noopener">gitlab/gitlab-ce
+</a> 查看，</p>
+<h2 id="docker-compose-示例"><a href="#docker-compose-示例" class="headerlink" title="docker-compose 示例"></a>docker-compose 示例</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">version: "3"</span><br><span class="line">services:</span><br><span class="line">    web:</span><br><span class="line">        image: 'gitlab/gitlab-ce:latest'</span><br><span class="line">        restart: always</span><br><span class="line">        hostname: 'gitlab.michael.com'</span><br><span class="line">        ports:</span><br><span class="line">            - '81:80'</span><br><span class="line">            - '443:443'</span><br><span class="line">            - '23:22'</span><br><span class="line">        environment:</span><br><span class="line">           GITLAB_OMNIBUS_CONFIG: |</span><br><span class="line">              external_url "http://gitlab.michael.com"</span><br><span class="line">               gitlab_rails['gitlab_shell_ssh_port'] = 23</span><br><span class="line">        volumes:</span><br><span class="line">            - '/data/gitlab/config:/etc/gitlab'</span><br><span class="line">            - '/data/gitlab/logs:/var/log/gitlab'</span><br><span class="line">            - '/data/gitlab/data:/var/opt/gitlab'</span><br></pre></td></tr></table></figure>
+<p>为了在我机器上 <code>192.168.3.66</code> 能够识别这个域名，我通过配置 <code>hosts</code> 文件，将容器的宿主机 IP 和这个域名做了映射：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.3.43 gitlab.michael.com</span><br></pre></td></tr></table></figure>
+<h2 id="配置详解"><a href="#配置详解" class="headerlink" title="配置详解"></a>配置详解</h2><h3 id="ports"><a href="#ports" class="headerlink" title="ports"></a>ports</h3><p>端口 <code>81:80</code> 的配置是因为我容器的宿主机的 80 端口是给 Nginx 用了。在同一台机器上，为了不引起端口冲突，将 81 端口和容器的 80 端口映射。 访问 gitlab 服务下面地址皆可：</p>
+<ul>
+<li><code>宿主机 IP:81</code>，即 <code>192.168.3.43:81</code></li>
+<li><code>gitlab.michael.com:81</code></li>
+</ul>
+<p>这样的网址并不优美，因此，我在 Nginx 中增加了一个 <code>gitlab.conf</code> 的配置文件，这样就可以直接使用 <code>gitlab.michael.com</code> 访问了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">upstream  gitlab&#123;</span><br><span class="line">    # 域名对应 gitlab配置中的 external_url</span><br><span class="line">    # 端口对应 gitlab 配置中的 nginx['listen_port']，通过环境变量可设置</span><br><span class="line">    server 192.168.3.43:81;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">server&#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    # 此域名是提供给最终用户的访问地址</span><br><span class="line">    server_name gitlab.michael.com;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        # 这个大小的设置非常重要，如果 git 版本库里面有大文件，设置的太小，文件push 会失败，根据情况调整</span><br><span class="line">        client_max_body_size 50m;</span><br><span class="line"></span><br><span class="line">        proxy_redirect off;</span><br><span class="line">        #以下确保 gitlab中项目的 url 是域名而不是 http://git，不可缺少</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        # 反向代理到 gitlab 内置的 nginx</span><br><span class="line">        proxy_pass http://gitlab;</span><br><span class="line">        index index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于使用容器搭建 Nginx 可参考之前的文章：<a href="https://michael728.github.io/2019/06/02/docker-create-develop-environment/">使用容器 Docker 创建开发环境</a></p>
+<h3 id="external-url"><a href="#external-url" class="headerlink" title="external_url"></a>external_url</h3><p>这里的 <code>external_url</code> 配置的是外部 URL，会影响项目的访问地址，如果不配置，项目的访问地址会是一个随机字符串，在云服务器上搭建时尤其要注意这一点。</p>
+<p>例如，新建项目的 HTTP 地址为：<code>http://gitlab.michael.com/root/gitlab-demo</code>，这里的地址中的 <code>gitlab.michael.com</code> 就是我在 <code>docker-compose.yml</code> 文件中配置的环境变量。</p>
+<div class="note info no-icon">
+            <p>我发现仅配置了 <code>hostname</code> 为域名时，外部 URL 默认和这个域名保持了一致，也实现了 <code>external_url</code> 的作用。</p>
+          </div>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://cnodejs.org/topic/5bb4caa69545eaf107b9c7e6" target="_blank" rel="noopener">使用docker-compose搭建gitlab</a> 挺全的，还介绍了 gitlab runner 的使用</li>
+</ul>
 
       
     </div>
 
+    
+      
+
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2017/05/05/movie-Perfect-Strangers/" rel="bookmark">观影-完美陌生人-家庭-人性</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2016/05/03/SQL/" rel="bookmark">SQL基础语法笔记教程整理</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/2018/09/16/blog-interesting/" rel="bookmark">那些有趣的博客</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
+
+    
+    
+    
+
+    
+      <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center;">
+  <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Michael翔 wechat" style="width: 200px; max-width: 100%;">
+  <div>欢迎订阅 ヾﾉ≧∀≦)o</div>
+</div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>我知道是不会有人点的，但万一有人想不开呢👇</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.jpg" alt="Michael翔 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.png" alt="Michael翔 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Michael翔</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://michael728.github.io/2019/06/15/docker-compose-install-gitlab-runner/" title="使用 Dockcer-Compose 安装 Gitlab 服务">https://michael728.github.io/2019/06/15/docker-compose-install-gitlab-runner/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/15/docker-compose-networks/" rel="next" title="Docker Compose 方式下的容器网络基础知识点">
+                <i class="fa fa-chevron-left"></i> Docker Compose 方式下的容器网络基础知识点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -633,8 +820,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1028,6 +1224,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#gitlab-镜像"><span class="nav-number">1.</span> <span class="nav-text">gitlab 镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#docker-compose-示例"><span class="nav-number">2.</span> <span class="nav-text">docker-compose 示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置详解"><span class="nav-number">3.</span> <span class="nav-text">配置详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ports"><span class="nav-number">3.1.</span> <span class="nav-text">ports</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#external-url"><span class="nav-number">3.2.</span> <span class="nav-text">external_url</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -1167,6 +1380,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
 
   
 
@@ -1216,6 +1433,8 @@
 
 
 
+
+  
 
 
   

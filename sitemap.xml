@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://michael728.github.io/2019/06/15/docker-compose-install-gitlab-runner/</loc>
+    
+    <lastmod>2019-06-15T06:09:31.886Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://michael728.github.io/2019/06/15/docker-compose-networks/</loc>
     
     <lastmod>2019-06-14T17:13:34.652Z</lastmod>
