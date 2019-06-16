@@ -19,6 +19,8 @@ thumbnail: https://images.pexels.com/photos/313773/pexels-photo-313773.jpeg?w=12
 ## 建站日志
 
 {% note success no-icon %}
+
+- 2019-06-15: 博客使用 Travis CI 部署
 - 2019-05-18: 博客增加了「阅读」、「观影」、「一言」页面
 - 2019-05-11：博客增加了萌萌的「看板娘」，同时，评论系统改为 Valine
 - 2018-11-11：Github搭建的博客，启用https了，做了适配修改，同时升级了Next主题版本。
