@@ -260,6 +260,8 @@ deploy:
 
 ![](https://ws1.sinaimg.cn/mw690/6d9475f6gy1g436kt051kj21yj0bk76e.jpg)
 
+一开始部署都 OK，后来发现博客的分享按钮和图标显示都有问题。后来发现 next 主题下和 `next/source/lib/needsharebutton` 下都有 `.gitignore` 文件。这样当然去部署时，不会带相关配置文件了。于是，我将 `.gitignore` 文件都重命名了。后来再执行推送时，部署就 OK 了。
+
 ## 总结
 
 整个过程走下来，感觉和我现在工作中打造的 DevOps 流水线系统很像。开源的这些作品有很多优秀的点值得学习和借鉴，需要去多体验。
