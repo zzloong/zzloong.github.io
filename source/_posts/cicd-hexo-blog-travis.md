@@ -164,10 +164,109 @@ stages:
 
 ## 部署 Hexo 博客
 
+### Travis 准备
+
 为了能够实现代码推送到 Github，需要给 Travis CI Github 的 Persional access tokens，在 [settings- Developer settings](https://github.com/settings/tokens) 可以生成一个。
 
 然后进入 Travis 中的[项目设置界面](https://travis-ci.com/account/repositories)，可以给具体的代码库进行设置，比如增加环境变量：
 
- ![](https://ws1.sinaimg.cn/mw690/6d9475f6gy1g435q8jxcsj21p007h3zp.jpg)
+![](https://ws1.sinaimg.cn/mw690/6d9475f6gy1g435q8jxcsj21p007h3zp.jpg)
 
- 主要加了一个环境变量 `GH_TOKEN`，这个在后面的 `.travis.yml` 中会用到。
+主要加了一个环境变量 `GH_TOKEN`，这个在后面的 `.travis.yml` 中会用到。
+
+```shell
+# 指定构建环境是Node.js，当前版本是稳定版
+anguage: node_js
+node_js: stable
+
+env:
+ global:
+   - URL_REPO: github.com/Michael728/michael728.github.io.git
+
+# 设置钩子只检测blog-source分支的push变动
+branches:
+  only:
+    - hexo
+
+# 设置缓存文件
+cache:
+  directories:
+    - node_modules
+
+#在构建之前安装hexo环境
+before_install:
+  - npm install -g hexo-cli
+
+#安装git插件和搜索功能插件
+install:
+  - npm install
+
+  # 设置git提交名，邮箱；替换真实token到_config.yml文件
+before_script:
+  - git config user.name "Michael728"
+  - git config user.email "649168982@qq.com"
+  # 替换同目录下的_config.yml文件中github_token字符串为travis后台刚才配置的变量，注>意此处sed命令用了双引号。单引号无效！
+  - sed -i "s/github_token/${GH_TOKEN}/g" _config.yml || exit 1
+
+# 执行清缓存，生成网页操作
+script:
+  - hexo clean
+  - hexo generate
+  - echo ${ENV_TEST}
+  - hexo deploy
+
+# configure notifications (email, IRC, campfire etc)
+# please update this section to your needs!
+# https://docs.travis-ci.com/user/notifications/
+notifications:
+  email:
+    - 649168982@qq.com
+  on_success: change
+  on_failure: always
+```
+
+这份 yml 文件我做了一些调整，`hexo deploy` 失败，就是会显示失败，而参考文章中有一些写在了 `after_scripts` 中，不方便查看是否部署成功了。
+
+有[文章]([Hexo 自动部署到 Github](https://lotabout.me/2016/Hexo-Auto-Deploy-to-Github/))介绍了可以对 token 进一步加密，然后在 `.travis.yml` 中直接配置密码，这样也可以走通，免走了去配置环境变量的步骤。个人还是偏向去配置环境变量.
+
+- 按照指导，包括[官网的指导-Encryption keys](https://docs.travis-ci.com/user/encryption-keys/)，由于网络太慢，没走通；
+- 将密码写在环境中也是比价好的一种方式！
+
+### 代码库准备
+
+之前的博客代码库只有一个 master 分支，存放的都是 `hexo g` 命令生成的静态文件。于是，我需要：
+
+- 本地准备好博客代码库
+- 新建一个叫 `hexo` 的分支：`git checkout -b hexo`
+- 添加 `.travis.yml` 文件
+- 将之前我的博客源文件拷贝到该分之下，并删除`node_modules`、`public`文件夹
+- 同时，我也将主题文件下的 `.git` 目录删除了，因为我并需要 submodule 的方式去下载主题仓库了
+- 然后将站点配置文件进行一下修改
+
+```shell
+deploy:
+- type: git
+  #repo: git@github.com:Michael728/michael728.github.io.git
+  #下方的gh_token会被.travis.yml中sed命令替换
+  repo: https://github_token@github.com/Michael728/michael728.github.io.git
+
+  branch: master
+- type: baidu_url_submitter
+```
+
+说明：`github_token` 这个字段看到了吗？在 `.travis.yml` 文件中，会使用环境变量 `GH_TOKEN` 替换掉它的。因为构建机器上没有配置 ssh 免密，所以需要使用这种 token+http 的方式实现代码的推送
+
+到此基本配置完毕，下载新建文章之后，只需要 `git push origin hexo` 推送到远端分支，在 [Travis CI](https://travis-ci.com/Michael728/michael728.github.io) 中会自动执行部署脚本的。
+
+![](https://ws1.sinaimg.cn/mw690/6d9475f6gy1g436kt051kj21yj0bk76e.jpg)
+
+## 总结
+
+整个过程走下来，感觉和我现在工作中打造的 DevOps 流水线系统很像。开源的这些作品有很多优秀的点值得学习和借鉴，需要去多体验。
+
+昨天在家中折腾搭建好的 Gitlab 和 Gitlab-Runner 应该也可以实现这样的功能，因为它也有一个 `.gitlab-ci.yml` 来定义 CI/CD 流水线。改天有时间，研究一下。
+
+## 参考
+
+- [Hexo+github搭建个人博客（三）：Travis CI持续集成,自动部署博客](http://duansm.top/2018/08/05/hexo-travis/)
+- [掘金-Hexo遇上Travis-CI：可能是最通俗易懂的自动发布博客图文教程](https://juejin.im/post/5a1fa30c6fb9a045263b5d2a)

@@ -5,6 +5,8 @@ date: 2019-05-19 17:37:22
 
 {% note success no-icon %}
 种一棵树最好的时间是十年前，其次是现在。
+
+这句话和这一句比较像：Better late than never -- 迟做总比不去做好
 {% endnote %}
 
 {% note success no-icon %}
