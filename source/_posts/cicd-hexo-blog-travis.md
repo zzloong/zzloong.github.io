@@ -17,11 +17,9 @@ keywords:
 
 ## Travis CI
 
-[Travis CI](https://travis-ci.com) 在 Github 的 Marketplace 中可以看到，这是它 Marketplace 的链接:
+[Travis CI](https://travis-ci.com) 在 Github 的 Marketplace 中可以看到，这是它 Marketplace 的链接:[Travis CI](https://github.com/marketplace/travis-ci)
 
-- [Travis CI](https://github.com/marketplace/travis-ci)
-
-`Continuous Integration`，简称CI`CI`：意思是，在一个项目中，任何人对代码库的任何改动，都会触发 CI 服务器自动对项目进行构建，自动运行测试，自动编译，甚至自动部署到测试环境。这样做的好处就是，随时发现问题，随时修复。因为修复问题的成本随着时间的推移而增长，越早发现，修复成本越低。
+`Continuous Integration`，简称 `CI`：意思是，在一个项目中，任何人对代码库的任何改动，都会触发 CI 服务器自动对项目进行构建，自动运行测试，自动编译，甚至自动部署到测试环境。这样做的好处就是，随时发现问题，随时修复。因为修复问题的成本随着时间的推移而增长，越早发现，修复成本越低。
 
 Travis CI 是在线托管的 CI 服务，用 Travis 来进行持续集成，不需要自己搭服务器。
 
@@ -34,6 +32,34 @@ Travis CI 是在线托管的 CI 服务，用 Travis 来进行持续集成，不�
 5. 将 `.travis.yml` 文件推送到你的远端仓库，然后就会触发 Travis CI 构建；
 6. 登录 [Travis CI](https://travis-ci.com/)然后选择你的仓库查看构建任务的执行详情；
 
-### Travis 构建语法
+## Jobs/Builds/Matrices and Stages
 
-https://docs.travis-ci.com/user/customizing-the-build/#The-Build-Lifecycle
+### Job Lifecycle -- Job 生命周期
+
+Travis CI 为每种编程语言提供默认构建环境和默认的阶段集。 创建虚拟机为你的Job提供构建环境，将存储库克隆到其中，安装可选的插件，然后运行构建阶段。
+
+job 的声明周期，主要包含两大部分：
+
+1. `install`：安装依赖；
+2. `script`：运行构建脚本；
+
+在 `installation` 阶段之前（`beofore_install`）、在 `script phase` 之前（`before_script`）或之后（`after_script`），你可以运行自定义命令；
+
+当构建成功或失败置换后，可以使用 `after_success`（例如构建文档）或 `after_failure`（例如上载日志文件）阶段执行其他操作（actions）。 在 `after_failure` 和 `after_success` 中，您可以使用 `$TRAVIS_TEST_RESULT` 环境变量获取构建结果。
+
+完整的 job 生命周期(包括三个可选的部署阶段，以及在检出 git 存储库 和更改到存储库目录) 如下：
+
+1. Install [apt addons](https://docs.travis-ci.com/user/installing-dependencies/#installing-packages-with-the-apt-addon) 可选
+2. Install [cache components](https://docs.travis-ci.com/user/caching) 可选
+3. before_install
+4. install
+5. before_script
+6. script
+7. before_cache (for cleaning up cache) 可选
+8. after_success or after_failure
+9. before_deploy  可选
+10. deploy  可选
+11. after_deploy  可选
+12. after_script
+
+更多内容，查看 [Job Lifecycle](https://docs.travis-ci.com/user/customizing-the-build/#The-Build-Lifecycle)
