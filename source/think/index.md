@@ -1,0 +1,68 @@
+---
+title: 一言
+date: 2019-05-19 17:37:22
+---
+
+{% note success no-icon %}
+种一棵树最好的时间是十年前，其次是现在。
+{% endnote %}
+
+{% note success no-icon %}
+书籍，尤其是好书中的知识，是系统的，成体系的。这种知识体系带来的愉悦感，远超刷抖音和知乎带来的快感。--[曾少贤-掏心窝说几件事](https://mp.weixin.qq.com/s?__biz=MzI1MzUzNTc0NQ==&mid=2247489210&idx=1&sn=c5e67b4b972eb1711d1941ddef990531&chksm=e9d3a5d4dea42cc2b69a0282ee06b777e60b59cea7ff00088308a35f554e85f3340c32a82bb5&mpshare=1&scene=1&srcid=#rd)
+{% endnote %}
+
+{% note success no-icon %}
+没有目标的人总是为有目标的人而活
+{% endnote %}
+
+{% note success no-icon %}
+忘记是最好的老师，因为:凡是你记不住的，都是本来就不需要记住的东西。
+{% endnote %}
+
+{% note success no-icon %}
+@从不失眠-: 一直丧无法好转就吃糖吧,心和口总要有一个是甜的
+{% endnote %}
+
+{% note success no-icon %}
+金钱权利从来不是定义幸福的标准，比你富的人也会烦恼，比你穷的人也会快乐
+{% endnote %}
+
+{% note success no-icon %}
+@南枫翊: 事实上  机场比婚礼现场见证了更多真挚的接吻  医院的墙壁比教堂聆听了更多的祷告
+{% endnote %}
+
+{% note success no-icon %}
+不要年纪轻轻，就觉得自己进入了人生低谷，你还有很大的下降空间……
+{% endnote %}
+
+{% note success no-icon %}
+有事不怕事，没事别找事
+{% endnote %}
+
+{% note success no-icon %}
+雪崩来临的时候没有一粒雪是无辜的
+{% endnote %}
+
+{% note success no-icon %}
+有些事，宁愿做了后悔，也不要后悔不做
+{% endnote %}
+
+{% note success no-icon %}
+全身上下只有嘴硬
+{% endnote %}
+
+{% note success no-icon %}
+你每天过得很轻松，说明你在走下坡路，你每天都在拼命，说明你在走上坡路
+{% endnote %}
+
+{% note success no-icon %}
+工作不分你我，做事不分边界！   张一鸣
+{% endnote %}
+
+{% note success no-icon %}
+爱好越多，你会越热爱生活
+{% endnote %}
+
+{% note success no-icon %}
+托尔斯泰讲，幸福的家庭都是相似的，不幸的家庭各有各的不幸
+{% endnote %}
