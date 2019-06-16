@@ -262,11 +262,13 @@ deploy:
 
 一开始部署都 OK，后来发现博客的分享按钮和图标显示都有问题。后来发现 next 主题下和 `next/source/lib/needsharebutton` 下都有 `.gitignore` 文件。这样当然去部署时，不会带相关配置文件了。于是，我将 `.gitignore` 文件都重命名了。后来再执行推送时，部署就 OK 了。
 
+所以，现在我只需要在 Hexo 分支编辑，就可以自动触发 CI 去发布博客啦。甚至手机端都可以直接写篇博客了！美滋滋~~~
+
 ## 总结
 
 整个过程走下来，感觉和我现在工作中打造的 DevOps 流水线系统很像。开源的这些作品有很多优秀的点值得学习和借鉴，需要去多体验。
 
-昨天在家中折腾搭建好的 Gitlab 和 Gitlab-Runner 应该也可以实现这样的功能，因为它也有一个 `.gitlab-ci.yml` 来定义 CI/CD 流水线。改天有时间，研究一下。
+昨天在家中折腾搭建好的 [Gitlab 和 Gitlab-Runner](https://michael728.github.io/2019/06/15/docker-compose-install-gitlab-runner/) 应该也可以实现这样的功能，因为它也有一个 `.gitlab-ci.yml` 来定义 CI/CD 流水线。改天有时间，研究一下。
 
 ## 参考
 
