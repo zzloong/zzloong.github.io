@@ -749,6 +749,26 @@ $ sudo tcpdump -i any -c5 -nn "port 80 and (src 192.168.122.98 or src 54.204.39.
 - [Tcpdump入门教程示例](https://liyang85.com/tcpdump-tutorial-with-examples)
 - [9个tcpdump使用实例](http://www.cnblogs.com/bangerlee/articles/2545612.html)
 
+## useradd/groupadd
+
+Linux 系统的用户、群组添加、管理
+
+```shell
+# 添加一个用户为 michael，属于基本组(主组) root。如果不加 -g，则默认会属于和用户名同名的主组
+useradd -g root michael
+# 修改密码
+passwd michael
+# 新增一个 michael 的组
+groupadd michael
+# 修改用户名的主组为 michael
+usermod -g michael michael
+# 删除用户 michael
+userdel michael
+```
+
+参考：
+- [博客园-Linux用户和组管理，添加修改用户，添加修改组，加入组，移除组](https://www.cnblogs.com/woshimrf/p/linux-user-group-command.html#commentform)
+
 ## unzip
 ```
 unzip -l demo1-0.1-py2.7.egg
