@@ -13,7 +13,7 @@ keywords:
 
 # 利器清单
 
-> 希望资料收藏爱好着能发现有用的东西，也欢迎 Fork 仓库 [awesome-tools-resources](https://github.com/Michael728/awesome-tools-resources) 提交 PR 或者留言，推荐你的「利器」
+> 希望资料收藏爱好着能发现有用的东西，也欢迎 Fork 仓库 [awesome-tools-resources](https://github.com/Michael728/awesome-tools-resources) 提交 PR，推荐你的「利器」
 
 分享发现的好资源，好工具！
 
@@ -29,7 +29,7 @@ keywords:
 - [学术搜索](http://www.gycc.com/)
 - [谷歌趋势](https://trends.google.com/trends/?geo=US)
 
-## 开发
+## 程序员工具
 
 ### 工具导航
 
@@ -110,7 +110,7 @@ keywords:
 
 - [虫部落工具集合](http://tool.chongbuluo.com/) 很全的在线工具集合|
 - [PDF工具](https://smallpdf.com/cn) 万能PDF工具集合
-- [md.aclickall](http://md.aclickall.com/) 为了能在知乎利用markdown发文章，发现了这个工具
+- [md.aclickall](http://md.aclickall.com/) 为了能在知乎利用markdown发文章，发现了这个工具，类似的还有：[online-markdown](http://blog.didispace.com/tools/online-markdown/)、[mdnice](https://www.mdnice.com/)
 - [百度脑图](http://naotu.baidu.com/)
 - [word pdf等格式转换](http://cn.diywz.com/)
 
