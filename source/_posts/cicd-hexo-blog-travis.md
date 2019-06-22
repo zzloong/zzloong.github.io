@@ -272,3 +272,7 @@ deploy:
 
 - [Hexo+github搭建个人博客（三）：Travis CI持续集成,自动部署博客](http://duansm.top/2018/08/05/hexo-travis/)
 - [掘金-Hexo遇上Travis-CI：可能是最通俗易懂的自动发布博客图文教程](https://juejin.im/post/5a1fa30c6fb9a045263b5d2a)
+
+Travis CI
+
+- [Github 项目与 Travis CI 集成](https://lingxiankong.github.io/2018-06-28-travis-ci-integration.html)
