@@ -177,7 +177,7 @@ menu:
   Books: /books  || book   #This is your books page
   Movies: /movies || film  #This is your movies page
   think: /think || lightbulb-o
-  top: /top/ || signal
+  # top: /top/ || signal
   about: /about/ || user
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
