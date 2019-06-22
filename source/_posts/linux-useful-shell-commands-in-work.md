@@ -27,9 +27,11 @@ export PS4='+${BASH_SOURCE}:${LINENO}:${FUNCNAME[0]}: '
 <!-- more -->
 
 参考
+
 - [耗子叔-如何调试BASH脚本](https://coolshell.cn/articles/1379.html/comment-page-1#comment-1965637
 
 ## 快速输入历史命令
+
 输入关键词之后，连续使用`ctrl+r`快速切换
 
 - [In reverse-i-search (Ctrl+R ) ,Any method to switch between similar commands in history](https://stackoverflow.com/questions/14231643/in-reverse-i-search-ctrlr-any-method-to-switch-between-similar-commands-in)
@@ -56,6 +58,7 @@ echo done
 ```
 
 参考：
+
 - [简书-【ssh】ssh远程执行命令](https://www.jianshu.com/p/25c2407f5905)
 
 ## for循环
@@ -79,13 +82,16 @@ echo "End Datetime:" $(date +"%Y-%m-%d %H:%M:%S")
 ```
 
 参考：
+
 - [Linux下Shell的for循环语句](https://www.cnblogs.com/EasonJim/p/8315939.html)
 - [Shell脚本中的分号使用](https://www.cnblogs.com/EasonJim/p/8315896.html)
 
 ## if 判断
+
 判读字符串($str)是否包含另一个字符串($str1)：
 
 方法1：
+
 ```shell
 if [  `echo $str | grep -e '$str1'`  ] ; then
     echo yes
@@ -93,66 +99,75 @@ fi
 ```
 
 方法2(如果`$str1`在判断中直接使用字符串而不是变量，则不能加引号，如`if [[ $str =~ ^dx ]]`判读字符串`$str`是否以`dx`开头，`^dx`不能加引号)：
-```
+
+```shell
 if [[ $str =~ $str1 ]] ; then
     echo yes
 fi
 ```
 
-
 比较两个字符串是否相等的办法是：
+
 ```shell
     if [ "$test"x = "test"x ]; then
 ```
 
 这里的关键有几点：
+
 - 使用单个等号，我发现，2个等号也 OK；
 - 注意到等号两边各有一个空格：这是unix shell的要求
 - 注意到`"$test"x`最后的`x`，这是特意安排的，因为当$test为空的时候，上面的表达式就变成了`x = testx`，显然是不相等的。而如果没有这个 `x`，表达式就会报错：`[: =: unary operator expected`
 
 参考：
+
 - [shell中if做比较](https://www.cnblogs.com/276815076/archive/2011/10/30/2229286.html)
 
 ## 从URL截取字段
+
 默认去除url的最后斜线：
 
-```
+```shell
 url=http://xxx/patch/xxx/xxxx/
 tar_name=$(echo ${url%*/}|awk -F '/' '{print $NF}')
 ```
 
-## shell判断字符串包含
-```
+## shell 判断字符串包含
+
+```shell
 if [[ $tar =~ tar.gz ]];then echo "包含";fi
 ```
 
 - [Shell判断字符串包含关系的几种方法](https://www.cnblogs.com/willhua/articles/6141046.html)
 
 ## Bash 加 `-xe` 表示什么意思
+
 `-e` 使shell立即退出，某些东西会返回一个错误(这通常在shell脚本中用作故障保护机制),
 `-x` 允许详细执行脚本，你可以看到发生了什么
 
 - [将-xe参数传递给/ bin / bash的做法是什么](https://codeday.me/bug/20181105/355713.html)
 
 ## Shell 中的引号
+
 https://blog.csdn.net/miyatang/article/details/8077123
 
 ## Shell定义变量和给变量赋值
 
+### 将命令的执行结果赋值给变量
 
-### 将命令的执行结果赋值给变量：
 ```
 var='pwd'
 # 或者
 var=$(pwd)
 ```
 
-### 将 Bash 的内置命令 read 读入的内容赋值给变量：
+### 将 Bash 的内置命令 read 读入的内容赋值给变量
+
 ```
 echo -n "Enter var:";read var
 ```
 
 ## 通配符与特殊符号
+
 | 符号 | 意义                                                                                                     |
 | ---- | -------------------------------------------------------------------------------------------------------- |
 | *    | 代表0个到无穷多个任意字符                                                                                |
@@ -161,7 +176,8 @@ echo -n "Enter var:";read var
 | [-]  | 若减号在括号内，代表在编码顺序内的所有字符。例如，[0-9]代表0-9之间所有数字，因为数字的语系编码是连续的   |
 | [^]  | 若中括号第一个字符是`^`，表示原向选择，例如[^abc]代表一定有一个字符，只要是非a,b,c的其他字符就接收       |
 
-### 示例：
+### 示例
+
 - 找出`/etc/`目录下文件夹名字刚好有5个字母的文件名：`ll -d /etc/????? `
 - 找出`/etc/`下面文件名含有数字的的文件名：`ll -d /etc/*[0-9]*`
 - 找出`/etc/`下面文件名开头非小写字母的文件名：`ll -d /etc/[^a-z]*`
@@ -189,12 +205,13 @@ echo -n "Enter var:";read var
 
 ## 给Linux新增硬盘之后的操作
 
-```
+```shell
 fdisk -l #查看磁盘情况，发现有磁盘没有分区，比如是/dev/xvde
 fdisk /dev/xvde #进行磁盘分区的操作
 ```
+
 `fdisk`磁盘分区时，可以输入`m`，会有提示：
-```
+```shell
 Command (m for help): m
 Command action
    a   toggle a bootable flag
@@ -214,8 +231,10 @@ Command action
    w   write table to disk and exit
    x   extra functionality (experts only)
 ```
+
 我依次这么输入的：
-```
+
+```shell
 add a new partition:n
 partion type:p
 Partion number:分区个数 1
@@ -226,7 +245,8 @@ write table to disk and exit:w
 ```
 
 分区完成之后，需要格式化
-```
+
+```shell
 mkfs -t ext4 /dev/xvde1
 ```
 
@@ -251,6 +271,7 @@ vi /etc/fstab
 第一段可以用分区名，也可以用 `blkid` 的方式获取 `UUID` 的值
 
 参考：
+
 - www.jianshu.com/p/7b8c3509d5fe
 - [玩转 Linux 之：磁盘分区、挂载知多少？](https://my.oschina.net/leejun2005/blog/290073)
 - [LVM](https://wiki.archlinux.org/index.php/LVM_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
@@ -260,7 +281,7 @@ vi /etc/fstab
 
 只将不带注释的内容提取出来，作为配置文件
 
-```
+```shell
 mv /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf_bak
 grep -v "#" /etc/vsftpd/vsftpd.conf_bak > /etc/vsftpd/vsftpd.conf
 ```
@@ -272,6 +293,7 @@ grep -v "#" /etc/vsftpd/vsftpd.conf_bak > /etc/vsftpd/vsftpd.conf
 - [Linux下修改主机名hostname](http://yanue.net/post-142.html)
 
 ## 查看Linux系统版本
+
 ```
 lsb_release -a # 适用于所有Linux系统
 cat /etc/os-release #推荐
@@ -284,22 +306,27 @@ cat /proc/version # 查看Linux内核
 - [Linux查看安装的系统版本](https://blog.csdn.net/u011669700/article/details/79443134)
 
 ## 显示 shell 执行过程
+
 ```
 set -x
 ```
+
 如果想隐藏某一行的内容：
-```
+
+```shell
 set -x
 xxxx
 set +x
 yyyy
 set -x
 ```
+
 - [Linux 查看脚本的执行过程](https://blog.csdn.net/doiido/article/details/43966419)
 - [Shell脚本调试技术](https://www.ibm.com/developerworks/cn/linux/l-cn-shell-debug/index.html)
 
 ## 查看端口占用
-```
+
+```shell
 [root@centos7.4 software]# netstat -apn                查看当前运行的所有进程的端口使用情况
 [root@centos7.4 software]# netstat -apn | grep 端口号   查看指定端口使用情况
 [root@centos7.4 software]# kill 指定端口的pid号          杀死指定进程（端口号对应的pid）
@@ -372,8 +399,43 @@ systemctl status firewalld
 ```
 
 参考：
+
 - [CentOS 7开放端口和关闭防火墙](https://www.jianshu.com/p/bad33004bb4f)
 
+## shell echo 输出带颜色
+
+输出格式
+
+- 设置底色，字体颜色：`echo -e "\033[底色;字体颜色m 内容 \033[0m"`
+- 设置字体颜色：`echo -e "\033[字体颜色m 内容 \033[0m"`
+
+其中 `\033` 是 ESC 健的八进制，`\033[`即告诉终端后面是设置颜色的参数，显示方式，前景色，背景色均是数字
+
+| 字体颜色 | 背景色 | 颜色   |
+| -------- | ------ | ------ |
+| 30       | 40     | 黑色   |
+| 31       | 41     | 红色   |
+| 32       | 42     | 绿色   |
+| 33       | 43     | 黃色   |
+| 34       | 44     | 蓝色   |
+| 35       | 45     | 紫红色 |
+| 36       | 46     | 青蓝色 |
+| 37       | 47     | 白色   |
+
+> 但有一点要注意，如果输出带颜色的字符后并没有恢复终端默认设置，后续的命令输出仍旧会采用之前的颜色，如果是在脚本中设置了颜色而未恢复，则整个脚本的输出都会采用之前的颜色，因此如果不希望影响后面文字的输出，最好是在输出带颜色的文字之后恢复终端默认设置，`\033[0m` 关闭所有属性
+
+示例：
+
+```shell
+# 字颜色为绿色
+echo -e "\033[32m download new package (version $version) \033[0m"
+# 红底黑字
+echo -e "\033[41;37mMichael翔\033[0m"
+```
+
+参考：
+
+- [shell脚本中echo显示内容带颜色](https://www.cnblogs.com/lr-ting/archive/2013/02/28/2936792.html)
 
 ## FAQ
 
