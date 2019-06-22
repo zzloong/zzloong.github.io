@@ -112,5 +112,5 @@
         });
     });
   </script>
-
+<script src="https://bestzuo.cn/js/src/av-core-mini-0.6.4.js"></script>
 {% endif %}
