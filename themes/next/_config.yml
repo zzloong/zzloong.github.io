@@ -650,7 +650,7 @@ calendar:
 
 # Disqus
 disqus:
-  enable: true
+  enable: false
   shortname: michaelxiang
   count: false
   lazyload: true
@@ -680,7 +680,7 @@ changyan:
 # More info available at https://valine.js.org
 # https://reuixiy.github.io/technology/computer/computer-aided-art/2018/07/15/use-valine-in-theme-next.html
 valine:
-  enable: false # When enable is set to be true, leancloud_visitors is recommended to be closed for the re-initialization problem within different leancloud adk version.
+  enable: true # When enable is set to be true, leancloud_visitors is recommended to be closed for the re-initialization problem within different leancloud adk version.
   appid: 7CDtrbb4U7nQzOdctmXXnMqt-gzGzoHsz # your leancloud application appid
   appkey: ISgUUtg79U9Eq0ActHmVRtmN # your leancloud application appkey
   notify: true # mail notifier, See: https://github.com/xCss/Valine/wiki
@@ -690,7 +690,7 @@ valine:
   guest_info: nick,mail,link # custom comment header
   pageSize: 10 # pagination size
   language: # language, available values: en, zh-cn
-  visitor: false # leancloud-counter-security is not supported for now. When visitor is set to be true, appid and appkey are recommended to be the same as leancloud_visitors' for counter compatibility. Article reading statistic https://valine.js.org/visitor.html
+  visitor: true # leancloud-counter-security is not supported for now. When visitor is set to be true, appid and appkey are recommended to be the same as leancloud_visitors' for counter compatibility. Article reading statistic https://valine.js.org/visitor.html
   comment_count: false # if false, comment count will only be displayed in post page, not in home page
   recordIP: true
 
