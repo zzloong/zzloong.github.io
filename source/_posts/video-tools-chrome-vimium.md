@@ -39,3 +39,7 @@ categories: ToolsDaily
 最终，展示一下录制的成果：
 
 <iframe src="//player.bilibili.com/player.html?aid=56598067&cid=98872911&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+视频链接：
+
+- https://www.bilibili.com/video/av56598067
