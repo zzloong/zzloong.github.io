@@ -28,9 +28,10 @@ keywords:
 
 ### 快捷键整理
 
+- `Enter`：选中一个文件 Enter，直接改名
 - Ctrl 多用于命令行快捷键，Command 多用于图形化快捷键
 - 选中桌面的所有需归档资料，`Command+Sshift+n`，会将文件归档到一个文件夹下
-- 调度中心设置：右control，显示桌面
+- 调度中心设置：右 `control`，显示桌面
 
 ![](https://ws4.sinaimg.cn/large/006tNbRwly1fx3vz0aqxxj30ib0e3ac9.jpg)
 
@@ -43,16 +44,22 @@ keywords:
 - 删除文件：
   - `Command+Delete`
   - 工具栏添加垃圾箱，然后选择待删除文件，点击垃圾箱即可删除
-- 复制文件路径：`Command+Option+c`
+- `Command+Option+c` 复制文件路径
 - 按住 Option 很多菜单会发生些小变化
-- emoji 表情：`Control + Command + Space`
+- `Control + Command + Space` emoji 表情
 - `Command+Up`：回到上一层文件夹
 - `Command+Down`：如果是文件夹就进入文件夹，如果是文件就打开
-- Enter：选中一个文件 Enter，直接改名
-- 锁屏：`Ctrl + Command + q`
+- `Ctrl + Command + q` 锁屏
 - 单词，选中，三指，自动翻译单词
-- 临时性切换显示/隐藏：`Command+Shift+.`
+- `Command+Shift+.` 临时性切换显示/隐藏
 - `Command+Alt+i`: Chrome开发者工具，F12功能
+- `command＋shift＋G` Finder中如何输入路径直接跳转，[参考](https://www.cnblogs.com/wormday/archive/2011/05/04/2035984.html)
+  - `command+shift+C` 电脑
+  - `command+shift+H` 个人
+  - `command+shift+D` 桌面
+  - `command+shift+A` 程序
+
+
 
 ### 终端快捷键
 
@@ -90,10 +97,12 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 Shift 键类似于可视模式，比如在某个位置点击光标并按住 Shift 键不松开，再去另一个位置点击一次，就可以选中两次点击位置之间的文本内容。
 
 ### 触控板
--  四指捏合，展开全部应用
--  辅助功能-鼠标 开启三指拖拽
+
+- 四指捏合，展开全部应用
+- 辅助功能-鼠标 开启三指拖拽
 
 参考：
+
 - [用了那么久 Mac，才知道触控板原来还有这些功能](https://sspai.com/post/44173)
 
 ### Mac Split View屏幕分割
@@ -101,6 +110,7 @@ Shift 键类似于可视模式，比如在某个位置点击光标并按住 Shif
 - 长按左上角放大的绿色按钮，然后就会选择放置应用的区域！
 
 参考：
+
 - [Mac Split View屏幕分割](https://jingyan.baidu.com/article/a3a3f811eb712d8da2eb8a95.html)
 
 ### 更改默认文件打开方式
