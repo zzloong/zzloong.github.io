@@ -142,15 +142,13 @@ LastPass,屡获殊荣的密码管理器,保存你的密码,让你安全访问任
 ## [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?utm_source=chrome-app-launcher-info-dialog)
 推荐指数：★★★★★
 
-```
-shift+b # 搜索你书签中的链接，所以，保存书签的时候，设置点关键字吧
-x # 快速关闭标签
-shift+x # 快速恢复你之前关闭的标签
-gg # 回到页首
-G # 回到页尾
-```
+- `shift+b` 搜索你书签中的链接，所以，保存书签的时候，设置点关键字吧
+- `x` 快速关闭标签
+- `shift+x` 快速恢复你之前关闭的标签
+- `gg` 回到页首
+- `G` 回到页尾
 
-VIM党的利器吧，可惜，自己还未完全掌握……
+VIM党的利器
 
 ## API 测试工具
 
