@@ -258,7 +258,7 @@ deploy:
 
 到此基本配置完毕，下载新建文章之后，只需要 `git push origin hexo` 推送到远端分支，在 [Travis CI](https://travis-ci.com/Michael728/michael728.github.io) 中会自动执行部署脚本的。
 
-![](https://ws1.sinaimg.cn/mw690/6d9475f6gy1g436kt051kj21yj0bk76e.jpg)
+![](https://ws1.sinaimg.cn/large/6d9475f6ly1g4awzbezfwj21yi0l1tdy.jpg)
 
 一开始部署都 OK，后来发现博客的分享按钮和图标显示都有问题。后来发现 next 主题下和 `next/source/lib/needsharebutton` 下都有 `.gitignore` 文件。这样当然去部署时，不会带相关配置文件了。于是，我将 `.gitignore` 文件都重命名了。后来再执行推送时，部署就 OK 了。
 
