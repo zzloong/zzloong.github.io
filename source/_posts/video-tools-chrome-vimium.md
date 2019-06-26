@@ -34,6 +34,10 @@ categories: ToolsDaily
 
 - [WillTV-版权BGM哪里找，我怎么找背景音乐，适合vlog视频的正版音乐库](https://www.bilibili.com/video/av45080707)
 
+## 常用软件
+
+- [arctime](https://arctime.org/index.html) 字幕
+
 ## 成果
 
 最终，展示一下录制的成果：
