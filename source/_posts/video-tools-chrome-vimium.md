@@ -1,6 +1,6 @@
 ---
 title: Chrome 扩展神器 Vimium 使用教程——快速搜索收藏的书签
-tags: [Video, Chrome, 教程]
+tags: [Video, Chrome, 教程, 利器]
 toc: true
 date: 2019-06-23 20:40:03
 categories: ToolsDaily
