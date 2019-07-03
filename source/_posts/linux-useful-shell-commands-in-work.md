@@ -448,6 +448,10 @@ echo -e "\033[41;37mMichael翔\033[0m"
 ### Q：http://blog.csdn.net/u011109356/article/details/54928955
 `/dev/xvda1` 占满
 
-## Linux好文
+## Linux 好文
 
 - [Linux工具快速教程](https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html#)
+
+## 资源推荐
+
+- [Github-命令行的艺术](https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md)
