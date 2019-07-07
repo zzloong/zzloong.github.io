@@ -38,7 +38,7 @@ keywords:
 
 ![Spring Initializr 网站](https://i.bmp.ovh/imgs/2019/07/492cf11fedb2b02e.jpg)
 
-下面主要介绍 IDEA 初始化一个 Sring Boot 项目：
+下面主要介绍 IDEA 如何初始化一个 Sring Boot 项目：
 
 1.File-New-Porject，选择 `Spring Initializr`，选择 SDK 版本；
 2.输入项目的元数据信息，关系到项目的路径、`pom` 文件中项目的 Maven 坐标（`GAV`），；
@@ -128,7 +128,7 @@ spring.profiles.active=dev
 
 除了上面在 `application.properties` 指定激活的配置外，还可以在 Envirionment 中设置相关环境变量激活：
 
-![](https://ws1.sinaimg.cn/large/6d9475f6ly1g4rkbpct96j20wv0dbdie.jpg)
+![environment](https://ws1.sinaimg.cn/large/6d9475f6ly1g4rkbpct96j20wv0dbdie.jpg)
 
 经过测试，我在 Environment 中设置环境变量激活了 `Dev` 的配置，然后在 `application.properties` 激活的是 `Prod` 的配置，最终控制台日志显示， `Dev` 配置被激活。
 
