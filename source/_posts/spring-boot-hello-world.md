@@ -233,13 +233,15 @@ Spring Boot 提供了很多”开箱即用“的依赖模块，都是以 `spring
 
 ### 目录结构理解
 
-- controller：前端控制器，负责页面访问控制，主要是对外提供的API接口，用户使用服务时的入口处，可以结合swagger生成对应的API文档
-- service：数据服务层，逻辑层，主要是业务类代码，归档了前端控制器中相关服务的操作方法接口类，该文件夹下包含子impl文件夹，归档对应的实现接口
+- controller：控制层，前端控制器，负责页面访问控制，主要是对外提供的API接口，用户使用服务时的入口处，可以结合swagger生成对应的API文档
+- service：业务层，逻辑层，主要是业务类代码，归档了前端控制器中相关服务的操作方法接口类，该文件夹下包含子impl文件夹，归档对应的实现接口
 - domain：实体类，归档对应的实体（Entity），一个实体尝尝就对应着数据库中一张表
-- dao：数据访问层，实体类对应的数据库操作接口类，提供增删改查 MongoDB 接口
+- dao：数据访问层，实体类对应的数据库操作接口类，它与数据库进行交互，封装了对数据库的CURD操作
 - config：配置信息类
 - utils：工具类
 - constant：常量接口类
+
+当请求来了，controller 就会将相应的请求分发到相应的 service层，在 service 层中再调用 dao 层进行数据库交互。这里的 dao 层其实就是之前的 model 层，封装了对数据库的操作。这样一来，就把业务处理逻辑从 controller 中分离出来，从而实现了解耦。
 
 ## 示例代码
 
@@ -260,6 +262,8 @@ Spring Boot 提供了很多”开箱即用“的依赖模块，都是以 `spring
 - [【系统学习SpringBoot】目录结构（建议）](https://blog.csdn.net/Small_Mouse0/article/details/77826906?utm_source=blogxgwz1)
 - [Spring Boot基础(三):Spring Boot项目推荐工程结构](http://blog.longjiazuo.com/archives/1903)
 - [使用SpringBoot的推荐项目目录结构](https://www.cnblogs.com/songxingzhu/p/9597927.html)
+- [浅谈MVC分层架构中的层次](https://blog.csdn.net/Earl_yuan/article/details/50382431)
+- [YezhiweiBlog-Spring Boot 工程结构规范——项目定义级包结构](https://yezhwi.github.io/springboot/2017/10/24/Spring-Boot-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/)
 
 Spring Boot 启动原理：
 
