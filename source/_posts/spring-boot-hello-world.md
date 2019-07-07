@@ -14,7 +14,7 @@ keywords:
 
 目前没有系统学习过 Spring 框架，参与工作时，直接参与到了 Spring Boot 项目的开发。目前还比较菜，所以，你要是和我一样，不妨也跳过 Spring 框架的学习，直接学习 Sring Boot。
 
-[官方文档](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#getting-started-introducing-spring-boot)的一个介绍：
+[官方文档](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#getting-started-introducing-spring-boot)的一段介绍：
 
 > Spring Boot makes it easy to create stand-alone, production-grade Spring-based Applications that you can run. We take an opinionated view of the Spring platform and third-party libraries, so that you can get started with minimum fuss. Most Spring Boot applications need very little Spring configuration.
 
