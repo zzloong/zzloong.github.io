@@ -229,6 +229,18 @@ Spring Boot 提供了很多”开箱即用“的依赖模块，都是以 `spring
 - spring-boot-starter-amqp ：通过 spring-rabbit 支持 AMQP。
 - spring-boot-starter-actuator ： 添加适用于生产环境的功能，如性能指标和监测等功能。
 
+### SpringBoot 目录结构
+
+### 目录结构理解
+
+- controller：前端控制器，负责页面访问控制，主要是对外提供的API接口，用户使用服务时的入口处，可以结合swagger生成对应的API文档
+- service：数据服务层，逻辑层，主要是业务类代码，归档了前端控制器中相关服务的操作方法接口类，该文件夹下包含子impl文件夹，归档对应的实现接口
+- domain：实体类，归档对应的实体（Entity），一个实体尝尝就对应着数据库中一张表
+- dao：数据访问层，实体类对应的数据库操作接口类，提供增删改查 MongoDB 接口
+- config：配置信息类
+- utils：工具类
+- constant：常量接口类
+
 ## 示例代码
 
 - [awesome-spring-boot-examples](https://github.com/Michael728/awesome-spring-boot-examples)
@@ -241,3 +253,14 @@ Spring Boot 提供了很多”开箱即用“的依赖模块，都是以 `spring
 - [InfoQ-胡正林-Spring Boot 多环境配置最佳实践](https://www.infoq.cn/article/Q-ese4CxV2IWmltsJcGX) 偏底层，了解 Profile 激活流程可查阅
 - [新年彩蛋：Spring Boot自定义Banner](http://blog.didispace.com/spring-boot-banner/)
 - [梁桂钊-Spring Boot 揭秘与实战（一） 快速上手](http://blog.720ui.com/2016/springboot_01_quickstart/) spring-boot-starter
+
+目录结构参考
+
+- [Spring Boot工程结构(推荐)](https://blog.csdn.net/u011659172/article/details/52934206)
+- [【系统学习SpringBoot】目录结构（建议）](https://blog.csdn.net/Small_Mouse0/article/details/77826906?utm_source=blogxgwz1)
+- [Spring Boot基础(三):Spring Boot项目推荐工程结构](http://blog.longjiazuo.com/archives/1903)
+- [使用SpringBoot的推荐项目目录结构](https://www.cnblogs.com/songxingzhu/p/9597927.html)
+
+Spring Boot 启动原理：
+
+- [老钱-SpringBoot 究竟是如何跑起来的?](https://mp.weixin.qq.com/s?__biz=MzI0MzQyMTYzOQ==&mid=2247484837&idx=1&sn=7e1ae0a453984c7e3bf5a24825de8979&chksm=e96c1d0dde1b941b1117ba5e780d07ae25b2e3d426de87c0e2209b35722541c131650d010365&mpshare=1&scene=1&srcid=0105mKe5g6v4TCdJcYBvBaWv#rd)
