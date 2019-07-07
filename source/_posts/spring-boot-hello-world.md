@@ -10,9 +10,13 @@ keywords:
   - Spring Boot
 ---
 
+![springboot2](https://i.bmp.ovh/imgs/2019/07/713950737e3e2019.jpeg)
+
 ## 简介
 
 目前没有系统学习过 Spring 框架，参与工作时，直接参与到了 Spring Boot 项目的开发。目前还比较菜，所以，你要是和我一样，不妨也跳过 Spring 框架的学习，直接学习 Sring Boot。
+
+<!-- more -->
 
 [官方文档](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#getting-started-introducing-spring-boot)的一段介绍：
 
@@ -41,7 +45,7 @@ keywords:
 下面主要介绍 IDEA 如何初始化一个 Sring Boot 项目：
 
 1.File-New-Porject，选择 `Spring Initializr`，选择 SDK 版本；
-2.输入项目的元数据信息，关系到项目的路径、`pom` 文件中项目的 Maven 坐标（`GAV`），；
+2.输入项目的元数据信息，关系到项目的路径、`pom` 文件中项目的 Maven 坐标（`GAV`）；
 
 ![gav](https://i.bmp.ovh/imgs/2019/07/b563013b9d013d48.png)
 
