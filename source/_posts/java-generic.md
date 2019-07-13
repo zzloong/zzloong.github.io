@@ -1,0 +1,270 @@
+---
+title: Java 泛型知识笔记
+date: 2019-07- 13 12:49:10
+tags:
+  - Java
+  - 基础
+categories:
+  - Java
+keywords:
+  - 泛型
+  - Generic
+---
+
+## 泛型概念
+
+泛型（ `Generic`）是一种编译器机制，您可通过该机制获取通用的代码并参数化（或模板化）剩余部分，从而以一种一般化方式创建（和使用）一些类型的实体（比如类或接口和方法）。这种编程方法被称为泛型编程。
+
+<!-- more -->
+
+所谓泛型，就是允许在定义类、接口、方法时使用类型形参，这个类型形参(或叫泛型)将在声明变量、创建对象、调用方法时动态地指定(即传入实际的类型参数，也可以称为「类型实参」)。
+
+JDK 5.0（2004 年发布）向 Java 语言中引入了泛型类型（泛型）和关联的语法。增加泛型支持，很大程度上都是为了让集合能记住其元素的数据类型。在没有泛型之前，一旦把一个对象「丢进」 Java 集合中，集合就会忘记对象的类型，把所有的对象当成 Object 类型处理。当程序从集合中取出对象后，就需要进行强制类型的转换。这种强制类型转换不仅使代码臃肿，还很容器引起 `ClassCastException` 错误。
+
+## 示例
+
+先通过一个简单的示例了解一下泛型是什么样的。
+
+```java
+List strList = new ArrayList();
+strList.add("Name");
+strList.add("Aget");
+// 不小心存入一个 Integer 对象
+strList.add(new Integer(1));
+//ArrayList可以存放任意类型，所以，下一行执行，并不会报错
+System.out.println(strList);
+//这一行强转就出错了
+String str = (String)strList.get(2);
+```
+
+输出：
+```java
+[Name, Aget, 1]
+Exception in thread "main" java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String
+	at main.main(main.java:14)
+
+Process finished with exit code 1
+```
+
+可以看到，我们 在给 List 中元素包含了两种类型：String 和 Interger 类型。 在 JDK 5.0 之前，Java 语言对此行为没有任何约束，这导致了许多编码错误。因为不知道 List 中包含的内容，则必须检查想要访问的元素，查看是否能处理这种类型的元素，否则可能会遇到 `ClassCastException`。
+
+借助泛型，可以事先指定 List 中的元素类型，这样编译器在编译阶段就能够发现上面的问题：
+
+```java
+List<String> strList = new ArrayList();
+strList.add("Name");
+strList.add("Aget");
+// 下面这一行编辑器就会提示错误，编译就不会通过
+strList.add(new Integer(1));
+System.out.println(strList);
+String str = (String)strList.get(2);
+```
+
+![Jietu20190713-102223-listerror.jpg](https://i.loli.net/2019/07/13/5d29407987abd35714.jpg)
+
+从 Java 5 之后，Java 引入了「参数化类型」(`parameterized type`)的概念。允许程序在创建集合时指定集合元素的类型。Java 的参数化类型被称为「泛型」(`Generic`)。
+
+上面的 `List<String>`，可以称 List 是带一个类型参数的泛型接口，类型参数（类型实参）是 `Sting`。集合记住了所有元素的数据类型，从而无须对集合元素进行数据类型转换。
+
+在 Java 7 之前，如果使用带有泛型的接口、类定义变量，那么调用构造器创建对象时，构造器的构面也要带上泛型：
+```java
+List<String> strList = new ArrayList<String>();
+```
+
+从  Java7 开始， Java 允许在构造器后不需要带完整的泛型信息，只需要给出尖括号即可，Java 可以自动推断出尖括号里的是什么泛型信息：
+```java
+List<String> strList = new ArrayList<>();
+```
+
+
+## 泛型的应用
+
+泛型有三种使用方式：
+1. 泛型类
+2. 泛型接口
+3. 泛型方法
+
+### 泛型类
+
+泛型类型用于类的定义中，这个类称为「泛型类」。最典型的泛型类就是各种容器类，例如：List、Set、Map。
+
+泛型类的定义语法：
+```java
+class 类名称<泛型标识>{
+    private 泛型标识 成员变量；
+    ……
+}
+```
+
+- 泛型标识：可以随便写任意标识号，标识指定的泛型的类型，比如常用的 `T`
+
+举个栗子：
+
+```java
+// 泛型类
+class Card<T> {
+    private T id;
+
+    public T getId() {
+        return id;
+    }
+
+    public void setId(T id) {
+        this.id = id;
+    }
+
+    public Card(T id){
+        setId(id);
+    }
+}
+// main 函数
+Card<String> card1 = new Card<>("One");
+System.out.println("card1 id is: "+card1.getId());
+
+Card<Integer> card2 = new Card<>(2);
+System.out.println("card2 id is: "+card2.getId());
+
+// 输出
+card1 id is: One
+card2 id is: 2
+```
+
+怎么样，看到区别了吗？同样一个类创建的两个实例，成员变量名都是 `id`，但是二者的类型却可以不同。`T` 感觉有种 `template` 的意思，模板嘛，占坑渲染即可。
+
+定义的泛型类实例化对象时并不一定要春如泛型类型实参。比如一开始的例子 `ArrayList`，当不传入泛型类型实参时，默认的就是 `Object` 类型。这时候，就不会起到限制类型的作用了。
+
+注意点：
+
+1. 泛型的类型参数只能是「类类型」，不能是原始类型（`Primitive Type`）——byte/short/ int/long/float/ double/ boolean/char
+2. 定义泛型类中的构造器时，构造器名还是原来的类型，不需要增加泛型声明。
+3. 不能对确切的泛型类型使用 `instanceof`操作，比如 `card1 instanceof Card<String>`，会报 `instanceof 的泛型类型不合法` 错误，但是 `card1 instance Card` 是不会报错的，并返回 `true`。因为不管泛型的实际类型参数是什么，他们在运行时总有同样的类，对于 Java 来说，它们依然被当成同一个类处理，在内存中也只占用一块内存空间。
+
+### 泛型接口
+
+泛型接口和泛型类的定义语法差不多。泛型接口经常被用在各种类的生成器中。
+
+```java
+//定义泛型接口
+public interface Generaotr<T> {
+    public T next();
+}
+```
+
+泛型接口实现类，未传入泛型实参时：
+```java
+public class FruitGenerator<T> implements Generaotr<T> {
+    // 这个 Override 可不能少
+    @Override
+    public T next(){
+        return null;
+    }
+}
+```
+
+接口实现类定义时，也需要将泛型的声明加上。如果不加，例如`public class FruitGenerator implements Generaotr<T>`，这样就会报错，`cannot resolve symbol T`。
+
+泛型接口实现类，传入泛型实参，比如 `String`：
+```java
+public class FruitGenerator implements Generaotr<String> {
+    private String[] fruits = new String[]{"Apple", "Banana", "Pear"};
+
+    @Override
+    public String next(){
+        Random rand = new Random();
+        return fruits[rand.nextInt(3)];
+    }
+}
+```
+
+这里我们传入了泛型实参，接口实现类中的泛型都改为了这个传入的实参。并且，此时，接口实行类就不用加上泛型声明了，加入的话，反而会提示 `attempting to use incompatible return type`错误。
+
+### 泛型通配符
+
+`Integer` 是 `Number` 的一个子类。那么，在使用 `Card<Numer>` 作为方法形参的方法中，是否可以传入 `Card<Interger>` 的实参呢？
+
+```java
+
+private static void showKeyValue1(Card<Number> card){
+    System.out.println(card.getId());
+}
+// 测试
+Card<Integer> card2 = new Card<>(2);
+System.out.println("card2 id is: "+card2.getId());
+
+showKeyValue1(card2);
+```
+
+编译器会报错 ：
+```java
+Generic<java.lang.Integer> cannot be applied to Card<java.lang.Number>
+```
+
+通过提示信息我们可以看到 `Card<Integer>` 不能被看作为 `Card<Number>` 的子类。
+
+如何解决上面的问题呢？我们需要在逻辑上引入一个同时是 `Card<Number>` 和 `Card<Interger` 父类的引用类型。由此，类型通配符产生了：
+
+```java
+// 其实，这里不用通配符，直接是 Card 也会 OK
+private static void showKeyValue1(Card<?> card){
+    System.out.println(card.getId());
+}
+```
+
+类型通配符一般是使用 `?` 代替具体的类型实参。注意，次数的 `?` 是类型实参，不是类型形参。简单理解，这里的 `?` 就和 `Number`、`String` 一样，都是一种实际的类型。可以把 `?` 看成所有类型的父亲，是一种真实的类型，当成 Object 来处理。为了表示限制类型，泛型提供了被限制的通配符，示例如下：
+```java
+List<? extends Number>
+```
+
+此处，未知类型一定是 `Number` 的子类型，因此，可以把 `Number` 称为这个通配符的上限(`upper bnound`)。
+
+除了可以指定通配符的上限之外，Java 还允许指定通配符的下线，语法：
+```java
+<? super 类型>
+```
+
+其实，Java 泛型不仅允许在使用通配符形参时设定上限，还可以在定义泛型形参时设定上限，用以表示传给泛型形参的实际参数类型要么是该上限类型，要么是该上限类型的子类。
+```java
+public class Apple<T extends Number> {
+    T col;
+
+    public static void main(String[] args) {
+        Apple<Integer> ai = new Apple<>();
+        Apple<Double> ad = new Apple<>();
+        // 下面编译就会出错，因为设置了上限是 Number
+        Apple<String> as = new Apple<>();
+    }
+}
+```
+
+ ![Jietu20190713-111233-bound.jpg](https://i.loli.net/2019/07/13/5d294c385b14039332.jpg)
+
+
+### 泛型方法
+
+- 泛型类，是在实例化类的时候指明泛型的具体类型；
+- 泛型方法，在调用方法的时候指明泛型的具体类型
+
+示例：
+```java
+public class Generic<T> {
+    public T name;
+    public  Generic(){}
+    public Generic(T param){
+        name=param;
+    }
+    public T m(){
+        return name;
+    }
+    // 下面两个函数才是泛型方法
+    public <E> void m1(E e){ }
+    public <T> T m2(T e){ }
+}
+```
+
+判断一个方法是否是泛型方法关键看方法返回值前面有没有使用 `<>` 标记的类型，有就是，没有就不是。这个 `<>` 里面的类型参数就相当于为这个方法声明了一个类型，这个类型可以在此方法的作用块内自由使用。
+
+
+## 参考
+
+- [CSDN-java 泛型详解-绝对是对泛型方法讲解最详细的，没有之一](https://blog.csdn.net/s10461/article/details/53941091)
+- [CSDN-ShuSheng007-秒懂Java泛型](https://blog.csdn.net/ShuSheng0007/article/details/80720406#%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E4%B8%80%E4%B8%AA%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95)
