@@ -15,8 +15,6 @@ keywords:
 
 泛型（ `Generic`）是一种编译器机制，您可通过该机制获取通用的代码并参数化（或模板化）剩余部分，从而以一种一般化方式创建（和使用）一些类型的实体（比如类或接口和方法）。这种编程方法被称为泛型编程。
 
-<!-- more -->
-
 所谓泛型，就是允许在定义类、接口、方法时使用类型形参，这个类型形参(或叫泛型)将在声明变量、创建对象、调用方法时动态地指定(即传入实际的类型参数，也可以称为「类型实参」)。
 
 JDK 5.0（2004 年发布）向 Java 语言中引入了泛型类型（泛型）和关联的语法。增加泛型支持，很大程度上都是为了让集合能记住其元素的数据类型。在没有泛型之前，一旦把一个对象「丢进」 Java 集合中，集合就会忘记对象的类型，把所有的对象当成 Object 类型处理。当程序从集合中取出对象后，就需要进行强制类型的转换。这种强制类型转换不仅使代码臃肿，还很容器引起 `ClassCastException` 错误。
@@ -139,6 +137,11 @@ card2 id is: 2
 2. 定义泛型类中的构造器时，构造器名还是原来的类型，不需要增加泛型声明。
 3. 不能对确切的泛型类型使用 `instanceof`操作，比如 `card1 instanceof Card<String>`，会报 `instanceof 的泛型类型不合法` 错误，但是 `card1 instance Card` 是不会报错的，并返回 `true`。因为不管泛型的实际类型参数是什么，他们在运行时总有同样的类，对于 Java 来说，它们依然被当成同一个类处理，在内存中也只占用一块内存空间。
 
+`List<Integer>` 并不是 `List<Number>` 的子类！
+`List<Integer>` 并不是 `List<Number>` 的子类！
+`List<Integer>` 并不是 `List<Number>` 的子类！
+
+
 ### 泛型接口
 
 泛型接口和泛型类的定义语法差不多。泛型接口经常被用在各种类的生成器中。
@@ -210,16 +213,29 @@ private static void showKeyValue1(Card<?> card){
 }
 ```
 
-类型通配符一般是使用 `?` 代替具体的类型实参。注意，次数的 `?` 是类型实参，不是类型形参。简单理解，这里的 `?` 就和 `Number`、`String` 一样，都是一种实际的类型。可以把 `?` 看成所有类型的父亲，是一种真实的类型，当成 Object 来处理。为了表示限制类型，泛型提供了被限制的通配符，示例如下：
+类型通配符一般是使用 `?` 代替具体的类型实参。注意，`?` 是类型实参，不是类型形参。简单理解，这里的 `?` 就和 `Number`、`String` 一样，都是一种实际的类型。可以把 `?` 看成所有类型的父亲，是一种真实的类型，当成 Object 来处理。
+
+#### 通配符上界
+
+为了表示限制类型，泛型提供了被限制的通配符。通配符上界使用 `<? extends T>` 的格式，意思是需要一个T类型或者T类型的子类，一般T类型都是一个具体的类型。示例如下：
 ```java
-List<? extends Number>
+public void printIntValue(List<? extends Number> list) {
+    for (Number number : list) {
+        System.out.print(number.intValue()+" ");
+    }
+}
 ```
 
-此处，未知类型一定是 `Number` 的子类型，因此，可以把 `Number` 称为这个通配符的上限(`upper bnound`)。
+此处，未知类型一定是 `Number` 的子类型，因此，可以把 `Number` 称为这个通配符的上界(`upper bnound`)。
 
-除了可以指定通配符的上限之外，Java 还允许指定通配符的下线，语法：
+#### 通配符下界
+
+除了可以指定通配符的上限之外，Java 还允许指定通配符的下限。通配符下界使用 `<? super T>` 的格式，意思是需要一个T类型或者 T 类型的父类，一般 T 类型都是一个具体的类型。示例如下：
 ```java
-<? super 类型>
+public void fillNumberList(List<? super Number> list) {
+    list.add(new Integer(0));
+    list.add(new Float(1.0));
+}
 ```
 
 其实，Java 泛型不仅允许在使用通配符形参时设定上限，还可以在定义泛型形参时设定上限，用以表示传给泛型形参的实际参数类型要么是该上限类型，要么是该上限类型的子类。
@@ -236,33 +252,98 @@ public class Apple<T extends Number> {
 }
 ```
 
- ![Jietu20190713-111233-bound.jpg](https://i.loli.net/2019/07/13/5d294c385b14039332.jpg)
-
+![Jietu20190713-111233-bound.jpg](https://i.loli.net/2019/07/13/5d294c385b14039332.jpg)
 
 ### 泛型方法
 
-- 泛型类，是在实例化类的时候指明泛型的具体类型；
-- 泛型方法，在调用方法的时候指明泛型的具体类型
+在一些情况下，定义类、接口时没有使用泛型形参，但定义方法时想自己定义泛型形参，这也是可以的。Java 5 提供了对泛型方法的支持。
 
-示例：
+判断一个方法是否是泛型方法关键看方法返回值前面有没有使用 `<>` 标记的类型，有就是，没有就不是。
+
+假设需要实现这样一个方法：将一个 Object 数组所有的元素天际到一个 Collection 集合中。
+
 ```java
-public class Generic<T> {
-    public T name;
-    public  Generic(){}
-    public Generic(T param){
-        name=param;
+static void fromArrayToCollection(Object[] a, Collection<Object> c) {
+    for (Object o : a) {
+        c.add(o);
     }
-    public T m(){
-        return name;
-    }
-    // 下面两个函数才是泛型方法
-    public <E> void m1(E e){ }
-    public <T> T m2(T e){ }
 }
 ```
 
-判断一个方法是否是泛型方法关键看方法返回值前面有没有使用 `<>` 标记的类型，有就是，没有就不是。这个 `<>` 里面的类型参数就相当于为这个方法声明了一个类型，这个类型可以在此方法的作用块内自由使用。
+`Collection<String>` 并不是 `Collection<Object>` 的子类型，所以上面这个方法只能将
+`Object[]` 数组中的元素复制到元素为 `Object`(`Object` 的子类也不行)的 Collection 集合中。所以，下面这么写将会引起编译错误：
+```java
+String[] strArr = {"a","b"};
+List<String> strList = new ArrayList<>();
+// Collection<String>对象不能当成 Collection<Oject>使用
+fromArrayToCollection(strArr,strList);
+System.out.println(strList);
+```
 
+`Collection<Object> c` 改为通配符 `Collection<?> c` 是否可行呢？也不行。
+
+为了解决上面这个问题，可以使用泛型方法(`Generic Method`)。所谓泛型方法，就是在声明方法时，定义一个或多个泛型形参。多个泛型形参声明放在方法修饰符和方法返回值类型之间。泛型方法语法格式如下：
+```java
+修饰符 <T,S,...> 返回值类型 方法名(形参列表){
+    // 方法体
+}
+```
+
+上面的方法改进如下：
+```java
+static <T> void fromArrayToCollection(T[] a, Collection<T> c) {
+    for (T o : a) {
+        c.add(o);
+    }
+}
+```
+
+与泛型类和泛型接口的使用不同，泛型方法中的泛型形参不需要显示传入实际参数类型。编译器会根据实参推断泛型所代表的类型。但是小心，避免制造迷惑。比如下面的栗子：
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+
+		List<String> as = new ArrayList<>();
+        List<Object> ao = new ArrayList<>();
+
+        // 下面会编译错误
+        test(as, ao);
+    }
+
+    static <T> void test(Collection<T> from, Collection<T> to) {
+        for (T ele : from) {
+            to.add(ele);
+        }
+    }
+}
+```
+
+![Jietu20190713-121930-method-error.jpg](https://i.loli.net/2019/07/13/5d295bf0741a761687.jpg)
+
+`test` 方法传入两个实参，`ao` 的数据类型是 `List<Object>`，而 `as` 的数据类型是 `List<String>`。与泛型方法签名进行对比，`test(Collection<T> from, Collection<T> to)`，编译器无法正确识别 T 所代表的实际类型。为了避免这种错误，可以改为如下形式：
+```java
+static <T> void test(Collection<? extends T> from, Collection<T> to) {
+    for (T ele : from) {
+        to.add(ele);
+    }
+}
+```
+
+`Collection<? extends T>`这种采用类型通配符并设置通配符上限的表示方式，只要 test 方法的第一个 Collection 集合里的元素类型是后一个 Collection 集合里元素类型的子类即可。
+
+## 补充
+
+对于类变量的类型，绘制一个简单的图：
+
+![变量](https://i.loli.net/2019/07/13/5d2961d5155f246541.png)
+
+作图工具：[ProcessOn](https://www.processon.com/i/55ddb6bae4b04fe84c504c5f)，强烈安利
+
+## 总结
+
+经过上面的学习，我对泛型(`Generic`)有了初步的认识。类似于一个「模板」的概念，「占坑」等着渲染，提供了对类、接口、方法定义的灵活性，使用起来具有了「动态性」。当然，这只是我的个人理解，方便记忆的，可能表述并不是很准确。在实际的生产代码中，也有应用泛型类、泛型方法的，能够想到去使用它，无疑需要对泛型有比较好的理解。
 
 ## 参考
 
