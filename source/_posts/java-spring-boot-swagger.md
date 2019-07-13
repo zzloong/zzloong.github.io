@@ -115,7 +115,7 @@ public class SwaggerConfig {
 - `@ApiOperation` 描述方法的用途
   - `value`： 方法简要描述；
   - `notes`： 方法详细描述；
-- `ApiImplicitParam` 描述参数信息
+- `@ApiImplicitParam` 描述参数信息
   - `value`
   - `dataType`：参数数据类型，参数的数据类型 只作为标志说明，并没有实际验证
   - `required`：默认 false，参数是否必传
@@ -127,7 +127,7 @@ public class SwaggerConfig {
 
 其他：
 
-- `ApiIgnore()`：用于类或者方法上，不被显示在页面上；
+- `@ApiIgnore()`：用于类或者方法上，不被显示在页面上；
 - `@Profile({"dev","test"})`：用于配置类上，表示对什么环境启用；
 
 实体类示例：
