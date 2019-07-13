@@ -24,6 +24,7 @@ https://swagger.io
 ## 添加依赖
 
 `pom.xml` 引入 Swagger 依赖：
+
 ```shell
 <dependency>
     <groupId>io.springfox</groupId>
@@ -39,21 +40,20 @@ https://swagger.io
 ```
 
 使用 `property` 定义了 swagger 的版本，因此还需要添加：
+
 ```shell
 <swagger.version>2.9.2</swagger.version>
 ```
 
-- `springfox-swagger2` swagger 的 Java 实现
-- `springfox-swagger-ui` UI 页面的依赖
-- `jackson-databind` 页面上传输的数据都是 json 形式
-
-IDEA 创建项目时，就简单选中了 Web 模板，其他没选
+- `springfox-swagger2` Swagger 的 Java 实现
+- `springfox-swagger-ui` Swagger UI 页面的依赖
 
 ## Swagger 配置类
 
 使用注解 `@Configuration` 编写 Swagger  配置类—— `SwaggerConfig`。
 
 新建 `config` 的包，创建 SwaggerConifg 的配置类：
+
 ```java
 //通过@Configuration注解，让Spring来加载该类配置
 @Configuration
@@ -91,7 +91,6 @@ public class SwaggerConfig {
 - `apiInfo()` 用来创建该 API 的基本信息（这些基本信息会展现在文档页面中）。
 - `@ConditionalOnExpression("${swagger.enable:true}")` 这个注解控制了是否启用 Swagger，我们需要在 `appplication.properties` 中加上 `swagger.enable=true`
 
-
 ## 编写控制器类——Controller 类
 
 我们先介绍一下在用 Swagger 时的常用注解：
@@ -106,11 +105,13 @@ public class SwaggerConfig {
 ![model.jpg](https://i.loli.net/2019/07/13/5d29df5c8571185458.jpg)
 
 类成员变量的的注解：
+
 - `@ApiModelProperty` 用在实体类的属性上
   - `value`：属性描述；
   - `required`：参数是否必选；
 
 方法的注解：
+
 - `@ApiOperation` 描述方法的用途
   - `value`： 方法简要描述；
   - `notes`： 方法详细描述；
@@ -118,17 +119,19 @@ public class SwaggerConfig {
   - `value`
   - `dataType`：参数数据类型，参数的数据类型 只作为标志说明，并没有实际验证
   - `required`：默认 false，参数是否必传
-  -` paramType` 参数类型，表示参数放在哪里
+  - `paramType` 参数类型，表示参数放在哪里
     - `query`，默认值，请求参数的获取：`@RequestParam`
     - `path`,路径参数，请求参数的获取：`@PathVariable`
     - `header`, 请求参数的获取：`@RequestHeader`
 - `@PathVariable` 路径参数，给类似 `@GetMappIng("/user/{id}")` 参数通过路径传入
 
 其他：
+
 - `ApiIgnore()`：用于类或者方法上，不被显示在页面上；
 - `@Profile({"dev","test"})`：用于配置类上，表示对什么环境启用；
 
 实体类示例：
+
 ```java
 @Data
 @ApiModel(value = "用户实体")
@@ -154,6 +157,7 @@ public class UserEntity {
 ```
 
 下面是一个控制类的示例：
+
 ```java
 @RestController
 @RequestMapping("/api/v1/")
@@ -228,6 +232,3 @@ public class UserController {
 ## 参考
 
 - [B 站-Swagger-前后端分离开发的API接口框架](https://www.bilibili.com/video/av37961314/?p=1) 视频教程
-
-
-
