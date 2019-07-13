@@ -150,11 +150,13 @@ Shift 键类似于可视模式，比如在某个位置点击光标并按住 Shif
 - [人人影视客户端](http://app.zimuzu.tv/)
 
 ### 截图
+
 - [腾讯-截图](https://jietu.qq.com/)
 
 设定了快捷键为 `Ctrl+Shift+a`
 
 ### 下载工具
+
 qBittorrent：
 - [qBittorrent](https://www.qbittorrent.org/download.php) 下载
 - [搜索插键](https://github.com/qbittorrent/search-plugins/wiki/Unofficial-search-plugins)
@@ -163,6 +165,7 @@ qBittorrent：
 还有一个下载工具，不过没试用过，做个记录：[Photon](https://github.com/alanzhangzm/Photon/blob/master/README.zh-CN.md)
 
 ### 视频制作
+
 - [OBS](https://obsproject.com/) 免费的录屏软件
 - [ArcTime](https://arctime.org/download.html) 字幕工具，用来给视频添加字幕，免费。
 
@@ -207,7 +210,7 @@ Downie：下载各网站视频且更新频繁；
 
 - [Mos](https://mos.caldis.me/) 鼠标平滑滚动软件，很好用。免费开源
 
-```
+```shell
 $ brew cask install mos
 $ brew update
 $ brew cask reinstall mos
@@ -217,7 +220,7 @@ $ brew cask reinstall mos
 
 NightOwl ：一款让 Mojave 深色模式更加智能的神器，可以将当前开启的某些软件单独设置成「始终显示为浅色」，这样，即使系统在深色模式下，这些被勾选的软件也会依然显示为浅色界面。
 
-[](https://nightowl.kramser.xyz/)
+[NightOwl](https://nightowl.kramser.xyz/)
 
 ### PopClip
 

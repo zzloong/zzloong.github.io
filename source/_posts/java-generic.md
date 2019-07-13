@@ -335,7 +335,7 @@ static <T> void test(Collection<? extends T> from, Collection<T> to) {
 
 ## 补充
 
-对于类变量的类型，绘制一个简单的图：
+对于类中变量的类型，绘制了一个简单的图：
 
 ![变量](https://i.loli.net/2019/07/13/5d2961d5155f246541.png)
 
