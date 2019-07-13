@@ -213,7 +213,7 @@ public class UserController {
 }
 ```
 
-##  启动
+## 启动
 
 启动应用，访问 `localhost:8080/swagger-ui.html` 可以访问到 `Swagger UI`，可以点击 `Try it out` 按钮，调用 API：
 
@@ -221,9 +221,9 @@ public class UserController {
 
 ## 总结
 
-## 其他
+## 示例代码
 
-SQLLyogEnt
+- [awesome-spring-boot-examples](https://github.com/Michael728/awesome-spring-boot-examples)
 
 ## 参考
 
