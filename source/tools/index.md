@@ -11,7 +11,6 @@ keywords:
   - 有用
 ---
 
-
 # 利器清单
 
 > 希望资料收藏爱好着能发现有用的东西，也欢迎 Fork 仓库 [awesome-tools-resources](https://github.com/Michael728/awesome-tools-resources) 提交 PR，推荐你的「利器」
@@ -165,9 +164,13 @@ keywords:
 
 ## 教程
 
-记录一些在线学习平台
+### IT 相关
 
 - [金老师的新教学网站](http://jinxuliang.com/OnlineStudy)
+
+### Other
+
+- [盲打学习课程](https://www.typingstudy.com/zh/)
 
 ## 视频
 
