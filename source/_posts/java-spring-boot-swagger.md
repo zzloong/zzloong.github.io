@@ -324,3 +324,9 @@ API 介绍
 
 - [阮一峰-RESTful API 设计指南](http://www.ruanyifeng.com/blog/2014/05/restful_api.html)
 - [阮一峰-RESTful API 最佳实践](http://www.ruanyifeng.com/blog/2018/10/restful-api-best-practices.html)
+- [segmentfault-Philipp Hauer-[译]RESTful API 设计最佳实践](https://segmentfault.com/a/1190000011516151) 推荐
+- [RESTful Service API 设计最佳工程实践和常见问题解决方案](https://www.macode.net/restful-service-api-design-best-practise/) 总结的相当好，博客值得阅读
+- [华为云-API设计中关于RPC和REST 两种风格选择的个人理解](https://bbs.huaweicloud.com/blogs/691955e0f7b111e8bd5a7ca23e93a891)
+- [跟着 Github 学习 Restful HTTP API 设计](https://cizixs.com/2016/12/12/restful-api-design-guide/)
+- [梁桂钊——人人都是 API 设计师：我对 RESTful API、GraphQL、RPC API 的思考](http://blog.720ui.com/2019/api_design_talk/) 作者分享了一些阿里团队里做法
+- [阿里研究员谷朴：API 设计最佳实践的思考](https://yq.aliyun.com/articles/683044)
