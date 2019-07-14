@@ -350,3 +350,5 @@ static <T> void test(Collection<? extends T> from, Collection<T> to) {
 - [Oracle-Generics Documentation](https://docs.oracle.com/javase/tutorial/java/generics/index.html)
 - [CSDN-java 泛型详解-绝对是对泛型方法讲解最详细的，没有之一](https://blog.csdn.net/s10461/article/details/53941091)
 - [CSDN-ShuSheng007-秒懂Java泛型](https://blog.csdn.net/ShuSheng0007/article/details/80720406#%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E4%B8%80%E4%B8%AA%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95)
+- [掘金-深入理解Java泛型](https://juejin.im/post/5b614848e51d45355d51f792)
+- [重新认识Java——泛型（基础、使用和实现原理）](http://hinylover.space/2016/06/25/relearn-java-generic-1/)

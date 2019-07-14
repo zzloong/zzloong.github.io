@@ -14,13 +14,13 @@ keywords:
 
 [Swagger](https://swagger.io/) 官网是这么描述它的：`The Best APIs are Built with Swagger Tools`。
 
-[Swagger](https://swagger.io/tools/) 是一套基于 OpenAPI 规范构建的开源工具，可以帮助我们设计、构建、记录以及使用 Rest API。Swagger 主要包含了以下三个部分：
+[Swagger](https://swagger.io/docs/specification/about/) 是一套基于 OpenAPI 规范构建的开源工具，可以帮助我们设计、构建、记录以及使用 Rest API。Swagger 主要包含了以下三个部分：
 
 1. [Swagger Editor](https://swagger.io/tools/swagger-editor/)：基于浏览器的编辑器，我们可以使用它编写我们 OpenAPI 规范。
 2. [Swagger UI](https://swagger.io/tools/swagger-ui/)：它会将我们编写的 OpenAPI 规范呈现为交互式的 API 文档，后文我将使用浏览器来查看并且操作我们的 Rest API。
 3. [Swagger Codegen](https://swagger.io/tools/swagger-codegen/)：它可以通过为 OpenAPI（以前称为 Swagger）规范定义的任何 API 生成服务器存根和客户端 SDK 来简化构建过程。
 
-编写 Spring Boot 接口，为何要用 Swagger 呢？
+Spring Boot 使得开发 RESTful 服务变得简单。那么编写 Spring Boot 接口，为何要用 Swagger 呢？
 
 - 代码改变，文档就会改变。只需要少量的注释，Swagger 就可以根据代码自动生成 API 文档。
 - Swagger UI 是一份交互式的 API 文档，可以直接在 Web 界面调用 API。这里有一份 Swagger UI 的 [Live Demo](https://petstore.swagger.io/)，看看官方是怎么写 RESTful API 的。
@@ -116,7 +116,7 @@ public class SwaggerConfig {
 
 - `@API` 类的注解，可以给控制器增加描述和标签信息。用在请求的类上，代表了这个类是 Swagger 的资源
   - `tags`：控制器标签，对该类进行「分类」，参数是个字符串数组，如果配置了多个值，会在多个分类中看到；
-  - `value`：该参数没什么意义，在 UI 界面上并不现实，可不用配置
+  - `value`：该参数没什么意义，在 UI 界面上并不显示，可不用配置
 - `@ApiModel` 类注解，对 API 涉及的对象做描述，可用于响应实体类，说明实体作用
   - `value` Model 展示时的名称，默认是 实体类的名称，比如 `UserEntity`；
   - `description` 实体类的描述
@@ -156,6 +156,7 @@ public class SwaggerConfig {
 
 - `@ApiIgnore`：用于类或者方法上，屏蔽接口不被显示在页面上；
 - `@Profile({"dev","test"})`：用于配置类上，表示对什么环境启用；
+- `@ApiParam` 不能直接用在方法上，而是用在方法的形参定义中，下文会有示例；
 
 实体类示例：
 
@@ -254,15 +255,72 @@ public class UserController {
 
 ![model.jpg](https://i.loli.net/2019/07/13/5d29df5c8571185458.jpg)
 
-## 总结
-
 ## 示例代码
 
 - [awesome-spring-boot-examples](https://github.com/Michael728/awesome-spring-boot-examples)
 
+## One More Thing
+
+上文提到了 RESTful API 的概念，我觉得，不如趁机了解一下。因为在实际的项目中发现，并不是每个 Spring Boot 的开发人员都能意识到开发的 API 要尽量符合 RESTful 规则的。REST 实际上只是一种设计风格，它并不是标准。
+
+术语：
+
+- `Endpoint` 终点，可以理解为路径，表示 API 的具体网址。
+- `API（Application Programming Interface)`，应用程序编程接口
+- `REST` 是 `Representational State Transfer` 的缩写。如果一个架构符合 REST 原则，就称它为 RESTful 架构。RESTful API 就是 REST 风格的 API
+  - Resource：资源，即数据。
+  - Representational：某种表现形式，比如用 JSON，XML，JPEG 等；
+  - State Transfer：状态变化。通过 HTTP 动词实现
+
+在 RESTful 架构中，每个网址代表一种资源（`resource`），所以网址中不能有动词，只能有名词，而且所用的名词往往与数据库的表格名对应。
+
+### 资源的操作
+
+RESTful 的核心思想就是，客户端发出的数据操作指令都是"动词 + 宾语"的结构。比如，`GET /articles` 这个命令，`GET` 是动词，`/articles` 是宾语。
+
+对于资源的具体操作类型，由 HTTP 动词表示（括号里是对应的 SQL 命令）：
+
+- GET（SELECT）：从服务器取出资源（一项或多项）。
+- POST（CREATE）：在服务器新建一个资源。
+- PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。
+- PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性）。
+- DELETE（DELETE）：从服务器删除资源
+
+还有两个不常用的 HTTP 动词：
+
+- HEAD：获取资源的元数据。
+- OPTIONS：获取信息，关于资源的哪些属性是客户端可以改变的
+
+[知乎](https://www.zhihu.com/question/28557115)上的一个回答，我觉得很精辟：
+
+- 看 Url 就知道要什么
+- 看 http method 就知道干什么
+- 看 http status code 就知道结果如何
+
+一位[答主](https://www.zhihu.com/question/28557115/answer/47846156)给出的示例：
+
+```java
+GET /rest/api/getDogs --> GET /rest/api/dogs 获取所有小狗狗
+GET /rest/api/addDogs --> POST /rest/api/dogs 添加一个小狗狗
+GET /rest/api/editDogs/:dog_id --> PUT /rest/api/dogs/:dog_id 修改一个小狗狗
+GET /rest/api/deleteDogs/:dog_id --> DELETE /rest/api/dogs/:dog_id 删除一个小狗狗
+```
+
+### 信息过滤 Filtering
+
+如果记录数量很多，服务器不可能都将它们返回给用户。API 应该提供参数，过滤返回结果
+
+- `?limit=10`：指定返回记录的数量
+- `?offset=10`：指定返回记录的开始位置。
+- `?page=2&per_page=100`：指定第几页，以及每页的记录数
+
 ## 参考
 
-- [B 站-Swagger-前后端分离开发的API接口框架](https://www.bilibili.com/video/av37961314/?p=1) 视频教程
 - [CSDN-Spring Boot集成Swagger](https://blog.csdn.net/q547550831/article/details/79833569)
 - [官宣-Swagger](https://swagger.io/docs/)
 - [IBM-在 Spring Boot 项目中使用 Swagger 文档](https://www.ibm.com/developerworks/cn/java/j-using-swagger-in-a-spring-boot-project/index.html)
+
+API 介绍
+
+- [阮一峰-RESTful API 设计指南](http://www.ruanyifeng.com/blog/2014/05/restful_api.html)
+- [阮一峰-RESTful API 最佳实践](http://www.ruanyifeng.com/blog/2018/10/restful-api-best-practices.html)
