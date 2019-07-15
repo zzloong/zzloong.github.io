@@ -189,7 +189,7 @@ public class UserEntity {
 ```java
 @RestController
 @RequestMapping("/api/v1/")
-@Api(value = "用户模块", tags = {"demo"})
+@Api(tags = {"用户相关接口"}, value = "用户模块")
 public class UserController {
 
     // 模拟数据库
@@ -211,22 +211,25 @@ public class UserController {
     }
 
     @ApiOperation(value = "查询单用户", notes = "根据用户id 查询其信息")
-    @ApiImplicitParam(name = "id", value = "用户id", paramType = "query", dataType = "int")
+    @ApiImplicitParam(name = "id", value = "用户id", paramType = "query", required = true)
     @GetMapping("/user/{id}")
-    public UserEntity getUser(@PathParam("id") Integer id) {
+    public UserEntity getUser(@PathParam("id") int id) {
         UserEntity user = users.get(id);
         return user;
     }
 
     @ApiOperation(value = "存储用户信息", notes = "存储用户详细信息")
     @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public UserEntity saveUser(@RequestBody UserEntity user) {
+    public UserEntity saveUser(@ApiParam(value = "用户信息", required = true)
+                               @RequestBody UserEntity user) {
         users.add(user);
         return user;
     }
 
     @ApiOperation(value = "删除用户", notes = "根据用户id删除用户信息")
-    @ApiImplicitParam(name = "id", value = "用户id", paramType = "path")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "用户id", required = true, paramType = "path")
+    })
     @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
     public int deleteUser(@PathVariable("id") int id) {
         users.remove(id);
