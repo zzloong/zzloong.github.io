@@ -264,6 +264,16 @@ public class UserController {
 
 ## One More Thing
 
+### Web API 的风格
+
+开发 API，先了解一下有哪些 Web API 的风格吧：
+
+- RPC：RPC 面向过程，RPC 形式的 API 组织形态是类和方法，API 的命名往往是一个动词，比如 `GetUserInfo,CreateUser`;
+- REST：REST 面向资源，也是下文将要介绍的一种 API 风格；
+- GraphQL：就是面向数据查询，采用GraphQL，甚至不需要有任何的接口文档，在定义了Schema之后，服务端实现Schema，客户端可以查看Schema，然后构建出自己需要的查询请求来获得自己需要的数据
+
+### REST
+
 上文提到了 RESTful API 的概念，我觉得，不如趁机了解一下。因为在实际的项目中发现，并不是每个 Spring Boot 的开发人员都能意识到开发的 API 要尽量符合 RESTful 规则的。REST 实际上只是一种设计风格，它并不是标准。
 
 术语：
@@ -333,3 +343,4 @@ API 介绍
 - [跟着 Github 学习 Restful HTTP API 设计](https://cizixs.com/2016/12/12/restful-api-design-guide/)
 - [梁桂钊——人人都是 API 设计师：我对 RESTful API、GraphQL、RPC API 的思考](http://blog.720ui.com/2019/api_design_talk/) 作者分享了一些阿里团队里做法
 - [阿里研究员谷朴：API 设计最佳实践的思考](https://yq.aliyun.com/articles/683044)
+- [朱晔的互联网架构实践心得S2E5：浅谈四种API设计风格（RPC、REST、GraphQL、服务端驱动）](https://www.cnblogs.com/lovecindywang/p/10383756.html)
