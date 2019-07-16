@@ -2,7 +2,8 @@
 title: 那些有趣的博客
 date: 2018-09-16 23:25:50
 tags: [资源, Blog, 博客, List]
-categories: Habit
+categories:
+- 阅读
 ---
 
 总有一些博主是勤奋总结的，比公众号要有营养的多，这里列个清单吧：
