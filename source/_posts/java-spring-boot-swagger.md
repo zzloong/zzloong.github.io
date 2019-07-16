@@ -332,6 +332,7 @@ GET /rest/api/deleteDogs/:dog_id --> DELETE /rest/api/dogs/:dog_id 删除一个�
 - [CSDN-Spring Boot集成Swagger](https://blog.csdn.net/q547550831/article/details/79833569)
 - [官宣-Swagger](https://swagger.io/docs/)
 - [IBM-在 Spring Boot 项目中使用 Swagger 文档](https://www.ibm.com/developerworks/cn/java/j-using-swagger-in-a-spring-boot-project/index.html)
+- [蜻蜓HTTP-springboot 集成完整的swagger2](https://www.qingtingip.com/h_341568.html)
 
 API 介绍
 
