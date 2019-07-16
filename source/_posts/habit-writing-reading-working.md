@@ -1,8 +1,12 @@
 ---
-title: 【总结】写作、阅读、工作等日常积累
+title: 【总结】写作、阅读、工作等日常习惯
 date: 2018-11-16 20:50:44
-tags: [Habit, Writing, Summary]
-categories: Habit
+tags:
+- 习惯
+- 写作
+- 总结
+categories:
+- Habit
 keywords: 写作 标点 阅读 习惯 工作 效率 总结
 ---
 
@@ -25,7 +29,11 @@ keywords: 写作 标点 阅读 习惯 工作 效率 总结
   - `我买了一部新 iPhone ，还行` ❎ 错误
 - 千万不要同时用段首缩排和段间距 [来源](https://reuixiy.github.io/the-philosophy-of-web-typography/text-indent-or-margin.html)
 - 目前大陆用的是弯引号，而台湾、香港用的是直角引号。对引号的使用使用方式也有所区别，大陆是先用双引号“ ”，内部如需再引用，再用单引号‘’，在香港和台湾都规定的是先用单引号「」，内部如需要引用，再用双引号『』 [来源](http://abuyan.me/post/blog/zhi-jiao-yin-hao-za-tan)
-- `[]`：内的内容意思是：可写可不写; `{}`：那就必须要在`{}`内给出的选择里选一个; `<>`：表示必选 [来源](https://blog.csdn.net/raoqin/article/details/8875089)
+- 对于技术文档中的参数等，`[]`：内的内容意思是：可写可不写; `{}`：那就必须要在`{}`内给出的选择里选一个; `<>`：表示必选 [来源](https://blog.csdn.net/raoqin/article/details/8875089)
+
+排版好文：
+
+- [mzlogin/chinese-copywriting-guidelines](https://github.com/mzlogin/chinese-copywriting-guidelines) 作者的文章 [中文文案排版指北（简体中文版）](https://mazhuang.org/wiki/chinese-copywriting-guidelines/) 值得参考
 
 ## 阅读
 
@@ -48,8 +56,3 @@ keywords: 写作 标点 阅读 习惯 工作 效率 总结
 - 准备好一杯水，让你保持清醒，而不是回到床上
 - 坚持每天同一时间起床，形成生物钟
 - 早起，慢慢养成一个一个好的习惯
-
-## 感悟
-
-- 「难的事情你不去做，那你的价值能够体现在哪儿？」--[油管-吴晓波专访京东创始人 刘强东《十年二十人》](https://www.youtube.com/watch?v=HdF5pXeMjxg)
-- 「纠结就是窝里斗，嫉妒就是对自己不满 ​​​​」-- 网络

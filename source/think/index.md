@@ -4,9 +4,17 @@ date: 2019-05-19 17:37:22
 ---
 
 {% note success no-icon %}
+难的事情你不去做，那你的价值能够体现在哪儿？—— 20190716 [油管-吴晓波专访京东创始人 刘强东《十年二十人》](https://www.youtube.com/watch?v=HdF5pXeMjxg)
+{% endnote %}
+
+{% note success no-icon %}
+纠结就是窝里斗，嫉妒就是对自己不满 —— 20190716 网络
+{% endnote %}
+
+{% note success no-icon %}
 种一棵树最好的时间是十年前，其次是现在。
 
-这句话和这一句比较像：Better late than never -- 迟做总比不去做好
+这句话和这一句比较像：Better late than never —— 迟做总比不去做好
 {% endnote %}
 
 {% note success no-icon %}
