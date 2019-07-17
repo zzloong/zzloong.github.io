@@ -161,6 +161,14 @@ qBittorrent：
 - [qBittorrent](https://www.qbittorrent.org/download.php) 下载
 - [搜索插键](https://github.com/qbittorrent/search-plugins/wiki/Unofficial-search-plugins)
 - [qBittorrent下载の道](https://zshmobi.com/2018/05/10/qbittorrent-usage/)
+- [关于 qBittorrent 连接更多 tracker 的一点补充](https://www.bilibili.com/video/av55388579/)
+- [qBittorrent 下载安装和高级设置使用教程 | 添加 trackers 优化下载速度](https://go2think.com/how-to-use-qbittorrent/)
+
+tracker 列表：
+
+- [torrents](https://torrents.io/tracker-list/)
+- [ngosang/trackerslist](https://github.com/ngosang/trackerslist)
+- [newtrackon](https://newtrackon.com/list)
 
 还有一个下载工具，不过没试用过，做个记录：[Photon](https://github.com/alanzhangzm/Photon/blob/master/README.zh-CN.md)
 
