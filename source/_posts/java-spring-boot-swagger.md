@@ -25,10 +25,6 @@ Spring Boot 使得开发 RESTful 服务变得简单。那么编写 Spring Boot �
 - 代码改变，文档就会改变。只需要少量的注释，Swagger 就可以根据代码自动生成 API 文档。
 - Swagger UI 是一份交互式的 API 文档，可以直接在 Web 界面调用 API。这里有一份 Swagger UI 的 [Live Demo](https://petstore.swagger.io/)，看看官方是怎么写 RESTful API 的。
 
-## API 风格
-
-在编写我们的 RESTful API 之前，我们先了解一下 API 风格的基础知识。
-
 ## 添加依赖
 
 `pom.xml` 引入 Swagger 相关的依赖：
