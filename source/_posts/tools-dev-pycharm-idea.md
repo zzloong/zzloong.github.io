@@ -142,6 +142,7 @@ Java 是严格区分大小写的，未设置时，输入	`str` 时，它不会�
 - `"C:\Windows\System32\cmd.exe" /k ""%CMDER_ROOT%\vendor\init.bat""` 修改为 `Cmder` 的终端，这种方式就会弹出 Cmder 的窗口，需要配置系统变量 `CMDER_ROOT`，值为：`D:\Green-SF\cmder`。
 
 参考：
+
 - [Pycharm官宣-Terminal](https://www.jetbrains.com/help/pycharm/settings-tools-terminal.html)
 - [Github-Run cmder inside IntelliJ idea](https://github.com/cmderdev/cmder/issues/282)
 - [Windows 上切换 Jetbrains IDE 的 terminal 为 PowerShell 或 cmder](https://blog.qxzzf.com/363)
@@ -155,9 +156,11 @@ Java 是严格区分大小写的，未设置时，输入	`str` 时，它不会�
 - [pycharm常用设置和技巧](https://segmentfault.com/a/1190000010783422)
 
 ### 设置Tab标签页
+
 `File->Editor->General->EditorTable->Tab closing Policy->Tab limit`
 
 在 `Windows->Editor Tabs` 可以设置标签页的相关内容，比如：
+
 - `Tabs Placement` 放置位置，我勾选了 `Right`、`Show tab in single row`
 - 勾选了 `Sort Tabs By Filename`
 - 勾选了 `Open New Tabs At The End`
@@ -179,7 +182,18 @@ Java 是严格区分大小写的，未设置时，输入	`str` 时，它不会�
 ### 关联数据库
 
 ![](https://ws4.sinaimg.cn/large/006tNbRwly1fypyoon4bfj30bu0a0tac.jpg)
+
+### 添加 JavaDOC 注释
+
+- 把光标停在类名或者方法名上，然后 `Alt+enter`，出现几个选项，选择 `Add Javadoc` 就 OK 了
+- 默认 `Fix doc comment` 是没有设置快捷键的，我这里把他设置成 `Alt + M`
+
+参考：
+
+- [IDEA添加JavaDOC注释 方法 快捷键](https://my.oschina.net/zjllovecode/blog/1510055)
+
 ### 生成 JavaDOC
+
 Javadoc用于描述类或者方法的作用，具体介绍，可查看[CSDN-Javadoc 使用详解](https://blog.csdn.net/vbirdbest/article/details/80296136)
 
 ![](https://ws3.sinaimg.cn/large/006tNbRwly1fyq6zthfcpj309q0b9q71.jpg)
@@ -188,7 +202,9 @@ Javadoc用于描述类或者方法的作用，具体介绍，可查看[CSDN-Java
 Locale：输入语言类型：zh_CN
 Other command line arguments：-encoding UTF-8 -charset UTF-8
 ```
+
 ![](https://ws4.sinaimg.cn/large/006tNbRwly1fyq729i5jnj30i70fmdhs.jpg)
+
 
 ### 缓存和索引的清理
 

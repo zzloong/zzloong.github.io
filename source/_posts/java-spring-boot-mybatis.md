@@ -1,5 +1,5 @@
 ---
-title: Spring Boot 2.x 实战 —— MyBatis（注解版）使用方法
+title: Spring Boot 实战 —— MyBatis（注解版）使用方法
 date: 2019-07-20 12:49:10
 tags:
   - Spring Boot
@@ -11,6 +11,8 @@ keywords:
   - Spring Boot
   - MyBatis
 ---
+
+![MyBatis](https://b2.bmp.ovh/imgs/2019/07/5f37fc105fab759c.jpeg)
 
 ## 简介
 
