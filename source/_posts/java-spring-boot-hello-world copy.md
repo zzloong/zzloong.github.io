@@ -1,5 +1,5 @@
 ---
-title: Spring Boot 实战 —— 入门
+title: Spring Boot 2.x 实战 —— 入门
 date: 2019-07-07 17:49:10
 tags:
   - Spring Boot

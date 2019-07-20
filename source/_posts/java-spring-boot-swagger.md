@@ -1,5 +1,5 @@
 ---
-title: Spring Boot 集成 Swagger 生成 RESTful API 文档
+title: Spring Boot 2.x 实战 —— 集成 Swagger 生成 RESTful API 文档
 date: 2019-07-14 00:49:10
 tags:
   - Java
