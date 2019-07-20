@@ -39,6 +39,27 @@ MyBatis 是目前国内互联网公司用的比较多的框架。ORM 框架就�
 
 ## 配置
 
+创建 `users` 表的 SQL：
+
+```SQL
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `users`
+-- ----------------------------
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `userName` varchar(32) DEFAULT NULL COMMENT '用户名',
+  `passWord` varchar(32) DEFAULT NULL COMMENT '密码',
+  `user_sex` varchar(32) DEFAULT NULL,
+  `nick_name` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+```
+
+application-dev.properties：
+
 ```shell
 swagger.enable=true
 server.port=8081
@@ -95,11 +116,11 @@ public class UserEntity implements Serializable {
 }
 ```
 
-`dao/mapper` 接口：
+`dao/mapper` 接口，数据库交互（`Data Access Object`）层：
 
 ```java
 public interface UserMapper {
-    //    @Results({
+//    @Results({
 //            @Result(property = "userSex", column = "user_sex", javaType = UserSexEnum.class),
 //            @Result(property = "nickName", column = "nick_name")
 //    })
@@ -170,6 +191,7 @@ public interface UserService {
 ```
 
 service 接口的实现类：
+
 ```java
 @Service
 public class UserServiceImpl implements UserService {
@@ -388,5 +410,7 @@ public PageInfo<UserEntity> getUsers(
 
 ## 参考
 
+- [纯洁的微笑-Spring Boot(六)：如何优雅的使用 Mybatis](http://www.ityouknow.com/springboot/2016/11/06/spring-boot-mybatis.html) 本文的主要参考文章之一
 - [CSDN-larger5-[增删改查] SpringBoot + MyBatis（注解版）](https://blog.csdn.net/larger5/article/details/79616058) 这位博主的示例，代码结构和风格都比较规范，值得学习
 - [CSDN-LuisChen的博客-Spring boot Mybatis 整合（完整版）](https://blog.csdn.net/Winter_chen001/article/details/77249029)
+- [CSDN-SpringBoot使用Mybatis注解开发教程-分页-动态sql](https://blog.csdn.net/kingboyworld/article/details/78948304) 分页参考

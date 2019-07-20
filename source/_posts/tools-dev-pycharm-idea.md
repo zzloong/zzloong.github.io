@@ -190,7 +190,7 @@ Java 是严格区分大小写的，未设置时，输入	`str` 时，它不会�
 
 参考：
 
-- [IDEA添加JavaDOC注释 方法 快捷键](https://my.oschina.net/zjllovecode/blog/1510055)
+- [开源中国-IDEA添加JavaDOC注释 方法 快捷键](https://my.oschina.net/zjllovecode/blog/1510055)
 
 ### 生成 JavaDOC
 
