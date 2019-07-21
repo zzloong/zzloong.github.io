@@ -1,7 +1,7 @@
 ---
 title: 笔记-玩转Spring全家桶
 date: 2019-04-18 23:51:01
-tags: [Java, Spring, SpringBoot, Note]
+tags: [Java, Spring, Spring Boot, Note]
 categories: Java
 keywords: spring, java
 ---
