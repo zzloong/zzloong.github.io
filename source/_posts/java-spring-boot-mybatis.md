@@ -465,11 +465,6 @@ public PageInfo<UserEntity> getUsers(
 
 ![分页](https://b2.bmp.ovh/imgs/2019/07/8114562151cbc00f.jpg)
 
-除了上面的参数名，还习惯用下面的参数名：
-
-- `offset`：和 `pageNum` 意思一样，指定返回记录的开始位置；
-- `limit`：和 `pageSize` 意思一样，指定返回记录的数量；
-
 ### 进一步
 
 上面的分页结果返回的内容有点多，一些属性并不想放在返回体中。可以进一步优化。编写工具类限定关心的属性。
