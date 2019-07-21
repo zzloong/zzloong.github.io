@@ -34,10 +34,16 @@ keywords:
     <artifactId>mysql-connector-java</artifactId>
 </dependency>
 <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-test</artifactId>
+    <groupId>org.mybatis.spring.boot</groupId>
+    <artifactId>mybatis-spring-boot-starter</artifactId>
+    <version>2.1.0</version>
 </dependency>
 ```
+
+`spring-boot-start` 系列的包，真是给 Spring Boot 开发带来了极大的便利，它的项目地址是：
+
+- [Github-mybatis/spring-boot-starter](https://github.com/mybatis/spring-boot-starter)
+- [官宣-What is MyBatis-Spring-Boot-Starter?](http://www.mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/) 推荐
 
 ## 配置
 
@@ -104,6 +110,22 @@ mybatis.configuration.map-underscore-to-camel-case=true
 UserEntity getUserById(Long id);
 ```
 
+在很多 `Select` 语句需要做结果映射时，自然是相当麻烦。除了上面配置「驼峰属性自动映射」，也可以用在 `@Results` 中使用 `id` 来标识一个映射关系，然后可以用 `@ResultMap` 复用这个映射关系：
+
+```java
+@Select("SELECT * FROM users")
+@Results(id = "user", value = {
+        @Result(property = "userSex", column = "user_sex"),
+        @Result(property = "nickName", column = "nick_name")
+})
+@Select("SELECT * FROM users WHERE id = #{id}")
+List<UserEntity> getAll();
+
+@ResultMap("user")
+@Select("SELECT * FROM users WHERE id = #{id}")
+UserEntity getUserById(Integer id);
+```
+
 ## 代码
 
 这里仅展示关键的部分的代码，完整可看下文的示例代码。
@@ -155,6 +177,8 @@ public interface UserMapper {
 
     @Insert("INSERT INTO users(userName, passWord, user_sex, nick_name) " +
             "VALUES(#{userName}, #{passWord}, #{userSex}, #{nickName})")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
+//   @SelectKey(statement = "select last_insert_id()", keyProperty = "id", before = false, resultType = Integer.class)
     void insert(UserEntity user);
 
     @Update("UPDATE users SET userName=#{userName},nick_name=#{nickName} WHERE id = #{id}")
@@ -164,6 +188,11 @@ public interface UserMapper {
     void deleteUserById(Long id);
 }
 ```
+
+说明：
+
+- `insert` 这里用了一个 `@Options` 的注解，实现了「主键回填」的功能，也就是说，再创建好一个 `user` 之后，`user` 请求体中的 `id` 属性会自动赋值好；
+- `@SelectKey` 注解被注释掉了，这个注解也同样可以实现「主键回填」的功能；
 
 service 接口：
 
@@ -299,8 +328,10 @@ public class UserController {
      */
     @ApiOperation(value = "存储用户信息", notes = "存储用户详细信息")
     @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public void save(UserEntity user) {
+    public String save(UserEntity user) {
         userService.insert(user);
+        // 用到了 主键回填 的配置
+        return "Create success, user id: " + user.getId();
     }
 
     /**
@@ -375,6 +406,7 @@ pagehelper.reasonable=true
 pagehelper.supportMethodsArguments=true
 pagehelper.params=count=countSql
 pagehelper.row-bounds-with-count=true
+pageSizeZero=true
 ```
 
 分页插键参数介绍：
@@ -383,6 +415,7 @@ pagehelper.row-bounds-with-count=true
 - `reasonable`：分页合理化参数，默认值为 false。当该参数设置为 true 时，`pageNum<=0` 时会查询第一页， `pageNum>pages`（超过总数时），会查询最后一页。默认 false 时，直接根据参数进行查询
 - `params`：为了支持 `startPage(Object params)` 方法，增加了该参数来配置参数映射，用于从对象中根据属性名取值， 可以配置 `pageNum,pageSize,count,pageSizeZero,reasonable`，不配置映射的用默认值， 默认值为 `pageNum=pageNum;pageSize=pageSize;count=countSql;reasonable=reasonable;pageSizeZero=pageSizeZero`。
 - `supportMethodsArguments`：支持通过 Mapper 接口参数来传递分页参数，默认值 false，分页插件会从查询方法的参数值中，自动根据上面 `params` 配置的字段中取值，查找到合适的值时就会自动分页
+- `pageSizeZero`：默认值为 false，当该参数设置为 true 时，如果 `pageSize=0` 或者 `RowBounds.limit = 0` 就会查询出全部的结果（相当于没有执行分页查询，但是返回结果仍然是 Page 类型）。我测试时，发现不设置，`pageSize=0` 也会返回全部；
 
 ### 代码变动
 
@@ -539,9 +572,11 @@ public PageResult getAll(int pageNum, int pageSize) {
 }
 ```
 
-## MyBatis IN 查询
+## IN 查询
 
-为了测试 MyBatis IN 查询，我们将之前的根据 ID 查询用户信息的接口进行修改，让它支持根据输入的 IDs 查询多用户信息。
+关于 MyBatis 的 IN 查询，也是试验了很久，才 OK 的。 StackOverflow 上就有类似的问题 [How to use Annotations with iBatis (myBatis) for an IN query?](https://stackoverflow.com/questions/3428742/how-to-use-annotations-with-ibatis-mybatis-for-an-in-query)。
+
+为了测试 MyBatis IN 查询，我们将之前的根据 ID 查询用户信息的接口进行修改，让它支持根据输入的 ID 列表查询多用户信息。
 
 controller：
 
@@ -575,17 +610,30 @@ mapper 类：
 List<UserEntity> getUserById(@Param("ids") List<String> ids);
 ```
 
-注意点：
+说明：
 
-- 我们传入的参数是一个 `collection` 类型，上面的 `collection` 属性值要设置为传入的参数名；
-- `@Param` 的设置比较关键
+- `item` 标识集合中每一个元素进行迭代是的别名，很多教程中设置为 `item`，我这里改为 `id` 也是 OK，而且也易于理解；
+- `index` 指定一个名字，用于表示在迭代过程中，每次迭代到的位置，从 0 开始；
+- `open` 表示该语句以什么开始；
+- `separator` 表示在每次进行迭代之间以什么符号作为分隔符；
+- `close` 表示以什么结束；
+- `collection` 属性，该属性是必须指定的，但是在不同情况下，该属性的值是不一样的；
+- `@Param` 的设置比较关键，相当于给其修饰的参数指定一个别名：
   - 使用 `@Param`，默认会和参数名同名，或者以注解传入的变量名为准。变量名将作为 `@Select` 中的可用参数，比如，我这里这样定义 `@Param("ids2") List<String> ids`，那么，`@Select` 中可用参数名将是 `ids2`，`collection` 也须定义为 `ids2`，否则会报错：`nested exception is org.apache.ibatis.binding.BindingException: Parameter 'list' not found. Available parameters are [ids2, param1]`;
   - 不使用 `@Param` 时，那么，此时 `collection` 需要定义为 `list`，否则会报错：`nested exception is org.apache.ibatis.binding.BindingException: Parameter 'list2' not found. Available parameters are [collection, list]`;
-- `item` 后面的参数名可以自己定义，很多教程中设置为 `item`，我这里改为 `id` 也是 OK，而且也易于理解；
+
+上面的说明参考自 [mybatis查询sql中in条件使用(foreach)](https://blog.csdn.net/aiyawalie/article/details/52954138) ，没有找到官方文档支撑，待补充。
+
+## 动态 SQL
+
+待后续补充
 
 ## FAQ
 
-### "nested exception is org.apache.ibatis.binding.BindingException: Parameter 'ids' not found. Available parameters are [collection, list]",
+### MyBatis 中 # 和 $ 的区别
+
+- 简单说 `#{}` 是经过预编译的，是安全的，而 `${}` 是未经过预编译的，仅仅是取变量的值，是非安全的，存在 SQL 注入。`${}` 将传入的数据都当成一个字符串，会对自动传入的数据加一个双引号。
+- 使用 `${}` 的情况，`order by`、`like` 语句只能用 `${}`,用 `#{}` 会多个 `' '` 导致 SQL 语句失效。此外动态拼接 SQL，模糊查询时也要用 `${}`。
 
 ## 示例代码
 
@@ -593,12 +641,17 @@ List<UserEntity> getUserById(@Param("ids") List<String> ids);
 
 ## 参考
 
-- [纯洁的微笑-Spring Boot(六)：如何优雅的使用 Mybatis](http://www.ityouknow.com/springboot/2016/11/06/spring-boot-mybatis.html) 本文的主要参考文章之一
+- [纯洁的微笑-Spring Boot(六)：如何优雅的使用 Mybatis](http://www.ityouknow.com/springboot/2016/11/06/spring-boot-mybatis.html) 本文的主要参考文章之一，入门挺好
 - [CSDN-larger5-[增删改查] SpringBoot + MyBatis（注解版）](https://blog.csdn.net/larger5/article/details/79616058) 这位博主的示例，代码结构和风格都比较规范，值得学习
 - [CSDN-LuisChen的博客-Spring boot Mybatis 整合（完整版）](https://blog.csdn.net/Winter_chen001/article/details/77249029)
+- [博客园-Ruthless-SpringBoot+Mybatis+Pagehelper分页](https://www.cnblogs.com/linjiqin/p/9687491.html) 查询结果关系映射那块，该文章介绍的 `@ResultMap` 比较方便；
 
 分页
 
 - [CSDN-SpringBoot使用Mybatis注解开发教程-分页-动态sql](https://blog.csdn.net/kingboyworld/article/details/78948304) 分页参考
 - [博客园-朝雨忆轻尘-Spring Boot：实现MyBatis分页](https://www.cnblogs.com/xifengxiaoma/p/11027551.html) 推荐，`PageResult` 的优化，参考此文
 - [PageHelper-官宣-如何使用分页插件](https://pagehelper.github.io/docs/howtouse/)
+
+FAQ
+
+- [知乎——这也许是你不曾留意过的 Mybatis 细节](https://zhuanlan.zhihu.com/p/47416328)
