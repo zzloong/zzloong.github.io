@@ -20,8 +20,7 @@ keywords:
 
 > MyBatis 是一款优秀的持久层框架，它支持定制化 SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生类型、接口和 Java 的 POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。
 
-- Hibernate 宣称不用写一句 SQL，都是用 Java 来生成 SQL。Spring Data JPA 这种模式，基本上根据方法名就可以生成对应的 SQL 了。
-- MyBatis 可以灵活调试动态 SQL。MyBatis 初期使用比较麻烦，需要各种配置。后来可以使用注解方式简化使用配置。
+<!-- more -->
 
 ## 依赖
 
@@ -627,6 +626,9 @@ List<UserEntity> getUserById(@Param("ids") List<String> ids);
 ## 动态 SQL
 
 待后续补充
+
+- [spring boot(8)-mybatis三种动态sql](https://blog.csdn.net/wangb_java/article/details/73657958)
+- [MyBatis注解应用之动态SQL语句](https://blog.csdn.net/owen_william/article/details/51815506)
 
 ## FAQ
 
