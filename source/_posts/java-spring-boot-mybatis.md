@@ -22,6 +22,10 @@ keywords:
 
 <!-- more -->
 
+## 示例代码
+
+- [awesome-spring-boot-examples](https://github.com/Michael728/awesome-spring-boot-examples)
+
 ## 依赖
 
 这里仅展示和 MyBatis 相关的数据库依赖项，完整的示例，在文末会附上项目代码链接。
@@ -636,10 +640,6 @@ List<UserEntity> getUserById(@Param("ids") List<String> ids);
 
 - 简单说 `#{}` 是经过预编译的，是安全的，而 `${}` 是未经过预编译的，仅仅是取变量的值，是非安全的，存在 SQL 注入。`${}` 将传入的数据都当成一个字符串，会对自动传入的数据加一个双引号。
 - 使用 `${}` 的情况，`order by`、`like` 语句只能用 `${}`,用 `#{}` 会多个 `' '` 导致 SQL 语句失效。此外动态拼接 SQL，模糊查询时也要用 `${}`。
-
-## 示例代码
-
-- [awesome-spring-boot-examples](https://github.com/Michael728/awesome-spring-boot-examples)
 
 ## 参考
 

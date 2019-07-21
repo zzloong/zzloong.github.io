@@ -26,6 +26,10 @@ keywords:
 
 大体意思是说，Spring Boot 可以轻松创建可以运行的独立的，基于生产级 Spring 的应用程序。这个框架简化了我们 Spring 的配置。可以使用 Spring Boot 创建 Java 应用，只需要使用  `java -jar` 或 `war` 包部署方式就可以启动。也内嵌了 `Tomcat`，在开发时无需以 `war` 包也可以运行应用。
 
+## 示例代码
+
+- [awesome-spring-boot-examples](https://github.com/Michael728/awesome-spring-boot-examples)
+
 ## 环境
 
 下面是本文编写时，我机器的环境：
@@ -246,10 +250,6 @@ Spring Boot 提供了很多”开箱即用“的依赖模块，都是以 `spring
 - constant：常量接口类
 
 当请求来了，controller 就会将相应的请求分发到相应的 service层，在 service 层中再调用 dao 层进行数据库交互。这里的 dao 层其实就是之前的 model 层，封装了对数据库的操作。这样一来，就把业务处理逻辑从 controller 中分离出来，从而实现了解耦。
-
-## 示例代码
-
-- [awesome-spring-boot-examples](https://github.com/Michael728/awesome-spring-boot-examples)
 
 ## 参考
 

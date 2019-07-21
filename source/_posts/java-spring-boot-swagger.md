@@ -10,9 +10,13 @@ keywords:
   - API
 ---
 
+![swagger](https://b2.bmp.ovh/imgs/2019/07/b243533fa7978572.png)
+
 ## 简介
 
 [Swagger](https://swagger.io/) 官网是这么描述它的：`The Best APIs are Built with Swagger Tools`。
+
+<!-- more -->
 
 [Swagger](https://swagger.io/docs/specification/about/) 是一套基于 OpenAPI 规范构建的开源工具，可以帮助我们设计、构建、记录以及使用 Rest API。Swagger 主要包含了以下三个部分：
 
@@ -24,6 +28,10 @@ Spring Boot 使得开发 RESTful 服务变得简单。那么编写 Spring Boot �
 
 - 代码改变，文档就会改变。只需要少量的注释，Swagger 就可以根据代码自动生成 API 文档。
 - Swagger UI 是一份交互式的 API 文档，可以直接在 Web 界面调用 API。这里有一份 Swagger UI 的 [Live Demo](https://petstore.swagger.io/)，看看官方是怎么写 RESTful API 的。
+
+## 示例代码
+
+- [awesome-spring-boot-examples](https://github.com/Michael728/awesome-spring-boot-examples)
 
 ## 添加依赖
 
