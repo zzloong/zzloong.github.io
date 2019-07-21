@@ -411,6 +411,10 @@ public PageInfo<UserEntity> getAll(int pageNum, int pageSize) {
 }
 ```
 
+注意点：
+
+- `PageHelper.startPage(pageNo,pageSize);` 只对其后的第一个查询有效；
+
 controller 类：
 
 ```java
