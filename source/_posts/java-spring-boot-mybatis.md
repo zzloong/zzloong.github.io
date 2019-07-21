@@ -383,7 +383,7 @@ public class SpringBootMybatisApplication {
 
 ## 分页
 
-通常，在进行查询时，我们为了避免一次性返回所有结果，通常会进行分页。比如查询所有用户的接口，实际应用中，用户数据可能会很多，如果全部一次返回，明显不合适。这时候，就需要进行分页查询。
+通常，在进行查询时，我们为了避免一次性返回所有结果，造成接口响应慢等问题。通常会进行分页。比如查询所有用户的接口，实际应用中，用户数据可能会很多，如果全部一次返回，明显不合适。这时候，就需要进行分页查询。
 
 本文我们选用插键 `pagehelper-spring-boot-starter` 要进行分页。
 
@@ -638,11 +638,47 @@ List<UserEntity> getUserById(@Param("ids") List<String> ids);
 
 ### MyBatis 中 # 和 $ 的区别
 
-- 简单说 `#{}` 是经过预编译的，是安全的，而 `${}` 是未经过预编译的，仅仅是取变量的值，是非安全的，存在 SQL 注入。`${}` 将传入的数据都当成一个字符串，会对自动传入的数据加一个双引号。
-- 使用 `${}` 的情况，`order by`、`like` 语句只能用 `${}`,用 `#{}` 会多个 `' '` 导致 SQL 语句失效。此外动态拼接 SQL，模糊查询时也要用 `${}`。
+- `#{}` 解析为一个 JDBC 预编译语句（`Prepared Statement`）的参数标记符 `?`。`#{}` 是经过预编译的，是安全的。因为 SQL 语句已经预编译好了，传入参数的时候，不会重新生产 SQL 语句。
+- `${}` 是非安全的，存在 SQL 注入风险。`${}` 将传入的数据都当成一个字符串，会对自动传入的数据加一个双引号。
+
+例如：
+
+```java
+select * from emp where ename = '用户名'
+```
+
+如果使用 `${}`，用户名被传入例如`‘smith or 1 = 1’`，那无论 `ename` 是否匹配都能查到结果。
+
+使用 `${}` 的情况，`order by`、`like` 语句只能用 `${}`,用 `#{}` 会多个 `' '` 导致 SQL 语句失效。此外动态拼接 SQL，模糊查询时也要用 `${}`。
+
+[MyBatis 官网 —— Parameters](http://www.mybatis.org/mybatis-3/sqlmap-xml.html#Parameters) 的例子值得阅读：
+
+```java
+@Select("select * from user where id = #{id}")
+User findById(@Param("id") long id);
+
+@Select("select * from user where name = #{name}")
+User findByName(@Param("name") String name);
+
+@Select("select * from user where email = #{email}")
+User findByEmail(@Param("email") String email);
+```
+
+上面的写法，可以直接使用如下替换：
+
+```java
+@Select("select * from user where ${column} = #{value}")
+User findByColumn(@Param("column") String column, @Param("value") String value);
+```
+
+关于这个问题的讨论：
+
+- [知乎——mybatis中的#和$的区别 ？最好能说的稍微详细点 谢谢](https://www.zhihu.com/question/26914370)
+- [CSDN——mybatis中的#和$的区别](https://blog.csdn.net/zymx14/article/details/78067452)
 
 ## 参考
 
+- [官宣-MyBatis XML](http://www.mybatis.org/mybatis-3/sqlmap-xml.html)
 - [纯洁的微笑-Spring Boot(六)：如何优雅的使用 Mybatis](http://www.ityouknow.com/springboot/2016/11/06/spring-boot-mybatis.html) 本文的主要参考文章之一，入门挺好
 - [CSDN-larger5-[增删改查] SpringBoot + MyBatis（注解版）](https://blog.csdn.net/larger5/article/details/79616058) 这位博主的示例，代码结构和风格都比较规范，值得学习
 - [CSDN-LuisChen的博客-Spring boot Mybatis 整合（完整版）](https://blog.csdn.net/Winter_chen001/article/details/77249029)
@@ -650,9 +686,11 @@ List<UserEntity> getUserById(@Param("ids") List<String> ids);
 
 分页
 
+- [CSDN——分页查询效率为什么高？](https://bbs.csdn.net/topics/380003476) 关于分页的讨论
 - [CSDN-SpringBoot使用Mybatis注解开发教程-分页-动态sql](https://blog.csdn.net/kingboyworld/article/details/78948304) 分页参考
 - [博客园-朝雨忆轻尘-Spring Boot：实现MyBatis分页](https://www.cnblogs.com/xifengxiaoma/p/11027551.html) 推荐，`PageResult` 的优化，参考此文
 - [PageHelper-官宣-如何使用分页插件](https://pagehelper.github.io/docs/howtouse/)
+- [廖雪峰——分页查询](https://www.liaoxuefeng.com/wiki/1177760294764384/1217864791925600)
 
 FAQ
 
