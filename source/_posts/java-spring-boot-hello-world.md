@@ -188,6 +188,7 @@ Banner 就是指我们在启动应用时控制台一开始打印的那个内容�
 
 - http://patorjk.com/software/taag
 - http://www.network-science.de/ascii/
+- https://github.com/Blankj/awesome-comment
 
 送一个有趣的 Banner：
 
