@@ -40,7 +40,7 @@ AUR 的全称是 `Arch User Repository`，是 Arch Linux/Manjaro 用户的社区
 
 ## 安装 Manjaro
 
-双系统基本知识
+双系统基本知识如下：
 
 - [[折腾日记]win10 ,ubuntu双系统安装避坑指南](https://segmentfault.com/a/1190000014523888)
 - [Windows 下安装 Ubuntu 双系统(更新)](https://www.cnblogs.com/Duane/p/6776302.html)
@@ -67,9 +67,7 @@ sudo pacman-mirrors -g  # 排列源，可不执行
 sudo pacman-mirrors -c China -m rank # 更改源，在跳出的对话框里选择想要的源
 ```
 
-Manjaro 是基于 Arch 的，而 AUR 是 Arch 社区用户维护的软件包（也是 arch 可用软件量巨大的所在），我们等下要安装的搜狗拼音、chrome 等不少软件都在这里维护。我们可以为 Manjaro 增加这个中文社区的源来方便我们安装一下软件。
-
-在 `/etc/pacman.conf` 中添加 `archlinuxcn` 源，末尾加上：
+为 Manjaro 增加中文社区的源来加速安装软件，在 `/etc/pacman.conf` 中添加 `archlinuxcn` 源，末尾加上：
 
 ```shell
 [archlinuxcn]
@@ -106,7 +104,7 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
 ```
 
-> 重启生效
+> 输入法需要重启生效
 
 ## pacman
 
@@ -122,6 +120,10 @@ pacman -Syu　#更新
 ## yay
 
 Yay 是用 Go 编写的 Arch Linux AUR 帮助工具，它可以帮助你以自动方式从 PKGBUILD 安装软件包， yay 有一个 AUR Tab 完成，具有高级依赖性解决方案，它基于 yaourt、apacman 和 pacaur，同时能实现几乎没有依赖、为 pacman 提供界面、有像搜索一样的 yaourt、最大限度地减少用户输入、知道 git 包何时升级等功能。
+
+{% note warning %}
+> yayout 是之前流行的 AUR 包安装器，但是现在已不再推荐了，很多教程比较老了。
+{% endnote %}
 
 安装 yay：
 
@@ -155,7 +157,8 @@ yay -Qi package # 检查安装的版本
 
 ```shell
 sudo pacman -S zsh # 安装zsh
-chsh -s /bin/zsh # 修改默认shell
+echo $SHELL # 查看大概年前 shell
+chsh -s /bin/zsh # 修改默认shell，这个是修改当前用户的终端，如果要修改 root 账户，需要切换到 root用户
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 sudo pacman -S autojump
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -214,6 +217,7 @@ sudo pacman -S gitkraken #GIT管理工具
 sudo pacman -S wireshark-qt #抓包
 sudo pacman -S zeal
 
+
 # 办公软件
 sudo pacman -S google-chrome
 sudo pacman -S foxitreader # pdf 阅读
@@ -231,7 +235,16 @@ sudo pacman -S aria2
 
 # 图形
 sudo pacman -S gimp # 修图
+
+# 终端
+sudo pacman -S screenfetch # 终端打印出你的系统信息
+sudo pacman -S htop
+sudo pacman -S yakuake # 堪称 KDE 下的终端神器，KDE 已经自带，F12 可以唤醒
 ```
+
+## 效果
+
+![screenfetch](https://b2.bmp.ovh/imgs/2019/08/be01f225b29b0dc2.png)
 
 ## 参考
 
@@ -240,7 +253,6 @@ sudo pacman -S gimp # 修图
 - [queensferry——Manjaro Linux + KDE 安装使用手记](https://queensferry.coding.me/2018/06/22/Manjaro-Linux-KDE-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/)
 - [完美脱离Windows!! Linux发行版第一系统 Manjaro 开箱教程 :)](https://www.cnblogs.com/demonxian3/p/9259912.html)
 - [掘金——Manjaro安装以及美化教程](https://juejin.im/post/5a6b1b3651882573443cea61)
-- [manjaro使用ss方法（需nodejs环境）](https://segmentfault.com/a/1190000019071980)
 - [基于SHADOWSOCKS的科学上网](https://zenuo.github.io/blog/%E5%9F%BA%E4%BA%8Eshadowsocks%E7%9A%84%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/)
 - [折腾之 Manjaro 安装使用指北](https://yqsas.com/2019/03/03/manjaro-in-t480s/)\
 - [Manjaro个性化配置](https://xyz1001.xyz/articles/1418.html)
