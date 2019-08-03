@@ -67,7 +67,7 @@ AUR 的全称是 `Arch User Repository`，是 Arch Linux/Manjaro 用户的社区
 |大小   |  挂载点   |   用途|
 |-----  |----   -|------|
 |40G    | `/`   |用于存放系统相当于win10的C盘|
-|8GG    | `/swap`   |一般设为电脑内存大小或2倍|
+|8G    | `/swap`   |一般设为电脑内存大小或2倍|
 |600MB  |`/boot`    |引导分区    |
 |所有剩余的空间|`/home`|用户存储数据用|
 
@@ -332,6 +332,7 @@ sudo pacman -S gimp # 修图
 
 # 系统工具
 sudo pacman -S albert #类似Mac Spotlight，另外一款https://cerebroapp.com/
+yay -S copyq #  剪贴板工具，类似 Windows 上的 Ditto
 
 # 终端
 sudo pacman -S screenfetch # 终端打印出你的系统信息，screenfetch -A 'Arch Linux'
@@ -348,7 +349,7 @@ yay -S mosh # 一款速度更快的 ssh 工具，网络不稳定时使用有奇�
 
 ### chrome
 
-以代理模式启动 Chrome:
+[这篇文章](https://xyz1001.xyz/articles/1418.html)介绍了一个以代理模式启动 Chrome 的方法:
 
 ```shell
 google-chrome-stable --proxy-server=socks5://127.0.0.1:1080
@@ -377,14 +378,13 @@ Win 键打开菜单搜索”默认程序”，可以修改浏览器等默认程�
 
 ## 效果
 
+![monitor](https://b2.bmp.ovh/imgs/2019/08/806d8ce52287801d.png)
 
 ## 参考
 
 - [标点符——Manjaro Linux的安装体验](https://www.biaodianfu.com/install-manjaro-linux.html#comment-161818)
 - [rovo98——Manjaro linux 安装与配置](https://rovo98.coding.me/posts/a1898ce2/)
 - [queensferry——Manjaro Linux + KDE 安装使用手记](https://queensferry.coding.me/2018/06/22/Manjaro-Linux-KDE-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/)
-- [完美脱离Windows!! Linux发行版第一系统 Manjaro 开箱教程 :)](https://www.cnblogs.com/demonxian3/p/9259912.html)
-- [基于SHADOWSOCKS的科学上网](https://zenuo.github.io/blog/%E5%9F%BA%E4%BA%8Eshadowsocks%E7%9A%84%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/)
-- [折腾之 Manjaro 安装使用指北](https://yqsas.com/2019/03/03/manjaro-in-t480s/)\
-- [Manjaro个性化配置](https://xyz1001.xyz/articles/1418.html)
+- [cnblogs——完美脱离Windows!! Linux发行版第一系统 Manjaro 开箱教程 :)](https://www.cnblogs.com/demonxian3/p/9259912.html)
+- [折腾之 Manjaro 安装使用指北](https://yqsas.com/2019/03/03/manjaro-in-t480s/)
 - [撸Linux——我的Linux桌面常用软件列表 (2019年春)](https://www.lulinux.com/archives/5557)
