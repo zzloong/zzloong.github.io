@@ -221,6 +221,20 @@ sudo systemctl start privoxy.service
 很多网上的教程都说需要再安装一个 `switchyomega` 插件，事实上，最新版本的 `Chrome` 已经不支持直接拖动 `crx` 文件安装插件了。
 {% endnote %}
 
+这时候浏览器网络其实已经 OK 了，访问 Google 也正常。你会发现访问国内网站速度并不好，这是因为国内网站不走代理其实网速更好！这时候实现自动的切换，就可以在上面的设置之后，去 Google 应用商店安装好 [proxy-switchyomega](https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif) 扩展。
+
+进行设置主要有 3 点：
+
+1. 情景模式中，proxy 配置上 `socks5` 的代理；
+2. 情景模式中，`auto switch` 中，首先勾选上 `规则列表表规则` 走 `proxy`！
+3. 规则列表设置，在 `autoproxy` 中，输入规则类表网址：`https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt`，然后更新，这样在规则列表中的网站就会走上面的代理了；
+
+![auto switch](https://b2.bmp.ovh/imgs/2019/08/71ba9d75e93749c6.png)
+
+安装并设置好这个扩展插件之后，我们可以在系统设置-》网络-》设置-》代理中，恢复默认配置。这样在浏览器中，这个扩展选中 `auto switch` 它会自动判断是否走代理。
+
+### 终端代理
+
 终端代理安装 `proxychain-ng`，`sudo pacman -S proxychains-ng` 安装，配置：
 
 ```shell
