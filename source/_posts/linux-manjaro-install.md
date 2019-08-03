@@ -17,12 +17,10 @@ keywords:
 
 Manjaro 由奥地利、法国和德国的爱好者共同开发，提供了 Arch Linux 操作系统的所有优点，同时注重用户友好性和可用性。 Manjaro 提供32位和64位版本，适合新手以及经验丰富的 Linux 用户。
 
-Manjaro与Arch有许多相同的功能，包括：
+Manjaro 与 Arch 有许多相同的功能，包括：
 
-- 速度、力量和效率
-- 可用最新的前沿软件
 - “滚动发行”开发模式，可提供最新的系统，而无需安装新版本
-- 可用AUR
+- 可用 AUR
 
 然而，Manjaro 拥有自己的一些额外的功能，包括：
 
@@ -35,6 +33,10 @@ Manjaro与Arch有许多相同的功能，包括：
 补充
 
 [Arch Linux（或 Arch /ˈɑːrtʃ/)）](https://wiki.archlinux.org/index.php/Arch_Linux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87) 是一款基于 x86-64 架构的 Linux发行版。系统主要由自由和开源软件组成，支持社区参与。系统设计以 KISS 原则（保持简单和愚蠢）为总体指导原则，注重代码正确、优雅和极简主义，期待用户能够愿意去理解系统的操作。Arch Linux 系统安装、删除和更新软件的软件包管理器叫做 pacman。
+
+AUR 的全称是 `Arch User Repository`，是 Arch Linux/Manjaro 用户的社区驱动存储库，创建 AUR 的目的是使共享社区包的过程更容易和有条理。使用它可以在 Arch Linux/Manjaro 系统中安装和更新软件包。这个软件仓库的软件包是相当丰富，可以查看这个网站的统计[Repository statistics](https://repology.org/repositories/statistics/total)，它的软件列表可以在[Archlinux AUR](https://aur.archlinux.org/packages/)查看
+
+![AUR](https://b2.bmp.ovh/imgs/2019/08/ebecf2400fef188c.png)
 
 ## 安装 Manjaro
 
@@ -50,11 +52,11 @@ Manjaro与Arch有许多相同的功能，包括：
 - 制作 Manjaro U盘启动盘一开始使用的是 UltraISO，后来换成了 [Rufus](https://rufus.ie/)，就 OK 了;
 - 安装引导时要选择创建的 `/boot` 分区， 此外，我是双硬盘，一开始按照单硬盘的方法，怎么也启动不了，后来需要在安装 Windows 系统的 SSD 盘上划出了 600MB 空间用来挂载 `/boot` 分区并安装引导；
 
-[官网](https://www.manjaro.cn/153)系统镜像下载，几个主要版本：
+[官网](https://www.manjaro.cn/153)系统镜像下载，推荐从 [USTC中科大镜像下载](https://mirrors.ustc.edu.cn/manjaro-cd/)几个主要版本：
 
-- Xfce是一个用于类UNIX操作系统的轻量级桌面环境。 它的目标是快速和系统资源低耗，同时仍然保持视觉上的吸引力和对用户友好的特性
-- KDE是一个功能丰富多样的桌面环境，提供几种不同风格的菜单来访问应用程序。还有一个优秀的内置界面，可以方便地访问、下载、安装新的主题、小部件等。 虽然在用户友好度上做的非常好，但KDE也是相当消耗系统资源的，跟XFCE比较起来，启动程序、使用桌面环境都明显偏慢。运行Manjaro的64位KDE桌面使用大约需要550MB的内存
-- GNOME桌面环境是作为GNU项目的一部分来开发的，它旨在简单易用，并且完全可用。 它的默认显示服务器是Wayland。 虽然外观是独特的，它的可定制性仍然非常高。
+- Xfce是一个用于类UNIX操作系统的轻量级桌面环境。它的目标是快速和系统资源低耗，同时仍然保持视觉上的吸引力和对用户友好的特性。所以，家里另外一台低配置的旧笔记本，我安装了这个版本。
+- KDE是一个功能丰富多样的桌面环境，提供几种不同风格的菜单来访问应用程序。还有一个优秀的内置界面，可以方便地访问、下载、安装新的主题、小部件等。 虽然在用户友好度上做的非常好，但KDE也是相当消耗系统资源的，跟XFCE比较起来，启动程序、使用桌面环境都明显偏慢。运行 Manjaro 的 64 位 KDE 桌面使用大约需要 550MB 的内存。我自己的就笔记本配置还可以，就安装了这个版本，确实很易用！
+- GNOME桌面环境是作为GNU项目的一部分来开发的，它旨在简单易用，并且完全可用。
 
 ## 源
 
@@ -118,8 +120,6 @@ pacman -Syu　#更新
 ```
 
 ## yay
-
-AUR 的全称是 Arch User Repository，是 Arch Linux/Manjaro用户的社区驱动存储库，创建AUR的目的是使共享社区包的过程更容易和有条理。使用它可以在Arch Linux/Manjaro系统中安装和更新软件包
 
 Yay 是用 Go 编写的 Arch Linux AUR 帮助工具，它可以帮助你以自动方式从 PKGBUILD 安装软件包， yay 有一个 AUR Tab 完成，具有高级依赖性解决方案，它基于 yaourt、apacman 和 pacaur，同时能实现几乎没有依赖、为 pacman 提供界面、有像搜索一样的 yaourt、最大限度地减少用户输入、知道 git 包何时升级等功能。
 
