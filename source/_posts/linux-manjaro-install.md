@@ -11,9 +11,13 @@ keywords:
 - KDE
 ---
 
+![Manjaro](![](https://b2.bmp.ovh/imgs/2019/08/51f98679d299b9c0.png))
+
 ## Manjaro 简介
 
 [Manjaro](https://www.manjaro.cn/category/about-manjaro-linux) 是一款基于 Arch Linux、对用户友好的 Linux 发行版。在 Linux 社区，Arch Linux 的确是一个异常快速、强大、轻量级的发行版，它提供最新的、最全的软件。然而，Arch Linux 面向高级用户，普遍认为，缺乏技术专长或者没有耐心的人是无法玩转 Arch Linux的。
+
+<!-- more -->
 
 Manjaro 由奥地利、法国和德国的爱好者共同开发，提供了 Arch Linux 操作系统的所有优点，同时注重用户友好性和可用性。 Manjaro 提供32位和64位版本，适合新手以及经验丰富的 Linux 用户。
 
@@ -373,7 +377,6 @@ Win 键打开菜单搜索”默认程序”，可以修改浏览器等默认程�
 
 ## 效果
 
-![screenfetch](https://b2.bmp.ovh/imgs/2019/08/be01f225b29b0dc2.png)
 
 ## 参考
 
