@@ -3,8 +3,9 @@ title: Windows下利用批命令修改IP设置
 tags: [Tools, 小程序, batch]
 toc: true
 date: 2016-11-14 16:58:35
-categories: Tools
-thumbnail: https://cdn.lynda.com/course/435539/435539-636274410487252173-16x9.jpg
+categories: 
+- ToolsDev
+
 ---
 
 因为在实验室需要将网络设置为自动获取IP地址和DNS服务器地址，然而，在宿舍想要登录成功6维BT站，却需要配置静态IP地址。每次切换IP需要输入一串参数，打开网络适配器去设置，很麻烦，下午就花时间解决了一下。

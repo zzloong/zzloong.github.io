@@ -3,7 +3,8 @@ title: hexo之github\gitcafe多线路托管博客，DNS域名设置
 tags: [Hexo, DNS]
 toc: true
 date: 2015-11-30 14:35:06
-categories: Tools
+categories: 
+- ToolsDaily
 ---
 上一篇[挖坑总结（1）](http://michaelxiang.me/2015/11/30/hexo-gitcafe-github-deploy/)中已经详细讲解了同时部署到gitcafe和github上的方法了，那么，接下来
 要讲解的就是DNS域名相关的问题：

@@ -1,8 +1,10 @@
+---
 title: hexo之github\gitcafe多线路托管博客deploy及SSH设置问题
 tags: [Hexo]
 toc: true
 date: 2015-11-30 14:21:00
-categories: Tools
+categories: 
+- ToolsDaily
 ---
 
 github时常抽风，访问不了，速度和国内的gitcafe相比，也稍微慢一点。那么通过将博客文件部属同时部署到这两个网站，之后通过DNS域名等设置，国内访问gitcafe，国外访问github，这样就ok啦！

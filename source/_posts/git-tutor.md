@@ -3,7 +3,8 @@ title: Git入门私房菜
 tags: [Git, Tools]
 toc: true
 date: 2015-12-07 14:51:29
-categories: Tools
+categories:
+- ToolsDev
 thumbnail: http://ww3.sinaimg.cn/thumbnail/6d9475f6jw1eyr4l2cttjj20b40b4mxi.jpg
 ---
 昨天下午参考廖雪峰的博客和其他一些文章，简单了解了一下传说中的Git，发现常见用法入门还是挺容易上手的，在此做一些笔记，方便以后查阅和复习。
