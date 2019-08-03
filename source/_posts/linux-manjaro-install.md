@@ -11,11 +11,50 @@ keywords:
 - KDE
 ---
 
+## Manjaro 简介
+
+[Manjaro](https://www.manjaro.cn/category/about-manjaro-linux) 是一款基于 Arch Linux、对用户友好的 Linux 发行版。在 Linux 社区，Arch Linux 的确是一个异常快速、强大、轻量级的发行版，它提供最新的、最全的软件。然而，Arch Linux 面向高级用户，普遍认为，缺乏技术专长或者没有耐心的人是无法玩转 Arch Linux的。
+
+Manjaro 由奥地利、法国和德国的爱好者共同开发，提供了 Arch Linux 操作系统的所有优点，同时注重用户友好性和可用性。 Manjaro 提供32位和64位版本，适合新手以及经验丰富的 Linux 用户。
+
+Manjaro与Arch有许多相同的功能，包括：
+
+- 速度、力量和效率
+- 可用最新的前沿软件
+- “滚动发行”开发模式，可提供最新的系统，而无需安装新版本
+- 可用AUR
+
+然而，Manjaro 拥有自己的一些额外的功能，包括：
+
+- 简化、用户友好的安装过程
+- 自动检测计算机的硬件（例如显卡）
+- 为系统自动安装必要的软件（例如显卡驱动程序）
+- 它自己的专用软件仓库，以确保提供完全测试过的稳定的软件包
+- 轻松安装和使用多个内核。
+
+补充
+
+[Arch Linux（或 Arch /ˈɑːrtʃ/)）](https://wiki.archlinux.org/index.php/Arch_Linux_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87) 是一款基于 x86-64 架构的 Linux发行版。系统主要由自由和开源软件组成，支持社区参与。系统设计以 KISS 原则（保持简单和愚蠢）为总体指导原则，注重代码正确、优雅和极简主义，期待用户能够愿意去理解系统的操作。Arch Linux 系统安装、删除和更新软件的软件包管理器叫做 pacman。
+
 ## 安装 Manjaro
 
-### 制作 U 盘启动盘
+双系统基本知识
 
-- []()
+- [[折腾日记]win10 ,ubuntu双系统安装避坑指南](https://segmentfault.com/a/1190000014523888)
+- [Windows 下安装 Ubuntu 双系统(更新)](https://www.cnblogs.com/Duane/p/6776302.html)
+- [rEFInd](https://sourceforge.net/projects/refind/)
+
+总结注意点：
+
+- 要是遇到启动不了的问题，可以用老毛桃制作个U盘修复引导即可，所以事先建议搞一个;
+- 制作 Manjaro U盘启动盘一开始使用的是 UltraISO，后来换成了 [Rufus](https://rufus.ie/)，就 OK 了;
+- 安装引导时要选择创建的 `/boot` 分区， 此外，我是双硬盘，一开始按照单硬盘的方法，怎么也启动不了，后来需要在安装 Windows 系统的 SSD 盘上划出了 600MB 空间用来挂载 `/boot` 分区并安装引导；
+
+[官网](https://www.manjaro.cn/153)系统镜像下载，几个主要版本：
+
+- Xfce是一个用于类UNIX操作系统的轻量级桌面环境。 它的目标是快速和系统资源低耗，同时仍然保持视觉上的吸引力和对用户友好的特性
+- KDE是一个功能丰富多样的桌面环境，提供几种不同风格的菜单来访问应用程序。还有一个优秀的内置界面，可以方便地访问、下载、安装新的主题、小部件等。 虽然在用户友好度上做的非常好，但KDE也是相当消耗系统资源的，跟XFCE比较起来，启动程序、使用桌面环境都明显偏慢。运行Manjaro的64位KDE桌面使用大约需要550MB的内存
+- GNOME桌面环境是作为GNU项目的一部分来开发的，它旨在简单易用，并且完全可用。 它的默认显示服务器是Wayland。 虽然外观是独特的，它的可定制性仍然非常高。
 
 ## 源
 
@@ -80,9 +119,27 @@ pacman -Syu　#更新
 
 ## yay
 
-AUR的全称是Arch User Repository，是Arch Linux/Manjaro用户的社区驱动存储库，创建AUR的目的是使共享社区包的过程更容易和有条理。使用它可以在Arch Linux/Manjaro系统中安装和更新软件包
+AUR 的全称是 Arch User Repository，是 Arch Linux/Manjaro用户的社区驱动存储库，创建AUR的目的是使共享社区包的过程更容易和有条理。使用它可以在Arch Linux/Manjaro系统中安装和更新软件包
 
-Yay是用Go编写的Arch Linux AUR帮助工具，它可以帮助你以自动方式从PKGBUILD安装软件包， yay有一个AUR Tab完成，具有高级依赖性解决方案，它基于yaourt、apacman和pacaur，同时能实现几乎没有依赖、为pacman提供界面、有像搜索一样的yaourt、最大限度地减少用户输入、知道git包何时升级等功能。
+Yay 是用 Go 编写的 Arch Linux AUR 帮助工具，它可以帮助你以自动方式从 PKGBUILD 安装软件包， yay 有一个 AUR Tab 完成，具有高级依赖性解决方案，它基于 yaourt、apacman 和 pacaur，同时能实现几乎没有依赖、为 pacman 提供界面、有像搜索一样的 yaourt、最大限度地减少用户输入、知道 git 包何时升级等功能。
+
+安装 yay：
+
+```shell
+sudo pacman -S yay
+```
+
+配置 yay 的 aur 源为[清华源 AUR 镜像](https://mirror.tuna.tsinghua.edu.cn/help/AUR/)：
+
+```shell
+yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save
+```
+
+修改的配置文件位于 `~/.config/yay/config.json` ，还可通过以下命令查看修改过的配置:
+
+```shell
+yay -P -g
+```
 
 yay 的常用命令：
 
@@ -117,10 +174,37 @@ sudo pacman -S nodejs
 sudo pacman -S npm
 ```
 
+## 安装中文字体
+
+```shell
+sudo pacman -S wqy-zenhei
+sudo pacman -S wqy-bitmapfont
+sudo pacman -S wqy-microhei
+sudo pacman -S adobe-source-han-sans-cn-fonts
+sudo pacman -S adobe-source-han-serif-cn-fonts
+```
+
 ## 常用软件
 
 ```shell
+# deepin 系的软件
+sudo pacman -S deepin-picker # 深度取色器
+sudo pacman -S deepin-screen-recorder # 录屏软件，可以录制 Gif 或者 MP4 格式
+sudo pacman -S deepin-screenshot # 深度截图
+sudo pacman -S deepin-system-monitor # 系统状态监控
+yay -s deepin-wine-wechat
+yay -S deepin-wine-tim
+yay -S deepin-wine-baidupan
+
 # 开发软件
+sudo pacman -S make
+sudo pacman -S cmake
+sudo pacman -S clang
+sudo pacman -S nodejs
+sudo pacman -S npm
+sudo pacman -S goland
+sudo pacman -S vim
+sudo pacman -S maven
 sudo pacman -S pycharm-professional
 sudo pacman -S intellij-idea-ultimate-edition
 sudo pacman -S visual-studio-code-bin
@@ -129,24 +213,24 @@ sudo pacman -S insomnia #REST模拟工具
 sudo pacman -S gitkraken #GIT管理工具
 sudo pacman -S wireshark-qt #抓包
 sudo pacman -S zeal
-sudo pacman -S vim
-
 
 # 办公软件
 sudo pacman -S google-chrome
-sudo pacman -S bookworm #电子书阅读
-yay -S typora #markdown 编辑
-yay -S electron-ssr
+sudo pacman -S foxitreader # pdf 阅读
+sudo pacman -S bookworm # 电子书阅读
+sudo pacman -S shadowsocks-qt5
+yay -S typora # markdown 编辑
+yay -S electron-ssr # 缺少我需要的加密算法
 yay -S xmind
 
 # 娱乐软件
 sudo pacman -S netease-cloud-music
-yay -s deepin-wine-wechat
-yay -S deepin-wine-tim
 
 # 下载软件
 sudo pacman -S aria2
-yay -S deepin-wine-baidupan
+
+# 图形
+sudo pacman -S gimp # 修图
 ```
 
 ## 参考
