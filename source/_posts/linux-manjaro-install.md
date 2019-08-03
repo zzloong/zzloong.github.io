@@ -166,6 +166,12 @@ yay -Qi package # 检查安装的版本
 
 yay 安装命令不需要加 `sudo`。
 
+## Git
+
+```shell
+ssh-keygen -t rst -C "649168982@qq.com"
+```
+
 ## zsh
 
 ```shell
@@ -187,9 +193,50 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 
 ```shell
 sudo pacman -S shadowsocks-qt5
+
 ```
 
-很多网上的教程都说需要再按炸ung一个ie `switchyomega` 插件，事实上，最新版本的 `Chrome` 已经不支持直接拖动 `crx` 文件安装插件了。
+![ss](https://b2.bmp.ovh/imgs/2019/08/597e3675620adb9c.png)
+
+上面是安装了一个 ss 的客户端，编辑添加好帐号之后，还需要设置一下端口转发，这样浏览器或者终端才可以 FQ：
+
+```shell
+sudo pacman -S privoxy # 安装代理转发
+sudo bash -c 'echo "forward-socks5 / 127.0.0.1:1080 ." >> /etc/privoxy/config'
+git config --global http.proxy 'socks5://127.0.0.1:1080'
+git config --global https.proxy 'socks5://127.0.0.1:1080'
+sudo systemctl start privoxy.service
+```
+
+接着，你还需要去设置网络代理：系统设置-》网络-》设置-》代理，`socks代理` 那里进行配置 `127.0.0.1:1080`。
+
+{% note warning %}
+很多网上的教程都说需要再安装一个 `switchyomega` 插件，事实上，最新版本的 `Chrome` 已经不支持直接拖动 `crx` 文件安装插件了。
+{% endnote %}
+
+当然，端口转发软件还有 `polipo`，一个[教程](https://www.cnblogs.com/demonxian3/p/9259912.html)介绍的， `sudo vim /etc/polipo/config`：
+
+```shell
+socksParentProxy = localhost:1080
+proxyPort = 8192
+```
+
+然后重启：
+
+```shell
+systemctl start polipo
+```
+
+终端代理安装 `proxychain-ng`，`sudo pacman -S proxychains-ng` 安装，然后
+
+```shell
+sudo vim /etc/proxychains.conf # 添加如下内容
+socks5 127.0.0.1 1080
+```
+
+使用时在需要代理的命令前加 `proxychains4` 就可以了，例如：`proxychains4 ping www.google.com`
+
+`yay -S electron-ssr` 这款也不错，就是没有支持的加密算法，就没用，这是这款软件的开发者的博客 [记录在开发electron-ssr过程中遇到的问题](https://erguotou.me/develop-electron-ssr.html)。
 
 ## 安装中文字体
 
@@ -249,6 +296,9 @@ sudo pacman -S aria2
 # 图形
 sudo pacman -S gimp # 修图
 
+# 系统工具
+sudo pacman -S albert #类似Mac Spotlight，另外一款https://cerebroapp.com/
+
 # 终端
 sudo pacman -S screenfetch # 终端打印出你的系统信息
 sudo pacman -S htop
@@ -275,6 +325,8 @@ Dolphin 是 KDE 下默认的文件管理器。
 
 Win 键打开菜单搜索”默认程序”，可以修改浏览器等默认程序；
 
+更多一些使用技巧，可以查看这里[撸Linux——Manjaro](https://www.lulinux.com/archives/category/manjaro-linux)
+
 ## 效果
 
 ![screenfetch](https://b2.bmp.ovh/imgs/2019/08/be01f225b29b0dc2.png)
@@ -291,3 +343,4 @@ Win 键打开菜单搜索”默认程序”，可以修改浏览器等默认程�
 - [Manjaro个性化配置](https://xyz1001.xyz/articles/1418.html)
 - [人生苦短，我用Manjaro！](http://www.iamlightsmile.com/articles/%E4%BA%BA%E7%94%9F%E8%8B%A6%E7%9F%AD%EF%BC%8C%E6%88%91%E7%94%A8Manjaro%EF%BC%81/)
 - [人生苦短，我用Manjaro！](https://zhuanlan.zhihu.com/p/50918522)
+- [撸Linux——我的Linux桌面常用软件列表 (2019年春)](https://www.lulinux.com/archives/5557)
