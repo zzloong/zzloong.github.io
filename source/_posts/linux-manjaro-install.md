@@ -58,6 +58,15 @@ AUR 的全称是 `Arch User Repository`，是 Arch Linux/Manjaro 用户的社区
 - KDE是一个功能丰富多样的桌面环境，提供几种不同风格的菜单来访问应用程序。还有一个优秀的内置界面，可以方便地访问、下载、安装新的主题、小部件等。 虽然在用户友好度上做的非常好，但KDE也是相当消耗系统资源的，跟XFCE比较起来，启动程序、使用桌面环境都明显偏慢。运行 Manjaro 的 64 位 KDE 桌面使用大约需要 550MB 的内存。我自己的就笔记本配置还可以，就安装了这个版本，确实很易用！
 - GNOME桌面环境是作为GNU项目的一部分来开发的，它旨在简单易用，并且完全可用。
 
+我从另外一块机械硬盘上划分了 100GB 空间用来安装，分区参考：
+
+|大小   |  挂载点   |   用途|
+|-----  |----   -|------|
+|40G    | `/`   |用于存放系统相当于win10的C盘|
+|8GG    | `/swap`   |一般设为电脑内存大小或2倍|
+|600MB  |`/boot`    |引导分区    |
+|所有剩余的空间|`/home`|用户存储数据用|
+
 ## 源
 
 配置中国的 `mirrors`，在 终端 执行下面的命令从官方的源列表中对中国源进行测速和设置：
@@ -88,6 +97,8 @@ sudo pacman -Syyu
 ```
 
 ## 输入法
+
+fcitx 是 Free Chinese Input Toy for X 的缩写，国内也常称作小企鹅输入法，是一款 Linux 下的中文输入法:
 
 ```shell
 sudo pacman -S fcitx-googlepinyin
@@ -122,7 +133,7 @@ pacman -Syu　#更新
 Yay 是用 Go 编写的 Arch Linux AUR 帮助工具，它可以帮助你以自动方式从 PKGBUILD 安装软件包， yay 有一个 AUR Tab 完成，具有高级依赖性解决方案，它基于 yaourt、apacman 和 pacaur，同时能实现几乎没有依赖、为 pacman 提供界面、有像搜索一样的 yaourt、最大限度地减少用户输入、知道 git 包何时升级等功能。
 
 {% note warning %}
-> yayout 是之前流行的 AUR 包安装器，但是现在已不再推荐了，很多教程比较老了。
+注意：yaourt 目前已经停止维护，用户可以考虑迁移到 aurman 或 yay ，很多教程比较老了。具体可以查看 [Arch Wiki](https://wiki.archlinux.org/index.php/AUR_helpers)
 {% endnote %}
 
 安装 yay：
@@ -153,6 +164,8 @@ yay -Ps # 打印系统统计信息
 yay -Qi package # 检查安装的版本
 ```
 
+yay 安装命令不需要加 `sudo`。
+
 ## zsh
 
 ```shell
@@ -173,9 +186,10 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 ## ss
 
 ```shell
-sudo pacman -S nodejs
-sudo pacman -S npm
+sudo pacman -S shadowsocks-qt5
 ```
+
+很多网上的教程都说需要再按炸ung一个ie `switchyomega` 插件，事实上，最新版本的 `Chrome` 已经不支持直接拖动 `crx` 文件安装插件了。
 
 ## 安装中文字体
 
@@ -198,6 +212,7 @@ sudo pacman -S deepin-system-monitor # 系统状态监控
 yay -s deepin-wine-wechat
 yay -S deepin-wine-tim
 yay -S deepin-wine-baidupan
+yay -S deepin.com.thunderspeed
 
 # 开发软件
 sudo pacman -S make
@@ -210,19 +225,17 @@ sudo pacman -S vim
 sudo pacman -S maven
 sudo pacman -S pycharm-professional
 sudo pacman -S intellij-idea-ultimate-edition
-sudo pacman -S visual-studio-code-bin
+sudo pacman -S visual-studio-code-bin # vscode
 sudo pacman -S postman-bin
-sudo pacman -S insomnia #REST模拟工具
-sudo pacman -S gitkraken #GIT管理工具
-sudo pacman -S wireshark-qt #抓包
+sudo pacman -S insomnia # REST模拟工具
+sudo pacman -S gitkraken # GIT管理工具
+sudo pacman -S wireshark-qt # 抓包
 sudo pacman -S zeal
-
 
 # 办公软件
 sudo pacman -S google-chrome
 sudo pacman -S foxitreader # pdf 阅读
 sudo pacman -S bookworm # 电子书阅读
-sudo pacman -S shadowsocks-qt5
 yay -S typora # markdown 编辑
 yay -S electron-ssr # 缺少我需要的加密算法
 yay -S xmind
@@ -240,7 +253,27 @@ sudo pacman -S gimp # 修图
 sudo pacman -S screenfetch # 终端打印出你的系统信息
 sudo pacman -S htop
 sudo pacman -S yakuake # 堪称 KDE 下的终端神器，KDE 已经自带，F12 可以唤醒
+sudo pacman -S net-tools # 这样可以使用 ifconfig 和 netstat
 ```
+
+### wireshark-qt
+
+Wireshark 是一款免费开源的包分析器，可用于网络排错、网络分析、软件和通讯协议开发以及教学等。然而不幸的是官方网站上仅提供了 Windows 和 MacOS 的版本。不过不用担心，你依然可以使用 pacman 直接从 Arch 的 community 软件源里直接安装 wireshark-qt 。wireshark-qt 就是用 qt 做成的 wireshark 前端界面，它依赖于终端版的 wireshark-cli 。
+
+这里提示一点： 通常直接安装完后启动 wireshark 会提示 `/usr/bin/dumpcap` 无权限，有些用户会因此选择在命令行里 `sudo wireshark` 打开 wireshark，这其实很不安全。正确做法是运行命令 `gpasswd -a username wireshark` 然后重新启动，详情可以参见 Arch Wiki 。
+
+## 系统设置
+
+### Dolphin
+
+Dolphin 是 KDE 下默认的文件管理器。
+
+- 在系统设置-》桌面行为-》工作空间-》点击行为，勾选”双击打开文件和文件夹“；
+- 在菜单中搜索”常规“-》确认，勾选”将文件或文件夹移至回收站“；
+
+### 默认程序
+
+Win 键打开菜单搜索”默认程序”，可以修改浏览器等默认程序；
 
 ## 效果
 
