@@ -11,7 +11,7 @@ keywords:
 - KDE
 ---
 
-![Manjaro](![](https://b2.bmp.ovh/imgs/2019/08/51f98679d299b9c0.png))
+![Manjaro](https://b2.bmp.ovh/imgs/2019/08/51f98679d299b9c0.png)
 
 ## Manjaro 简介
 
