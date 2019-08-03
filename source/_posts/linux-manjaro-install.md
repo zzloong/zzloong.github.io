@@ -125,15 +125,16 @@ sudo pacman -R 软件名　# 删除单个软件包，保留其全部已经安装
 sudo pacman -Rs 软件名 # 除指定软件包，及其所有没有被其他已安装软件包使用的依赖关系
 sudo pacman -Ss 软件名  # 查找软件
 sudo pacman -Sc # 清空并且下载新数据
-pacman -Syu　#更新
+sudo pacman -Syu　# 升级所有软件包
+sudo pacman -Qs # 搜索已安装的包
 ```
 
 ## yay
 
-Yay 是用 Go 编写的 Arch Linux AUR 帮助工具，它可以帮助你以自动方式从 PKGBUILD 安装软件包， yay 有一个 AUR Tab 完成，具有高级依赖性解决方案，它基于 yaourt、apacman 和 pacaur，同时能实现几乎没有依赖、为 pacman 提供界面、有像搜索一样的 yaourt、最大限度地减少用户输入、知道 git 包何时升级等功能。
+Yay 是用 Go 编写的 Arch Linux AUR 包管理工具。具体可以查看 [Arch Wiki](https://wiki.archlinux.org/index.php/AUR_helpers)
 
 {% note warning %}
-注意：yaourt 目前已经停止维护，用户可以考虑迁移到 aurman 或 yay ，很多教程比较老了。具体可以查看 [Arch Wiki](https://wiki.archlinux.org/index.php/AUR_helpers)
+注意：很多教程比较老了，yaourt 目前已经停止维护，用户可以考虑迁移到 aurman 或 yay，
 {% endnote %}
 
 安装 yay：
@@ -169,6 +170,8 @@ yay 安装命令不需要加 `sudo`。
 ## Git
 
 ```shell
+git config --global user.name "Michael728"
+git config --global user.email "649168982@qq.com"
 ssh-keygen -t rst -C "649168982@qq.com"
 ```
 
@@ -198,10 +201,10 @@ sudo pacman -S shadowsocks-qt5
 
 ![ss](https://b2.bmp.ovh/imgs/2019/08/597e3675620adb9c.png)
 
-上面是安装了一个 ss 的客户端，编辑添加好帐号之后，还需要设置一下端口转发，这样浏览器或者终端才可以 FQ：
+上面是安装了一个 ss 的客户端，编辑添加好帐号之后，还需要设置一下端口转发设置之后，浏览器访问才 OK：
 
 ```shell
-sudo pacman -S privoxy # 安装代理转发
+sudo pacman -S privoxy # 安装代理转发，用于将 socks5 代理转换为 http 代理
 sudo bash -c 'echo "forward-socks5 / 127.0.0.1:1080 ." >> /etc/privoxy/config'
 git config --global http.proxy 'socks5://127.0.0.1:1080'
 git config --global https.proxy 'socks5://127.0.0.1:1080'
@@ -213,6 +216,15 @@ sudo systemctl start privoxy.service
 {% note warning %}
 很多网上的教程都说需要再安装一个 `switchyomega` 插件，事实上，最新版本的 `Chrome` 已经不支持直接拖动 `crx` 文件安装插件了。
 {% endnote %}
+
+终端代理安装 `proxychain-ng`，`sudo pacman -S proxychains-ng` 安装，配置：
+
+```shell
+sudo vim /etc/proxychains.conf # 添加如下内容
+socks5 127.0.0.1 1080
+```
+
+使用时在需要代理的命令前加 `proxychains4` 就可以了，例如：`proxychains4 ping www.google.com`
 
 当然，端口转发软件还有 `polipo`，一个[教程](https://www.cnblogs.com/demonxian3/p/9259912.html)介绍的， `sudo vim /etc/polipo/config`：
 
@@ -227,23 +239,30 @@ proxyPort = 8192
 systemctl start polipo
 ```
 
-终端代理安装 `proxychain-ng`，`sudo pacman -S proxychains-ng` 安装，然后
+还有一篇教程[iamlightsmile——人生苦短，我用Manjaro！](http://www.iamlightsmile.com/articles/%E4%BA%BA%E7%94%9F%E8%8B%A6%E7%9F%AD%EF%BC%8C%E6%88%91%E7%94%A8Manjaro%EF%BC%81/)提到了 pac 代理：
 
 ```shell
-sudo vim /etc/proxychains.conf # 添加如下内容
-socks5 127.0.0.1 1080
+sudo pip install genpac
+genpac --proxy="SOCKS5 127.0.0.1:1080" --gfwlist-proxy="SOCKS5 127.0.0.1:1080" -o autoproxy.pac --gfwlist-url="https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt" # 生成 pac 文件
 ```
 
-使用时在需要代理的命令前加 `proxychains4` 就可以了，例如：`proxychains4 ping www.google.com`
+在设置—>网络设置—>代理设置中选择自动代理，URL 填写生成的 PAC 文件地址，file://文件路径/文件名(可以直接把文件拖到URL栏)。
 
-`yay -S electron-ssr` 这款也不错，就是没有支持的加密算法，就没用，这是这款软件的开发者的博客 [记录在开发electron-ssr过程中遇到的问题](https://erguotou.me/develop-electron-ssr.html)。
+`electron-ssr` 这款也是 ss 软件，就是没有支持的加密算法，就没用，这是这款软件的开发者的博客 [记录在开发electron-ssr过程中遇到的问题](https://erguotou.me/develop-electron-ssr.html)。
+
+```shell
+yay -S electron-ssr
+```
 
 ## 安装中文字体
+
+为啥会突出一下要安装中欧给你问字体呢，因为我使用过程发现系统里的中文字变成了一个个小白方框的格子，安装好中文字体并重启后，就显示正常了：
 
 ```shell
 sudo pacman -S wqy-zenhei
 sudo pacman -S wqy-bitmapfont
 sudo pacman -S wqy-microhei
+sudo pacman -S ttf-wps-fonts
 sudo pacman -S adobe-source-han-sans-cn-fonts
 sudo pacman -S adobe-source-han-serif-cn-fonts
 ```
@@ -262,6 +281,7 @@ yay -S deepin-wine-baidupan
 yay -S deepin.com.thunderspeed
 
 # 开发软件
+sudo pacman -S jdk8-openjdk
 sudo pacman -S make
 sudo pacman -S cmake
 sudo pacman -S clang
@@ -270,28 +290,38 @@ sudo pacman -S npm
 sudo pacman -S goland
 sudo pacman -S vim
 sudo pacman -S maven
-sudo pacman -S pycharm-professional
-sudo pacman -S intellij-idea-ultimate-edition
+sudo pacman -S pycharm-professional # Python IDE
+sudo pacman -S intellij-idea-ultimate-edition # JAVA IDE
+sudo pacman -S goland # Go IDE
 sudo pacman -S visual-studio-code-bin # vscode
+sudo pacman -S qtcreator # 一款QT开发软件
 sudo pacman -S postman-bin
 sudo pacman -S insomnia # REST模拟工具
 sudo pacman -S gitkraken # GIT管理工具
 sudo pacman -S wireshark-qt # 抓包
 sudo pacman -S zeal
+sudo pacman -S gitkraken # Git 管理工具
 
 # 办公软件
 sudo pacman -S google-chrome
 sudo pacman -S foxitreader # pdf 阅读
 sudo pacman -S bookworm # 电子书阅读
+sudo pacman -S unrar unzip p7zip
+sudo pacman -S goldendict # 翻译、取词
+sudo pacman -S wps-office
 yay -S typora # markdown 编辑
 yay -S electron-ssr # 缺少我需要的加密算法
 yay -S xmind
+
+# 设计
+sudo pacman -S pencil # 免费开源界面原型图绘制工具
 
 # 娱乐软件
 sudo pacman -S netease-cloud-music
 
 # 下载软件
 sudo pacman -S aria2
+sudo pacman -S filezilla  # FTP/SFTP
 
 # 图形
 sudo pacman -S gimp # 修图
@@ -300,10 +330,24 @@ sudo pacman -S gimp # 修图
 sudo pacman -S albert #类似Mac Spotlight，另外一款https://cerebroapp.com/
 
 # 终端
-sudo pacman -S screenfetch # 终端打印出你的系统信息
+sudo pacman -S screenfetch # 终端打印出你的系统信息，screenfetch -A 'Arch Linux'
 sudo pacman -S htop
+sudo pacman -S bat
 sudo pacman -S yakuake # 堪称 KDE 下的终端神器，KDE 已经自带，F12 可以唤醒
 sudo pacman -S net-tools # 这样可以使用 ifconfig 和 netstat
+yay -S tldr
+yay -S tig # 命令行下的 git 历史查看工具
+yay -S tree
+yay -S ncdu # 命令行下的磁盘分析器，支持Vim操作
+yay -S mosh # 一款速度更快的 ssh 工具，网络不稳定时使用有奇效
+```
+
+### chrome
+
+以代理模式启动 Chrome:
+
+```shell
+google-chrome-stable --proxy-server=socks5://127.0.0.1:1080
 ```
 
 ### wireshark-qt
@@ -337,10 +381,7 @@ Win 键打开菜单搜索”默认程序”，可以修改浏览器等默认程�
 - [rovo98——Manjaro linux 安装与配置](https://rovo98.coding.me/posts/a1898ce2/)
 - [queensferry——Manjaro Linux + KDE 安装使用手记](https://queensferry.coding.me/2018/06/22/Manjaro-Linux-KDE-%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E6%89%8B%E8%AE%B0/)
 - [完美脱离Windows!! Linux发行版第一系统 Manjaro 开箱教程 :)](https://www.cnblogs.com/demonxian3/p/9259912.html)
-- [掘金——Manjaro安装以及美化教程](https://juejin.im/post/5a6b1b3651882573443cea61)
 - [基于SHADOWSOCKS的科学上网](https://zenuo.github.io/blog/%E5%9F%BA%E4%BA%8Eshadowsocks%E7%9A%84%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/)
 - [折腾之 Manjaro 安装使用指北](https://yqsas.com/2019/03/03/manjaro-in-t480s/)\
 - [Manjaro个性化配置](https://xyz1001.xyz/articles/1418.html)
-- [人生苦短，我用Manjaro！](http://www.iamlightsmile.com/articles/%E4%BA%BA%E7%94%9F%E8%8B%A6%E7%9F%AD%EF%BC%8C%E6%88%91%E7%94%A8Manjaro%EF%BC%81/)
-- [人生苦短，我用Manjaro！](https://zhuanlan.zhihu.com/p/50918522)
 - [撸Linux——我的Linux桌面常用软件列表 (2019年春)](https://www.lulinux.com/archives/5557)
