@@ -404,6 +404,10 @@ MySQL Workbench在archlinux中出现 `Could not store password: The name org.fre
 sudo pacman -S gnome-keyring
 ```
 
+![MySQL Workbench](https://b2.bmp.ovh/imgs/2019/08/651c66b3d3a3f4ff.png)
+
+写 SQL 语句，记得要先加上 `use <schema>;` ，否则可查不出结果。
+
 ## 系统设置
 
 ### Dolphin
