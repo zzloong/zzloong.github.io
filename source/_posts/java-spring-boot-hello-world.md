@@ -177,6 +177,20 @@ public class HelloWorld {
 
 ![property](https://i.bmp.ovh/imgs/2019/07/62f76b56034ce959.jpg)
 
+## 热部署
+
+只需要引入 `spring-boot-devtools` 依赖即可。引入依赖之后，重新编译修改的类文件或者配置文件， Spring Boot 框架会自动重启：
+
+```shell
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+    <scope>runtime</scope>
+</dependency>
+```
+
+在 IDEA 的顶部菜单栏的 `Build` 中可以看到编译相关的选项。
+
 ## 定制 Banner
 
 Banner 就是指我们在启动应用时控制台一开始打印的那个内容，默认是打印 `Spring Boot`。
