@@ -408,6 +408,10 @@ sudo pacman -S gnome-keyring
 
 写 SQL 语句，记得要先加上 `use <schema>;` ，否则可查不出结果。
 
+至于怎么在 Manjaro 上安装 MySQL 呢？我选择使用 Docker 安装，可以参考之前写的一篇文章：
+
+- [使用容器 Docker 创建开发环境](https://michael728.github.io/2019/06/02/docker-create-develop-environment/)
+
 ## 系统设置
 
 ### Dolphin
