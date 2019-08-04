@@ -244,11 +244,17 @@ socks5 127.0.0.1 1080
 
 使用时在需要代理的命令前加 `proxychains4` 就可以了，例如：`proxychains4 ping www.google.com`
 
-当然，端口转发软件还有 `polipo`，一个[教程](https://www.cnblogs.com/demonxian3/p/9259912.html)介绍的， `sudo vim /etc/polipo/config`：
+当然，端口转发软件还有 `polipo`
+
+- [教程](https://www.cnblogs.com/demonxian3/p/9259912.html)介绍的， 
+- [polipo](https://skyao.io/learning-linux-mint/daily/network/polipo.html)
+
+`sudo vim /etc/polipo/config`：
 
 ```shell
-socksParentProxy = localhost:1080
-proxyPort = 8192
+socksParentProxy = "localhost:1080"
+socksProxyType = socks5
+proxyAddress = "0.0.0.0"
 ```
 
 然后重启：
@@ -257,14 +263,19 @@ proxyPort = 8192
 systemctl start polipo
 ```
 
-还有一篇教程[iamlightsmile——人生苦短，我用Manjaro！](http://www.iamlightsmile.com/articles/%E4%BA%BA%E7%94%9F%E8%8B%A6%E7%9F%AD%EF%BC%8C%E6%88%91%E7%94%A8Manjaro%EF%BC%81/)提到了 pac 代理：
+还有一篇教程:
+
+- [iamlightsmile——人生苦短，我用Manjaro！](http://www.iamlightsmile.com/articles/%E4%BA%BA%E7%94%9F%E8%8B%A6%E7%9F%AD%EF%BC%8C%E6%88%91%E7%94%A8Manjaro%EF%BC%81/)提到了 pac 代理：
 
 ```shell
 sudo pip install genpac
 genpac --proxy="SOCKS5 127.0.0.1:1080" --gfwlist-proxy="SOCKS5 127.0.0.1:1080" -o autoproxy.pac --gfwlist-url="https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt" # 生成 pac 文件
+genpac --pac-proxy "SOCKS5 127.0.0.1:1080" --gfwlist-proxy="SOCKS5 127.0.0.1:1080" --gfwlist-url="https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt" --output="/home/michael/.config/PAC/gfw_whitelist/whitelist.pac"
 ```
 
 在设置—>网络设置—>代理设置中选择自动代理，URL 填写生成的 PAC 文件地址，file://文件路径/文件名(可以直接把文件拖到URL栏)。
+
+补充：
 
 `electron-ssr` 这款也是 ss 软件，就是没有支持的加密算法，就没用，这是这款软件的开发者的博客 [记录在开发electron-ssr过程中遇到的问题](https://erguotou.me/develop-electron-ssr.html)。
 
@@ -374,6 +385,14 @@ google-chrome-stable --proxy-server=socks5://127.0.0.1:1080
 Wireshark 是一款免费开源的包分析器，可用于网络排错、网络分析、软件和通讯协议开发以及教学等。然而不幸的是官方网站上仅提供了 Windows 和 MacOS 的版本。不过不用担心，你依然可以使用 pacman 直接从 Arch 的 community 软件源里直接安装 wireshark-qt 。wireshark-qt 就是用 qt 做成的 wireshark 前端界面，它依赖于终端版的 wireshark-cli 。
 
 这里提示一点： 通常直接安装完后启动 wireshark 会提示 `/usr/bin/dumpcap` 无权限，有些用户会因此选择在命令行里 `sudo wireshark` 打开 wireshark，这其实很不安全。正确做法是运行命令 `gpasswd -a username wireshark` 然后重新启动，详情可以参见 Arch Wiki 。
+
+### Maven
+
+```shell
+cp /opt/maven/conf/settings.xml /opt/maven/conf/settings.xml.backup
+```
+
+然后在 [华为云镜像](https://mirrors.huaweicloud.com) 按照指导配置 Maven 镜像就可以了
 
 ## 系统设置
 
