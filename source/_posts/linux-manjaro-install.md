@@ -394,6 +394,16 @@ cp /opt/maven/conf/settings.xml /opt/maven/conf/settings.xml.backup
 
 然后在 [华为云镜像](https://mirrors.huaweicloud.com) 按照指导配置 Maven 镜像就可以了
 
+### MySQL Workbench
+
+MySQL Workbench在archlinux中出现 `Could not store password: The name org.freedesktop.secrets was not provided by any .service files` 的错误
+
+解决方案是安装 `gnome-keyring` 包：
+
+```shell
+sudo pacman -S gnome-keyring
+```
+
 ## 系统设置
 
 ### Dolphin
