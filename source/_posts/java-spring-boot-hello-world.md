@@ -92,7 +92,7 @@ public class HelloWorld {
 
 ![default port](https://i.bmp.ovh/imgs/2019/07/5537604915e92eee.png)
 
-## Profile
+## Profile 配置文件
 
 官方文档中有关于 [Profile](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config-profile-specific-properties) 的描述。 `Prorile` 有 `轮廓、外形、简况`的含义，这里我就把它理解为「配置描述」好了。
 
@@ -148,7 +148,7 @@ spring.profiles.active=dev
 java -jar spring-boot-hello-world-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev
 ```
 
-## Property 值获取
+### 自定义属性
 
 我们可以在 Profile 中指定一些 `propety` 的值，在程序中可以获取到。
 
@@ -176,6 +176,19 @@ public class HelloWorld {
 ```
 
 ![property](https://i.bmp.ovh/imgs/2019/07/62f76b56034ce959.jpg)
+
+### 使用随机数
+
+在配置文件中，可以使用 `${random}` 来生成不同类型的随机数。
+
+```shell
+book.value = ${random.value}
+book.intValue = ${random.int}
+book.longValue = ${random.long}
+book.uuid = ${random.uuid}
+# 1000 以内的随机数
+book.randomNumber = ${random.int(1000)}
+```
 
 ## 热部署
 
