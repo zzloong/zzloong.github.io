@@ -20,13 +20,11 @@ keywords:
 
 ## 图床
 
-- [iPic](https://toolinbox.net/iPic/)
+这篇文章介绍的 [优雅的图床工具，简直完美～](https://mp.weixin.qq.com/s?__biz=MzI5MDM4NTYwOA==&mid=2247488563&idx=1&sn=cb55f805c25b4f2414e6412a1aa2ca58&chksm=ec21ef94db5666825d5a1a3d90dbe52b177688ef5c1241e6b0d4085427bff392eb5f159c9503&mpshare=1&scene=1&srcid=&sharer_sharetime=1564983102216&sharer_shareid=ae8eb1508a08c1b134df82bb484ea38d#rd)
 
-设置快捷键 `Command+Shift+u`
-
-- [PicGo](https://github.com/Molunerfinn/PicGo)
-
-设置快捷键是 `command+shift+p`
+- [uPic](https://gitee.com/gee1k/uPic/releases) 支持利用 Github 或者 Gitee 作为图床，赞了！微博图床封了之后，这个是一个好选择！设置快捷键是 `command+shift+p`
+- [PicGo](https://github.com/Molunerfinn/PicGo) 设置快捷键是 `command+shift+p`
+- [iPic](https://toolinbox.net/iPic/) 设置快捷键 `Command+Shift+u`
 
 ## 免密登录
 
