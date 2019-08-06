@@ -125,7 +125,7 @@ Github 配置地址：[SpringBoot-Note/mybatis-demo/src/main/resources/log4j2.xm
 %F 输出所在的类文件名，如Client.java
 %L 输出行号
 %M 输出所在方法名
-%l  输出语句所在的行数, 包括类名、方法名、文件名、行数
+%l 输出语句所在的行数, 包括类名、方法名、文件名、行数
 ```
 
 关于 pattern 的格式点击 [官宣——Pattern Layout](http://logging.apache.org/log4j/2.x/manual/layouts.html#PatternLayout)
@@ -166,10 +166,10 @@ LevelRangeFilter 对它们进行了 `ACCEPT`，而剩下的 `trace Msg` 和 `deb
 
 ### Policy
 
-Policy & Strategy
+`Policy & Strategy`
 
 - Policy 是用来控制日志文件何时(When)进行 Rolling/滚动的；
-- Strategy是用来控制日志文件如何(How)进行 Rolling/滚动的。
+- Strategy 是用来控制日志文件如何(How)进行 Rolling/滚动的。
 
 所谓「日志滚动」就是当达到设定的条件后，日志文件进行切分。比如：工程师想让系统中的日志按日进行切分，并且按月归档。
 
@@ -179,8 +179,9 @@ Policy常用的实现类:
 
 - `SizeBasedTriggeringPolicy`，根据日志文件的大小进行滚动。单位有：`KB`，`MB`，`GB`
 - `CronTriggeringPolicy`，使用 Cron 表达式进行日志滚动，很灵活
-- `TimeBasedTriggeringPolicy`，这个配置需要和filePattern结合使用，注意 `filePattern` 中配置的文件重命名规则。滚动策略依赖于 `filePattern` 中配置的最具体的时间单位，根据最具体的时间单位进行滚动。这种方式比较简洁。`CronTriggeringPolicy` 策略更强大
-  - 在 `TimeBasedTriggeringPolicy` 标签中加上了 `modulate` 属性并设置为 `true`，该属性的意思是是否对日志生成时间进行调制。若为 `true`，则日志时间将以 0 点为边界进行偏移计算。例如第一次日志保存时间是 3 点，`modulate`为 `true`，`interval` 是 `4h`。那么下次生成日志时间是 4点，08:00，12:00……。
+- `TimeBasedTriggeringPolicy`，这个配置需要和 `filePattern` 结合使用，注意 `filePattern` 中配置的文件重命名规则。滚动策略依赖于 `filePattern` 中配置的最具体的时间单位，根据最具体的时间单位进行滚动。这种方式比较简洁。`CronTriggeringPolicy` 策略更强大
+
+在 `TimeBasedTriggeringPolicy` 标签中加上了 `modulate` 属性并设置为 `true`，该属性的意思是是否对日志生成时间进行调制。若为 `true`，则日志时间将以 0 点为边界进行偏移计算。例如第一次日志保存时间是 3 点，`modulate`为 `true`，`interval` 是 `4h`。那么下次生成日志时间是 4点，08:00，12:00……。
 
 ```shell
 <Appenders>
@@ -219,7 +220,7 @@ Strategy常用的实现类：
 
 `DefaultRolloverStrategy` 默认的 `max`为 7。
 
-```
+```shell
 <DefaultRolloverStrategy max="7"/>
 ```
 
@@ -339,13 +340,14 @@ app.log
 
 ## Logger
 
-> 简单说Logger就是一个路由器，指定类、包中的日志信息流向哪个管道，以及控制他们的流量(日志级别)
+> 简单说 Logger 就是一个路由器，指定类、包中的日志信息流向哪个管道，以及控制他们的流量(日志级别)
 
-Logger 部分为两个Logger:
+Logger 部分为两个 Logger:
+
 - Root(必须配置)
 - Logger
 
-注意：Logger中也可以加过滤器的
+注意：Logger 中也可以加过滤器的
 
 ### 日志重复打印问题
 
@@ -353,7 +355,7 @@ Logger 部分为两个Logger:
 
 这时候我们需要使用一个 Logger 的属性来解决，那就是 `additivity`，其默认值为 `true`，需要配置为`false`
 
-```
+```shell
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration name="baseConf" status="warn" monitorInterval="30">
 
@@ -380,11 +382,11 @@ Logger 部分为两个Logger:
 </Configuration>
 ```
 
-- Root Logger 只能有一个，普通的 Logger 可以定义多个，可以细致到给某个类定义；
+- Root Logger 只能有 1 个，普通的 Logger 可以定义多个，可以细致到给某个类定义；
 - 多个 Logger 配置重复了，在日志文件中会重复；
-- 每一个 Logger 对应的 name 是包路径，含义是，在 name 包下的类使用 AppenderRef 指向的日志模板来输出日志。
-- 不同的LogConfig之间其实是有继承关系的，子LogConfig 会继承 parent 的属性，而所有 LogConfig 都继承自 Root LogConfig。所以即使只配置了root logger，你一样可以在任何地方通过 LoggerFactory.getLogger 获取一个 logger 对象，记录日志
-- 先配置一个root，让所有需要使用日志的logger继承，然后对有特别需要的logger进行特殊的配置，比如我们希望org.springframework包只记录error以及warn级别的log，再比如，我们希望能显示mybatis执行的sql的日志，都可以进行个性化的配置
+- 每一个 Logger 对应的 name 是包路径，表示在 name 包下的类使用 AppenderRef 指向的日志模板来输出日志；
+- 不同的 LogConfig 之间其实是有继承关系的，子 LogConfig 会继承 parent 的属性，而所有 LogConfig 都继承自 Root LogConfig。所以即使只配置了root logger，你一样可以在任何地方通过  `LoggerFactory.getLogger` 获取一个 logger 对象，记录日志;
+- 先配置一个 root，让所有需要使用日志的 logger 继承，然后对有特别需要的 logger 进行特殊的配置，比如我们希望 `org.springframework` 包只记录 `error`以及 `warn` 级别的 log，再比如，我们希望能显示mybatis 执行的 sql 的日志，都可以进行个性化的配置；
 
 ### Logger 等级实验
 
@@ -404,9 +406,9 @@ Logger 部分为两个Logger:
 - ROOT 等级设为 `ERROR` 时，`org.springframework` Logger 等级设为 `OFF` 时，发现原来的 `warn.log` 和 `info.log` 文件中，都只有级别大于或等于 ERROR 的日志信息了；
 - ROOT 等级设为 `ERROR` 时，`org.springframework` Logger 等级设为 `INFO` 时，发现`info.log` 文件中，增加了 `org.springframework` 包的相关 `INFO` 级别的日志信息了；
 
-总结
+总结：
 
-- Logger 日志等级和 appender 日志等级的关系：logger 日志等级和 appender 日志登记，谁「高」听谁的；
+- Logger 日志等级和 appender 日志等级的关系：logger 日志等级和 appender 日志等级，谁「高」听谁的；
 - 普通 Logger 的优先级高
 
 ## 参考
