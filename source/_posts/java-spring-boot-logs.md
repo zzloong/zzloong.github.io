@@ -11,7 +11,7 @@ keywords:
   - log
 ---
 
-## 简介
+## 背景
 
 Java 中比较常用的日志框架：
 
@@ -29,17 +29,19 @@ Java简易日志门面（Simple Logging Facade for Java，缩写SLF4J），是�
 
 SLF4J 的作者就是 Log4j 的作者 Ceki Gülcü，他宣称 SLF4J 比 Log4j 更有效率，而且比 Apache Commons Logging (JCL) 简单、稳定。其实，SLF4J 其实只是一个门面服务而已，他并不是真正的日志框架，真正的日志的输出相关的实现还是要依赖Log4j、logback等日志框架的。
 
-- [Github-apache/logging-log4j2](https://github.com/apache/logging-log4j2)
-- [官方文档](https://logging.apache.org/log4j/2.x/manual/index.html)
+## 概要
 
-## log4j2 安装
+本文先主要介绍 Spring Boot 中利用 log4j2 打印日志的基础知识，再利用 SLF4J 进一步改进！
+
+## log4j2 依赖
 
 ```shell
 <dependencies>
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-web</artifactId>
-        <exclusions>            <!-- 去掉logback配置 -->
+        <!-- 去掉logback配置 -->
+        <exclusions>
             <exclusion>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-logging</artifactId>
@@ -47,7 +49,8 @@ SLF4J 的作者就是 Log4j 的作者 Ceki Gülcü，他宣称 SLF4J 比 Log4j �
         </exclusions>
     </dependency>
 
-    <dependency>        <!-- 引入log4j2依赖 -->
+    <!-- 引入log4j2依赖 -->
+    <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-log4j2</artifactId>
     </dependency>
@@ -57,7 +60,7 @@ SLF4J 的作者就是 Log4j 的作者 Ceki Gülcü，他宣称 SLF4J 比 Log4j �
 ## log4j2 使用
 
 ```shell
-// 这几种写法都 OK
+// 这了两种写法都 OK，推荐第一种，不用每次都要修改类名
 private static final Logger logger = LoggerFactory.getLogger(this.getClass());
 private static final Logger logger = LogManager.getLogger(UserController.class);
 //...
@@ -79,18 +82,16 @@ logger.info("this is info");
   - Logger
   - RootLogger
 
-Github  配置地址：[SpringBoot-Note/mybatis-demo/src/main/resources/log4j2.xml](https://github.com/Michael728/SpringBoot-Note/blob/master/mybatis-demo/src/main/resources/log4j2.xml)
+Github 配置地址：[SpringBoot-Note/mybatis-demo/src/main/resources/log4j2.xml](https://github.com/Michael728/SpringBoot-Note/blob/master/mybatis-demo/src/main/resources/log4j2.xml)
 
 ## Appender
 
-> 简单说 Appender 就是一个管道，定义了日志内容的去向(保存位置)。
+> 简单说 Appender 可以理解为一个管道，定义了日志内容的去向(保存位置)。
 
-- 配置一个或者多个Filter。
+- 配置一个或者多个 `Filter`。
 - 配置 `Layout` 来控制日志信息的输出格式。
 - 配置 `Policies` 以控制日志何时(When)进行滚动。
 - 配置 `Strategy` 以控制日志如何(How)进行滚动。
-
-[Appender 官宣](http://logging.apache.org/log4j/2.x/manual/appenders.html#RandomAccessFileAppender)
 
 注意点：
 
@@ -100,19 +101,48 @@ Github  配置地址：[SpringBoot-Note/mybatis-demo/src/main/resources/log4j2.x
 - BufferedIO: 文件流写出是否使用缓冲，true表示使用，默认值为false即不使用缓冲。测试显示，即使在启用immediateFlush的情况下，设置bufferedIO=true也能提高性能。
 - 一个 LogConfig 可以使用多个 appender，一个 appender 也可以被多个 LogConfig 使用
 
+[Appender 官宣](http://logging.apache.org/log4j/2.x/manual/appenders.html#RandomAccessFileAppender)
+
+### PatternLayout
+
+这是常用的日志格式化类，其它日志格式化类很少用。
+
+```shell
+<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" charset="UTF-8"/>
+```
+
+常用说明：
+
+```shell
+%d{HH:mm:ss.SSS} 表示输出到毫秒的时间
+%t 输出当前线程名称
+%-5level 输出日志级别，-5表示左对齐并且固定输出5个字符，如果不足在右边补0
+%logger 输出logger名称，因为Root Logger没有名称，所以没有输出
+%msg 日志文本
+%n 换行
+
+其他常用的占位符有：
+%F 输出所在的类文件名，如Client.java
+%L 输出行号
+%M 输出所在方法名
+%l  输出语句所在的行数, 包括类名、方法名、文件名、行数
+```
+
+关于 pattern 的格式点击 [官宣——Pattern Layout](http://logging.apache.org/log4j/2.x/manual/layouts.html#PatternLayout)
+
 ### Filter
 
 Filters 决定日志事件能否被输出。过滤条件有三个值：`ACCEPT(接受)`，`DENY(拒绝)`，`NEUTRAL(中立)`。
 
-常用的Filter实现类有：
+常用的 Filter 实现类有：
 
 - LevelRangeFilter
 - TimeFilter
 - ThresholdFilter
 
-简单说就是log4j2中的过滤器 `ACCEPT` 和 `DENY` 之后，后续的过滤器就不会执行了，只有在 `NEUTRAL` 的时候才会执行后续的过滤器
+简单说就是 log4j2 中的过滤器 `ACCEPT` 和 `DENY` 之后，后续的过滤器就不会执行了，只有在 `NEUTRAL` 的时候才会执行后续的过滤器
 
-```
+```shell
 <Console name="Console">
 
     <!--
@@ -132,35 +162,7 @@ Filters 决定日志事件能否被输出。过滤条件有三个值：`ACCEPT(�
 </Console>
 ```
 
-LevelRangeFilter 对它们进行了 `ACCEPT`，而剩下的 `trace Msg` 和 `debug Msg` 则会经过下一个过滤器
-
-### PatternLayout
-
-> 这是常用的日志格式化类，其它日志格式化类很少用。
-
-```shell
-<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" charset="UTF-8"/>
-```
-
-常用说明：
-```
-%d{HH:mm:ss.SSS} 表示输出到毫秒的时间
-%t 输出当前线程名称
-%-5level 输出日志级别，-5表示左对齐并且固定输出5个字符，如果不足在右边补0
-%logger 输出logger名称，因为Root Logger没有名称，所以没有输出
-%msg 日志文本
-%n 换行
-
-其他常用的占位符有：
-%F 输出所在的类文件名，如Client.java
-%L 输出行号
-%M 输出所在方法名
-%l  输出语句所在的行数, 包括类名、方法名、文件名、行数
-```
-
-关于 pattern 的格式点击：
-
-- http://logging.apache.org/log4j/2.x/manual/layouts.html#PatternLayout
+LevelRangeFilter 对它们进行了 `ACCEPT`，而剩下的 `trace Msg` 和 `debug Msg` 则会经过下一个过滤器。
 
 ### Policy
 
@@ -409,6 +411,10 @@ Logger 部分为两个Logger:
 
 ## 参考
 
+Log4j2
+
+- [Github-apache/logging-log4j2](https://github.com/apache/logging-log4j2)
+- [官方文档](https://logging.apache.org/log4j/2.x/manual/index.html)
 - [掘金-zdran-Spring Boot 学习笔记(二) 整合 log4j2](https://juejin.im/entry/5b35f1e86fb9a00e315c330e) 博主写了Spring Boot 教程
 - [王磊的博客-Spring Boot（十）Logback和Log4j2集成与日志发展史](http://www.apigo.cn/2018/09/03/Spring-Boot%EF%BC%88%E5%8D%81%EF%BC%89%E6%97%A5%E5%BF%97Logback%E5%92%8CLog4j2%E9%9B%86%E6%88%90%E4%B8%8E%E6%97%A5%E5%BF%97%E5%8F%91%E5%B1%95%E5%8F%B2/) 介绍了 SpringBoot 和 log4j2 的结合
 - [博客园-蜗牛大师-浅谈Log4j2日志框架及使用](https://www.cnblogs.com/wuqinglong/p/9516529.html) 介绍的非常详细，推荐
