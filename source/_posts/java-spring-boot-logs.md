@@ -21,7 +21,7 @@ Java 中比较常用的日志框架：
 
 Spring Boot 默认使用 Logback，但相比较而言，Log4j2 在性能上面会更好。SpringBoot 高版本都不再支持 log4j，而是支持 log4j2。log4j2，在使用方面与 log4j 基本上没什么区别，比较大的区别是 log4j2 不再支持 properties 配置文件，支持 xml、json 格式的文件。
 
-《阿里巴巴Java开发手册》，其中有一条规范做了『强制』要求：
+《阿里巴巴Java开发手册》，其中有一条规范做了「强制」要求：
 
 > 应用中不可直接使用日志系统（Log4j Logback）中的 API，而应依赖使用日志框架 SLF4J 中的 API，使用日志门面模式的日志框架，有利于维护和各个类的日志处理方式统一。
 
