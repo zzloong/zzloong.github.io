@@ -13,7 +13,9 @@ keywords:
 
 ## 背景
 
-Java 中比较常用的日志框架：
+![logging.apache](https://gitee.com/michael_xiang/images/raw/master/joePal.png)
+
+Java 中比较常用的[日志框架](https://logging.apache.org/)：
 
 - log4j(`Log for Java`)：Apache 的一个开源项目，七种日志级别：OFF、FATAL、ERROR、WARN、INFO、DEBUG、TRACE
 - logback：是一个很成熟的日志框架，其实 logBack 和 log4j 出自一个人之手，这个人就是 Ceki Gülcü。logback 比 log4j 大约快 10 倍、消耗更少的内存，迁移成本也很低，自动压缩日志、支持多样化配置、不需要重启就可以恢复 I/O 异常等优势
