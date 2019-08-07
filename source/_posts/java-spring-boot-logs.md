@@ -428,6 +428,10 @@ Logger 部分为两个 Logger:
 - Logger 日志等级和 appender 日志等级的关系：logger 日志等级和 appender 日志等级，谁「高」听谁的；
 - 普通 Logger 的优先级高
 
+## 示例代码
+
+- [awesome-spring-boot-examples](https://github.com/Michael728/awesome-spring-boot-examples/blob/master/spring-boot-logs/src/main/resources/log4j2.xml)
+
 ## 参考
 
 Log4j2
