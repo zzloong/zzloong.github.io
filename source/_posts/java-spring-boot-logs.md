@@ -15,23 +15,31 @@ keywords:
 
 Java 中比较常用的日志框架：
 
-- Log4j：Apache 的一个开源项目，七种日志级别：OFF、FATAL、ERROR、WARN、INFO、DEBUG和TRACE
-- Logback：是一个很成熟的日志框架，其实 LogBack 和 Log4j 出自一个人之手，这个人就是Ceki Gülcü
-- Log4j2：作者认为，Log4j2已经不仅仅是Log4j的一个升级版本了，而是从头到尾被重写的，这可以认为这其实就是完全不同的两个框架
+- log4j(`Log for Java`)：Apache 的一个开源项目，七种日志级别：OFF、FATAL、ERROR、WARN、INFO、DEBUG、TRACE
+- logback：是一个很成熟的日志框架，其实 logBack 和 log4j 出自一个人之手，这个人就是 Ceki Gülcü。logback 比 log4j 大约快 10 倍、消耗更少的内存，迁移成本也很低，自动压缩日志、支持多样化配置、不需要重启就可以恢复 I/O 异常等优势
+- [log4j2](https://logging.apache.org/log4j/2.x/manual/index.html)：作者认为，log4j2已经不仅仅是 log4j 的一个升级版本了，而是从头到尾被重写的，这可以认为这其实就是完全不同的两个框架
 
-Spring Boot 默认使用 Logback，但相比较而言，Log4j2 在性能上面会更好。SpringBoot 高版本都不再支持 log4j，而是支持 log4j2。log4j2，在使用方面与 log4j 基本上没什么区别，比较大的区别是 log4j2 不再支持 properties 配置文件，支持 xml、json 格式的文件。
+<!-- more -->
+
+Spring Boot 默认使用 logback，但相比较而言，log4j2 在性能上面会更好。SpringBoot 高版本都不再支持 log4j，而是支持 log4j2。log4j2，在使用方面与 log4j 基本上没什么区别，比较大的区别是 log4j2 不再支持 properties 配置文件，支持 xml、json 格式的文件。
 
 《阿里巴巴Java开发手册》，其中有一条规范做了「强制」要求：
 
 > 应用中不可直接使用日志系统（Log4j Logback）中的 API，而应依赖使用日志框架 SLF4J 中的 API，使用日志门面模式的日志框架，有利于维护和各个类的日志处理方式统一。
 
-Java简易日志门面（Simple Logging Facade for Java，缩写SLF4J），是一套包装 Logging 框架的界面程式，以外观模式实现。可以在软件部署的时候决定要使用的 Logging 框架，目前主要支援的有 Java Logging API、Log4j 及 logback 等框架。
+Java 简易日志门面（`Simple Logging Facade for Java`，缩写 SLF4J），它并不是真正的日志框架,他是对所有日志框架制定的一种规范、标准、接口，并不是一个框架的具体的实现，因为接口并不能独立使用，需要和具体的日志框架实现配合使用。可以在软件部署的时候决定要使用的 Logging 框架，目前主要支援的有 Java logging API、log4j 及 logback 等框架。
 
-SLF4J 的作者就是 Log4j 的作者 Ceki Gülcü，他宣称 SLF4J 比 Log4j 更有效率，而且比 Apache Commons Logging (JCL) 简单、稳定。其实，SLF4J 其实只是一个门面服务而已，他并不是真正的日志框架，真正的日志的输出相关的实现还是要依赖Log4j、logback等日志框架的。
+## 理解 SLF4J
 
-## 概要
+接口用于定制规范，可以有多个实现，使用时是面向接口的(导入的包都是 slf4j 的包而不是具体某个日志框架中的包)，即直接和接口交互，不直接使用实现，所以可以任意的更换实现而不用更改代码中的日志相关代码。
 
-本文先主要介绍 Spring Boot 中利用 log4j2 打印日志的基础知识，再利用 SLF4J 进一步改进！
+比如：slf4j 定义了一套日志接口，项目中使用的日志框架是logback，开发中调用的所有接口都是 slf4j 的，不直接使用 logback，调用是 自己的工程调用 slf4j 的接口，slf4j 的接口去调用 logback 的实现，可以看到整个过程应用程序并没有直接使用 logback，当项目需要更换更加优秀的日志框架时(如log4j2)只需要引入 log4j2 的 jar 和 Llg4j2 对应的配置文件即可，完全不用更改 Java 代码中的日志相关的代码 `logger.info(“xxx”)`，也不用修改日志相关的类的导入的包( `import org.slf4j.Logger; import org.slf4j.LoggerFactory;`)
+
+总结：使用日志接口便于更换为其他日志框架。
+
+One More Thing：上面的这几段话是参考文章中截取的，也让我确实理解了为何推荐使用 SLF4J 的原因。这种做法感觉就是有点「面向接口编程」的思想，今天也查阅了一些这方面的资料，也让我想起了为何项目中写 Service 代码时，往往是先写个接口、然后在写个该接口的实现类。待有时间好好研究一些这块的优点！
+
+本文主要介绍的是使用 log4j2 作为 slf4j 的具体实现。
 
 ## log4j2 依赖
 
@@ -60,6 +68,9 @@ SLF4J 的作者就是 Log4j 的作者 Ceki Gülcü，他宣称 SLF4J 比 Log4j �
 ## log4j2 使用
 
 ```shell
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 // 这了两种写法都 OK，推荐第一种，不用每次都要修改类名
 private static final Logger logger = LoggerFactory.getLogger(this.getClass());
 private static final Logger logger = LogManager.getLogger(UserController.class);
@@ -68,7 +79,13 @@ logger.debug("this is debug");
 logger.info("this is info");
 ```
 
-## log4j2.xml 示例
+## log4j2 日志级别
+
+从小到大依次是:~~all~~、trace、debug、info、warn、error、~~fatal、off~~
+
+由于我们使用的是 slf4j 接口包，该接口包中只提供了未标有删除线的日志级别的输出。
+
+## log4j2 配置文件结构
 
 配置文件的主要结构如下：
 
@@ -82,11 +99,9 @@ logger.info("this is info");
   - Logger
   - RootLogger
 
-Github 配置地址：[SpringBoot-Note/mybatis-demo/src/main/resources/log4j2.xml](https://github.com/Michael728/SpringBoot-Note/blob/master/mybatis-demo/src/main/resources/log4j2.xml)
-
 ## Appender
 
-> 简单说 Appender 可以理解为一个管道，定义了日志内容的去向(保存位置)。
+Appender 可以理解为一个管道，定义了日志内容的去向(保存位置)。
 
 - 配置一个或者多个 `Filter`。
 - 配置 `Layout` 来控制日志信息的输出格式。
@@ -97,11 +112,11 @@ Github 配置地址：[SpringBoot-Note/mybatis-demo/src/main/resources/log4j2.xm
 
 - 多个 `appender` 不能指向同一个日志文件，否则会报错：`Configuration has multiple incompatible Appenders pointing to the same resource 'logs/mybatis-demo-warn.log'`
 - `ImmediateFlush=true`，一旦有新日志写入，立马将日志写入到磁盘的文件中。当日志很多，这种频繁操作文件显然性能很低下
-- `immediateFlush`：log4j2接收到日志事件时，是否立即将日志刷到磁盘。默认为true。
-- BufferedIO: 文件流写出是否使用缓冲，true表示使用，默认值为false即不使用缓冲。测试显示，即使在启用immediateFlush的情况下，设置bufferedIO=true也能提高性能。
+- `immediateFlush`：log4j2 接收到日志事件时，是否立即将日志刷到磁盘。默认为 true。
+- BufferedIO: 文件流写出是否使用缓冲，true 表示使用，默认值为 false 即不使用缓冲。测试显示，即使在启用immediateFlush 的情况下，设置 `bufferedIO=true` 也能提高性能。
 - 一个 LogConfig 可以使用多个 appender，一个 appender 也可以被多个 LogConfig 使用
 
-[Appender 官宣](http://logging.apache.org/log4j/2.x/manual/appenders.html#RandomAccessFileAppender)
+[官宣——Appender](http://logging.apache.org/log4j/2.x/manual/appenders.html#RandomAccessFileAppender)
 
 ### PatternLayout
 
@@ -242,7 +257,7 @@ max 参数是与 `filePattern` 中的计数器 `%i` 配合起作用的，其具�
 
 如，`filePattern="logs/app-%d{yyyy-MM-dd HH-mm}-%i.log"`
 
-### Appender  类型
+### Appender 类型
 
 #### FileAppender(File)、RandomAccessFileAppender(RandomAccessFile)
 
@@ -340,14 +355,14 @@ app.log
 
 ## Logger
 
-> 简单说 Logger 就是一个路由器，指定类、包中的日志信息流向哪个管道，以及控制他们的流量(日志级别)
+简单说 Logger 就是一个路由器，指定类、包中的日志信息流向哪个管道，以及控制他们的流量(日志级别)
 
 Logger 部分为两个 Logger:
 
-- Root(必须配置)
+- RootLogger(必须配置)
 - Logger
 
-注意：Logger 中也可以加过滤器的
+注意：Logger 中也可以加过滤器的！
 
 ### 日志重复打印问题
 
@@ -382,11 +397,11 @@ Logger 部分为两个 Logger:
 </Configuration>
 ```
 
-- Root Logger 只能有 1 个，普通的 Logger 可以定义多个，可以细致到给某个类定义；
+- RootLogger 只能有 1 个，普通的 Logger 可以定义多个，可以细致到给某个类定义；
 - 多个 Logger 配置重复了，在日志文件中会重复；
 - 每一个 Logger 对应的 name 是包路径，表示在 name 包下的类使用 AppenderRef 指向的日志模板来输出日志；
-- 不同的 LogConfig 之间其实是有继承关系的，子 LogConfig 会继承 parent 的属性，而所有 LogConfig 都继承自 Root LogConfig。所以即使只配置了root logger，你一样可以在任何地方通过  `LoggerFactory.getLogger` 获取一个 logger 对象，记录日志;
-- 先配置一个 root，让所有需要使用日志的 logger 继承，然后对有特别需要的 logger 进行特殊的配置，比如我们希望 `org.springframework` 包只记录 `error`以及 `warn` 级别的 log，再比如，我们希望能显示mybatis 执行的 sql 的日志，都可以进行个性化的配置；
+- 不同的 LogConfig 之间其实是有继承关系的，子 LogConfig 会继承 parent 的属性，而所有 LogConfig 都继承自 Root LogConfig。所以即使只配置了 root logger，你一样可以在任何地方通过  `LoggerFactory.getLogger` 获取一个 logger 对象，记录日志;
+- 先配置一个 Root，让所有需要使用日志的 logger 继承，然后对有特别需要的 logger 进行特殊的配置，比如我们希望 `org.springframework` 包只记录 `error`以及 `warn` 级别的 log，再比如，我们希望能显示mybatis 执行的 sql 的日志，都可以进行个性化的配置；
 
 ### Logger 等级实验
 
@@ -416,11 +431,8 @@ Logger 部分为两个 Logger:
 Log4j2
 
 - [Github-apache/logging-log4j2](https://github.com/apache/logging-log4j2)
-- [官方文档](https://logging.apache.org/log4j/2.x/manual/index.html)
 - [掘金-zdran-Spring Boot 学习笔记(二) 整合 log4j2](https://juejin.im/entry/5b35f1e86fb9a00e315c330e) 博主写了Spring Boot 教程
-- [王磊的博客-Spring Boot（十）Logback和Log4j2集成与日志发展史](http://www.apigo.cn/2018/09/03/Spring-Boot%EF%BC%88%E5%8D%81%EF%BC%89%E6%97%A5%E5%BF%97Logback%E5%92%8CLog4j2%E9%9B%86%E6%88%90%E4%B8%8E%E6%97%A5%E5%BF%97%E5%8F%91%E5%B1%95%E5%8F%B2/) 介绍了 SpringBoot 和 log4j2 的结合
-- [博客园-蜗牛大师-浅谈Log4j2日志框架及使用](https://www.cnblogs.com/wuqinglong/p/9516529.html) 介绍的非常详细，推荐
-- [CSDN-Log4j2使用](https://z724130632.iteye.com/blog/2319988) 介绍的很详细
+- [博客园-蜗牛大师-浅谈Log4j2日志框架及使用](https://www.cnblogs.com/wuqinglong/p/9516529.html) 介绍的非常详细，推荐！
 - [博客园-Log4j2之Appenders](http://www.cnblogs.com/elaron/archive/2013/02/17/2914633.html) 对 appender 介绍详细
 - [SpringBoot + Log4j2使用配置](https://www.jianshu.com/p/46b530446d20) 异步日志介绍的比较多
 - [CSDN-详解log4j2(下) - Async/MongoDB/Flume Appender 按日志级别区分文件输出](https://blog.csdn.net/autfish/article/details/51244787#commentsedit) 介绍了一下不常用的用法，比如将日志存到数据库中
