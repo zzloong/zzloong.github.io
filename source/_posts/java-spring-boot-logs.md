@@ -29,7 +29,7 @@ Spring Boot 默认使用 logback，但相比较而言，log4j2 在性能上面�
 
 > 应用中不可直接使用日志系统（Log4j Logback）中的 API，而应依赖使用日志框架 SLF4J 中的 API，使用日志门面模式的日志框架，有利于维护和各个类的日志处理方式统一。
 
-Java 简易日志门面（`Simple Logging Facade for Java`，缩写 SLF4J），它并不是真正的日志框架,他是对所有日志框架制定的一种规范、标准、接口，并不是一个框架的具体的实现，因为接口并不能独立使用，需要和具体的日志框架实现配合使用。可以在软件部署的时候决定要使用的 Logging 框架，目前主要支援的有 Java logging API、log4j 及 logback 等框架。
+Java 简易日志门面（`Simple Logging Facade for Java`，缩写 [SLF4J](https://www.slf4j.org/)），它并不是真正的日志框架,他是对所有日志框架制定的一种规范、标准、接口，并不是一个框架的具体的实现，因为接口并不能独立使用，需要和具体的日志框架实现配合使用。可以在软件部署的时候决定要使用的 Logging 框架，目前主要支援的有 Java logging API、log4j 及 logback 等框架。
 
 ## 理解 SLF4J
 
@@ -41,7 +41,15 @@ Java 简易日志门面（`Simple Logging Facade for Java`，缩写 SLF4J），�
 
 One More Thing：上面的这几段话是参考文章中截取的，也让我确实理解了为何推荐使用 SLF4J 的原因。这种做法感觉就是有点「面向接口编程」的思想，今天也查阅了一些这方面的资料，也让我想起了为何项目中写 Service 代码时，往往是先写个接口、然后在写个该接口的实现类。待有时间好好研究一些这块的优点！
 
-本文主要介绍的是使用 log4j2 作为 slf4j 的具体实现。
+## 性能分析
+
+!性能评测](https://gitee.com/michael_xiang/images/raw/master/BBsUn0.jpg)
+
+可以看到在同步日志模式下, Logback的性能是最糟糕的。
+
+![异步日志模式](https://gitee.com/michael_xiang/images/raw/master/VqJmho.jpg)
+
+log4j2的性能无论在同步日志模式还是异步日志模式下都是最佳的！那本文就介绍的是使用 log4j2 作为 slf4j 的具体实现。
 
 ## log4j2 依赖
 
@@ -437,11 +445,11 @@ Logger 部分为两个 Logger:
 Log4j2
 
 - [Github-apache/logging-log4j2](https://github.com/apache/logging-log4j2)
-- [掘金-zdran-Spring Boot 学习笔记(二) 整合 log4j2](https://juejin.im/entry/5b35f1e86fb9a00e315c330e) 博主写了Spring Boot 教程
-- [博客园-蜗牛大师-浅谈Log4j2日志框架及使用](https://www.cnblogs.com/wuqinglong/p/9516529.html) 介绍的非常详细，推荐！
+- [掘金-zdran-Spring Boot 学习笔记(二) 整合 log4j2](https://juejin.im/entry/5b35f1e86fb9a00e315c330e) 博主写了一些 Spring Boot 教程
+- [博客园-蜗牛大师-浅谈Log4j2日志框架及使用](https://www.cnblogs.com/wuqinglong/p/9516529.html) 介绍的非常详细，强烈推荐！
 - [博客园-Log4j2之Appenders](http://www.cnblogs.com/elaron/archive/2013/02/17/2914633.html) 对 appender 介绍详细
 - [SpringBoot + Log4j2使用配置](https://www.jianshu.com/p/46b530446d20) 异步日志介绍的比较多
-- [CSDN-详解log4j2(下) - Async/MongoDB/Flume Appender 按日志级别区分文件输出](https://blog.csdn.net/autfish/article/details/51244787#commentsedit) 介绍了一下不常用的用法，比如将日志存到数据库中
+- [博客园-Springboot整合log4j2日志全解](https://www.cnblogs.com/keeya/p/10101547.html) 博客主题略酷，引用了其性能评测的图，似乎原文是这个 [logback log4j log4j2 性能实测](https://blog.souche.com/logback-log4j-log4j2shi-ce/)
 
 SLF4J
 
