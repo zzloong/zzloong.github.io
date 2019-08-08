@@ -43,7 +43,7 @@ One More Thing：上面的这几段话是参考文章中截取的，也让我确
 
 ## 性能分析
 
-!性能评测](https://gitee.com/michael_xiang/images/raw/master/BBsUn0.jpg)
+![性能评测](https://gitee.com/michael_xiang/images/raw/master/BBsUn0.jpg)
 
 可以看到在同步日志模式下, Logback的性能是最糟糕的。
 
