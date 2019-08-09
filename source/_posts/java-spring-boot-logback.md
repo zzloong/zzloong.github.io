@@ -17,6 +17,8 @@ keywords:
 
 上一篇文章 [Spring Boot 实战 —— 日志框架 Log4j2 SLF4J 的学习](https://michael728.github.io/2019/08/17/java-spring-boot-logs/) 中已经介绍了常用的日志框架的比较，本文介绍另外一个主流的日志框架 [logback](https://logback.qos.ch/)
 
+<!-- more -->
+
 ## 展示
 
 ![logback-console](https://gitee.com/michael_xiang/images/raw/master/gqmuIb.png)
@@ -41,6 +43,8 @@ keywords:
 {% note info no-icon %}
 这里的 DEBUG 模式只是会多打印系统默认的一些调用信息，并不会多打印你指定的 DEBUG 级别日志信息，除非你指定日志级别。
 {% endnote %}
+
+##
 
 ## 示例代码
 
