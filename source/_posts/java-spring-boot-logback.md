@@ -21,7 +21,7 @@ keywords:
 
 ## 展示
 
-![logback-console](https://gitee.com/michael_xiang/images/raw/master/gqmuIb.png)
+![logback-console](https://gitee.com/michael_xiang/images/raw/master/B27jyG.jpg)
 
 ## 看懂日志
 
