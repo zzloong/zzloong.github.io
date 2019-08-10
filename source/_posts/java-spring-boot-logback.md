@@ -297,13 +297,13 @@ appender 是一个日志打印的组件，这里组件里面定义了打印过�
     @GetMapping("/all")
     public String all() {
         try {
-            logger.debug("logger: debug");
-            logger.info("logger: info");
-            logger.warn("logger: warn" + " 附件个信息");
+            log.debug("logger: debug");
+            log.info("logger: info");
+            log.warn("logger: warn" + " 附件个信息");
             System.out.println(1 / 0);
         } catch (Exception e) {
-            logger.error("error 打印方式比较，采用 ,e：", e);
-            logger.error("error 打印方式比较，采用 +e : " + e);
+            log.error("error 打印方式比较，采用 ,e：", e);
+            log.error("error 打印方式比较，采用 +e : " + e);
             throw e;
         }
         return "all";
@@ -316,9 +316,17 @@ appender 是一个日志打印的组件，这里组件里面定义了打印过�
 
 ![一个参数](https://gitee.com/michael_xiang/images/raw/master/qTj6el.png)
 
-可以发现，通过 `logger.error("xxx错误",e)` 的方式打印的日志会有错误堆栈信息！这明显对应定位问题有更大的帮助！注意，我们这里也是采用的 slf4j 日志门面的接口方法。
+可以发现，通过 `logger.error("xxx错误",e)` 的方式打印的日志会有错误堆栈信息！这明显对应定位问题有更大的帮助！也可以使用 `{}` 占位符来拼接字符串，而不需要使用 `+` 来连接字符串。注意，我们这里也是采用的 slf4j 日志门面的接口方法。
 
 如果采用一个参数，这里的 e 会被转为 String 类型（自动调用 `toString` 方法）
+
+如果不怕麻烦，就这么写：
+
+```java
+private final Logger log = LoggerFactory.getLogger(this.getClass());
+```
+
+如果想省事，可以结合 lombok 插键，在类上使用 `@SLF4J` 注解，然后代码中直接使用 `log.xxx` 打印日志即可；
 
 ## 示例代码
 
@@ -326,4 +334,6 @@ appender 是一个日志打印的组件，这里组件里面定义了打印过�
 
 ## 参考
 
-- [掘金-看完这个不会配置 logback ，请你吃瓜！](https://juejin.im/post/5b51f85c5188251af91a7525) 这篇文章算是相当全了
+- [掘金-glmapper-看完这个不会配置 logback ，请你吃瓜！](https://juejin.im/post/5b51f85c5188251af91a7525) 这篇文章算是相当全了
+- [嘟嘟独立博客-Spring Boot干货系列：（七）默认日志logback配置解析](http://tengj.top/2017/04/05/springboot7/)
+- [博客园-springboot的logback.xml配置和日志记录](https://www.cnblogs.com/javalanger/p/10964603.html)

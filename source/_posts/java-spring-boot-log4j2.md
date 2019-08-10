@@ -436,6 +436,14 @@ Logger 部分为两个 Logger:
 - Logger 日志等级和 appender 日志等级的关系：logger 日志等级和 appender 日志等级，谁「高」听谁的；
 - 普通 Logger 的优先级高
 
+## 进阶
+
+上面的配置，默认都是同步日志的方式，性能测试如下：
+
+![同步](https://gitee.com/michael_xiang/images/raw/master/LcdjuK.png)
+
+![异步](https://gitee.com/michael_xiang/images/raw/master/GmeRLh.png)
+
 ## 效果
 
 ![log4j2-console](https://gitee.com/michael_xiang/images/raw/master/8PAZgl.png)
