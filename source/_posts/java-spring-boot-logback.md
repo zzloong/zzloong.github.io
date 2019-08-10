@@ -33,6 +33,41 @@ keywords:
 - 记录器名称：一般使用类名
 - 日志内容：日志输出的打印内容
 
+## 日志依赖
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-logging</artifactId>
+</dependency>
+```
+
+实际开发中我们不需要直接添加该依赖 `spring-boot-starter-logging`，因为 `spring-boot-starter` 其中包含了 `spring-boot-starter-logging`，该依赖内容就是 Spring Boot 默认的日志框架 logback。
+
+PS：[上一篇文章](https://michael728.github.io/2019/08/17/java-spring-boot-logs/) 中说明了，如果要采用 log4j2，那么需要排除 Spring Boot 自带的日志：
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <!-- 去掉logback配置 -->
+        <exclusions>
+            <exclusion>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-logging</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+
+    <!-- 引入log4j2依赖 -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-log4j2</artifactId>
+    </dependency>
+</dependencies>
+```
+
 ## 控制台输出
 
 默认情况下， Spring Boot 只会记录 INFO、WARN、ERROR 级别的日志打印在控制台。Spring Boot 可以使用「调试模式」，会打印一些比较详细的额外信息，可以选用如下两种方式：
@@ -103,8 +138,6 @@ Spring Boot 中的 logback 默认使用 `src/main/resources` 文件夹下的 `lo
 logging.config=classpath:logback-spring.xml
 ## 这里的配置是为了在 xml 配置中应用的
 log.level=info
-log.path=logs
-log.name=michael-demo
 ```
 
 一个简单的控制台输出配置：
@@ -139,31 +172,118 @@ log.name=michael-demo
 - `%msg` 日志消息
 - `%n` 平台的换行符
 - `%c` 用来在日志上输出类的全名
+- `%L` 表示行号
 - `charset` 设置日志编码格式为 UTF-8，避免中文乱码
 - `root` 标签内设置日志级别 `level`，等同于在配置文件中设置 `logging.pattern.level`
 
-Logback 配置文件可以使用 property 标签自定义属性，然后在配置文件中使用，上面的配置可以这么写：
+Logback 配置文件可以使用 property 标签自定义属性，然后在配置文件中使用。下面附上一个较复杂的配置：
 
-```java
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <!-- application.properities中配置的变量 -->
-    <springProperty scope="context" name="logLevel" source="log.level"/>
-    <springProperty scope="context" name="logPath" source="log.path"/>
-    <springProperty scope="context" name="logName" source="log.name"/>
-    <property name="CONSOLE_LOG" value="$CONSOLE_LOG:%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %c - %msg%n"/>
+    <springProperty scope="context" name="logProfile" source="log.profile"/>
+    <springProperty scope="context" name="logFileLevel" source="log.file.level"/>
+    <!-- 定义日志 pattern -->
+    <property name="logPattern"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %c - %L{4} - %msg%n"/>
+    <!-- 定义日志文件名称 -->
+    <property name="appName" value="logback-demo"></property>
+    <property name="logPath" value="log"></property>
 
-    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+
+    <!-- ch.qos.logback.core.ConsoleAppender 表示控制台输出 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <!--
+        日志输出格式：
+            %d表示日期时间，
+            %thread表示线程名，
+            %-5level：级别从左显示5个字符宽度
+            %logger{50} 表示logger名字最长50个字符，否则按照句点分割。
+            %L 表示行号
+            %msg：日志消息，
+            %n是换行符
+        -->
         <encoder>
-            <pattern>${CONSOLE_LOG}}</pattern>
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n</pattern>-->
+            <pattern>${logPattern}</pattern>
             <charset>UTF-8</charset>
         </encoder>
     </appender>
-    <root level="${logLevel}}">
-        <appender-ref ref="Console"/>
-    </root>
+
+    <!-- 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件 -->
+    <appender name="appLogFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${logPattern}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--
+            滚动时产生的文件的存放位置及文件名称 %d{yyyy-MM-dd}：按天进行日志滚动
+            %i：当文件大小超过maxFileSize时，按照i进行文件滚动
+            -->
+            <fileNamePattern>${logPath}/${appName}/%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+            <!--
+            可选节点，控制保留的归档文件的最大数量，超出数量就删除旧文件。假设设置每天滚动，
+            且maxHistory是365，则只保存最近365天的文件，删除之前的旧文件。注意，删除旧文件是，
+            那些为了归档而创建的目录也会被删除。
+            -->
+            <MaxHistory>365</MaxHistory>
+            <!--
+            当日志文件超过maxFileSize指定的大小是，根据上面提到的%i进行日志文件滚动 注意此处配置SizeBasedTriggeringPolicy是无法实现按文件大小进行滚动的，必须配置timeBasedFileNamingAndTriggeringPolicy
+            -->
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>50MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <!--下面通过两个 Filter，记录了 WARN 和 Error 级别的日志，其实用 logger 来定义level，更方便-->
+        <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">-->
+        <!--<level>warn</level>-->
+        <!--<onMatch>ACCEPT</onMatch>-->
+        <!--<onMismatch>NEUTRAL</onMismatch>-->
+        <!--</filter>-->
+        <!--<filter class="ch.qos.logback.classic.filter.LevelFilter">-->
+        <!--<level>error</level>-->
+        <!--<onMatch>ACCEPT</onMatch>-->
+        <!--<onMismatch>DENY</onMismatch>-->
+        <!--</filter>-->
+    </appender>
+
+
+    <!--<root level="error">-->
+    <!--<appender-ref ref="console"/>-->
+    <!--</root>-->
+    <!--<logger name="com.michael.springbootlogback" >-->
+    <!--<appender-ref ref="appLogFileAppender"/>-->
+    <!--</logger>-->
+    <springProfile name="${logProfile}">
+        <!--<logger name="org.springframework" level="info" additivity="false"></logger>-->
+        <logger name="com.michael" level="info">
+            <appender-ref ref="console"/>
+        </logger>
+        <logger name="com.michael" level="${logFileLevel}">
+            <appender-ref ref="appLogFileAppender"/>
+        </logger>
+    </springProfile>
 </configuration>
 ```
+
+输出到 console:
+
+- `ConsoleAppender` 需要设置这样的一个 apppender，否则日志不会打印到控制台；
+
+输出到文件：
+
+- `RollingFileAppender` 可以实现日志的切分
+- `rollingPolicy` 设置滚动切分的规则
+- `totalSizeCap` 用来指定日志文件的上限大小，这个设置在 `maxFileSize` 之后起效，也就是说，如果你文件上限设置的是 1MB，但是 `maxFileSize` 设置的是 10MB，那么，这个日志文件也会保存为 10MB。假设你 `maxFileSize` 设置的是 1MB，`totalSizeCap` 设置的是 2MB，那么你日志文件的个数最多也就 2 个；
+- `MaxHistory` 可选节点，控制保留的归档文件的最大数量，超出数量就删除旧文件。假设设置每天滚动，且maxHistory是365，则只保存最近365天的文件。我还是喜欢这个设置，比 `totalSizeCap` 意义更清晰；
+
+`<root>` 可以包含零个或多个 `<appender-ref>` 元素，标识这个 appender 将会添加到这个 loger，logger 的属性：
+
+- name: 用来指定受此 loger 约束的某一个包或者具体的某一个类，没写的时候会报错
+- level：日志打印级别，如果未设置此属性，那么当前 logger 会继承上级的级别，也就是 root 的级别；
+- addtivity：是否向上级 loger 传递打印信息。默认是 true
 
 ## 示例代码
 
