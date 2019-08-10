@@ -438,11 +438,40 @@ Logger 部分为两个 Logger:
 
 ## 进阶
 
-上面的配置，默认都是同步日志的方式，性能测试如下：
+在 log4j2 的官网建议开发者使用异步方式，这样做的好处是可以使用单独线程来打印日志，提高日志效率，避免由于打印日志而影响业务功能。
 
-![同步](https://gitee.com/michael_xiang/images/raw/master/LcdjuK.png)
+Log4j2 中的 AsyncLogger 的内部使用了 Disruptor 框架，因此要额外引入下面依赖：
 
-![异步](https://gitee.com/michael_xiang/images/raw/master/GmeRLh.png)
+```xml
+<!-- Disruptor -->
+<dependency>
+    <groupId>com.lmax</groupId>
+    <artifactId>disruptor</artifactId>
+    <version>3.3.7</version>
+</dependency>
+```
+
+AsyncLogger 是官方推荐的异步方式，它提供了两种方式使用异步日志，即「全局异步」和「混合异步」。
+
+- [全局异步](https://logging.apache.org/log4j/2.x/manual/async.html#AllAsync)：所有的日志都进行异步的日志记录
+- [混合异步](https://logging.apache.org/log4j/2.x/manual/async.html#MixedSync-Async)：同时使用同步日志和异步日志
+
+全局异步的方式：
+
+- 系统初始化的时候加上全局配置：`System.setProperty("log4j2.contextSelector","org.apache.logging.log4j.core.async.AsyncLoggerContextSelector");`
+- 加载 JVM 启动参数里设置：`-DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector`
+
+{% note warn %}
+开启全异步时，日志配置中需要使用普通的Root和Logger元素。如果使用了AsyncRoot或AsyncLogger，将产生不必要的开销。
+{% endnote %}
+
+混合异步：
+
+- `log4j2.xml` 配置文件中使用 `AsyncRoot/AsyncLogger` 替代 `Root/Logger`
+
+{% note warn %}
+全异步是官方推荐的，也是性能最佳的方式，但同步异步混合使用，能够提供更大的灵活性。使用 AsyncRoot、AsyncLogger、Root、Logger 混合配置，可以实现同步异步混合。但是需要注意，配置中只能有一个 root 元素，也就是只能使用 AsyncRoot 或 Root 中的一个。
+{% endnote %}
 
 ## 效果
 
@@ -460,8 +489,8 @@ Log4j2
 - [掘金-zdran-Spring Boot 学习笔记(二) 整合 log4j2](https://juejin.im/entry/5b35f1e86fb9a00e315c330e) 博主写了一些 Spring Boot 教程
 - [博客园-蜗牛大师-浅谈Log4j2日志框架及使用](https://www.cnblogs.com/wuqinglong/p/9516529.html) 介绍的非常详细，强烈推荐！
 - [博客园-Log4j2之Appenders](http://www.cnblogs.com/elaron/archive/2013/02/17/2914633.html) 对 appender 介绍详细
-- [SpringBoot + Log4j2使用配置](https://www.jianshu.com/p/46b530446d20) 异步日志介绍的比较多
-- [博客园-Springboot整合log4j2日志全解](https://www.cnblogs.com/keeya/p/10101547.html) 博客主题略酷，引用了其性能评测的图，似乎原文是这个 [logback log4j log4j2 性能实测](https://blog.souche.com/logback-log4j-log4j2shi-ce/)
+- [Log4j2异步日志](https://it-linnan.github.io/log4j2%E5%BC%82%E6%AD%A5%E6%97%A5%E5%BF%97.html)
+- [CSDN-log4j2异步Logger](https://blog.csdn.net/heyutao007/article/details/72773077) 提供了一副异步记载日志的图
 
 SLF4J
 
