@@ -283,7 +283,42 @@ Logback 配置文件可以使用 property 标签自定义属性，然后在配�
 
 - name: 用来指定受此 loger 约束的某一个包或者具体的某一个类，没写的时候会报错
 - level：日志打印级别，如果未设置此属性，那么当前 logger 会继承上级的级别，也就是 root 的级别；
-- addtivity：是否向上级 loger 传递打印信息。默认是 true
+- addtivity：是否向上级 loger 传递打印信息。默认是 true。设置为 false 表示该日志打印设置（控制台打印还是文件打印等具体设置）不会向根 root 标签传递，也就是说该 logger 里怎么设置的那就会怎么打印，跟 root 无关
+
+root 是根 logger,所以他两是一回事；只不过 root 中不能有 name 和 additivity 属性，是有一个 level。
+
+appender 是一个日志打印的组件，这里组件里面定义了打印过滤的条件、打印输出方式、滚动策略、编码方式、打印格式等等。但是它仅仅是一个打印组件，如果我们不使用一个 logger 或者 root 的 appender-ref 指定某个具体的 appender 时，它就没有什么意义
+
+## 打印日志的正确姿势
+
+我通过 controller 中定义了一个接口，可以打印出各级别的错误：
+
+```java
+    @GetMapping("/all")
+    public String all() {
+        try {
+            logger.debug("logger: debug");
+            logger.info("logger: info");
+            logger.warn("logger: warn" + " 附件个信息");
+            System.out.println(1 / 0);
+        } catch (Exception e) {
+            logger.error("error 打印方式比较，采用 ,e：", e);
+            logger.error("error 打印方式比较，采用 +e : " + e);
+            throw e;
+        }
+        return "all";
+    }
+```
+
+比较两种打印日志的方式，显示效果有何区别：
+
+![传两个参数](https://gitee.com/michael_xiang/images/raw/master/o4C3zV.png)
+
+![一个参数](https://gitee.com/michael_xiang/images/raw/master/qTj6el.png)
+
+可以发现，通过 `logger.error("xxx错误",e)` 的方式打印的日志会有错误堆栈信息！这明显对应定位问题有更大的帮助！注意，我们这里也是采用的 slf4j 日志门面的接口方法。
+
+如果采用一个参数，这里的 e 会被转为 String 类型（自动调用 `toString` 方法）
 
 ## 示例代码
 
@@ -291,15 +326,4 @@ Logback 配置文件可以使用 property 标签自定义属性，然后在配�
 
 ## 参考
 
-Log4j2
-
-- [Github-apache/logging-log4j2](https://github.com/apache/logging-log4j2)
-- [掘金-zdran-Spring Boot 学习笔记(二) 整合 log4j2](https://juejin.im/entry/5b35f1e86fb9a00e315c330e) 博主写了一些 Spring Boot 教程
-- [博客园-蜗牛大师-浅谈Log4j2日志框架及使用](https://www.cnblogs.com/wuqinglong/p/9516529.html) 介绍的非常详细，强烈推荐！
-- [博客园-Log4j2之Appenders](http://www.cnblogs.com/elaron/archive/2013/02/17/2914633.html) 对 appender 介绍详细
-- [SpringBoot + Log4j2使用配置](https://www.jianshu.com/p/46b530446d20) 异步日志介绍的比较多
-- [博客园-Springboot整合log4j2日志全解](https://www.cnblogs.com/keeya/p/10101547.html) 博客主题略酷，引用了其性能评测的图，似乎原文是这个 [logback log4j log4j2 性能实测](https://blog.souche.com/logback-log4j-log4j2shi-ce/)
-
-SLF4J
-
-- [掘金—HollisChuang—为什么阿里巴巴禁止工程师直接使用日志系统(Log4j、Logback)中的 API](https://juejin.im/post/5c11c831e51d4511624d1b59)
+- [掘金-看完这个不会配置 logback ，请你吃瓜！](https://juejin.im/post/5b51f85c5188251af91a7525) 这篇文章算是相当全了

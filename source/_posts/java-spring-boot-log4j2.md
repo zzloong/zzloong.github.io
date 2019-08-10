@@ -43,15 +43,15 @@ One More Thing：上面的这几段话是参考文章中截取的，也让我确
 
 ## 性能分析
 
-![性能评测](https://gitee.com/michael_xiang/images/raw/master/BBsUn0.jpg)
+![评测](https://gitee.com/michael_xiang/images/raw/master/AeAzbU.png)
 
-可以看到在同步日志模式下, Logback的性能是最糟糕的。
+![评测](https://gitee.com/michael_xiang/images/raw/master/5XDdYv.png)
 
-![异步日志模式](https://gitee.com/michael_xiang/images/raw/master/VqJmho.jpg)
-
-log4j2的性能无论在同步日志模式还是异步日志模式下都是最佳的！那本文就介绍的是使用 log4j2 作为 slf4j 的具体实现。
+log4j2 的性能几乎是碾压的，优势很明显。更多关于性能的评测，在[官网](https://logging.apache.org/log4j/2.x/performance.html)可以看到
 
 ## log4j2 依赖
+
+需要在 pom 文件中排除默认的日志框架并引入 log4j2 依赖。
 
 ```shell
 <dependencies>
