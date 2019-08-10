@@ -461,7 +461,7 @@ AsyncLogger 是官方推荐的异步方式，它提供了两种方式使用异�
 - 系统初始化的时候加上全局配置：`System.setProperty("log4j2.contextSelector","org.apache.logging.log4j.core.async.AsyncLoggerContextSelector");`
 - 加载 JVM 启动参数里设置：`-DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector`
 
-{% note warn %}
+{% note warning %}
 开启全异步时，日志配置中需要使用普通的Root和Logger元素。如果使用了AsyncRoot或AsyncLogger，将产生不必要的开销。
 {% endnote %}
 
@@ -469,7 +469,7 @@ AsyncLogger 是官方推荐的异步方式，它提供了两种方式使用异�
 
 - `log4j2.xml` 配置文件中使用 `AsyncRoot/AsyncLogger` 替代 `Root/Logger`
 
-{% note warn %}
+{% note warning %}
 全异步是官方推荐的，也是性能最佳的方式，但同步异步混合使用，能够提供更大的灵活性。使用 AsyncRoot、AsyncLogger、Root、Logger 混合配置，可以实现同步异步混合。但是需要注意，配置中只能有一个 root 元素，也就是只能使用 AsyncRoot 或 Root 中的一个。
 {% endnote %}
 
