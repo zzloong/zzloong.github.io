@@ -1,6 +1,6 @@
 ---
 title: Spring Boot 实战 —— 日志框架 Log4j2 SLF4J 的学习
-date: 2019-08-17 23:49:10
+date: 2019-08-10 23:49:10
 tags:
   - Java
   - Spring Boot

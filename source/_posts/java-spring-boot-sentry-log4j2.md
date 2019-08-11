@@ -26,9 +26,7 @@ keywords:
 
 > Open-source error tracking that helps developers monitor and fix crashes in real time. Iterate continuously. Boost efficiency. Improve user experience
 
-Sentry 是一款开源的错误跟踪系统，可帮助开发人员实时监控和修复崩溃。它是不断迭代的，提高效率，改善用户体验。
-
-Sentry 本身的文档也记载的比较全面，强烈安利，一般问题可以通过阅读 [Doc](https://docs.sentry.io/) 学习或者[论坛咨询](https://forum.sentry.io/)。
+大体意思就是：Sentry 是一款开源的错误跟踪系统，可帮助开发人员实时监控和修复崩溃。它是不断迭代的，提高效率，改善用户体验。Sentry 本身的文档也记载的比较全面，强烈安利，一般问题可以通过阅读 [Doc](https://docs.sentry.io/) 学习或者[论坛咨询](https://forum.sentry.io/)。
 
 OK，下面我们就开始通过 Docker 安装 Sentry。
 
@@ -164,7 +162,7 @@ docker run \
 
 ### 脚本一键安装 Sentry
 
-发现了 [getsentry/onpremise/install.sh](https://github.com/getsentry/onpremise/blob/master/install.sh) 这个脚本，看懂这个脚本里的内容基本上就差不多知道怎么安装了。
+发现了 [getsentry/onpremise/install.sh](https://github.com/getsentry/onpremise/blob/master/install.sh) 这个脚本，看懂这个脚本里的内容基本上就差不多知道安装步骤了。
 
 读一下脚本：
 
@@ -210,7 +208,7 @@ PS：为何容器的名称是都是 `onpremise` 开头的呢？[因为不指定�
 
 ![project](https://gitee.com/michael_xiang/images/raw/master/VEi8nF.png)
 
-## spring-boot 日志适配
+## spring-boot 项目适配
 
 [官方文档-Java](https://docs.sentry.io/clients/java/) 给出了适用于 Java 项目的全面的适配指南，咱们使用的是 [log4j2](https://docs.sentry.io/clients/java/integrations/#log4j-2x)。
 
@@ -253,7 +251,7 @@ PS：为何容器的名称是都是 `onpremise` 开头的呢？[因为不指定�
 
 经过测试，，因为原有项目中的 apppender 都是为了之前的作用设置的，比如控制台打印、比如输出到文件。要想将异常信息发送到 Sentry，这里的`SentryAppender` 是必不可少的。别忘了 `appender-ref` 也要设置！
 
-### 配置 DSN（）
+### 配置 DSN
 
 [配置页面](https://docs.sentry.io/clients/java/config/#configuration) 介绍了如何设置 DSN（Data Source Name）。
 
@@ -269,7 +267,9 @@ PS：为何容器的名称是都是 `onpremise` 开头的呢？[因为不指定�
 dsn=http://8d53042c89774e5dba599ee67c5c8804@192.168.3.43:9000/3
 ```
 
+{% note warn %}
 默认的就是 `sentry.properties`，一开始我直接写在了 `application.properties` 中，Sentry 怎么也收不到异常日志。
+{% endnote %}
 
 ### 代码中
 
