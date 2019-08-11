@@ -202,29 +202,155 @@ PS：为何容器的名称是都是 `onpremise` 开头的呢？[因为不指定�
 
 ![login](https://gitee.com/michael_xiang/images/raw/master/WWx2n1.png)
 
-## 理解 SLF4J
+## 配置 Sentry
 
+### 创建 project
 
+那我之前的 log4j2 的 demo 作为演示，这里选择一个 Java 项目，并且，我还创建了一个叫 `spring-boot` 的 Team。
 
-## 效果
+![project](https://gitee.com/michael_xiang/images/raw/master/VEi8nF.png)
 
-![log4j2-console](https://gitee.com/michael_xiang/images/raw/master/8PAZgl.png)
+## spring-boot 日志适配
+
+[官方文档-Java](https://docs.sentry.io/clients/java/) 给出了适用于 Java 项目的全面的适配指南，咱们使用的是 [log4j2](https://docs.sentry.io/clients/java/integrations/#log4j-2x)。
+
+### 引入依赖
+
+```xml
+<dependency>
+    <groupId>io.sentry</groupId>
+    <artifactId>sentry-log4j2</artifactId>
+    <version>1.7.26</version>
+</dependency>
+```
+
+### log4j2.xml 配置修改
+
+- `configuration` 中加上 `packages="org.apache.logging.log4j.core,io.sentry.log4j2"`
+
+下面示例中的 `SentryAppender` 表示发送 `warn` 级别的日志到 Sentry Server。`ConsoleAppender` 仅仅表示是一个示例，表示你项目中之前使用的非 sentryappener 的例子。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="warn" packages="org.apache.logging.log4j.core,io.sentry.log4j2">
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+
+        <Sentry name="Sentry" />
+    </appenders>
+
+    <loggers>
+        <root level="INFO">
+            <appender-ref ref="Console" />
+            <!-- Note that the Sentry logging threshold is overridden to the WARN level -->
+            <appender-ref ref="Sentry" level="WARN" />
+        </root>
+    </loggers>
+</configuration>
+```
+
+经过测试，，因为原有项目中的 apppender 都是为了之前的作用设置的，比如控制台打印、比如输出到文件。要想将异常信息发送到 Sentry，这里的`SentryAppender` 是必不可少的。别忘了 `appender-ref` 也要设置！
+
+### 配置 DSN（）
+
+[配置页面](https://docs.sentry.io/clients/java/config/#configuration) 介绍了如何设置 DSN（Data Source Name）。
+
+ 进入 Sentry，项目的 DSN 在项目页面-》setings-》Clinet Keys(DSN) 中可以发现：
+
+![DSN](https://gitee.com/michael_xiang/images/raw/master/dgVaSQ.png)
+
+配置 DSN 有好几种方式，具体的可以在页面查看，这里介绍我采用的：
+
+在 `resources` 文件夹下，新建 `sentry.properties`：
+
+```xml
+dsn=http://8d53042c89774e5dba599ee67c5c8804@192.168.3.43:9000/3
+```
+
+默认的就是 `sentry.properties`，一开始我直接写在了 `application.properties` 中，Sentry 怎么也收不到异常日志。
+
+### 代码中
+
+代码示例：
+
+```java
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Marker;
+import org.apache.logging.log4j.MarkerManager;
+
+public class MyClass {
+    private static final Logger logger = LogManager.getLogger(MyClass.class);
+    private static final Marker MARKER = MarkerManager.getMarker("myMarker");
+
+    void logSimpleMessage() {
+        // This sends a simple event to Sentry
+        logger.error("This is a test");
+    }
+
+    void logWithBreadcrumbs() {
+        // Record a breadcrumb that will be sent with the next event(s),
+        // by default the last 100 breadcrumbs are kept.
+        Sentry.record(
+            new BreadcrumbBuilder().setMessage("User made an action").build()
+        );
+
+        // This sends a simple event to Sentry
+        logger.error("This is a test");
+    }
+
+    void logWithTag() {
+        // This sends an event with a tag named 'log4j2-Marker' to Sentry
+        logger.error(MARKER, "This is a test");
+    }
+
+    void logWithExtras() {
+        // MDC extras
+        ThreadContext.put("extra_key", "extra_value");
+        // NDC extras are sent under 'log4j2-NDC'
+        ThreadContext.push("Extra_details");
+        // This sends an event with extra data to Sentry
+        logger.error("This is a test");
+    }
+
+    void logException() {
+        try {
+            unsafeMethod();
+        } catch (Exception e) {
+            // This sends an exception event to Sentry
+            logger.error("Exception caught", e);
+        }
+    }
+
+    void unsafeMethod() {
+        throw new UnsupportedOperationException("You shouldn't call this!");
+    }
+}
+```
+
+可以发现，Sentry 使用的接口和之前 log4j2 是有区别的：
+
+```java
+// 原来
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+private final Logger log = LoggerFactory.getLogger(this.getClass());
+// sentry
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+private final Logger log = LogManager.getLogger(this.getClass());
+```
+
+实际过程中，这里是很多人忽视的，一定要仔细一点！
+
+这时候，使用我们之前的错误接口故意打印错误日志，看看 Sentry 的捕获效果吧：
+
+![error](https://gitee.com/michael_xiang/images/raw/master/HyqIlX.png)
 
 ## 示例代码
 
-- [awesome-spring-boot-examples](https://github.com/Michael728/awesome-spring-boot-examples/blob/master/spring-boot-logs/src/main/resources/log4j2.xml)
+- [awesome-spring-boot-examples/log4j2](https://github.com/Michael728/awesome-spring-boot-examples/tree/master/spring-boot-log4j2)
 
 ## 参考
-
-Log4j2
-
-- [Github-apache/logging-log4j2](https://github.com/apache/logging-log4j2)
-- [掘金-zdran-Spring Boot 学习笔记(二) 整合 log4j2](https://juejin.im/entry/5b35f1e86fb9a00e315c330e) 博主写了一些 Spring Boot 教程
-- [博客园-蜗牛大师-浅谈Log4j2日志框架及使用](https://www.cnblogs.com/wuqinglong/p/9516529.html) 介绍的非常详细，强烈推荐！
-- [博客园-Log4j2之Appenders](http://www.cnblogs.com/elaron/archive/2013/02/17/2914633.html) 对 appender 介绍详细
-- [Log4j2异步日志](https://it-linnan.github.io/log4j2%E5%BC%82%E6%AD%A5%E6%97%A5%E5%BF%97.html)
-- [CSDN-log4j2异步Logger](https://blog.csdn.net/heyutao007/article/details/72773077) 提供了一副异步记载日志的图
-
-SLF4J
-
-- [掘金—HollisChuang—为什么阿里巴巴禁止工程师直接使用日志系统(Log4j、Logback)中的 API](https://juejin.im/post/5c11c831e51d4511624d1b59)
