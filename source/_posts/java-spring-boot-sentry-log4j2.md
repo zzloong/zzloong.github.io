@@ -184,6 +184,40 @@ docker stop sentry-smtp sentry-postgres sentry-redis
 docker rm $(docker ps -aq)
 ```
 
+#### 配置邮箱
+
+通过上面的阅读，可以发现，运行脚本时，会去执行 `docker build .`，这个会将配置文件 `config.yml` 和环境变量 `.env` 放入镜像的。因此，我们启用发生异常时获取邮箱告警的功能，需要现在配置文件中设置好邮箱配置。
+
+这里我们选择在 `.env` 中配置好环境变量，实现邮箱的配置：
+配置 `config.yml`:
+
+```yml
+SENTRY_SECRET_KEY=)g=lkl1)uugx236%#)mq2o34^@a&g3q85q**co*hbapm5y1*bs
+# 邮箱设置
+SENTRY_EMAIL_HOST=smtp.qq.com
+SENTRY_EMAIL_USER=649168982@qq.com
+SENTRY_SERVER_EMAIL=649168982@qq.com
+# 这里指的是邮箱的授权码，而非密码
+SENTRY_EMAIL_PASSWORD=xxxx
+SENTRY_EMAIL_USE_TLS=true
+SENTRY_EMAIL_PORT=587
+```
+
+- 网上的教程，大多数是 `SENTRY_EMAIL_HOST: 'smtp.exmail.qq.com'`,这个是企业邮箱，我们个人的不这么设置。
+- `SENTRY_EMAIL_USER` 和 `SENTRY_SERVER_EMAIL` 要保持一致；
+
+这里我设置 1 分钟，就能及时收到邮箱，但是设置 5 分钟，等了 5 分钟，也没收到，不知道是何原因：
+
+![Project-Alerts](https://gitee.com/michael_xiang/images/raw/master/igfeN5.png)
+
+![Alerts](https://gitee.com/michael_xiang/images/raw/master/B625Ca.png)
+
+经过上面的设置，可以试试邮箱发送功能是否 OK：点击左上角头像，选择 `Admin`-》`Mail`-》`测试设置`
+
+![邮箱测试](https://gitee.com/michael_xiang/images/raw/master/80Ncez.png)
+
+#### 部署 sentry
+
 下面开始安装步骤：
 
 - `sh install.sh` 执行安装脚本，脚本执行完需要一点时间，运行完成之后，会退出。中间过程会让你选择是否创建账号：
@@ -349,8 +383,17 @@ private final Logger log = LogManager.getLogger(this.getClass());
 
 ![error](https://gitee.com/michael_xiang/images/raw/master/HyqIlX.png)
 
+## 总结
+
+
+
 ## 示例代码
 
 - [awesome-spring-boot-examples/log4j2](https://github.com/Michael728/awesome-spring-boot-examples/tree/master/spring-boot-log4j2)
 
 ## 参考
+
+- [神奇的展示-用 Docker 部署 Sentry Bug 日志收集服务](https://thinkhard.tech/2019/05/25/docker-sentry-deploy/)
+- [掘金-搭建私有的前端监控服务: sentry](https://juejin.im/post/5b226cbe51882574d02f9f62)
+- [sentry配置邮件](https://www.baoguoxiao.com/2018/10/30/sentry-configuring-mail/)
+- [自建sentry后，配置了邮件服务，但是还是收不到验证邮件？](https://segmentfault.com/q/1010000016563419) 这个问题有参考意义，还是推荐通过环境变量的方式而不是 `config.yml` 配置邮箱

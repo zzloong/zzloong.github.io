@@ -204,7 +204,7 @@ Receiving objects: 100% (6/6), done.
 
 ![](https://ws1.sinaimg.cn/mw690/6d9475f6ly1g41w79zw81j20p10ddq4x.jpg)
 
-了解更多，查看 [官网 SMTP 设置](https://docs.gitlab.com/omnibus/settings/smtp.html))
+了解更多，查看 [官网 SMTP 设置](https://docs.gitlab.com/omnibus/settings/smtp.html)
 
 ### 数据持久化
 
