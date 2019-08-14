@@ -23,6 +23,8 @@ Elasticsearch 包里自包含了 OpenJDK 的包，在 Elacticsearch 目录下的
 
 官方文档的 `Set up Elasticsearch` 下面有安装的指导，具体页面 [Installing Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html) 中提供了多种安装包对应的指导链接！本文就先选择 [tar 包](https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html)的方式安装。
 
+由于本地机器有限，我们在同一台机器上模拟出 3 个节点，安装 ES 集群。
+
 ### 下载安装包
 
 官网的下载地址简直是龟速，发现我司的[镜像站](https://mirrors.huaweicloud.com/elasticsearch/)上提供了安装包，试用后安利，速度不错：
@@ -33,7 +35,10 @@ wget https://mirrors.huaweicloud.com/elasticsearch/7.3.0/elasticsearch-7.3.0-lin
 # 验证安装包的完整性，如果没问题，会输出 OK
 shasum -a 512 -c elasticsearch-7.3.0-linux-x86_64.tar.gz.sha512
 tar -xzf elasticsearch-7.3.0-linux-x86_64.tar.gz
-cd elasticsearch-7.3.0/
+cp -R elasticsearch-7.3.0 es-node1
+cp -R elasticsearch-7.3.0 es-node2
+mv elasticsearch-7.3.0 es-node3
+chown -R michael es-node* # 因为以 root 用户启动不了 ES
 ```
 
 下文的 `$ES_HOME` 就是指这里 tar 包解压后的文件夹目录，目录组成：
@@ -55,7 +60,10 @@ cd elasticsearch-7.3.0/
 
 ### 使用命令行运行 Elasticsearch
 
+首先，我们先运行一个节点起来。
+
 ```shell
+
 ./bin/elasticsearch
 ```
 
@@ -69,6 +77,8 @@ Caused by: java.lang.RuntimeException: can not run elasticsearch as root
 
 {% endnote %}
 
+如果需要新建用户的话可以运行 `adduser michael`，修改密码：`passwd michael`，然后 `chown -R es-node*`。
+
 ### 检查一下运行状态
 
 ```shell
@@ -79,21 +89,21 @@ curl -X GET "localhost:9200/?pretty"
 
 ```shell
 {
-  "name" : "michael-pc",
-  "cluster_name" : "elasticsearch",
-  "cluster_uuid" : "qhudAW_ESsS9oAJru7oTOQ",
-  "version" : {
-    "number" : "7.3.0",
-    "build_flavor" : "default",
-    "build_type" : "tar",
-    "build_hash" : "de777fa",
-    "build_date" : "2019-07-24T18:30:11.767338Z",
-    "build_snapshot" : false,
-    "lucene_version" : "8.1.0",
-    "minimum_wire_compatibility_version" : "6.8.0",
-    "minimum_index_compatibility_version" : "6.0.0-beta1"
-  },
-  "tagline" : "You Know, for Search"
+    "name": "node-1",
+    "cluster_name": "michael-es",
+    "cluster_uuid": "GlzI_v__QJ2s9ewAgomOqg",
+    "version": {
+        "number": "7.3.0",
+        "build_flavor": "default",
+        "build_type": "tar",
+        "build_hash": "de777fa",
+        "build_date": "2019-07-24T18:30:11.767338Z",
+        "build_snapshot": false,
+        "lucene_version": "8.1.0",
+        "minimum_wire_compatibility_version": "6.8.0",
+        "minimum_index_compatibility_version": "6.0.0-beta1"
+    },
+    "tagline": "You Know, for Search"
 }
 ```
 
@@ -149,7 +159,7 @@ cluster.name: michael-es
 通过 `node.name` 可以配置每个节点的名称，集群中每个节点的名称都不要相同
 
 ```shell
-node.name: es-node-1
+node.name: node-1
 ```
 
 - 设置访问的地址和端口
@@ -185,14 +195,68 @@ discovery.seed_hosts: ["192.168.3.43"]
 ```shell
 $ egrep -v "^#|^$" config/elasticsearch.yml
 cluster.name: michael-es
-node.name: es-node-1
+node.name: node-1
 network.host: 0.0.0.0
 http.port: 9200
 discovery.seed_hosts: ["192.168.3.43"]
-cluster.initial_master_nodes: ["es-node-1"]
+cluster.initial_master_nodes: ["node-1"]
 ```
 
 经过上面的配置，这时候就可以使用 `http://192.168.3.43:9200/` 看到结果了。
+
+关于 cluster.initial_master_nodes 可以查看如下资料
+
+- [Bootstrapping a cluster](https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-discovery-bootstrap-cluster.html)
+
+### 安装插键
+
+```shell
+./bin/elasticsearch-plugin install analysis-icu
+```
+
+如果插键安装慢，可以先下载下来，再安装：
+
+```shell
+wget https://artifacts.elastic.co/downloads/elasticsearch-plugins/analysis-icu/analysis-icu-7.1.0.zip
+./bin/elasticsearch-plugin install file://file path Of analysis-icu-7.1.0.zip
+```
+
+### 集群配置
+
+分别进入对应 es-node2 和 es-node3 的文件夹，设置如下：
+
+```shell
+# es-node2
+cluster.name: michael-es
+node.name: node-2
+network.host: 0.0.0.0
+discovery.seed_hosts: ["192.168.3.43"]
+
+# es-node3
+cluster.name: michael-es
+node.name: node-3
+network.host: 0.0.0.0
+discovery.seed_hosts: ["192.168.3.43"]
+```
+
+我们通过访问 `http://192.168.3.43:9200/_cat/nodes`查看集群是否 OK：
+
+```shell
+172.20.0.1 18 98 35 1.16 0.69 0.58 dim - node-2
+172.20.0.1 14 98 35 1.16 0.69 0.58 dim - node-3
+172.20.0.1 19 98 35 1.16 0.69 0.58 dim * node-1
+```
+
+有没有发现，我并没有给 `es-node2` 和 `es-node3` 明确的指定端口，为什么在一台机器上也成功启动了这两个节点？因为 Elasticsearch 会取用 9200~9299 这个范围内的端口，如果 9200 被占用，就选择 9201，依次类推。
+
+其实，还有一个跟简单的方法创建集群，我们首先将上面运行的三个节点停止掉，然后进入 es-node1 文件夹下：
+
+```shell
+mkdir -p data/data{1,2,3}
+./bin/elasticsearch -E node.name=node-1 -E cluster.name=michael-es -E path.data=data/data1 -E path.logs=logs/logs1 -d -p pid1
+./bin/elasticsearch -E node.name=node-2 -E cluster.name=michael-es -E path.data=data/data2 -E path.logs=logs/logs2 -E http.port=9201 -d -p pid2
+./bin/elasticsearch -E node.name=node-3 -E cluster.name=michael-es -E path.data=data/data3 -E path.logs=logs/logs3 -E http.port=9202 -d -p pid3
+```
 
 ### ES-FAQ
 
@@ -202,6 +266,22 @@ Q1：`[1]: max virtual memory areas vm.max_map_count [65530] is too low, increas
 echo "vm.max_map_count=262144" > /etc/sysctl.conf
 sysctl -p
 ```
+
+Q2：`max file descriptors [4096] for elasticsearch process is too low, increase to at least [65536]`
+
+```shell
+sudo vim /etc/security/limits.conf
+# 加入以下内容
+* soft nofile 300000
+* hard nofile 300000
+* soft nproc 102400
+* soft memlock unlimited
+* hard memlock unlimited
+```
+
+Q3：`master_not_discovered_exception`
+
+主节点指定的名字要保证存在，别指定了不存在的节点名。
 
 ## Kibana
 
@@ -223,3 +303,4 @@ wget https://mirrors.huaweicloud.com/filebeat/7.3.0/filebeat-7.3.0-linux-x86_64.
 ## 参考
 
 - [程序羊-CentOS7上ElasticSearch安装填坑记](https://www.jianshu.com/p/04f4d7b4a1d3) FAQ 有帮助
+- [极客时间-Elasticsearch核心技术与实战](https://time.geekbang.org/course/detail/197-102661)
