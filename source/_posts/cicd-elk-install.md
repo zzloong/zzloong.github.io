@@ -291,7 +291,25 @@ https://mirrors.huaweicloud.com/kibana/7.3.0/
 wget https://mirrors.huaweicloud.com/kibana/7.3.0/kibana-7.3.0-linux-x86_64.tar.gz
 wget https://mirrors.huaweicloud.com/kibana/7.3.0/kibana-7.3.0-linux-x86_64.tar.gz.sha512
 shasum -a 512 -c elasticsearch-7.3.0-linux-x86_64.tar.gz.sha512
+tar xzf kibana-7.3.0-linux-x86_64.tar.gz
+chown -R michael kibana-7.3.0-linux-x86_64
+cd kibana-7.3.0-linux-x86_64
 ```
+
+### 配置 Kibana
+
+```shell
+server.port: 5601
+server.host: "0.0.0.0"
+elasticsearch.hosts: ["http://192.168.3.43:9200"]
+kibana.index: ".kibana"
+```
+
+访问：`http://192.168.3.43:5601/`
+
+这时候可以看到我们搭建的集群节点了：
+
+
 
 ## Filebeat
 
