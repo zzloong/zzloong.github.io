@@ -207,6 +207,7 @@ cluster.initial_master_nodes: ["node-1"]
 关于 cluster.initial_master_nodes 可以查看如下资料
 
 - [Bootstrapping a cluster](https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-discovery-bootstrap-cluster.html)
+- [Discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-settings.html)
 
 ### 安装插键
 
