@@ -1,6 +1,6 @@
 ---
 title: DevOps 之 ELK 基础设施搭建
-date: 2019-06-16 14:10:57
+date: 2019-08-14 22:10:57
 categories: DevOps
 tags:
     - CICD
@@ -25,7 +25,7 @@ Elasticsearch 包里自包含了 OpenJDK 的包，在 Elacticsearch 目录下的
 
 由于本地机器有限，我们在同一台机器上模拟出 3 个节点，安装 ES 集群。
 
-### 下载安装包
+### 下载 ES 安装包
 
 官网的下载地址简直是龟速，发现我司的[镜像站](https://mirrors.huaweicloud.com/elasticsearch/)上提供了安装包，试用后安利，速度不错：
 
@@ -286,6 +286,12 @@ Q3：`master_not_discovered_exception`
 
 ## Kibana
 
+官方文档 [Installing Kibana](https://www.elastic.co/guide/en/kibana/current/install.html) 中提供了多种安装包对应的指导链接！本文就先选择 [tar 包](https://www.elastic.co/guide/en/kibana/current/targz.html)的方式安装。
+
+### 下载 Kibana 安装包
+
+同样，Kibana 在我司镜像站上也有对应的软件包：
+
 ```shell
 https://mirrors.huaweicloud.com/kibana/7.3.0/
 wget https://mirrors.huaweicloud.com/kibana/7.3.0/kibana-7.3.0-linux-x86_64.tar.gz
@@ -299,17 +305,30 @@ cd kibana-7.3.0-linux-x86_64
 ### 配置 Kibana
 
 ```shell
+egrep -v "^#|^$" config/kibana.yml # 如下内容是修改的配置
 server.port: 5601
 server.host: "0.0.0.0"
 elasticsearch.hosts: ["http://192.168.3.43:9200"]
 kibana.index: ".kibana"
 ```
 
+更多配置内容，可以阅读 [Configuring Kibana](https://www.elastic.co/guide/en/kibana/current/settings.html)
+
+### 运行 Kibana
+
+如下方式可以实现后台运行，避免 Ctrl+C 终止了程序：
+
+```shell
+nohup bin/kibana &
+```
+
 访问：`http://192.168.3.43:5601/`
 
-这时候可以看到我们搭建的集群节点了：
+这时候可以看到我们之前搭建的集群节点了：
 
+![Kiana-ES](https://gitee.com/michael_xiang/images/raw/master/Dg7DMe.png)
 
+## Logstash
 
 ## Filebeat
 
@@ -322,4 +341,4 @@ wget https://mirrors.huaweicloud.com/filebeat/7.3.0/filebeat-7.3.0-linux-x86_64.
 ## 参考
 
 - [程序羊-CentOS7上ElasticSearch安装填坑记](https://www.jianshu.com/p/04f4d7b4a1d3) FAQ 有帮助
-- [极客时间-Elasticsearch核心技术与实战](https://time.geekbang.org/course/detail/197-102661)
+- [极客时间-Elasticsearch核心技术与实战](https://time.geekbang.org/course/detail/197-102661) 这篇文章阐述了 ES 集群的主节点的仲裁等知识
