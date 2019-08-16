@@ -63,7 +63,6 @@ chown -R michael es-node* # 因为以 root 用户启动不了 ES
 首先，我们先运行一个节点起来。
 
 ```shell
-
 ./bin/elasticsearch
 ```
 
