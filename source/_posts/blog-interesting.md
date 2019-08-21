@@ -84,6 +84,7 @@ categories:
 ## 综合
 
 - [dirtysalt](https://dirtysalt.github.io/blog.html)
+- [Netkiller 系列电子书 —— 手札](http://www.netkiller.cn/)
 - [D大](https://88250.b3log.org/)
 - [龙哥盟](http://flygon.net/)
 - [图拉鼎](https://imtx.me/)
