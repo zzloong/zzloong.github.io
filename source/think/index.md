@@ -4,6 +4,10 @@ date: 2019-05-19 17:37:22
 ---
 
 {% note success no-icon %}
+有人说他一年可以读100本书，甚至更多，那就像和100个女孩子各抛了一个媚眼，就宣称谈了100次恋爱一样，他从未和其中哪一个肌肤相触，更没有和哪一个生出个孩子。—— 赵昂 —— 20190821 [博客-想和知识生个孩子](https://hoxis.github.io/woyaohezhishishenggehaizi.html)
+{% endnote %}
+
+{% note success no-icon %}
 难的事情你不去做，那你的价值能够体现在哪儿？—— 20190716 [油管-吴晓波专访京东创始人 刘强东《十年二十人》](https://www.youtube.com/watch?v=HdF5pXeMjxg)
 {% endnote %}
 
