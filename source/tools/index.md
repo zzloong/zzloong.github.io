@@ -109,7 +109,7 @@ keywords:
 
 ### 数学
 
-- [数字帝国 ](https://zh.numberempire.com/) 函数绘制、不定积分计算等功能
+- [数字帝国](https://zh.numberempire.com/) 函数绘制、不定积分计算等功能
 - [desmos](https://www.desmos.com/) 数学函数绘制
 
 ### 设计

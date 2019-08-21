@@ -130,6 +130,10 @@ LastPass,屡获殊荣的密码管理器,保存你的密码,让你安全访问任
 
 现在在用的标签页扩展，挺简洁的，壁纸很美！
 
+## [RSSHub Radar](https://chrome.google.com/webstore/search/rsshub?utm_source=chrome-ntp-icon)
+
+今天发现的一个 RSS 利器，对于喜欢订阅 RSS 的用户来说，真是方便！可以发现你访问的网站上的 RSS 源地址。
+
 ## [惠惠购物助手](https://chrome.google.com/webstore/detail/%E6%83%A0%E6%83%A0%E8%B4%AD%E7%89%A9%E5%8A%A9%E6%89%8B/ohjkicjidmohhfcjjlahfppkdblibkkb?utm_source=chrome-app-launcher-info-dialog)
 推荐指数：★★★
 
