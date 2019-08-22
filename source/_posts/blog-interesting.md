@@ -76,6 +76,7 @@ categories:
 
 - [海底苍鹰](http://blog.51yip.com/)
 - [张文兵博客](https://zhangwenbing.com/)
+- [运维之美](https://www.hi-linux.com/)
 
 ## 设计
 
