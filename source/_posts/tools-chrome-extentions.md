@@ -132,7 +132,7 @@ LastPass,屡获殊荣的密码管理器,保存你的密码,让你安全访问任
 
 ## [RSSHub Radar](https://chrome.google.com/webstore/search/rsshub?utm_source=chrome-ntp-icon)
 
-今天发现的一个 RSS 利器，对于喜欢订阅 RSS 的用户来说，真是方便！可以发现你访问的网站上的 RSS 源地址。
+今天经过[公众号的推荐](https://mp.weixin.qq.com/s?__biz=MzI5MDM4NTYwOA==&mid=2247488671&idx=1&sn=2c5d7a459e8dbf3345481f982ed37e0e&chksm=ec21ef38db56662eb0755a9ab0cb34adbf155ead565822e83f9b2a7307f37e440dc9d9d00d6a&mpshare=1&scene=1&srcid=&sharer_sharetime=1566260194390&sharer_shareid=ae8eb1508a08c1b134df82bb484ea38d#rd)发现的一个 RSS 利器，对于喜欢订阅 RSS 的用户来说，真是方便！可以发现你访问的网站上的 RSS 源地址。
 
 ## [惠惠购物助手](https://chrome.google.com/webstore/detail/%E6%83%A0%E6%83%A0%E8%B4%AD%E7%89%A9%E5%8A%A9%E6%89%8B/ohjkicjidmohhfcjjlahfppkdblibkkb?utm_source=chrome-app-launcher-info-dialog)
 推荐指数：★★★
