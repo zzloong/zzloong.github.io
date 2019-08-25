@@ -45,11 +45,11 @@ MIT 与 BSD 类似，但是比 BSD 协议更加宽松，是目前最少限制的
 
 ![如何选择开源许可证](https://gitee.com/michael_xiang/images/raw/master/free_software_licenses.png)
 
-- [阮一峰-如何选择开源许可证？](http://www.ruanyifeng.com/blog/2011/05/how_to_choose_free_software_licenses.html)
+上图来自：[阮一峰-如何选择开源许可证？](http://www.ruanyifeng.com/blog/2011/05/how_to_choose_free_software_licenses.html)
 
 ![选择一个开源软件协议](https://gitee.com/michael_xiang/images/raw/master/pudhS6.png)
 
-- [选择一个开源软件协议](http://choosealicense.online/) 对应英文网址[Choose an open source license](https://choosealicense.com)
+上图来自：[选择一个开源软件协议](http://choosealicense.online/) 对应英文网址[Choose an open source license](https://choosealicense.com)
 
 ## 参考
 
