@@ -38,6 +38,7 @@ String str = (String)strList.get(2);
 ```
 
 输出：
+
 ```java
 [Name, Aget, 1]
 Exception in thread "main" java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String
@@ -67,19 +68,30 @@ String str = (String)strList.get(2);
 上面的 `List<String>`，可以称 List 是带一个类型参数的泛型接口，类型参数（类型实参）是 `Sting`。集合记住了所有元素的数据类型，从而无须对集合元素进行数据类型转换。
 
 在 Java 7 之前，如果使用带有泛型的接口、类定义变量，那么调用构造器创建对象时，构造器的构面也要带上泛型：
+
 ```java
 List<String> strList = new ArrayList<String>();
 ```
 
 从  Java7 开始， Java 允许在构造器后不需要带完整的泛型信息，只需要给出尖括号即可，Java 可以自动推断出尖括号里的是什么泛型信息：
+
 ```java
 List<String> strList = new ArrayList<>();
 ```
 
+## 常见的 T，E，K，V，？
+
+本质上这些个都是通配符，没啥区别，只不过是编码时的一种约定俗成的东西。比如上述代码中的 T ，我们可以换成 A-Z 之间的任何一个 字母都可以，并不会影响程序的正常运行，但是如果换成其他的字母代替 T ，在可读性上可能会弱一些。通常情况下，T，E，K，V，？ 是这样约定的：
+
+- ？ 表示不确定的 java 类型
+- T (type) 表示具体的一个java类型
+- K V (key value) 分别代表java键值中的Key Value
+- E (element) 代表Element
 
 ## 泛型的应用
 
 泛型有三种使用方式：
+
 1. 泛型类
 2. 泛型接口
 3. 泛型方法
@@ -89,6 +101,7 @@ List<String> strList = new ArrayList<>();
 泛型类型用于类的定义中，这个类称为「泛型类」。最典型的泛型类就是各种容器类，例如：List、Set、Map。
 
 泛型类的定义语法：
+
 ```java
 class 类名称<泛型标识>{
     private 泛型标识 成员变量；
@@ -143,7 +156,6 @@ card2 id is: 2
 `List<Integer>` 并不是 `List<Number>` 的子类！
 `List<Integer>` 并不是 `List<Number>` 的子类！
 
-
 ### 泛型接口
 
 泛型接口和泛型类的定义语法差不多。泛型接口经常被用在各种类的生成器中。
@@ -156,6 +168,7 @@ public interface Generaotr<T> {
 ```
 
 泛型接口实现类，未传入泛型实参时：
+
 ```java
 public class FruitGenerator<T> implements Generaotr<T> {
     // 这个 Override 可不能少
@@ -169,6 +182,7 @@ public class FruitGenerator<T> implements Generaotr<T> {
 接口实现类定义时，也需要将泛型的声明加上。如果不加，例如`public class FruitGenerator implements Generaotr<T>`，这样就会报错，`cannot resolve symbol T`。
 
 泛型接口实现类，传入泛型实参，比如 `String`：
+
 ```java
 public class FruitGenerator implements Generaotr<String> {
     private String[] fruits = new String[]{"Apple", "Banana", "Pear"};
@@ -200,6 +214,7 @@ showKeyValue1(card2);
 ```
 
 编译器会报错 ：
+
 ```java
 Generic<java.lang.Integer> cannot be applied to Card<java.lang.Number>
 ```
@@ -220,6 +235,7 @@ private static void showKeyValue1(Card<?> card){
 #### 通配符上界
 
 为了表示限制类型，泛型提供了被限制的通配符。通配符上界使用 `<? extends T>` 的格式，意思是需要一个T类型或者T类型的子类，一般T类型都是一个具体的类型。示例如下：
+
 ```java
 public void printIntValue(List<? extends Number> list) {
     for (Number number : list) {
@@ -233,6 +249,7 @@ public void printIntValue(List<? extends Number> list) {
 #### 通配符下界
 
 除了可以指定通配符的上限之外，Java 还允许指定通配符的下限。通配符下界使用 `<? super T>` 的格式，意思是需要一个T类型或者 T 类型的父类，一般 T 类型都是一个具体的类型。示例如下：
+
 ```java
 public void fillNumberList(List<? super Number> list) {
     list.add(new Integer(0));
@@ -241,6 +258,7 @@ public void fillNumberList(List<? super Number> list) {
 ```
 
 其实，Java 泛型不仅允许在使用通配符形参时设定上限，还可以在定义泛型形参时设定上限，用以表示传给泛型形参的实际参数类型要么是该上限类型，要么是该上限类型的子类。
+
 ```java
 public class Apple<T extends Number> {
     T col;
@@ -274,6 +292,7 @@ static void fromArrayToCollection(Object[] a, Collection<Object> c) {
 
 `Collection<String>` 并不是 `Collection<Object>` 的子类型，所以上面这个方法只能将
 `Object[]` 数组中的元素复制到元素为 `Object`(`Object` 的子类也不行)的 Collection 集合中。所以，下面这么写将会引起编译错误：
+
 ```java
 String[] strArr = {"a","b"};
 List<String> strList = new ArrayList<>();
@@ -285,6 +304,7 @@ System.out.println(strList);
 `Collection<Object> c` 改为通配符 `Collection<?> c` 是否可行呢？也不行。
 
 为了解决上面这个问题，可以使用泛型方法(`Generic Method`)。所谓泛型方法，就是在声明方法时，定义一个或多个泛型形参。多个泛型形参声明放在方法修饰符和方法返回值类型之间。泛型方法语法格式如下：
+
 ```java
 修饰符 <T,S,...> 返回值类型 方法名(形参列表){
     // 方法体
@@ -292,6 +312,7 @@ System.out.println(strList);
 ```
 
 上面的方法改进如下：
+
 ```java
 static <T> void fromArrayToCollection(T[] a, Collection<T> c) {
     for (T o : a) {
@@ -325,6 +346,7 @@ public class Main {
 ![Jietu20190713-121930-method-error.jpg](https://i.loli.net/2019/07/13/5d295bf0741a761687.jpg)
 
 `test` 方法传入两个实参，`ao` 的数据类型是 `List<Object>`，而 `as` 的数据类型是 `List<String>`。与泛型方法签名进行对比，`test(Collection<T> from, Collection<T> to)`，编译器无法正确识别 T 所代表的实际类型。为了避免这种错误，可以改为如下形式：
+
 ```java
 static <T> void test(Collection<? extends T> from, Collection<T> to) {
     for (T ele : from) {
@@ -354,3 +376,4 @@ static <T> void test(Collection<? extends T> from, Collection<T> to) {
 - [CSDN-ShuSheng007-秒懂Java泛型](https://blog.csdn.net/ShuSheng0007/article/details/80720406#%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E4%B8%80%E4%B8%AA%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95)
 - [掘金-深入理解Java泛型](https://juejin.im/post/5b614848e51d45355d51f792)
 - [重新认识Java——泛型（基础、使用和实现原理）](http://hinylover.space/2016/06/25/relearn-java-generic-1/)
+- [glmapper—聊一聊-JAVA 泛型中的通配符 T，E，K，V，？](http://www.glmapper.com/2019/08/19/base-java-generics/#%E5%B8%B8%E7%94%A8%E7%9A%84-T%EF%BC%8CE%EF%BC%8CK%EF%BC%8CV%EF%BC%8C%EF%BC%9F)
