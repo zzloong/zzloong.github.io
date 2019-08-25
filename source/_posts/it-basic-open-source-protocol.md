@@ -11,6 +11,8 @@ keywords:
   - Generic
 ---
 
+![OSI Logo](https://gitee.com/michael_xiang/images/raw/master/osi_keyhole_300X300_90ppi.png)
+
 ## 什么是开源
 
 发展史
@@ -22,6 +24,8 @@ keywords:
 - 2000 年，开源延伸至移动和云领域，由 Google 等大企业驱动，影响技术发展路线和市场格局。
 - 2008 年，Github 等代码托管平台，采用 pull/request 等方式协同合作，将开源推向了新高度。
 - 2014 年，Google 开源 Kubernetes，获得极大关注。经过几年发展，Kubernetes 成为事实上的分布式架构平台。
+
+<!-- more -->
 
 ## 开源协议
 
@@ -56,3 +60,4 @@ MIT 与 BSD 类似，但是比 BSD 协议更加宽松，是目前最少限制的
 - [开源软件是什么意思？闭源呢？](https://www.kenzhishi.com/1731.html) 一个 UP 主的博客
 - [About Open Source Licenses](https://opensource.org/licenses)
 - [陈少文-开源正在重构商业模式](https://www.chenshaowen.com/blog/open-source-is-refactoring-the-business-model.html)
+- [opensource-logo](https://opensource.org/node/442)
