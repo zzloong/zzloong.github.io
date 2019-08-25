@@ -99,3 +99,4 @@ docker logs -f jenkins
 
 - [官宣-安装Jenkins-中文](https://jenkins.io/zh/doc/book/installing/) 发现翻译的并不是特别好，推荐看[英文](https://jenkins.io/doc/book/installing/)
 - [K8S牛刀小试CI之Jenkins on Docker篇(二)](https://www.imbajin.com/K8S%E7%89%9B%E5%88%80%E5%B0%8F%E8%AF%95CI%E4%B9%8BJenkins%E7%AF%87(%E4%BA%8C)/)
+- [Jenkins Blue Ocean 的使用](https://www.qikqiak.com/post/kubernetes-jenkins3/) 这也是一个有用的插键

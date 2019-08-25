@@ -224,7 +224,8 @@ Q2：Github 下载速度慢
 ```
 
 [Homebrew cask](http://caskroom.io/)可以优雅、简单、快速的安装和管理 OS X 图形界面程序，比如 Google Chrome 和 Dropbox，安装 cask 命令：
-```
+
+```shell
 brew tap caskroom/cask
 ```
 
@@ -246,6 +247,7 @@ brew unlink vim
 ```
 
 更多命令可以通过`man brew`查看：
+
 - [brew 命令官网](https://docs.brew.sh/Manpage)
 - [SF-homebrew的tap功能详解](https://segmentfault.com/a/1190000012826983)
 - [CSDN-mac的homebrew命令详解&全部选项翻译](https://blog.csdn.net/beyond__devil/article/details/52649362)
@@ -271,28 +273,40 @@ Homebrew已成为Mac开发用户必不可少的工具, 大部分开发工具的�
 
 [brew和brew cask有什么区别？](https://www.zhihu.com/question/22624898)：[cask](http://caskroom.io/) 更偏向图形化软件的安装。
 
+### Homebrew 源加速
+
+知乎上给出了两种方式，因为有 VPS了，所以，目前我采用的是设置 `~/.curlrc` 文件配置如下内容：
+
+```shell
+socks5 = "127.0.0.1:1086"
+```
+
+具体配置文件，可以查看：[my-config-files-homebrew](https://github.com/Michael728/my-config-files/tree/master/homebrew)
+
+我最后还是采用的修改原的方式，具体参考：[阿里镜像源-brew](https://opsx.alibaba.com/mirror)
+
+参考：
+
+- [Homebrew有比较快的源（mirror）吗？](https://www.zhihu.com/question/31360766)
+- [Homebrew Cask 源使用帮助](http://mirrors.ustc.edu.cn/help/homebrew-cask.git.html)
+- [Homebrew专栏](https://sspai.com/topic/181)
+- [使用brew cask来安装Mac应用](http://blog.devtang.com/2014/02/26/the-introduction-of-homebrew-and-brewcask/)
+
 ### 拓展预览程序
 
 ```shell
 brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize webpquicklook qlvideo provisionql quicklookapk
 ```
 
+安装 Git 工具：
+
+```shell
+brew install git-extras
+```
+
 - [插键-sindresorhus/quick-look-plugins](https://github.com/sindresorhus/quick-look-plugins)
-
-### Homebrew 源加速
-
-知乎上给出了两种方式，因为有 VPS了，所以，目前我采用的是设置 `~/.curlrc` 文件配置如下内容：
-```
-socks5 = "127.0.0.1:1086"
-```
-
-具体配置文件，可以查看：[my-config-files-homebrew](https://github.com/Michael728/my-config-files/tree/master/homebrew)
-
-参考：
-- [Homebrew有比较快的源（mirror）吗？](https://www.zhihu.com/question/31360766)
-- [Homebrew Cask 源使用帮助](http://mirrors.ustc.edu.cn/help/homebrew-cask.git.html)
-- [Homebrew专栏](https://sspai.com/topic/181)
-- [使用brew cask来安装Mac应用](http://blog.devtang.com/2014/02/26/the-introduction-of-homebrew-and-brewcask/)
+- [git-extras](https://github.com/tj/git-extras/blob/master/Commands.md) 提供了一些有用和有趣的命令，例如 `git summary`
+- [程序员内功系列--常用命令行工具](https://xiaozhou.net/learn-the-command-line-tools-md-2018-10-11.html)
 
 ## iTerm2
 

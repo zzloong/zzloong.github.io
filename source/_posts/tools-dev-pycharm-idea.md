@@ -15,8 +15,10 @@ IDEA 没有类似 Eclipse 的工作空间的概念（workspace），最大单元
 - src 目录，用于存放代码
 - .idea 目录和 project01.iml 文件都是 IDEA 工程特有的。
 - 删除 module ，这样不会删除代码文件，只是从 Project 中移除组织关系，如下图：
+
 ![](https://ws1.sinaimg.cn/large/006tNbRwly1fyre627b5lj308u0c1t9g.jpg)
 ![](https://ws3.sinaimg.cn/large/006tNbRwly1fyre7mxrxaj30au03yt8y.jpg)
+
 ## 系统设置
 
 ### 设置Tab为4个空格
@@ -24,6 +26,13 @@ IDEA 没有类似 Eclipse 的工作空间的概念（workspace），最大单元
 不要勾选`Use Tab character`
 
 ![](https://ws3.sinaimg.cn/large/006tNbRwly1fya4vpukusj30i60770tr.jpg)
+
+### 显示行号
+
+在 Apperent->Editor->Apperance 中，勾选：
+
+- `Show line numbers`
+- `Show method separators` 这个是显示方法分隔符的，我没勾选
 
 ### 设置显示收藏栏等工具栏
 
@@ -35,7 +44,9 @@ IDEA 没有类似 Eclipse 的工作空间的概念（workspace），最大单元
 
 ### 鼠标滑过，显示文档
 
-![](https://ws1.sinaimg.cn/large/006tNbRwly1fya4zlx0o2j30m70cxgnj.jpg)
+鼠标滑过类、方法时，显示文档说明：
+
+![Show Documentation](https://ws1.sinaimg.cn/large/006tNbRwly1fya4zlx0o2j30m70cxgnj.jpg)
 
 ### 设置换行符默认为LF
 
@@ -44,19 +55,20 @@ IDEA 没有类似 Eclipse 的工作空间的概念（workspace），最大单元
 ![](https://ws3.sinaimg.cn/large/006tNbRwly1fya51ozedij30kb07r758.jpg)
 
 参考：
+
 - [IntelliJ换行CRLF, LF, CR的解释和默认设置](https://blog.csdn.net/ECHO_FOLLOW_HEART/article/details/48314523)
 
-### 设置 `File Encodings`
+### 设置 `File Encodings` 文件编码
 
 `Settings->Editor->File Encodings`，编码全都设为 `UTF-8`。
 
-![](https://ws1.sinaimg.cn/large/006tNbRwgy1fyp5wfd5qaj31bu0u0q99.jpg)
+![File Encodings](https://ws1.sinaimg.cn/large/006tNbRwgy1fyp5wfd5qaj31bu0u0q99.jpg)
 
 ### 设置显示空格
 
-「游标卡尺」的名号不是白叫的，所以，必须设置显示空格、缩进等，可以在 `Settings->Editor->General->Apperance`中设置显示空格、行号、CSS颜色、方法分隔符等效果。
+针对 Python，「游标卡尺」的名号不是白叫的，所以，必须设置显示空格、缩进等，可以在 `Settings->Editor->General->Apperance`中设置显示空格、行号、CSS颜色、方法分隔符等效果。
 
-```
+```shell
 ctrl+alt+s #输入whitespace，搜索相关设置，打开
 ```
 
@@ -66,20 +78,22 @@ ctrl+alt+s #输入whitespace，搜索相关设置，打开
 
 `Settings->Editor->File and Code Templates-Files->Includes->File Header` 设置如下模板：
 
-![](https://ws2.sinaimg.cn/large/006tNbRwgy1fyp5ugs59dj31b90u00yp.jpg)
+![ File Header](https://ws2.sinaimg.cn/large/006tNbRwgy1fyp5ugs59dj31b90u00yp.jpg)
 
 Python 头信息设置：
-```
+
+```java
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : ${DATE} ${TIME}
+# @Date    : ${DATE} ${TIME}
 # @Author  : Michael
 # @File    : ${NAME}.py
 # @Software: ${PRODUCT_NAME}
 ```
 
 Java 头信息设置：
-```
+
+```java
 /**
  * Description:
  * User: ${USER}
@@ -95,49 +109,57 @@ Java 头信息设置：
 
 有时候我们需要操作 class 文件时，却忘记了对 java 类文件进行编译，从而还是对旧的文件进行了操作。
 
-![](https://ws4.sinaimg.cn/large/006tNbRwgy1fyp5zly24yj31jw0howjg.jpg)
+![Compiler](https://ws4.sinaimg.cn/large/006tNbRwgy1fyp5zly24yj31jw0howjg.jpg)
 
-### 打开内存使用状态
-```
-settings—Appearance & Behavior—Appearance—Show memory indicator
-```
+### import 每个类而非整个包
 
-参考：
-- [玄玉-idea配置小结](https://jadyer.cn/2016/04/20/idea-config/) 博主介绍的很详细
-
-### import每个类而非整个包
-```
-settings—Editor—Colors Style—Java—Imports—Class count to use import with ‘*’ 设置大一点
-```
+settings—Editor—Colors Style—Java—Imports—Class count to use import with ‘*’ 设置大一点。
 
 当 Java 类中 import 某个包下的类超过这里设置的个数，就会换成用星号来代替，比如 `import java.util.*`
 
-### 版本控制下文件变化的显示
-
-```
-settings—Version Control—Show directories with changed descendants
-```
-
-开启后若想调整文件夹的显示颜色：`settings—Version Control—File Status Color`
-
-### 省电模式
-
-在菜单栏 `File` 下面有一个选项是 `Power Save Mode`，这个叫「省电模式」，如果不小心勾选了这个选项，那么会关掉代码检查和代码提示等功能，所以需要注意。
-
 ### 给提示时忽略大小写
 
-Java 是严格区分大小写的，未设置时，输入	`str` 时，它不会提示 `String`，要想实现忽略大小写的情况它也能智能提示，可以进行如下设置，而且，这样设置它也不是完全按照首字母进行匹配了，比如你输入 `hmap` 时，也会看到 `HashMap` 的智能提示，相当方便：
+Java 是严格区分大小写的，未设置时，输入 `str` 时，它不会提示 `String`，要想实现忽略大小写的情况它也能智能提示，可以进行如下设置，而且，这样设置它也不是完全按照首字母进行匹配了，比如你输入 `hmap` 时，也会看到 `HashMap` 的智能提示，相当方便：
 
-![](https://ws4.sinaimg.cn/large/006tNbRwgy1fyp5kvvqloj30x00he77n.jpg)
+![Code Completion](https://ws4.sinaimg.cn/large/006tNbRwgy1fyp5kvvqloj30x00he77n.jpg)
+
+{% note success no-icon %}
+这个设置是非常有帮助的，强烈推荐设置。可以顺带勾选上 `Show the documentation`，这样在补充时，也会显示文档。
+{% endnote %}
+
+### 自动导包 `import popup`
+
+`Editor->General->Auto Import->Python->Show import popup`
+
+![Auto Import](https://ws3.sinaimg.cn/large/006tNbRwgy1fyp5c8o6m4j316u0oeq6x.jpg)
+
+手动导包的快捷键是 `Alt+Enter`
+
+### 设置Tab标签页
+
+`File->Editor->General->EditorTable->Tab closing Policy->Tab limit`
+
+在 `Windows->Editor Tabs` 可以设置标签页的相关内容，比如：
+
+- `Tabs Placement` 放置位置，我勾选了 `Top`
+- 勾选了 `Sort Tabs By Filename`
+- 勾选了 `Open New Tabs At The End`
+- 取消勾选 `Show tab in single row`，避免打开类文件多时，选择不方便
+
+我设置最多打开标签页10个，同时将位置移到了右边，通过`alt+←/→`可以切换工作区。默认是10，即最多打开十个窗口，再打开新的就会把之前的窗口T掉！
+
+- [IntelliJ IDEA设置打开窗口的数量](https://blog.csdn.net/SJZYLC/article/details/49078261)
 
 ### 自定义 Terminal
 
 `settings->Tools->Terminal`
 
 `Shell path` 原来的值是:
+
 - `C:\Windows\System32\cmd.exe` Windows
 
 修改为：
+
 - `C:\Program Files\Git\bin\bash.exe` 修改为 `Git bash` 的终端；
 - `"C:\Windows\System32\cmd.exe" /k ""%CMDER_ROOT%\vendor\init.bat""` 修改为 `Cmder` 的终端，这种方式就会弹出 Cmder 的窗口，需要配置系统变量 `CMDER_ROOT`，值为：`D:\Green-SF\cmder`。
 
@@ -147,6 +169,20 @@ Java 是严格区分大小写的，未设置时，输入	`str` 时，它不会�
 - [Github-Run cmder inside IntelliJ idea](https://github.com/cmderdev/cmder/issues/282)
 - [Windows 上切换 Jetbrains IDE 的 terminal 为 PowerShell 或 cmder](https://blog.qxzzf.com/363)
 
+### 版本控制下文件变化的显示
+
+settings—Version Control—Show directories with changed descendants
+
+开启后若想调整文件夹的显示颜色：`settings—Version Control—File Status Color`
+
+### 打开内存使用状态
+
+settings—Appearance & Behavior—Appearance—Show memory indicator
+
+参考：
+
+- [玄玉-idea配置小结](https://jadyer.cn/2016/04/20/idea-config/) 博主介绍的很详细
+
 ### 脚本运行结束后留在命令行
 
 这样脚本运行中的变量在脚本结束后还可以调用，调试时还是挺好用
@@ -155,28 +191,9 @@ Java 是严格区分大小写的，未设置时，输入	`str` 时，它不会�
 
 - [pycharm常用设置和技巧](https://segmentfault.com/a/1190000010783422)
 
-### 设置Tab标签页
-
-`File->Editor->General->EditorTable->Tab closing Policy->Tab limit`
-
-在 `Windows->Editor Tabs` 可以设置标签页的相关内容，比如：
-
-- `Tabs Placement` 放置位置，我勾选了 `Right`、`Show tab in single row`
-- 勾选了 `Sort Tabs By Filename`
-- 勾选了 `Open New Tabs At The End`
-
-我设置最多打开标签页10个，同时将位置移到了右边，通过`alt+←/→`可以切换工作区。默认是10，即最多打开十个窗口，再打开新的就会把之前的窗口T掉！
-
-- [IntelliJ IDEA设置打开窗口的数量](https://blog.csdn.net/SJZYLC/article/details/49078261)
-
-### 自动导包 `import popup`
-
-`Editor->General->Auto Import->Python->Show import popup`
-![](https://ws3.sinaimg.cn/large/006tNbRwgy1fyp5c8o6m4j316u0oeq6x.jpg)
-
 ### 主题
 
-- [IDEA主题-](http://riaway.com/)
+- [IDEA主题-](http://riaway.com/) Settings->Editor->Color Scheme->Import Scheme，导入 jar 包；
 - [Dracula](https://draculatheme.com/)
 
 ### 关联数据库
@@ -205,7 +222,6 @@ Other command line arguments：-encoding UTF-8 -charset UTF-8
 
 ![](https://ws4.sinaimg.cn/large/006tNbRwly1fyq729i5jnj30i70fmdhs.jpg)
 
-
 ### 缓存和索引的清理
 
 IDEA 首次加载项目时，都会创建索引。创建索引的过程，暂时不要去编辑代码，避免遇到未知问题。有时候意外断电或蓝屏，出现索引损坏情况，可以清除缓存和索引，还原成默认状态。
@@ -217,7 +233,8 @@ File-Invalidate Caches
 ![](https://ws4.sinaimg.cn/large/006tNbRwly1fyq7sdy4chj30gk04g0td.jpg)
 
 这个会将本地修改历史也会清理掉，如果想要将这个数据保留，LocalHistory 需要提前备份：
-```
+
+```shell
 # system  目录，系统文件目录，是 IDEA 与开发项目一个桥梁目录，里边主要有缓存、索引、容器文件输出等等
 /Users/michael/Library/Caches/IntelliJIdea2018.2/LocalHistory
 # 顺带看一下 config 目录，是 IDEA 个性化设置目录，是整个 IDE 设置目录
@@ -225,13 +242,25 @@ File-Invalidate Caches
 ```
 
 参考：
+
 - [Where is IntelliJ IDEA config stored in OSX?](https://stackoverflow.com/questions/23115091/where-is-intellij-idea-config-stored-in-osx/23141889)
 - [官宣-Directories used by the IDE to store settings, caches, plugins and logs](https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs)
 
 ### 取消更新
 
 取消 IDEA 自动更新，避免引入不稳定的问题：
+
 ![](https://ws1.sinaimg.cn/large/006tNbRwly1fyq7wbba92j30nr07s3zi.jpg)
+
+### 显示窗口 split
+
+有时候可以将当前窗口 split，可以垂直或者水平分割，方便阅读代码
+
+![split](https://gitee.com/michael_xiang/images/raw/master/gAxEFu.png)
+
+### 省电模式
+
+在菜单栏 `File` 下面有一个选项是 `Power Save Mode`，这个叫「省电模式」，如果不小心勾选了这个选项，那么会关掉代码检查和代码提示等功能，所以需要注意。
 
 ## 快捷键
 
@@ -245,6 +274,7 @@ Mac 的 `Command` 键一般是对应了 Win 的 `Ctrl` 键，在 Win 上，还�
 - `ctrl+shift+o`：打开项目
 
 - 自动补全快捷键，默认是 `ctrl+空格`，这个和一些中文输入法的切换快捷键冲突了，于是，我多设置了一个 `ctrl+/` ：
+
 ![](https://ws1.sinaimg.cn/large/006tNbRwgy1fyp6mdh7h6j31jm0mgwit.jpg)
 
 ### 模板
