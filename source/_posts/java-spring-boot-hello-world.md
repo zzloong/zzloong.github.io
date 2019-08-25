@@ -267,7 +267,7 @@ Spring Boot 提供了很多”开箱即用“的依赖模块，都是以 `spring
 
 ### SpringBoot 目录结构
 
-### 目录结构理解
+目录结构理解
 
 - controller：控制层，前端控制器，负责页面访问控制，主要是对外提供的API接口，用户使用服务时的入口处，可以结合swagger生成对应的API文档
 - service：业务层，逻辑层，主要是业务类代码，归档了前端控制器中相关服务的操作方法接口类，该文件夹下包含子impl文件夹，归档对应的实现接口
@@ -278,6 +278,23 @@ Spring Boot 提供了很多”开箱即用“的依赖模块，都是以 `spring
 - constant：常量接口类
 
 当请求来了，controller 就会将相应的请求分发到相应的 service层，在 service 层中再调用 dao 层进行数据库交互。这里的 dao 层其实就是之前的 model 层，封装了对数据库的操作。这样一来，就把业务处理逻辑从 controller 中分离出来，从而实现了解耦。
+
+另外，还有一些分层领域木星规约，熟悉一下：
+
+- DO（ Data Object）：与数据库表结构一一对应，通过DAO层向上传输数据源对象。
+- DTO（ Data Transfer Object）：数据传输对象，Service或Manager向外传输的对象。
+- BO（ Business Object）：业务对象。 由Service层输出的封装业务逻辑的对象。
+- AO（ Application Object）：应用对象。 在Web层与Service层之间抽象的复用对象模型，极为贴近展示层，复用度不高。
+- VO（ View Object）：显示层对象，通常是Web向模板渲染引擎层传输的对象。
+- POJO（ Plain Ordinary Java Object）：在本手册中， POJO专指只有setter/getter/toString的简单类，包括DO/DTO/BO/VO等。
+- Query：数据查询对象，各层接收上层的查询请求。 注意超过2个参数的查询封装，禁止使用Map类来传输。
+
+领域模型命名规约：
+
+- 数据对象：xxxDO，xxx即为数据表名。
+- 数据传输对象：xxxDTO，xxx为业务领域相关的名称。
+- 展示对象：xxxVO，xxx一般为网页名称。
+- POJO是DO/DTO/BO/VO的统称，禁止命名成xxxPOJO。
 
 ## 参考
 
@@ -296,6 +313,8 @@ Spring Boot 提供了很多”开箱即用“的依赖模块，都是以 `spring
 - [使用SpringBoot的推荐项目目录结构](https://www.cnblogs.com/songxingzhu/p/9597927.html)
 - [浅谈MVC分层架构中的层次](https://blog.csdn.net/Earl_yuan/article/details/50382431)
 - [YezhiweiBlog-Spring Boot 工程结构规范——项目定义级包结构](https://yezhwi.github.io/springboot/2017/10/24/Spring-Boot-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/)
+- [博客园-阿里巴巴Java开发手册中的DO、DTO、BO、AO、VO、POJO定义](https://www.cnblogs.com/EasonJim/p/7967999.html)
+- [知乎-PO BO VO DTO POJO DAO DO这些Java中的概念分别指一些什么？](https://www.zhihu.com/question/39651928)
 
 Spring Boot 启动原理：
 

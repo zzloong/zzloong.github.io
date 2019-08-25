@@ -412,12 +412,12 @@ VCS -> Import into Version Control -> Share Porject on GitHub
 
 会将代码仓库提交到 GitHub 上，新建一个仓库
 
-## 调试技巧
+## 调试
 
 ![](https://ws4.sinaimg.cn/large/006tNbRwly1fyq27kq7glj30hs0950th.jpg)
 
 1. `step over` F8 下一步，当前断点如果是一个方法，不会进入方法体内；
-2. `step into` F7 下一步，当前断点如果是一个方法，则进入方法体内；
+2. `step into` F7 下一步，当前断点如果是一个方法，则进入方法体内，不过默认情情况下并不会进入 `java.*` 等类的方法中。如果需要进入，可以在 Setting -> Stepping 中设置,排除即可
 3. `force step into` Alt+Shift+F7 下一步，当前行如果是一个方法，强制进入方法体内；
 4. `step out` Shift+F8 跳出
 5. `run to curser` Alt+F9 运行到鼠标所在行，临时设置断点，有用
@@ -435,6 +435,10 @@ VCS -> Import into Version Control -> Share Porject on GitHub
 查看表达式的值（可以查看已有变量的值）：
 
 ![](https://ws4.sinaimg.cn/large/006tNbRwly1fyq3sydbgpj30j10dj76c.jpg)
+
+### 线程断点
+
+我们可以在断点上使用鼠标右键弹出断点设置框，在 Suspend 选择 Thread 选项。断点的多线程属性可以设置默认属性，点击 Make Default 按钮，设置默认 Suspend 属性
 
 ### 调用栈
 
