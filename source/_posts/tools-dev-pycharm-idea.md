@@ -1,7 +1,10 @@
 ---
-title: PyCharm/IDEA 使用技巧总结
+title: JetBrains PyCharm/IDEA 使用技巧总结
 date: 2019-05-11 16:46:02
-tags: [IDE]
+tags:
+  - IDE
+  - IDEA
+  - Pycharm
 categories: ToolsDev
 keywords: [pycharm,idea]
 ---
@@ -135,7 +138,7 @@ Java 是严格区分大小写的，未设置时，输入 `str` 时，它不会�
 
 手动导包的快捷键是 `Alt+Enter`
 
-### 设置Tab标签页
+### 设置 Tab 标签页
 
 `File->Editor->General->EditorTable->Tab closing Policy->Tab limit`
 
@@ -211,11 +214,11 @@ settings—Appearance & Behavior—Appearance—Show memory indicator
 
 ### 生成 JavaDOC
 
-Javadoc用于描述类或者方法的作用，具体介绍，可查看[CSDN-Javadoc 使用详解](https://blog.csdn.net/vbirdbest/article/details/80296136)
+Javadoc 用于描述类或者方法的作用，具体介绍，可查看[CSDN-Javadoc 使用详解](https://blog.csdn.net/vbirdbest/article/details/80296136)
 
 ![](https://ws3.sinaimg.cn/large/006tNbRwly1fyq6zthfcpj309q0b9q71.jpg)
 
-```
+```shell
 Locale：输入语言类型：zh_CN
 Other command line arguments：-encoding UTF-8 -charset UTF-8
 ```
@@ -369,25 +372,45 @@ Mac 的 `Command` 键一般是对应了 Win 的 `Ctrl` 键，在 Win 上，还�
 
 ### 修改模板
 
-在 Live Templates 中修改模板。
+在 Live Templates 中修改模板
+
+- `abbreviation` 模板的缩略名称
+- template text` 模板的 diamante 片段
+- 应用范围，点解 Define，选择 Java
 
 ![修改](https://gitee.com/michael_xiang/images/raw/master/Twxx9l.png)
 
-## 重构
+添加一个 String 类型的带注释的模板，叫 `prsc`：
 
-- `Shift+F6`  重命名
-所有的文件，类名，函数名，属性名都可以重命名，值得点赞的是，只要你使用 `Shift+F6` 重命名，所有使用过这个名称的地方都会跟着改变；
+```java
+/**
+ * $VAR1$
+ */
+ private String $VAR2$;
+ $END$
+```
 
-- 函数的重构，`Ctrl+F6` 重构函数
-当你需要重构方法时，无论是增加参数，修改返回值，还是更改函数实现，只需要Ctrl+F6，就可以把所有用到此函数的地方一起重构
+## 版本控制 VCS
 
-参考：
+![VCS](https://ws3.sinaimg.cn/large/006tNbRwly1fyq1fwyvdij30ek0bfdlz.jpg)
 
-- [你们都在用IntelliJ IDEA吗？或许你们需要看一下这篇博文](http://www.cnblogs.com/clwydjgs/p/9390488.html#!comments)
+### 添加 Github 账户
 
-## 版本控制
+- Settings->Version Control->GitHub
 
-![](https://ws3.sinaimg.cn/large/006tNbRwly1fyq1fwyvdij30ek0bfdlz.jpg)
+为何要添加这个账户呢？
+
+因为你就可以直接在 VCS 菜单栏中克隆代码库，多种方式：
+
+- `Checkout from Version Control` -> Git
+- Git -> Clone 可以选择待下载的代码库
+- File -> Project from Version Control -> Git
+
+### 在 Github 创建仓库
+
+VCS -> Import into Version Control -> Share Porject on GitHub
+
+会将代码仓库提交到 GitHub 上，新建一个仓库
 
 ## 调试技巧
 
@@ -398,7 +421,7 @@ Mac 的 `Command` 键一般是对应了 Win 的 `Ctrl` 键，在 Win 上，还�
 3. `force step into` Alt+Shift+F7 下一步，当前行如果是一个方法，强制进入方法体内；
 4. `step out` Shift+F8 跳出
 5. `run to curser` Alt+F9 运行到鼠标所在行，临时设置断点，有用
-6. `resume program` F9 恢复程序运行，运行到下一个断点处，是不是有点像 pdb 中的 c 快捷键；
+6. `resume program` F9 运行到下一个断点处，是不是有点像 pdb 中的 c 快捷键；
 7. `stop` Command+F2 停止
 8. `view breakpoints` 查看所有断点，可以在运行时选择哪些断点暂停略过；
 9. `mute breakpoints` 所有断点失效/生效的切换；
@@ -430,6 +453,28 @@ Mac 的 `Command` 键一般是对应了 Win 的 `Ctrl` 键，在 Win 上，还�
 - [IDEA查看接口或类的继承实现关系图](https://blog.csdn.net/Jae_Wang/article/details/80058541)
 - [IntelliJ IDEA 中如何查看一个类的所有继承关系(当前类的所有继承关系图)](https://blog.csdn.net/qq_27093465/article/details/52857307)
 
+### 设置程序环境变量
+
+Run->Edit Configurations->Environment->Environment variables
+
+![](https://ws2.sinaimg.cn/large/006tNbRwly1fya63mb1dzj30xq0c6whi.jpg)
+
+```java
+System.getenv("HOME_TEST");
+```
+
+## Maven 设置
+
+不推荐使用 IDEA 自带的 Maven 配置。在 Settings -> Build Excution Deployment -> Build Tools -> Maven 中修改：
+
+- `Maven home directory` maven 安装目录
+- `User settings file` 勾选 Override，改为自己的 settings.xml 文件
+- `Local repository` 依赖包存储位置
+
+在 Settings -> Build Excution Deployment -> Build Tools -> Maven -> Importing 中：
+
+- 勾选 `Import Maven projects automatically` pom 文件增加了新依赖，会自动下载；
+
 ## 高效定位代码-无处不在的跳转
 
 ### project之间跳转
@@ -445,10 +490,12 @@ Mac 的 `Command` 键一般是对应了 Win 的 `Ctrl` 键，在 Win 上，还�
 ![](https://ws2.sinaimg.cn/large/006tNbRwly1fya59cv3pwj30bu05iq5q.jpg)
 
 ### 查看最近文件
+
 `ctrl+e`
 可以在`ctrl+shift+a`：搜索reccent ...
 
 ### 快速跳转到最后修改的地方
+
 `ctrl+shift+backspace` 快速跳转到最后修改的地方
 
 ![](https://ws3.sinaimg.cn/large/006tNbRwly1fya5ck67t0j309b0d6gry.jpg)
@@ -483,10 +530,12 @@ Mac 的 `Command` 键一般是对应了 Win 的 `Ctrl` 键，在 Win 上，还�
 ![](https://ws4.sinaimg.cn/large/006tNbRwly1fya5iswva8j309606qad5.jpg)
 
 ### 文件搜索
+
 快速打开指定的文件，方便★★★：
 `ctrl+shift+n`
 
 ### 函数搜索-symbol
+
 `ctrl+shift+alt+n`
 
 ### 搜索 Maven 依赖包中的内容
@@ -496,6 +545,18 @@ Mac 的 `Command` 键一般是对应了 Win 的 `Ctrl` 键，在 Win 上，还�
 `ctrl+shift+f` ->`scope`->`All Places`
 
 ![](https://ws1.sinaimg.cn/large/6d9475f6ly1g34o5yp49vj211a0g0wix.jpg)
+
+## 重构
+
+- `Shift+F6`  重命名
+所有的文件，类名，函数名，属性名都可以重命名，值得点赞的是，只要你使用 `Shift+F6` 重命名，所有使用过这个名称的地方都会跟着改变；
+
+- 函数的重构，`Ctrl+F6` 重构函数
+当你需要重构方法时，无论是增加参数，修改返回值，还是更改函数实现，只需要Ctrl+F6，就可以把所有用到此函数的地方一起重构
+
+参考：
+
+- [你们都在用IntelliJ IDEA吗？或许你们需要看一下这篇博文](http://www.cnblogs.com/clwydjgs/p/9390488.html#!comments)
 
 ## 列操作
 
@@ -511,9 +572,11 @@ Mac 的 `Command` 键一般是对应了 Win 的 `Ctrl` 键，在 Win 上，还�
 按住 `Alt` 键，可以快速实现多光标、块选择。
 
 ## 界面中的基本功能
-如果没有如老师那样的窗口，可点击`view——tool buttons`打开
+
+如果没有如老师那样的窗口，可点击`view->tool buttons`打开
 
 ### `alt+<n>`快捷键 ★★★
+
 如下图圈出的数字 n，可以使用`alt+<n>`的方式快捷使用，替代鼠标操作。
 
 注意，Mac  使用的是 `command+<n>`方式；
@@ -528,28 +591,18 @@ Mac 的 `Command` 键一般是对应了 Win 的 `Ctrl` 键，在 Win 上，还�
 
 在项目中使用`# TODO`，可以在`Alt+6`中看到哪些待开发的备注
 
-## 调试技巧
-
-### 设置程序环境变量
-
-Run->Edit Configurations->Environment->Environment variables
-
-![](https://ws2.sinaimg.cn/large/006tNbRwly1fya63mb1dzj30xq0c6whi.jpg)
-
-```
-System.getenv("HOME_TEST");
-```
-
 ## 必备插件
 
 官网插键库：https://plugins.jetbrains.com/
 
 插键说明：
+
 - Install JetBrains plugin：弹出IntelliJ IDEA 公司自行开发的插件仓库列表，供下载安装。
 - Browse repositories：弹出插键仓库中所有插键列表供下载安装。
 - Install plugin from disk：浏览本地的插键文件进行安装。
 
 推荐插键：
+
 - BashSupport
 - [Dash](https://zealdocs.org/): `ctrl+shift+h`
 - [Key Promoter X](https://plugins.jetbrains.com/plugin/9792-key-promoter-x) 快捷键提示
@@ -568,6 +621,7 @@ System.getenv("HOME_TEST");
 - activate-power-mode：写代码的时候，就会附加一些狂拽炫酷屌炸天的效果
 
 参考
+
 - [hollis-IntelliJ IDEA 18 周岁，吐血推进珍藏已久的必装插件](https://www.hollischuang.com/archives/3220)
 
 ## FAQ
