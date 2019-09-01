@@ -4,7 +4,7 @@ tags: [Hexo]
 toc: true
 updated: 2017-05-25
 date: 2015-11-30 16:01:18
-categories: Tools
+categories: ToolsDev
 ---
 
 搭建hexo的教程实在太多了，折腾了几天，总算搞定了，现在去看参考文章也是能看懂，不过，官方文档也写的相当详细：
@@ -456,11 +456,11 @@ http://leeyom.top/2016/09/29/hexo%E5%8D%9A%E5%AE%A2%E8%BF%9B%E9%98%B6%E6%95%99%E
   -moz-border-radius: 80px;
   box-shadow: inset 0 -1px 0 #333sf;
 
-  /* 设置循环动画 [animation: (play)动画名称 (2s)动画播放时长单位秒或微秒 (ase-out)动画播放的速度曲线为以低速结束 
+  /* 设置循环动画 [animation: (play)动画名称 (2s)动画播放时长单位秒或微秒 (ase-out)动画播放的速度曲线为以低速结束
     (1s)等待1秒然后开始动画 (1)动画播放次数(infinite为循环播放) ]*/
   -webkit-animation: play 2s ease-out 1s 1;
   -moz-animation: play 2s ease-out 1s 1;
-  animation: play 2s ease-out 1s 1; 
+  animation: play 2s ease-out 1s 1;
 
   /* 鼠标经过头像旋转360度 */
   -webkit-transition: -webkit-transform 1.5s ease-out;
@@ -469,7 +469,7 @@ http://leeyom.top/2016/09/29/hexo%E5%8D%9A%E5%AE%A2%E8%BF%9B%E9%98%B6%E6%95%99%E
 }
 
 img:hover {
-  /* 鼠标经过停止头像旋转 
+  /* 鼠标经过停止头像旋转
   -webkit-animation-play-state:paused;
   animation-play-state:paused;*/
 
@@ -649,7 +649,7 @@ hexo new page "pageName" #新建页面，其实作用就是在根目录source目
 hexo generate #生成网页, 可以在 public 目录查看整个网站的文件
 hexo server #本地预览, 'Ctrl+C'关闭
 hexo deploy #部署.deploy目录
-hexo clean #清除缓存, 
+hexo clean #清除缓存,
 ```
 
 

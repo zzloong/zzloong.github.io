@@ -50,6 +50,12 @@ date: 2015-11-26 20:31:49
 - VPS 服务邀请链接——[Vultr](https://www.vultr.com/?ref=7488919) 🛸
 - [processon](https://www.processon.com/i/55ddb6bae4b04fe84c504c5f) 个人觉得国内目前最好的在线绘图工具了，推荐
 
+## 二维码
+
+![公众号](https://gitee.com/michael_xiang/images/raw/master/微信公众号.jpg)
+
+![wechat](https://gitee.com/michael_xiang/images/raw/master/微信二维码-翔.jpeg)
+
 ## 其他
 
 - [博客建站日志](https://michael728.github.io/2016/09/03/blog-logfile/) 记录了博客重大的修改记录、文章的打赏记录
