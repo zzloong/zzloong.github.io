@@ -182,13 +182,14 @@ VS Code扩展商店：https://marketplace.visualstudio.com/vscode
 - Guides:显示代码对其辅助线
 - gitlens:显示代码每一行的最新修改人
 - Beautify:显示js/json/css美化，按F1
+- Rainbow Brackets：有颜色的显示括号匹配
 - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - Path Intellisense: 路径匹配
 - Auto Rename Tag：自动修改标签
+- [leetcode](https://github.com/jdneo/vscode-leetcode/blob/master/docs/README_zh-CN.md) 在 VS Code 中刷算法的插键，强烈安利，为此还录制了一期 [B 站视频](https://www.bilibili.com/video/av66300578/)
 - Color Highlight:写csss时，颜色值会增加对应的颜色背景显示
 - Vetur：VUE扩展
 - open in browser:alt+b选择浏览器预览文件
-- Rainbow Brackets：有颜色的显示括号匹配
 - Settings Sync: 同步配置
 
 > 下面介绍一下怎么设置同步：
