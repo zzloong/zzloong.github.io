@@ -57,17 +57,20 @@ chsh -s /usr/local/bin/zsh
 
 有若干安装方式，介绍三种：
 1.自动安装
-```
+
+```shell
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 ```
 
 2.手动安装
-```
+
+```shell
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 ```
 
 3.真-手动安装
+
 - 在[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)的github主页，手动将zip包下载下来。
 - 将zip包解压，拷贝至`~/.oh-my-zsh`目录。此处省略拷贝的操作步骤。
 - 执行`cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc `
@@ -78,11 +81,12 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 
 通过如下命令可以查看可用的`Theme`：
 
-```
+```shell
 # ls ~/.oh-my-zsh/themes
 ```
 
 如何修改zsh主题呢？
+
 编辑`~/.zshrc`文件，将`ZSH_THEME="candy"`,即将主题修改为`candy`。我采用的`steeef`。
 
 ### zsh扩展
@@ -90,10 +94,12 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 在`~/.zshrc`中找到`plugins`关键字，就可以自定义启用的插件了，系统默认加载`git`。
 
 #### git插件
+
 命令内容可以参考`cat ~/.oh-my-zsh/plugins/git/git.plugin.zsh`。
 
 常用的：
-```
+
+```shell
 gapa	git add --patch
 gc!	git commit -v --amend
 gcl	git clone --recursive
@@ -121,14 +127,14 @@ gup	git pull --rebase
 
 按照[官方文档](https://github.com/wting/autojump)介绍，需要使用如下命令安装，而不是一些博客中的介绍：
 
-```
+```shell
 yum install autojump-zsh # CentOS
 brew install autojump # Mac
 ```
 
 `CentOS`安装好之后，需要在`~/.zshrc`中配置一下，除了在`plugins`中增加`autojump`之外，还需要添加一行：
 
-```
+```shell
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
 ```
 
@@ -140,19 +146,19 @@ brew install autojump # Mac
 
 [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 
-```
+```shell
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 ```
 
 在 `~/.zshrc` 中配置
 
-```
+```shell
 plugins=(其他的插件 zsh-autosuggestions)
 ```
 
 因为箭头`→`不太方便，在`.zshrc`中自定义补全快捷键为逗号，但是又一次遇到了需要输入逗号的情况，所以，并不太推荐如下修改：
 
-```
+```shell
 bindkey ',' autosuggest-accept
 ```
 
@@ -160,13 +166,13 @@ bindkey ',' autosuggest-accept
 
 [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 
-```
+```shell
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
 
 `~/.zshrc`文件中配置：
 
-```
+```shell
 plugins=(其他的插件 zsh-syntax-highlighting)
 ```
 
@@ -174,7 +180,7 @@ plugins=(其他的插件 zsh-syntax-highlighting)
 
 [git-open](https://github.com/paulirish/git-open)插件可以在你git项目下打开远程仓库浏览项目。
 
-```
+```shell
 git clone https://github.com/paulirish/git-open.git $ZSH_CUSTOM/plugins/git-open
 ```
 
@@ -183,19 +189,19 @@ git clone https://github.com/paulirish/git-open.git $ZSH_CUSTOM/plugins/git-open
 `bat` 代替 `cat`
 `cat` 某个文件，可以在终端直接输出文件内容，`bat` 相比 `cat` 增加了行号和颜色高亮 👍
 
-```
+```shell
 brew install bat
 ```
 
 ## 常用快捷键
 
 - 命令历史记录
-    - 一旦在 shell 敲入正确命令并能执行后，shell 就会存储你所敲入命令的历史记录（存放在`~/.zsh_history` 文件中），方便再次运行之前的命令。可以按方向键↑和↓来查看之前执行过的命令
-    - 可以用 `r`来执行上一条命令
-    - 使用 `ctrl-r` 来搜索命令历史记录
+  - 一旦在 shell 敲入正确命令并能执行后，shell 就会存储你所敲入命令的历史记录（存放在`~/.zsh_history` 文件中），方便再次运行之前的命令。可以按方向键↑和↓来查看之前执行过的命令
+  - 可以用 `r`来执行上一条命令
+  - 使用 `ctrl-r` 来搜索命令历史记录
 - 命令别名
-    - 可以简化命令输入，在 `.zshrc` 中添加 `alias shortcut='this is the origin command'` 一行就相当于添加了别名
-    - 在命令行中输入 `alias` 可以查看所有的命令别名
+  - 可以简化命令输入，在 `.zshrc` 中添加 `alias shortcut='this is the origin command'` 一行就相当于添加了别名
+  - 在命令行中输入 `alias` 可以查看所有的命令别名
 
 ## 使用技巧
 
@@ -210,6 +216,15 @@ brew install bat
 - 通配符搜索：`ls -l **/*.sh`，可以递归显示当前目录下的 shell 文件，文件少时可以代替 `find`。使用 `**/` 来递归搜索
 - 扩展环境变量，输入环境变量然后按 就可以转换成表达的值
 - 在 .zshrc 中添加 `setopt HIST_IGNORE_DUPS` 可以消除重复记录，也可以利用` sort -t ";" -k 2 -u ~/.zsh_history | sort -o ~/.zsh_history `手动清除
+
+## 其他
+
+### 安装 zplug 插件管理器
+
+```shell
+# https://github.com/zplug/zplug
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+```
 
 ## 参考
 
@@ -226,11 +241,13 @@ brew install bat
 - [oh-my-zsh配置你的zsh提高shell逼格终极选择](http://yijiebuyi.com/blog/b9b5e1ebb719f22475c38c4819ab8151.html)
 
 ### Mac
+
 - [zsh oh-my-zsh 插件推荐](https://hufangyun.com/2017/zsh-plugin/)
 - [zsh 全程指南-推荐](http://wdxtub.com/2016/02/18/oh-my-zsh/)
 - [iterm主题下载](https://iterm2colorschemes.com/)
 - [程序员内功系列--iTerm与Zsh篇](https://xiaozhou.net/learn-the-command-line-iterm-and-zsh-2017-06-23.html)
 - [Mac 下配置终端环境 iTerm2 + Zsh + Oh My Zsh + tmux](https://www.dreamxu.com/mac-terminal/)
+- [手把手一起安装 oh-my-zsh 炫酷主题](https://www.bilibili.com/video/av64327830) 一位 UP 主上传的教程，对应[文章](https://mp.weixin.qq.com/s?__biz=Mzg3ODA0NTY2NQ==&mid=2247483905&idx=1&sn=b519c467ce2690a28fd179a836b93b04&chksm=cf18f28ff86f7b99509249e0527e7f0082ccfafd72dd8ff7ac267212cd9adf983c07ebacfacb&mpshare=1&scene=1&srcid=&sharer_sharetime=1566260073382&sharer_shareid=ae8eb1508a08c1b134df82bb484ea38d#rd)
 
 ## 最后
 

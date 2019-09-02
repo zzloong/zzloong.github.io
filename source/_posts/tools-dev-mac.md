@@ -212,6 +212,7 @@ Q1： `git status`乱码
 参考：[Git Status 中文乱码解决](http://blog.crhan.com/2012/09/git-status-%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E8%A7%A3%E5%86%B3/)
 
 Q2：Github 下载速度慢
+
 - [加快国内访问Github网站的速度](https://aoenian.github.io/2018/05/12/github-access-fast/)
 - [国内为何访问Github如此慢](https://www.wangmaoxian.com/201808/%E5%9B%BD%E5%86%85%E4%B8%BA%E4%BD%95%E8%AE%BF%E9%97%AEGithub%E5%A6%82%E6%AD%A4%E6%85%A2/)
 
@@ -253,6 +254,7 @@ brew unlink vim
 - [CSDN-mac的homebrew命令详解&全部选项翻译](https://blog.csdn.net/beyond__devil/article/details/52649362)
 
 Homebrew 能够安装哪些软件：
+
 - `brew search xxx`
 - 在[官网](https://formulae.brew.sh/formula/)浏览
 - 在[Homebrew formulas index](https://brewformulas.org/)查看详细的使用信息
@@ -333,28 +335,32 @@ iTerm2 中选择文本有三种方式，分别是：
 - 三击：选中整行
 
 参考：
+
 - [你应该知道的 iTerm2 使用方法--MAC终端工具](http://wulfric.me/2015/08/iterm2/)
 
 ### 皮肤+字体
 
 - [皮肤资源](https://github.com/mbadolato/iTerm2-Color-Schemes/tree/master/schemes)
 - [dracula](https://draculatheme.com/iterm/)：本人采用的就是这个主题，因为VScode中也是它。
-- [powerline字体教程](https://powerline.readthedocs.io/en/latest/installation.html)
 
 字体安装：
 
-```python
-pip install powerline-status
+```shell
+# https://github.com/ryanoasis/nerd-fonts#option-4-homebrew-fonts
+brew tap homebrew/cask-fonts
+brew cask install font-hack-nerd-font
 ```
 
-这套皮肤+字体的设置主要是为了配合zsh终端下的现实效果，zsh的使用配置，见文章：
-- [zsh+on-my-zsh配置教程指南（程序员必备）](http://michael728.github.io/2018/03/11/tools-zsh-tutorial/)
+Iterm2 里配置非 acsii 字体。(Preferences -> Profiles -> Text -> Non-Ascii-Font 选择 nerd-font)。之后重启 Iterm2 生效
+
+这套皮肤+字体的设置主要是为了配合zsh终端下的现实效果，zsh的使用配置，见文章：[zsh+on-my-zsh配置教程指南（程序员必备）](http://michael728.github.io/2018/03/11/tools-zsh-tutorial/)
 
 最后效果如下图：
 
 ![](https://ws1.sinaimg.cn/mw690/6d9475f6ly1fw7jjv06kdj20j103gwey.jpg)
 
 皮肤安装教程见：
+
 - [iTerm 2 && Oh My Zsh【DIY教程——亲身体验过程】](https://www.jianshu.com/p/7de00c73a2bb)
 - [最简单iTerm2 + oh-my-zsh打造Mac炫酷终端教程-菜鸟版实操整理](https://www.jianshu.com/p/53eb1075f627)
 
@@ -371,6 +377,7 @@ https://github.com/luin/medis
 redis 数据库客户端
 
 ## MySQL
+
 - [sequelpro](https://www.sequelpro.com/) mysql 客户端，颜值高。免费
 
 ## Node
