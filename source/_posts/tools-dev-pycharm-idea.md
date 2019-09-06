@@ -285,6 +285,7 @@ Mac 的 `Command` 键一般是对应了 Win 的 `Ctrl` 键，在 Win 上，还�
 
 - `alt+↑/↓`: 快速在方法间跳转 ★★
 - `alt+p`：打开Python控制台 ★★★
+- `alt+insert` 生成代码(如get,set方法,构造函数等) 或者右键（Generate），在 mac 上是 `ctrl+n`
 - `alt+enter`万能键，不同场景有不同的表现方式，在还没import(install)模块名上使用会import(install)相对应的模块，在方法名上使用补注释，在测试中使用帮你补充断言代码……不管出错了不知道怎么办，知道怎么办想这么办时都按下这个快捷键，有惊喜，万能纠错键 ★★★
 - `alt+f12` 打开命令行终端(view->tool window)★★★；
 - `ctrl+home`、`ctrl+end` 回到页首/页尾，关键字` Move Caret to Text End` 或者 开头 `Move Caret to Text Start`，[参考](https://segmentfault.com/q/1010000007099956)
@@ -292,21 +293,25 @@ Mac 的 `Command` 键一般是对应了 Win 的 `Ctrl` 键，在 Win 上，还�
 - 查看接口继承关系：
   - `ctrl + h` 查看 hierarchy,只能查看向上向下继承关系，而不能看实现了哪些接口。查看继承关系，右击，点击 Digram 查看；
   - `ctrl + alt +B`  查找接口的实现类
-- `command+p` 有时候敲了方法，忘记方法可以使用什么参数，那么这个快捷键可以显示 `parameter info`
+- 注释
+  - `ctrl+/`  注释
+  - `ctrl+shift+/` 多行注释
+- `ctrl+d` 复制当前行
 - `ctrl+e` 打开最近文件 ★★★
-- `ctrl+y` 删除当前行 ★★★
+- `ctrl+p` 有时候敲了方法，忘记方法可以使用什么参数，那么这个快捷键可以显示 `parameter info`
+- `ctrl+x` 删除行
 - `ctrl+w` 不断按下这个快捷键，选择代码块范围逐步扩大；★★★
+- `ctrl+y` 删除当前行 ★★★
 - `ctrl+space` 万能提示键
 - `shift+enter`另起一行，光标在行内任意位置都能另起一行，且不破坏当行结构★★★
 - `ctrl+alt+enter`向上另起一行 ★★★
 - `ctrl+F4`：关闭当前页 ★★
 - `crtl+q`查询documentation
 - `ctrl+鼠标点击` 查看内置函数啥的
-- `ctrl+D` 复制当前行
 - `ctrl+f12` File Structure，查看 class method field。
 - `ctrl+alt+←/→` 快速跳转光标刚刚所在行 ★★★
 - `ctrl+alt+L`，格式化代码
-- `ctrl+alt+o` 优化 imports `optimize imports`，在写 Python 的时候也是有用的
+- `ctrl+alt+o` 优化 imports `optimize imports`，优化导入的类和包
 - `ctrl+Shift+F`: 在整个项目中 或 指定目录里 进行全局搜索; ★★★
 - `ctrl+shift+u`：大小写转换，在 `Edit->Toggle Case` 中能看到选项
 - `ctrl+shift+v`：从最近的缓冲区粘贴
@@ -315,9 +320,10 @@ Mac 的 `Command` 键一般是对应了 Win 的 `Ctrl` 键，在 Win 上，还�
 - `ctrl+shift+ +/-` ：代码块折叠★
 - `ctrl+alt+shit+j`：多目标选择选择的词，或者用`alt+鼠标点击`也可以实现效果，`Select All occurrences`★★
 - 双击`shift`搜索一切，不管是IDE功能、文件、方法、变量，它都能搜索，使用频率很高的一个快捷键,！可以按最近使用过的文件名, 类名, 方法名等去搜索定位! 注意，这个搜索不支持搜索关键字的内容。★★★
-- `shift+F6`：文件重命名★★
+- `shift+F6`：文件重命名★★★
 - `shift+F2`：跳转到上一个高亮错误 或 警告位置
 - 搜索
+  - `shift` 双击，在项目的所有目录查找文件
   - `Ctrl＋N`：快速搜索类
   - `Ctrl＋Shift＋N`：快速搜索文件
   - `Ctrl＋Alt+Shift＋N`：快速搜索函数
@@ -354,6 +360,7 @@ Mac 的 `Command` 键一般是对应了 Win 的 `Ctrl` 键，在 Win 上，还�
 - `fori` 循环，按 `tab/enter` 进入下一处修改
   - `itar` 循环控制语句是 `xxx.length`
   - `iter` 增强 for 循环（`for each`）
+  - `users.for+tab` 快速生成 users 的增强 for 循环
 - `list.for` 集合
   - `list.fori`
   - `list.forr` 逆序遍历，倒序遍历
