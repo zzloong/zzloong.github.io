@@ -43,6 +43,7 @@ print(diff)
 ## 删除列表中的重复元素
 
 下面这种方法不能维持顺序：
+
 ```python
 x = [1, 8, 4, 5, 5, 5, 8, 1, 8]
 list(set(x))
@@ -52,6 +53,7 @@ list(set(x))
 ```
 
 下面的方法，可以维持顺序：
+
 ```python
 from collections import OrderedDict
 x = [1, 8, 4, 5, 5, 5, 8, 1, 8]
@@ -98,8 +100,8 @@ three = [7,9,11,13,15]
 ```
 
 参考：
-- [Python中的常用代码
-](http://blog.ourren.com/2015/07/19/pythonzhong-de-chang-yong-dai-ma/)
+
+- [Python中的常用代码](http://blog.ourren.com/2015/07/19/pythonzhong-de-chang-yong-dai-ma/)
 
 # 字典处理
 
@@ -113,9 +115,11 @@ out: {'sex': 'male'}
 dict(a.items()-b.items())
 out: {'name': 'michael', 'sex': 'male'}
 ```
+
 需要注意的是，当字典的值有字典时，`a.items()-b.items()` 这种方式会报错 `TypeError: unhashable type: 'dict'`；
 
 参考：
+
 - [cookbook-查找两字典的相同点](https://python3-cookbook.readthedocs.io/zh_CN/latest/c01/p09_find_commonalities_in_dicts.html)
 - [简书-Python 字典操作进阶](https://www.jianshu.com/p/65f4bebc1061)
 
@@ -130,6 +134,7 @@ invert_map_key_value(m)
 ```
 
 参考：
+
 - [2gua-几个Python代码片段](https://zhuanlan.zhihu.com/p/33069486)
 
 ## 合并字典值
@@ -191,6 +196,7 @@ float(p.strip('%'))/100
 ## 剔除分隔符
 
 通常做法：
+
 ```python
 ''.join('A|B|C|D|E|F|G'.split('|'))
 
@@ -198,6 +204,7 @@ float(p.strip('%'))/100
 ```
 
 用 `itertools.islice`，因为可以节选字符串：
+
 ```python
 import itertools
 
@@ -229,6 +236,7 @@ pp.pprint(animals, width=1)
              'Sphynx'],
   'legs': 4}]
 ```
+
 width参数指定一行上最大的字符数。设置width为1确保字典打印在单独的行
 
 # 文件读写
@@ -274,6 +282,7 @@ print(len(data))
 ```
 
 ## json 读写json文件
+
 - json.loads()是将str转化成dict格式，json.dumps()是将dict转化成str格式。
 - json.load()和json.dump()也是类似的功能，只是与文件操作结合起来了。
 
@@ -286,6 +295,7 @@ print(array)
 ```
 
 在编码JSON的时候，还有一些选项很有用。 如果你想获得漂亮的格式化字符串后输出，可以使用 `json.dumps()` 的`indent`参数。 它会使得输出和pprint() 函数效果类似：
+
 ```python
 >>> print(json.dumps(data))
 {"price": 542.23, "name": "ACME", "shares": 100}
@@ -299,6 +309,7 @@ print(array)
 ```
 
 保存为 json 文件：
+
 ```python
 # 编码
 import json
@@ -336,6 +347,7 @@ print(time.strftime("%d/%m/%Y"))
 ## 字符串和日期的相互转换
 
 strptime 是将字符串转换为 datetime，其实这个方法的全称是 “string parse time”，叫做字符串解析成时间，重点在解析（parse）:
+
 ```python
 from datetime import datetime
 
@@ -347,6 +359,7 @@ print(type(date_obj),date_obj)
 ```
 
 strftime 是将 datetime 转换为字符串，全称是 “string format time”，翻译过来就是将字符串的形式来格式化时间，重点在格式化（format），使之以一种可读的字符串形式返回：
+
 ```python
 from datetime import datetime
 date_obj = datetime.now()
@@ -356,7 +369,9 @@ print(type(date_string),date_string)
 # Out
 <class 'str'> 2019-01-05 18:41:04
 ```
+
 参考：
+
 - [3分钟学会一个小技巧
 ](https://mp.weixin.qq.com/s?__biz=MjM5MzgyODQxMQ==&mid=2650369197&idx=1&sn=0057a786cb28f9d264e8bdd5ed0a0d15&chksm=be9cd7f989eb5eefa012a502def9c071ac790e70162ec525c8dc43b087c961648ee1a9bb6264&mpshare=1&scene=1&srcid=1115C4UhHFYie2bJLm4K8erU#rd)
 
@@ -410,6 +425,7 @@ data.to_csv('./Marvel3_yingpping.csv', header=False, index=False, mode='a+', enc
 ```
 
 ## Python-CSV-Excel
+
 - [Python Pandas iterrows method](https://stackoverflow.com/questions/28310409/python-pandas-iterrows-method)
 
 ```python
@@ -427,12 +443,14 @@ df.to_csv('file.csv',encoding='utf-8-sig')
 ```
 
 参考：
+
 - [Pandas df.to_csv(“file.csv” encode=“utf-8”) still gives trash characters for minus sign](https://stackoverflow.com/questions/25788037/pandas-df-to-csvfile-csv-encode-utf-8-still-gives-trash-characters-for-min)
 - [关于pandas中,to_csv函数输出的utf8数据用Excel打开是乱码](https://blog.csdn.net/weixin_39461443/article/details/75303072)
 
 ## itero
 
 看题目：
+
 - [python数据处理，字典生成的一个问题](https://segmentfault.com/q/1010000006624056?_ea=1081758)答案中有位前辈用这个用的炉火纯青啊！
 
 # Shell/Linux 操作相关
@@ -473,11 +491,13 @@ output = subprocess.call(['cd', '/'], shell=True)
 Python 3.5引进了一个新的run函数，它的行为与call和check_output很相似。如果你使用的是3.5版本或更高版本，看一看run的文档，里面有一些有用的例子。否则，如果你使用的是Python 3.5以前的版本或者你想保持向后兼容性，上面的call和check_output代码片段是你最安全和最简单的选择
 
 参考：
+
 - [](https://python.freelycode.com/contribution/detail/53)
 
 ## 计算文件的校验值
 
 可以计算文件的 `md5`、`sha256` 等值
+
 ```python
 # https://pymotw.com/3/hashlib/index.html#module-hashlib
 def get_verify_value(file_path, verify_type):
@@ -638,10 +658,11 @@ os.path.isdir("directory")
 os.getcwd()
 os.path.abspath("file")
 ```
- 参考：
- - [斗大的熊猫-收集的有用的 Python 代码片段](http://blog.topspeedsnail.com/archives/883)
 
- ## Python 删除文件夹
+参考：
+- [斗大的熊猫-收集的有用的 Python 代码片段](http://blog.topspeedsnail.com/archives/883)
+
+## Python 删除文件夹
 
 ```python
 def onerror(func, path, exc_info):
@@ -663,10 +684,12 @@ def onerror(func, path, exc_info):
     else:
         raise
 ```
+
 参考：
+
 - [shutil.rmtree fails on Windows with 'Access is denied'](https://stackoverflow.com/questions/2656322/shutil-rmtree-fails-on-windows-with-access-is-denied)
 
- ## Python 切换目录
+## Python 切换目录
 
 执行完，返回之前目录
 ```python
@@ -721,7 +744,6 @@ filter(os.path.isdir, os.listdir(os.getcwd()))
 - [How to list only top level directories in Python?
 ](https://stackoverflow.com/questions/141291/how-to-list-only-top-level-directories-in-python)
 
-
 ## Python Path相关问题
 
 ```python
@@ -730,9 +752,9 @@ os.path.split(r"C:\foo\bar\file_name.txt")
 
 - [格式化文件路径](http://stackoverflow.org.cn/front/ask/view?ask_id=811828)
 
- # 数据库
+# 数据库
 
- ## MySQL 数据库
+## MySQL 数据库
 
 ```python
 db = MySQLdb.connect("localhost","your_username","your_password","your_dbname")
@@ -748,8 +770,8 @@ db.close()
 ```
 
 参考：
-- [斗大的熊猫-最常用的Python代码片段
-](http://blog.topspeedsnail.com/archives/3918)
+
+- [斗大的熊猫-最常用的Python代码片段](http://blog.topspeedsnail.com/archives/3918)
 
 ## MongoDB
 
