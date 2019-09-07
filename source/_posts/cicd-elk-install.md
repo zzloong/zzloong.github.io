@@ -15,6 +15,8 @@ keywords:
 
 ## 简介
 
+![ELK](https://gitee.com/michael_xiang/images/raw/master/201909078-elk.png)
+
 ## Elasticsearch
 
 官方的[Elasticsearch Reference](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html) 文档是相当全面了，而且，不同版本都可以切换，真是赞！如果英文的不想看，还提供了中文版的 [Elasticsearch: 权威指南](https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html)，虽然可能版本不是最新的，但是了解基本概念也是有帮助的。
@@ -327,9 +329,7 @@ nohup bin/kibana &
 
 ![Kiana-ES](https://gitee.com/michael_xiang/images/raw/master/Dg7DMe.png)
 
-## Logstash
-
-## Filebeat
+## Filebeat && Logstash
 
 ```shell
 https://mirrors.huaweicloud.com/filebeat/7.3.0/
@@ -337,7 +337,18 @@ wget https://mirrors.huaweicloud.com/filebeat/7.3.0/filebeat-7.3.0-linux-x86_64.
 wget https://mirrors.huaweicloud.com/filebeat/7.3.0/filebeat-7.3.0-linux-x86_64.tar.gz.sha512
 ```
 
+目前项目中是采用的直接往 Elasticsearch 中存储数据 + Kibana 展示数据的方式。所以，Filebeat 和 Logstash 暂时没接触过。不过，在 B 站上看到一位 UP 主发了很多相关的学习教程，安利一下：
+
+- [EP26 - 安装与初始化配置ELK 6](https://www.bilibili.com/video/av23720863)
+- [ELK搜索结果](https://ngx.hk/?s=elk) 上面这位 UP 主的博客
+
+## 总结
+
+本文是通过 tar 包方式安装的，发现，还不如用 RPM 包来的方便。不过配置的内容其实差不多，区别可能就是，RPM 包方式，可以直接用 systemctl 的命令查看状态、重启等。
+
 ## 参考
 
 - [程序羊-CentOS7上ElasticSearch安装填坑记](https://www.jianshu.com/p/04f4d7b4a1d3) FAQ 有帮助
 - [极客时间-Elasticsearch核心技术与实战](https://time.geekbang.org/course/detail/197-102661) 这篇文章阐述了 ES 集群的主节点的仲裁等知识
+- [搭建ELFK日志采集系统](https://jeremy-xu.oschina.io/2018/10/%E6%90%AD%E5%BB%BAelfk%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86%E7%B3%BB%E7%BB%9F/)
+- [静觅—Ubuntu 搭建 Elasticsearch 6 集群流程](https://cuiqingcai.com/6255.html)
