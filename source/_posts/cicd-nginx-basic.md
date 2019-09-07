@@ -60,7 +60,7 @@ upstream michael-machine-server {
 
 server {
     listen 80;
-    server_name michael-api.hw.com;
+    server_name michael-api.site.com;
 
     client_max_body_size 20M;
     client_body_buffer_size 10M;
@@ -88,7 +88,7 @@ server {
     }
 
 
-    access_log /var/log/nginx/cid.hw.com-access.log main;
+    access_log /var/log/nginx/cid.site.com-access.log main;
 }
 ```
 

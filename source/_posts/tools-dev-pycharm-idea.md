@@ -303,21 +303,22 @@ Mac 的 `Command` 键一般是对应了 Win 的 `Ctrl` 键，在 Win 上，还�
 - `ctrl+w` 不断按下这个快捷键，选择代码块范围逐步扩大；★★★
 - `ctrl+y` 删除当前行 ★★★
 - `ctrl+space` 万能提示键
-- `shift+enter`另起一行，光标在行内任意位置都能另起一行，且不破坏当行结构★★★
-- `ctrl+alt+enter`向上另起一行 ★★★
-- `ctrl+F4`：关闭当前页 ★★
+- 换行
+  - `shift+enter`另起一行，光标在行内任意位置都能另起一行，且不破坏当行结构★★★
+  - `ctrl+alt+enter`向上另起一行 ★★★
 - `crtl+q`查询documentation
 - `ctrl+鼠标点击` 查看内置函数啥的
+- `ctrl+F4`：关闭当前页
 - `ctrl+f12` File Structure，查看 class method field，阅读源码查看类方法时很方便★★★
 - `ctrl+alt+←/→` 快速跳转光标刚刚所在行 ★★★
-- `ctrl+alt+L`，格式化代码
+- `ctrl+alt+L`，格式化代码 ★★★
 - `ctrl+alt+o` 优化 imports `optimize imports`，优化导入的类和包
 - `ctrl+Shift+F`: 在整个项目中 或 指定目录里 进行全局搜索; ★★★
-- `ctrl+shift+u`：大小写转换，在 `Edit->Toggle Case` 中能看到选项
+- `ctrl+shift+u`：大小写转换，在 `Edit->Toggle Case` 中能看到选项 ★
 - `ctrl+shift+v`：从最近的缓冲区粘贴
-- `ctrl+shift+backspace` 快速跳转到最后修改的地方★★★
-- `ctrl + shift + v` 在 Pycharm 中，访问历史粘贴板 ★★
-- `ctrl+shift+ +/-` ：代码块折叠★
+- `ctrl+shift+backspace` 快速跳转到最后修改的地方 ★★★
+- `ctrl+shift+v` 在 Pycharm 中，访问历史粘贴板 ★★
+- `ctrl+shift+/-` ：代码块折叠★
 - `ctrl+alt+shit+j`：多目标选择选择的词，或者用`alt+鼠标点击`也可以实现效果，`Select All occurrences`★★
 - 双击`shift`搜索一切，不管是IDE功能、文件、方法、变量，它都能搜索，使用频率很高的一个快捷键,！可以按最近使用过的文件名, 类名, 方法名等去搜索定位! 注意，这个搜索不支持搜索关键字的内容。★★★
 - `shift+F6`：文件重命名★★★
@@ -579,7 +580,7 @@ System.getenv("HOME_TEST");
 ### 多光标选中
 
 - 多光标
-![](https://ws2.sinaimg.cn/large/006tNbRwly1fya5oimhwtj30lj0hq180.jpg)
+![](https://ws2.sinaimg.cn/large/006tNbRwly1fya5oimsitetj30lj0hq180.jpg)
 
 按住 `Alt` 键，可以快速实现多光标、块选择。
 

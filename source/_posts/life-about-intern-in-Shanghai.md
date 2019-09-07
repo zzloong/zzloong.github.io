@@ -27,7 +27,7 @@ thumbnail: http://ww4.sinaimg.cn/large/6d9475f6gw1f66hqpfluoj21kw16onck.jpg
 ![](http://ww2.sinaimg.cn/large/6d9475f6gw1f66hv3k384j21kw23u7sc.jpg)
 
 - 来张我的小窝
-![](http://ww1.sinaimg.cn/large/6d9475f6gw1f66hwktus6j21kw23u1kx.jpg)
+![](http://ww1.sinaimg.cn/large/6d9475f6gw1f66sitektus6j21kw23u1kx.jpg)
 
 - 陪别人去逛的徐家汇那边的恒隆，确实很繁华！
 ![](http://ww4.sinaimg.cn/large/6d9475f6gw1f66ihlz2gnj21kw23uqv5.jpg)

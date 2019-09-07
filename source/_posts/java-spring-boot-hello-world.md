@@ -312,7 +312,7 @@ Spring Boot 提供了很多”开箱即用“的依赖模块，都是以 `spring
 - [Spring Boot基础(三):Spring Boot项目推荐工程结构](http://blog.longjiazuo.com/archives/1903)
 - [使用SpringBoot的推荐项目目录结构](https://www.cnblogs.com/songxingzhu/p/9597927.html)
 - [浅谈MVC分层架构中的层次](https://blog.csdn.net/Earl_yuan/article/details/50382431)
-- [YezhiweiBlog-Spring Boot 工程结构规范——项目定义级包结构](https://yezhwi.github.io/springboot/2017/10/24/Spring-Boot-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/)
+- [YezhiweiBlog-Spring Boot 工程结构规范——项目定义级包结构](https://yezsitei.github.io/springboot/2017/10/24/Spring-Boot-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/)
 - [博客园-阿里巴巴Java开发手册中的DO、DTO、BO、AO、VO、POJO定义](https://www.cnblogs.com/EasonJim/p/7967999.html)
 - [知乎-PO BO VO DTO POJO DAO DO这些Java中的概念分别指一些什么？](https://www.zhihu.com/question/39651928)
 
