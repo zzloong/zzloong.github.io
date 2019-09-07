@@ -337,7 +337,7 @@ wget https://mirrors.huaweicloud.com/filebeat/7.3.0/filebeat-7.3.0-linux-x86_64.
 wget https://mirrors.huaweicloud.com/filebeat/7.3.0/filebeat-7.3.0-linux-x86_64.tar.gz.sha512
 ```
 
-目前项目中是采用的直接往 Elasticsearch 中存储数据 + Kibana 展示数据的方式。所以，Filebeat 和 Logstash 暂时没接触过。不过，在 B 站上看到一位 UP 主发了很多相关的学习教程，安利一下：
+目前项目中是采用的直接往 Elasticsearch 中存储数据 + Kibana 展示数据的方式。所以，[Filebeat](https://www.elastic.co/cn/products/beats/filebeat) 和 Logstash 暂时没接触过。不过，在 B 站上看到一位 UP 主发了很多相关的学习教程，安利一下：
 
 - [EP26 - 安装与初始化配置ELK 6](https://www.bilibili.com/video/av23720863)
 - [ELK搜索结果](https://ngx.hk/?s=elk) 上面这位 UP 主的博客
@@ -352,3 +352,7 @@ wget https://mirrors.huaweicloud.com/filebeat/7.3.0/filebeat-7.3.0-linux-x86_64.
 - [极客时间-Elasticsearch核心技术与实战](https://time.geekbang.org/course/detail/197-102661) 这篇文章阐述了 ES 集群的主节点的仲裁等知识
 - [搭建ELFK日志采集系统](https://jeremy-xu.oschina.io/2018/10/%E6%90%AD%E5%BB%BAelfk%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86%E7%B3%BB%E7%BB%9F/)
 - [静觅—Ubuntu 搭建 Elasticsearch 6 集群流程](https://cuiqingcai.com/6255.html)
+
+Filebeat
+- [博客园-开始使用Filebeat](https://www.cnblogs.com/cjsblog/p/9445792.html)
+
