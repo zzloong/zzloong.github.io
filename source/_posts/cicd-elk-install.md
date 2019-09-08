@@ -352,7 +352,15 @@ wget https://mirrors.huaweicloud.com/filebeat/7.3.0/filebeat-7.3.0-linux-x86_64.
 - [极客时间-Elasticsearch核心技术与实战](https://time.geekbang.org/course/detail/197-102661) 这篇文章阐述了 ES 集群的主节点的仲裁等知识
 - [搭建ELFK日志采集系统](https://jeremy-xu.oschina.io/2018/10/%E6%90%AD%E5%BB%BAelfk%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86%E7%B3%BB%E7%BB%9F/)
 - [静觅—Ubuntu 搭建 Elasticsearch 6 集群流程](https://cuiqingcai.com/6255.html)
+- [阮一峰-全文搜索引擎 Elasticsearch 入门教程](https://www.ruanyifeng.com/blog/2017/08/elasticsearch.html)
+- [ELK 架构之 Elasticsearch 和 Kibana 安装配置](https://www.cnblogs.com/xishuai/p/elk-elasticsearch-kibana.html)
 
 Filebeat
 - [博客园-开始使用Filebeat](https://www.cnblogs.com/cjsblog/p/9445792.html)
+
+SpringBoot+ES
+- [【ES】Java High Level REST Client 使用示例（增加修改）](https://my.oschina.net/zhaixingzu/blog/3010467)
+- [Elasticsearch Java Rest Client 上手指南（上）](https://www.jianshu.com/p/c1f2161a5d22)
+- [博客园——springboot elasticsearch 集成注意事项](https://www.cnblogs.com/guozp/archive/2018/04/02/8686904.html)
+- [lasticsearch系列七：ES Java客户端-Elasticsearch Java client（ES Client 简介、Java REST Client、Java Client、Spring Data Elasticsearch）](https://www.cnblogs.com/leeSmall/p/9218779.html)
 

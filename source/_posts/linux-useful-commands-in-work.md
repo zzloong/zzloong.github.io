@@ -154,6 +154,7 @@ crontab -e # 使用crontab -e命令，编辑的是/var/spool/cron下对应用户
 ```
 
 启动 / 停止 / 重启 crontab
+
 ```
 $ /etc/init.d/crond start
 $ /etc/init.d/crond stop
@@ -161,11 +162,13 @@ $ /etc/init.d/crond restart
 ```
 
 查看日志
+
 ```
 $ tail -f /var/log/cron
 ```
 
 参考：
+
 - [如何查看crontab的日志记录](http://blog.51cto.com/461205160/1736383)
 - [runoob-Linux Crontab 定时任务](http://www.runoob.com/w3cnote/linux-crontab-tasks.html)
 - [LinuxTools-crontab 定时任务](http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/crontab.html) 推荐
@@ -301,7 +304,6 @@ Total:          15G        935M         13G
 - Buffers/cached:磁盘缓存的大小
 - 交换分区SWAP，也就是我们通常所说的虚拟内存
 
-
 从应用程序角度来看，对于应用程序来说，buffers/cached 是等于可用的，因为buffer/cached 是为了提高文件读取的性能，当应用程序需在用到内存的时候，buffer/cached 会很快地被回收。
 
 所以从应用程序的角度来说 `可用内存=系统free memory+buffers+cached`
@@ -311,10 +313,13 @@ Total:          15G        935M         13G
 +buffers/cache,即对应用程序来说free的内存太少了，也是该考虑优化程序或加内存了
 
 参考：
+
 - [每天一个linux命令（45）：free 命令](http://www.cnblogs.com/peida/archive/2012/12/25/2831814.html)
 
 ## fuser
-fuser通常被用在诊断系统的“resource busy”问题，通常是在你希望umount指定的挂载点得时候遇到。 如果你希望kill所有正在使用某一指定的file, file system or sockets的进程的时候，你可以使用-k option
+
+fuser通常被用在诊断系统的“resource busy”问题，通常是在你希望umount指定的挂载点得时候遇到。 如果你希望kill所有正在使用某一指定的file, file system or sockets的进程的时候，你可以使用 `-k option`
+
 ```
 fuser –k –i /path/to/your/filename # 加上-i 表示杀死之前，需确认
 ```
@@ -335,23 +340,27 @@ groups # 查看当前用户所属组
 grep [options] pattern [file]
 ```
 
-```
+```shell
 # 递归、显示行号、忽略大小写、显示搜到的匹配内容上下2行 搜索范围是当前目录下
 grep -rni 'github.com'  -C 2 .
 ```
-```
+
+```shell
 grep 'shopbase' /home/admin -r -n --include *.{vm,java} #指定文件后缀
 grep 'shopbase' /home/admin -r -n --exclude *.{vm,java} #反匹配
 ```
 
 参考：
+
 - [man-grep](https://man.cx/grep)
 - [Linux查找文件内容（grep）](https://www.eguidedog.net/linux-tutorial/05-grep.php)
 - [每天一个linux命令（39）：grep 命令](http://www.cnblogs.com/peida/archive/2012/12/17/2821195.html)
 - [我的java问题排查工具单](https://yq.aliyun.com/articles/69520?utm_content=m_10360)
 
 ## gzip
+
 gzip是GNU项目的产物。这个软件下买呢含有下面的工具：
+
 - gzip ：用来压缩文件
 - gzcat：用来查看压缩过的文本文件的内容
 - gunzip:用来解压文件。
@@ -363,9 +372,11 @@ gzip -l <filename> # list compressed file contents
 
 ## head
 显示前n行内容：
+
 ```
 head -n
 ```
+
 https://www.linuxdaxue.com/linux-command-intro-head.html
 
 ## less
@@ -373,6 +384,7 @@ https://www.linuxdaxue.com/linux-command-intro-head.html
 在`more`的时候，我们并没有办法向前面翻，只能往后面看，但若使用了`less`时，就可以使用 `[pageup] [pagedown]` 等按键的功能来往前往后翻看文件。
 
 ## locate
+
 ```
 locate  GPG-KEY
 # find /etc -name '*GPG-KEY*' 等同
@@ -381,12 +393,15 @@ locate  GPG-KEY
 可能系统没有自带`locate`命令，可以使用`yum install mlocate -y`安装，安装结束执行`updatedb`命令。
 
 ## ls
+
 仅显示目录：
+
 ```
 ll -d
 ```
 
 ls命令显示文件大小，会根据文件大小自己决定单位，M或者Kb或者G
+
 ```
 ll -h
 ```
@@ -404,6 +419,7 @@ mount /dev/xvde /data
 - [Linux mount命令](http://www.runoob.com/linux/linux-comm-mount.html)
 
 ## mkdir
+
 `mkdir sysadmin/admim_{1,2,3,4,5}`
 
 参考：
@@ -416,7 +432,13 @@ mount /dev/xvde /data
 netstat -anp|grep 80
 ```
 
- - [linux(redhat,centos)释放被占用端口](https://blog.csdn.net/cuiyong_xu/article/details/42556925)
+- [linux(redhat,centos)释放被占用端口](https://blog.csdn.net/cuiyong_xu/article/details/42556925)
+
+## ping
+
+`ping baidu.com`
+
+- [生活在宁静的角落——PING命令的各类反馈信息](http://www.on0926.com/?p=901)
 
 ## rm
 只删除当前文件夹下的隐藏文件和隐藏文件夹：
@@ -462,6 +484,7 @@ sudo yum install rpm2cpio
 ```
 
 ## sed
+
 eg1：截取日志中的两行之间的内容，同时去掉匹配的首尾行：
 ```
 cat mock.log |sed -n '/tee/,/find/p' mock.log|sed -n '1!p'|sed -n '$!p'|awk '{print $2,$3}'
@@ -487,14 +510,14 @@ sed -i -e "s/UPSTREAMVERSION/$UPSTREAMVERSION/g" *.spec #替换
 
 ## SELinux
 
-```
+```shell
 sestatus [-v] # 查看selinux开启状态
 getenforce # 查看当前selinux的状态
 ```
+
 selinux开启常常影响其他一些服务，比如httpd等，所以，运维往往一般拿到机器就会默认将其关闭。
 
-
-```
+```shell
 setenforce 1 # 设置SELinux 成为enforcing模式
 setenforce 0 # 设置SELinux 成为permissive模式 不重启关闭selinux的解决办法
 ```
@@ -511,12 +534,15 @@ setenforce 0 # 设置SELinux 成为permissive模式 不重启关闭selinux的解
 - [SELinux开启与关闭各参数说明](http://www.upvup.com/html/SELinux/2014-06-11/4.html)
 
 ## sort
+
 对之前提到的密码文件`/etc/passwd`根据用户ID进行数值排序。`-k`和`-t`参数在对安字段分割的数据进行排序时非常有用。
+
 ```
 sort -t ":" -k 3 -n /etc/passwd
 ```
 
 ## systemctl
+
 | 任务                 | 旧指令                       | 新指令                             |
 | -------------------- | ---------------------------- | ---------------------------------- |
 | 使某服务自动启动     | chkconfig –level 3 httpd on  | systemctl enable httpd.service     |
@@ -620,10 +646,10 @@ EOF
 
 `<<` 变为 `<<-`。 使用 `<<-` 的唯一变化就是Here Document 的内容部分每行前面的 `tab` (制表符)将会被删除掉，这种用法是为了编写Here Document的时候可以将内容部分进行缩进，方便阅读代码。
 
-
 有时脚本内容里变量不想被系统环境变量替换掉，可以通过在起始的 delimiter的前后添加 " 来实现
 
 参考：
+
 - [linux shell 的here document 用法 (cat << EOF)](https://my.oschina.net/u/1032146/blog/146941)
 - [EOF是什么？](http://www.ruanyifeng.com/blog/2011/11/eof.html)
 - [linux shell脚本EOF妙用](https://blog.csdn.net/zongshi1992/article/details/71693045)
@@ -637,6 +663,7 @@ tree -FCL 2 FusionUpgrade
 - [linux tree命令--显示目录的树形结构](https://blog.csdn.net/u011729865/article/details/53368446#tree-l-2)
 
 ## time
+
 ```
 time nslookup michael.com
 nslookup: can't resolve '(null)': Name does not resolve
@@ -647,9 +674,11 @@ real    0m 5.00s
 user    0m 0.00s
 sys     0m 0.00s
 ```
+
 - [time](http://man.linuxde.net/time)
 
 ## test
+
 - 判断字符串是否为空，可以通过`help test`查看
 
 ```
@@ -683,7 +712,8 @@ fi
 ## tcpdump
 
 首先，先用 `tcpdump -D` 命令列出可以抓包的网络接口：
-```
+
+```shell
 $ tcpdump -D
 1.virbr0
 2.docker0
@@ -748,6 +778,43 @@ $ sudo tcpdump -i any -c5 -nn "port 80 and (src 192.168.122.98 or src 54.204.39.
 - [Huang-tcpdump 常用操作](https://mozillazg.com/2018/01/tcpdump-common-useful-examples-cookbook.html)
 - [Tcpdump入门教程示例](https://liyang85.com/tcpdump-tutorial-with-examples)
 - [9个tcpdump使用实例](http://www.cnblogs.com/bangerlee/articles/2545612.html)
+
+## top
+
+top 命令是 Linux 下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况。
+
+- `load average: 0.02, 0.04, 0.00`： 系统1分钟、5分钟、15分钟的CPU负载信息
+
+top 默认按 cpu 占用排序，这也是可以修改的，按 F(大写)即可选择相应排序，之后任意键退出即可。
+
+进程信息：
+
+- PID：进程的ID
+- USER：进程所有者
+- PR：进程的优先级别，越小越优先被执行
+- NInice：值
+- VIRT：进程占用的虚拟内存
+- RES：进程占用的物理内存
+- SHR：进程使用的共享内存
+- S：进程的状态。S表示休眠，R表示正在运行，Z表示僵死状态，N表示该进程优先值为负数
+- %CPU：进程占用CPU的使用率
+- %MEM：进程使用的物理内存和总内存的百分比
+- TIME+：该进程启动后占用的总的CPU时间，即占用CPU使用时间的累加值。
+- COMMAND：进程启动命令名称
+
+交互操作：
+
+- c:显示进程命令的全路径与参数
+- f:可以指定top显示的内容，如ppid、swap等都可以选择显示
+- k:输入k之后可以kill掉指定的进程
+- A:分类显示各种系统资源高的进程。可用于快速识别系统上的性能要求极高的任务，推荐使用
+- h:获取top的命令帮助
+- H:显示线程，默认只显示进程
+- W[大写]:将当前设置写入~/.toprc文件中。这是写top配置文件的推荐方法
+
+参考：
+
+- [Top实践小技巧](http://kumu-linux.github.io/blog/2013/06/07/top-hacks/)
 
 ## useradd/groupadd
 
@@ -827,16 +894,19 @@ wget -r -np -nd -R "index.html*" -P test http://xxx/FusionUpgrade/master/euler/2
 
 将远程文件夹原封不动下载下来，并且下载下来的本地路径也是远程目录，而不会创建多级目录。`-nH`表示不会创建
 `xxx.com`目录，`--cut-dirs`将其余多余层级目录不下载，实现效果下载到本地就只是`DLRN_RPMS`目录。
+
 ```
 wget -r -p -k -np -nH --cut-dirs=4 http://xxx.com/cps/FusionNetwork-for-fc/master/suse/DLRN_RPMS/
 ```
 
 参考：
+
 - [wget 文件下载](http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/wget.html)
 - [wget](https://github.com/jaywcjlove/linux-command/blob/master/command/wget.md)
 - [wget递归下载文件](https://www.cnblogs.com/include/archive/2011/10/17/2215607.html)
 
 ## watch
+
 ```
 watch -d 'ls -l|grep scf'       # 监测当前目录中 scf' 的文件的变化
 watch -n 10 'cat /proc/loadavg' # 10秒一次输出系统的平均负载
@@ -844,6 +914,7 @@ watch -n 1 -d netstat -ant       # 命令：每隔一秒高亮显示网络链接
 ```
 
 参考：
+
 - [watch-命令](https://wangchujiang.com/linux-command/c/watch.html)
 
 ## systemd service服务
@@ -866,3 +937,6 @@ epel.repo.repo.bak
 ```shell
 ls *.bak|awk -F. '{print $1}'|xargs -t -i mv {}.repo.repo.bak {}.repo
 ```
+
+参考：
+- [阮一峰——xargs 命令教程](http://www.ruanyifeng.com/blog/2019/08/xargs-tutorial.html)

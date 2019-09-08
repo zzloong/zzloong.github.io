@@ -148,6 +148,15 @@ spring.profiles.active=dev
 java -jar spring-boot-hello-world-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev
 ```
 
+补充一点，我们有时候利用 `java` 方式启动时，会带参数 `-D`，这个怎么理解呢？
+
+> use -D to define system properties
+
+可以阅读下面两个链接：
+
+- [java程序启动参数-D详解](https://blog.csdn.net/fenglongmiao/article/details/80511512)
+- [Why do JVM arguments start with “-D”?](https://stackoverflow.com/questions/44745261/why-do-jvm-arguments-start-with-d)
+
 ### 自定义属性
 
 我们可以在 Profile 中指定一些 `propety` 的值，在程序中可以获取到。
