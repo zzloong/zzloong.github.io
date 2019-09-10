@@ -451,6 +451,7 @@ echo -e "\033[41;37mMichael翔\033[0m"
 ## Linux 好文
 
 - [Linux工具快速教程](https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html#)
+- [glmapper-shell 脚本简单归纳和实践](http://www.glmapper.com/2019/08/01/shell-record/)
 
 ## 资源推荐
 
