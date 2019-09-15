@@ -365,4 +365,3 @@ SpringBoot+ES
 - [Elasticsearch Java Rest Client 上手指南（上）](https://www.jianshu.com/p/c1f2161a5d22)
 - [博客园——springboot elasticsearch 集成注意事项](https://www.cnblogs.com/guozp/archive/2018/04/02/8686904.html)
 - [lasticsearch系列七：ES Java客户端-Elasticsearch Java client（ES Client 简介、Java REST Client、Java Client、Spring Data Elasticsearch）](https://www.cnblogs.com/leeSmall/p/9218779.html)
-

@@ -51,6 +51,8 @@ Host ss
 
 后续，仅需要`ssh ss`，即可免密登录。
 
+- [图解 SSH 原理](https://mp.weixin.qq.com/s?__biz=MzI3MTI2NzkxMA==&mid=2247487942&idx=1&sn=c46f510ff119bd0bdfe30689f0398854&chksm=eac530efddb2b9f9a8b1bf08454084d68b200dc7d4d999fa65d0d1ed69e78c386a26331533ea&mpshare=1&scene=1&srcid=#rd)
+
 ## 网络分析
 
 - [HTTP View](https://httptoolkit.tech/view/) 超酷的HTTP(S)的调试助手，一键拦截HTTP(S)，仔细研究和检查流量，并准确地发现您的代码正在发送什么。

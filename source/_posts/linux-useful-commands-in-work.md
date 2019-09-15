@@ -87,8 +87,8 @@ cp -nrf a.txt b.txt
 - [Linux命令命令大全-cp命令](http://man.linuxde.net/cp)
 - [Linux 使用 cp 命令强制覆盖功能](https://blog.csdn.net/xinluke/article/details/52229431)
 
-
 ## crontab
+
 ```
 # For details see man 4 crontabs
 
@@ -125,6 +125,9 @@ file：file是命令文件的名字,表示将file做为crontab的任务列表文
 - `-r`：从/var/spool/cron目录中删除某个用户的crontab文件，如果不指定用户，则默认删除当前用户的crontab文件。
 - `-i`：在删除用户的crontab文件时给确认提示
 
+推荐一个有趣的网站，可以查看 crontab 语法含义：
+
+- https://crontab.guru/
 
 每隔2分钟执行`/tmp/test.sh`脚本：
 ```

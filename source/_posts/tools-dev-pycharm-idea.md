@@ -186,6 +186,12 @@ settings—Appearance & Behavior—Appearance—Show memory indicator
 
 - [玄玉-idea配置小结](https://jadyer.cn/2016/04/20/idea-config/) 博主介绍的很详细
 
+### 用 * 标识编辑过的文件
+
+这样被修改的文件会以 `*` 号标识出来：
+
+Editor –> General –> Editor Tabs，勾选 `Mark modifyied(*)`
+
 ### 脚本运行结束后留在命令行
 
 这样脚本运行中的变量在脚本结束后还可以调用，调试时还是挺好用

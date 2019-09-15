@@ -4,6 +4,10 @@ date: 2019-05-19 17:37:22
 ---
 
 {% note success no-icon %}
+没有什么比活着更快乐，也没有什么比活着更艰辛 —— 20190915
+{% endnote %}
+
+{% note success no-icon %}
 有人说他一年可以读100本书，甚至更多，那就像和100个女孩子各抛了一个媚眼，就宣称谈了100次恋爱一样，他从未和其中哪一个肌肤相触，更没有和哪一个生出个孩子。—— 赵昂 —— 20190821 [博客-想和知识生个孩子](https://hoxis.github.io/woyaohezhishishenggehaizi.html)
 {% endnote %}
 
