@@ -20,36 +20,44 @@ IDEA 没有类似 Eclipse 的工作空间的概念（workspace），最大单元
 - 删除 module ，这样不会删除代码文件，只是从 Project 中移除组织关系，如下图：
 
 ![](https://ws1.sinaimg.cn/large/006tNbRwly1fyre627b5lj308u0c1t9g.jpg)
+
 ![](https://ws3.sinaimg.cn/large/006tNbRwly1fyre7mxrxaj30au03yt8y.jpg)
 
 ## 系统设置
-
-### 设置Tab为4个空格
-
-不要勾选`Use Tab character`
-
-![](https://ws3.sinaimg.cn/large/006tNbRwly1fya4vpukusj30i60770tr.jpg)
-
-### 显示行号
-
-在 Apperent->Editor->Apperance 中，勾选：
-
-- `Show line numbers`
-- `Show method separators` 这个是显示方法分隔符的，我没勾选
 
 ### 设置显示收藏栏等工具栏
 
 ![](https://ws1.sinaimg.cn/large/006tNbRwly1fya4wuju8aj30b30bvafx.jpg)
 
+### 设置Tab为4个空格
+
+Editor->Code Style->Java/Python，不要勾选`Use Tab character`
+
+![](https://ws3.sinaimg.cn/large/006tNbRwly1fya4vpukusj30i60770tr.jpg)
+
 ### 支持滚轮调节字体大小
+
+Editor->General，勾选 `Change font size(Zoom) with Command+Mouse Wheel`
 
 ![](https://ws2.sinaimg.cn/large/006tNbRwly1fya4yfgfdgj30lo06qwfc.jpg)
 
 ### 鼠标滑过，显示文档
 
-鼠标滑过类、方法时，显示文档说明：
+Editor->General，`Show quick documentation on mouse move`，输入延迟时间。鼠标滑过类、方法时，显示文档说明：
 
 ![Show Documentation](https://ws1.sinaimg.cn/large/006tNbRwly1fya4zlx0o2j30m70cxgnj.jpg)
+
+### 显示行号和方法分隔符
+
+在 Editor->General->Apperance 中，勾选：
+
+- `Show line numbers` 显示行号
+- `Show method separators` 这个是显示方法分隔符的，我没勾选
+- `Show whitespace` 显示空格符号，针对 Python，「游标卡尺」的名号不是白叫的，所以，必须设置显示空格、缩进等
+
+参考：
+
+- [舒服的pycharm设置](http://brucedone.com/archives/38)
 
 ### 设置换行符默认为LF
 
@@ -66,16 +74,6 @@ IDEA 没有类似 Eclipse 的工作空间的概念（workspace），最大单元
 `Settings->Editor->File Encodings`，编码全都设为 `UTF-8`。
 
 ![File Encodings](https://ws1.sinaimg.cn/large/006tNbRwgy1fyp5wfd5qaj31bu0u0q99.jpg)
-
-### 设置显示空格
-
-针对 Python，「游标卡尺」的名号不是白叫的，所以，必须设置显示空格、缩进等，可以在 `Settings->Editor->General->Apperance`中设置显示空格、行号、CSS颜色、方法分隔符等效果。
-
-```shell
-ctrl+alt+s #输入whitespace，搜索相关设置，打开
-```
-
-- [舒服的pycharm设置](http://brucedone.com/archives/38)
 
 ### 设置头信息
 
