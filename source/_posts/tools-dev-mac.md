@@ -254,6 +254,7 @@ brew unlink vim
 - [brew 命令官网](https://docs.brew.sh/Manpage)
 - [SF-homebrew的tap功能详解](https://segmentfault.com/a/1190000012826983)
 - [CSDN-mac的homebrew命令详解&全部选项翻译](https://blog.csdn.net/beyond__devil/article/details/52649362)
+- [HelloDog-macOS 使用 Homebrew 的经验分享](https://wsgzao.github.io/post/homebrew/)
 
 Homebrew 能够安装哪些软件：
 
