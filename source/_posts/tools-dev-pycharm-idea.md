@@ -19,33 +19,31 @@ IDEA 没有类似 Eclipse 的工作空间的概念（workspace），最大单元
 - .idea 目录和 project01.iml 文件都是 IDEA 工程特有的。
 - 删除 module ，这样不会删除代码文件，只是从 Project 中移除组织关系，如下图：
 
-![](https://ws1.sinaimg.cn/large/006tNbRwly1fyre627b5lj308u0c1t9g.jpg)
-
-![](https://ws3.sinaimg.cn/large/006tNbRwly1fyre7mxrxaj30au03yt8y.jpg)
+![](https://gitee.com/michael_xiang/images/raw/master/open-module.jpg)
 
 ## 系统设置
 
 ### 设置显示收藏栏等工具栏
 
-![](https://ws1.sinaimg.cn/large/006tNbRwly1fya4wuju8aj30b30bvafx.jpg)
+![](https://gitee.com/michael_xiang/images/raw/master/view-toolbar.jpg)
+
+### 取消更新
+
+取消 IDEA 自动更新，避免引入不稳定的问题：
+
+![](https://gitee.com/michael_xiang/images/raw/master/idea-no-update.jpg)
 
 ### 设置Tab为4个空格
 
 Editor->Code Style->Java/Python，不要勾选`Use Tab character`
 
-![](https://ws3.sinaimg.cn/large/006tNbRwly1fya4vpukusj30i60770tr.jpg)
-
 ### 支持滚轮调节字体大小
 
 Editor->General，勾选 `Change font size(Zoom) with Command+Mouse Wheel`
 
-![](https://ws2.sinaimg.cn/large/006tNbRwly1fya4yfgfdgj30lo06qwfc.jpg)
-
 ### 鼠标滑过，显示文档
 
-Editor->General，`Show quick documentation on mouse move`，输入延迟时间。鼠标滑过类、方法时，显示文档说明：
-
-![Show Documentation](https://ws1.sinaimg.cn/large/006tNbRwly1fya4zlx0o2j30m70cxgnj.jpg)
+Editor->General，`Show quick documentation on mouse move`，输入延迟时间。鼠标滑过类、方法时，显示文档说明
 
 ### 显示行号和方法分隔符
 
@@ -59,11 +57,29 @@ Editor->General，`Show quick documentation on mouse move`，输入延迟时间�
 
 - [舒服的pycharm设置](http://brucedone.com/archives/38)
 
+### 给提示时忽略大小写
+
+Java 是严格区分大小写的，未设置时，输入 `str` 时，它不会提示 `String`，要想实现忽略大小写的情况它也能智能提示，可以进行如下设置，而且，这样设置它也不是完全按照首字母进行匹配了，比如你输入 `hmap` 时，也会看到 `HashMap` 的智能提示，相当方便。Editor->Genreral->Code Completion：
+
+![](https://gitee.com/michael_xiang/images/raw/master/idea-code-completion.jpg)
+
+{% note success no-icon %}
+这个设置是非常有帮助的，强烈推荐设置。可以顺带勾选上 `Show the documentation`，这样在补充时，也会显示文档。
+{% endnote %}
+
+### 自动导包 `import popup`
+
+`Editor->General->Auto Import->Python->Show import popup`
+
+![](https://gitee.com/michael_xiang/images/raw/master/idea-auto-import.jpg)
+
+手动导包的快捷键是 `Alt+Enter`
+
 ### 设置换行符默认为LF
 
 `Editor->Code Style` 页面不仅能设置换行符，还可以设置 `wrap columns`。
 
-![](https://ws3.sinaimg.cn/large/006tNbRwly1fya51ozedij30kb07r758.jpg)
+![](https://gitee.com/michael_xiang/images/raw/master/lf-wrap.jpg)
 
 参考：
 
@@ -73,13 +89,11 @@ Editor->General，`Show quick documentation on mouse move`，输入延迟时间�
 
 `Settings->Editor->File Encodings`，编码全都设为 `UTF-8`。
 
-![File Encodings](https://ws1.sinaimg.cn/large/006tNbRwgy1fyp5wfd5qaj31bu0u0q99.jpg)
+不建议勾选 `Transparent native-to-ascii convention`
 
 ### 设置头信息
 
-`Settings->Editor->File and Code Templates-Files->Includes->File Header` 设置如下模板：
-
-![ File Header](https://ws2.sinaimg.cn/large/006tNbRwgy1fyp5ugs59dj31b90u00yp.jpg)
+`Settings->Editor->File and Code Templates-Files->Includes->File Header` 设置如下模板
 
 Python 头信息设置：
 
@@ -110,31 +124,13 @@ Java 头信息设置：
 
 有时候我们需要操作 class 文件时，却忘记了对 java 类文件进行编译，从而还是对旧的文件进行了操作。
 
-![Compiler](https://ws4.sinaimg.cn/large/006tNbRwgy1fyp5zly24yj31jw0howjg.jpg)
+![](https://gitee.com/michael_xiang/images/raw/master/idea-compile.jpg)
 
 ### import 每个类而非整个包
 
 settings—Editor—Colors Style—Java—Imports—Class count to use import with ‘*’ 设置大一点。
 
 当 Java 类中 import 某个包下的类超过这里设置的个数，就会换成用星号来代替，比如 `import java.util.*`
-
-### 给提示时忽略大小写
-
-Java 是严格区分大小写的，未设置时，输入 `str` 时，它不会提示 `String`，要想实现忽略大小写的情况它也能智能提示，可以进行如下设置，而且，这样设置它也不是完全按照首字母进行匹配了，比如你输入 `hmap` 时，也会看到 `HashMap` 的智能提示，相当方便：
-
-![Code Completion](https://ws4.sinaimg.cn/large/006tNbRwgy1fyp5kvvqloj30x00he77n.jpg)
-
-{% note success no-icon %}
-这个设置是非常有帮助的，强烈推荐设置。可以顺带勾选上 `Show the documentation`，这样在补充时，也会显示文档。
-{% endnote %}
-
-### 自动导包 `import popup`
-
-`Editor->General->Auto Import->Python->Show import popup`
-
-![Auto Import](https://ws3.sinaimg.cn/large/006tNbRwgy1fyp5c8o6m4j316u0oeq6x.jpg)
-
-手动导包的快捷键是 `Alt+Enter`
 
 ### 设置 Tab 标签页
 
@@ -203,10 +199,6 @@ Editor –> General –> Editor Tabs，勾选 `Mark modifyied(*)`
 - [IDEA主题-](http://riaway.com/) Settings->Editor->Color Scheme->Import Scheme，导入 jar 包；
 - [Dracula](https://draculatheme.com/)
 
-### 关联数据库
-
-![](https://ws4.sinaimg.cn/large/006tNbRwly1fypyoon4bfj30bu0a0tac.jpg)
-
 ### 添加 JavaDOC 注释
 
 - 把光标停在类名或者方法名上，然后 `Alt+enter`，出现几个选项，选择 `Add Javadoc` 就 OK 了
@@ -252,12 +244,6 @@ File-Invalidate Caches
 
 - [Where is IntelliJ IDEA config stored in OSX?](https://stackoverflow.com/questions/23115091/where-is-intellij-idea-config-stored-in-osx/23141889)
 - [官宣-Directories used by the IDE to store settings, caches, plugins and logs](https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs)
-
-### 取消更新
-
-取消 IDEA 自动更新，避免引入不稳定的问题：
-
-![](https://ws1.sinaimg.cn/large/006tNbRwly1fyq7wbba92j30nr07s3zi.jpg)
 
 ### 显示窗口 split
 
@@ -328,6 +314,7 @@ Mac 的 `Command` 键一般是对应了 Win 的 `Ctrl` 键，在 Win 上，还�
 - `ctrl+shift+v` 在 Pycharm 中，访问历史粘贴板 ★★
 - `ctrl+shift+/-` ：代码块折叠★
 - `ctrl+alt+shit+j`：多目标选择选择的词，或者用`alt+鼠标点击`也可以实现效果，`Select All occurrences`★★
+- `ctrl+alt+shit+t`：重构利器！★★★
 - `shift+f6`：文件重命名★★★
 - `shift+f2`：跳转到上一个高亮错误 或 警告位置
 - 搜索
