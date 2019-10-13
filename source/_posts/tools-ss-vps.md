@@ -6,7 +6,7 @@ categories: ToolsDaily
 keywords:
 ---
 
-Vultr 选择的是日本的节点，发现速度比较不错，油管视频 720P 无压力！而且，感觉 Vultr 的界面也很清新，用着很方便。
+Vultr 选择的是日本的节点，发现速度比较不错，油管视频 1080P 无压力！而且，感觉 Vultr 的界面也很清新，用着很方便。
 
 ![](https://ws3.sinaimg.cn/large/006tNbRwly1fyh2t0f4hgj328o0qcdpb.jpg)
 
@@ -66,7 +66,26 @@ Shadowsocks-libev 版：
 /etc/shadowsocks-libev/config.json
 ```
 
-`netstat -nl | grep 8388` 或 `ss -nl | grep 8388` 可以查看 ss 服务的端口，8388 仅仅是示例，需要换成你自己设置的 ss 端口。
+`netstat -nl | grep 12250` 或 `ss -nl | grep 12250` 可以查看 ss 服务的端口，12250 仅仅是示例，需要换成你自己设置的 ss 端口。
+
+ss 服务端配置参考：
+
+```shell
+[root@vultr ss]# cat /etc/shadowsocks-libev/config.json
+{
+    "server":"0.0.0.0",
+    "server_port":12250,
+    "password":"xxxx",
+    "timeout":300,
+    "user":"nobody",
+    "method":"aes-256-gcm",
+    "fast_open":false,
+    "nameserver":"8.8.8.8",
+    "mode":"tcp_and_udp",
+    "plugin":"obfs-server",
+    "plugin_opts":"obfs=http"
+}
+```
 
 ## 加速配置
 
@@ -92,13 +111,36 @@ chmod +x ./kcptun.sh
 - 加密方式选择：较强的加密方式会影响网速，建议默认aes或不加密。
 - 加速模式：默认fast即可。随后可以手动修改为其它模式，测试加速效果。
 - MTU：默认1350即可。
-- sndwnd：发送窗口大小，与服务器的上传带宽大小有关，这项与rcvwnd的比例会影响加速效果，可以暂时设置为默认的512。
+- sndwnd：发送窗口大小，与服务器的上传带宽大小有关，这项与rcvwnd的比例会影响加速效果，可以暂时设置为默认的512，服务端的这个值和客户端的 rcvwnd 关系紧密，影响速度，需要调试
 - rcvwnd：接收窗口大小，与服务器的下载带宽大小有关，也可以暂设置为默认的512，或者1024也可以。
 - 以下几项中，除了数据压缩外，其它保持默认参数即可。建议关闭数据压缩，可以在一定程度上提升传输效率。
 
 其余各项设置，保持默认即可，设置完成后，按任意键开始安装过程。
 
 安装好之后，记录下最后的输出信息，后面有用。
+
+kcptun 服务端配置参考：
+
+```shell
+[root@vultr ss]# cat /usr/local/kcptun/server-config.json
+{
+  "listen": ":39901",
+  "target": "127.0.0.1:12250",
+  "key": "xxxx",
+  "crypt": "aes",
+  "mode": "fast2",
+  "mtu": 1350,
+  "sndwnd": 2048,
+  "rcvwnd": 2048,
+  "datashard": 10,
+  "parityshard": 3,
+  "dscp": 0,
+  "nocomp": false,
+  "quiet": false,
+  "tcp": false,
+  "pprof": false
+}
+```
 
 KCPTUN常用功能及命令：
 
@@ -108,17 +150,23 @@ KCPTUN常用功能及命令：
 - 停止：`supervisorctl stop kcptun`
 - 重启：`supervisorctl restart kcptun`
 - 状态：`supervisorctl status kcptun`
-- 打印出服务器信息：`kcptun.sh show` ——— 多亏了这个命令，看到了 `remoteaddr` 值，这个也是启用 kcptun 插键后，你本地 ss 客户端要配置的 IP 和 端口号
+- 打印出服务器信息：`./kcptun.sh show` ——— 多亏了这个命令，看到了 `remoteaddr` 值，这个也是启用 kcptun 插键后，你本地 ss 客户端要配置的 IP 和 端口号
 - 更新：`./kcptun.sh update`
 - 查看日志：`./kcptun.sh log`
 - 卸载：`./kcptun.sh uninstall`
 - 更多使用说明 `cd /data && ./kcptun.sh help`
+
+配置参数调试：
+
+- 同时在两端逐步增大 client rcvwnd 和 server sndwnd;
+- 尝试下载，观察如果带宽利用率（服务器＋客户端两端都要观察）接近物理带宽则停止，否则跳转到第一步。
 
 参考：
 
 - [KCPTUN-网络加速方案](http://www.jouypub.com/2019/9c4df700f0f76848f7042858a2b71a8a/)
 - [kuoruan/shell-scripts](https://github.com/kuoruan/shell-scripts)
 - [Kcptun 服务端一键安装脚本](https://blog.kuoruan.com/110.html)
+- [KCPTUN](https://lvii.gitbooks.io/outman/content/kcptun.html)
 
 ### BBR
 
