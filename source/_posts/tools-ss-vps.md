@@ -1,5 +1,5 @@
 ---
-title: shadowsocks+vps+mac
+title: ss+vps+mac
 date: 2019-04-27 14:21:24
 tags: [ss,vps]
 categories: ToolsDaily
@@ -10,75 +10,38 @@ Vultr 选择的是日本的节点，发现速度比较不错，油管视频 720P
 
 ![](https://ws3.sinaimg.cn/large/006tNbRwly1fyh2t0f4hgj328o0qcdpb.jpg)
 
-
 <!-- more -->
 
-我自搭梯子，选择的是：`Shadowsocks-libev+开启simple-obs插键+BBR加速`。
+我自搭梯子，选择的是：~~`Shadowsocks-libev+开启simple-obs插键+BBR加速`~~
+
+20191013 更新，发现使用 kcptun 加速效果更明显！于是改为`Shadowsocks-libev+开启simple-obs插键+ kcptun加速`
 
 Vultr 通过我的链接注册充值，你我都可以获得 $10 账户返利，所以，如果有需要，就点击注册吧：
+
 - [Vultr  注册返利链接](https://www.vultr.com/?ref=7488919)
 
 ## VPS
 
 vultr速度比较：
+
 - [vultr-downloadspeedtests](https://www.vultr.com/faq/#downloadspeedtests)
 - [vultr中文网](https://www.thevultr.org/)
 
-## 一键安装脚本
+我选择的节点是日本的节点，离得近，速度能快点。
 
-- [秋水逸冰 Shadowsocks 一键安装脚本（四合一）](https://teddysun.com/486.html)
-- [秋水逸冰 一键脚本搭建SS/搭建SSR服务并开启BBR加速](https://teddysun.com/489.html)
-- [Vultr中文网-Vultr 一键搭建酸酸 Shad0ws0cks 图文教程（推荐）](https://www.vultrcn.com/6.html)
+## 服务端 ss 一键安装脚本
 
-```
+### 安装 ss
+
+```shell
 wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh
 chmod +x shadowsocks-all.sh
 ./shadowsocks-all.sh 2>&1 | tee shadowsocks-all.log
 ```
 
-Docker方式
+按照提示，一部一部设置好端口、密码等。注意，选择 `Shadowsocks-libev` 版本。
 
-- [docker文档](https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository)
-- [docker-ss-搜索结果](https://hub.docker.com/search/?isAutomated=0&isOfficial=0&page=1&pullCount=1&q=shadowsocks&starCount=0)
-
-## 加速配置：
-
-我选用的 BBR 加速的方式
-
-- BBR 安装：
-
-```
-wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && ./bbr.sh
-```
-
-- 锐速安装，参考[锐速破解版linux一键自动安装包](https://github.com/91yun/serverspeeder)：
-
-```
-wget -N --no-check-certificate https://github.com/91yun/serverspeeder/raw/master/serverspeeder.sh && bash serverspeeder.sh
-```
-
-## 客户端
-
-- [Shadowsocks各种客户端](https://shadowsocks.org/en/download/clients.html)
-
-Mac 客户端下载
-- [ShadowsocksX-NG-R/releases](https://github.com/qinyuhang/ShadowsocksX-NG-R/releases)
-- [ShadowsocksX-NG/releases](https://github.com/shadowsocks/ShadowsocksX-NG/releases)
-- [NG 客户端插键配置](https://github.com/shadowsocks/ShadowsocksX-NG/wiki/SIP003-Plugin)
-
-![](https://ws3.sinaimg.cn/large/006tNc79ly1g2h75w3g2aj30ff08wq2y.jpg)
-
-插键选项：
-
-```
-obfs=http;obfs-host=www.bing.com
-```
-
-Android
-- [shadowsocks/shadowsocks-android](https://github.com/shadowsocks/shadowsocks-android/releases)
-- [插键-shadowsocks/simple-obfs-android](https://github.com/shadowsocks/simple-obfs-android/releases)
-
-## 服务端命令
+### ss 服务端相关配置
 
 启动脚本后面的参数含义，从左至右依次为：启动，停止，重启，查看状态。
 
@@ -88,7 +51,8 @@ Android
 - Shadowsocks-libev 版：`/etc/init.d/shadowsocks-libev start | stop | restart | status`
 
 配置文件：
-```
+
+```shell
 Shadowsocks-Python 版：
 /etc/shadowsocks-python/config.json
 
@@ -102,7 +66,125 @@ Shadowsocks-libev 版：
 /etc/shadowsocks-libev/config.json
 ```
 
+`netstat -nl | grep 8388` 或 `ss -nl | grep 8388` 可以查看 ss 服务的端口，8388 仅仅是示例，需要换成你自己设置的 ss 端口。
+
+## 加速配置
+
+### kcptun
+
+最近试用了 kcptun 加速后，发现效果不错，于是抛弃了 BBR 加速的方式。
+
+![kcptun原理](https://gitee.com/michael_xiang/images/raw/master/T0EYuk.jpg)
+
+```shell
+mkdir /data && cd /data
+wget --no-check-certificate https://github.com/kuoruan/shell-scripts/raw/master/kcptun/kcptun.sh
+chmod +x ./kcptun.sh
+./kcptun.sh
+```
+
+配置：
+
+- 端口：默认29900，即为KCPTUN与其客户端连接使用的端口，默认即可，这个端口号其实也是有用的，客户端启用 kcptun 插件时，端口要写这个，而不是 ss 的端口号！！！
+- 要加速的地址：默认127.0.0.1。
+- 要加速的端口：设置为你的SS/SSR使用的端口，这里要注意！！！
+- 密码：自己设置，用于KCPTUN客户端连接使用，不要使用默认密码。
+- 加密方式选择：较强的加密方式会影响网速，建议默认aes或不加密。
+- 加速模式：默认fast即可。随后可以手动修改为其它模式，测试加速效果。
+- MTU：默认1350即可。
+- sndwnd：发送窗口大小，与服务器的上传带宽大小有关，这项与rcvwnd的比例会影响加速效果，可以暂时设置为默认的512。
+- rcvwnd：接收窗口大小，与服务器的下载带宽大小有关，也可以暂设置为默认的512，或者1024也可以。
+- 以下几项中，除了数据压缩外，其它保持默认参数即可。建议关闭数据压缩，可以在一定程度上提升传输效率。
+
+其余各项设置，保持默认即可，设置完成后，按任意键开始安装过程。
+
+安装好之后，记录下最后的输出信息，后面有用。
+
+KCPTUN常用功能及命令：
+
+- KCPTUN安装目录：`/usr/local/kcptun`
+- KCPTUN的参数配置文件：`/usr/local/kcptun/server-config.json`
+- 启动：`supervisorctl start kcptun`
+- 停止：`supervisorctl stop kcptun`
+- 重启：`supervisorctl restart kcptun`
+- 状态：`supervisorctl status kcptun`
+- 打印出服务器信息：`kcptun.sh show` ——— 多亏了这个命令，看到了 `remoteaddr` 值，这个也是启用 kcptun 插键后，你本地 ss 客户端要配置的 IP 和 端口号
+- 更新：`./kcptun.sh update`
+- 查看日志：`./kcptun.sh log`
+- 卸载：`./kcptun.sh uninstall`
+- 更多使用说明 `cd /data && ./kcptun.sh help`
+
+参考：
+
+- [KCPTUN-网络加速方案](http://www.jouypub.com/2019/9c4df700f0f76848f7042858a2b71a8a/)
+- [kuoruan/shell-scripts](https://github.com/kuoruan/shell-scripts)
+- [Kcptun 服务端一键安装脚本](https://blog.kuoruan.com/110.html)
+
+### BBR
+
+我选用的 BBR 加速的方式
+
+- BBR 安装：
+
+```shell
+wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+```
+
+## 客户端
+
+### 客户端下载
+
+- [Shadowsocks各种客户端](https://shadowsocks.org/en/download/clients.html)
+- [ShadowsocksX-NG/releases](https://github.com/shadowsocks/ShadowsocksX-NG/releases) Mac 客户端下载
+- [xtaci/kcptun](https://github.com/xtaci/kcptun/releases)
+- [shadowsocks/shadowsocks-android](https://github.com/shadowsocks/shadowsocks-android/releases) Android
+- [插键-shadowsocks/kcptun-android](https://github.com/shadowsocks/kcptun-android/releases) kcptun 加速需要使用的插键
+- [插键-shadowsocks/simple-obfs-android](https://github.com/shadowsocks/simple-obfs-android/releases)
+
+### 客户端配置
+
+shadowsocks 客户端要设置的是你 vps 上 kcptun 的默认端口，例如 29900，而不是你设置的 shadowsocks 端口，否则，你使用 kcptun 插键将不会生效，网络会无法访问，除非你客户端不启用 kcptun 插键。
+
+![ss 配置](https://gitee.com/michael_xiang/images/raw/master/aSx9r8.png)
+
+- 端口号填写 KCPTun 的端口号，这个注意点坑了我好久！
+- 加密方式填写 SS 的加密方式
+- 密码填写 SS 的密码
+- 插件直接手动输入 `kcptun`。
+- 插件选项填写 tcptun 安装完成图中的 手机参数可使用 下面的记录即可
+
+- [NG 客户端插键配置](https://github.com/shadowsocks/ShadowsocksX-NG/wiki/SIP003-Plugin)
+
+kcptun 插键选项：
+
+```shell
+key=xxx;crypt=aes;mode=fast3;
+```
+
+simple-obfs 插键选项：
+
+```shell
+obfs=http;obfs-host=www.bing.com
+```
+
+## FAQ
+
+### 查看日志
+
+- 查看本地客户端的 ss 日志：点击小飞机-》显示日志-》`~/Libray/Logs/ss-local.log`
+- 查看本地 kcptun 插键是否启动： `ps -ef | grep kcptun`
+- 查看服务端 kcptun 的日志，如果本地请求正常发送，那么会有日志输出：`cd data && ./kcptun.sh log`
+
+## 其他
+
+Docker方式
+
+- [docker文档](https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository)
+- [docker-ss-搜索结果](https://hub.docker.com/search/?isAutomated=0&isOfficial=0&page=1&pullCount=1&q=shadowsocks&starCount=0)
+
 ## 参考
+
 - [聪聪-SS/SSR 简介](https://congcong0806.github.io/2018/04/20/SS/)
 - [写给非专业人士看的 Shadowsocks 简介](http://vc2tea.com/whats-shadowsocks/)
 - [VPS+ShadowsocksR 搭建自己的 VPN](https://www.liaoyuqin.com/post/tools/ha-bi-da-ti-zi)
+- [Ubuntu 16.04下Shadowsocks服务器端安装及优化](https://www.polarxiong.com/archives/Ubuntu-16-04%E4%B8%8BShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BC%98%E5%8C%96.html)
