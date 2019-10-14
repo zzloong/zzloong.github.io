@@ -3,8 +3,7 @@ title: 工作总结/思考
 date: 2019-10-14 23:10:57
 categories: DevOps
 tags:
-    - CICD
-    - DevOps
+    - 工作
     - 总结
     - 思考
 keywords:
