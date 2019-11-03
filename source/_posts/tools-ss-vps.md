@@ -18,7 +18,7 @@ Vultr 选择的是日本的节点，发现速度比较不错，油管视频 1080
 
 Vultr 通过我的链接注册充值，你我都可以获得 $10 账户返利，所以，如果有需要，就点击注册吧：
 
-- [Vultr  注册返利链接](https://www.vultr.com/?ref=7488919)
+- [Vultr 注册返利链接](https://www.vultr.com/?ref=7488919)
 
 ## VPS
 
@@ -28,6 +28,83 @@ vultr速度比较：
 - [vultr中文网](https://www.thevultr.org/)
 
 我选择的节点是日本的节点，离得近，速度能快点。
+
+### 设置时区
+
+时区保持一致很重要，尤其是 v2ray 方式：
+
+``` shell
+# 查看时间和本地时间是否一致
+data -R
+# 设置一致，东八区
+sudo -i
+cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+date -R
+```
+
+### BBR
+
+BBR 开启，可以起到加速作用。如果用的是 CentOS 8 或者 Ubuntu 18 的话，可能都不需要开启，因为默认就开启了。
+
+BBR 一键安装：
+
+```shell
+wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+```
+
+安装过程，需要重启机器一次。重启之后，输入 `lsmod | grep bbr` 看到输出有 `bbr` 则代表 OK 了。
+
+参考：
+
+- [上网配置](https://github.com/lyf3/ss/issues/1) bbr 开启和 ssr 搭建
+- [Ubuntu 18.04/18.10快速开启Google BBR的方法](https://www.moerats.com/archives/612/)
+
+### 辅助工具
+
+- https://tools.ipip.net/traceroute.php
+- http://ping.pe/ping.php
+- https://www.uuidgenerator.net/
+
+## v2ray
+
+在使用 v2ray 之后，发现这个方式更加便捷一点，因为它既支持 shadowsocks 协议，又支持 vmess 协议，提供两种链接方式。
+
+于是，目前（20191103）就采用了 v2ray 的方式+bbr加速+kcptun加速，然后配置了 v2ray 和 ss 的链接方式。
+
+一键安装脚本：
+
+```shell
+bash <(curl -s -L https://git.io/v2ray.sh)
+```
+
+- v2ray 端口：62666
+- 选择安装 ss
+- ss 端口：62888
+
+v2ray 配置生成器：https://intmainreturn0.com/v2ray-config-gen/
+
+- 输入 v2ray url 可生成 vmess URL 链接 / 输入 v2ray qr 可生成二维码链接
+- 输入 v2ray ssqr 可生成 Shadowsocks 二维码链接
+
+相关路径：
+
+- 在 Linux 中，日志通常在 `/var/log/v2ray/access.log` 文件中
+
+### 教程
+
+- [v2ray 官方文档](https://www.v2ray.com/chapter_00/install.html)
+- [白话文教程](https://toutyrater.github.io/)
+- [白话文教程-社区版](https://guide.v2fly.org/)
+- [V2Ray完全使用教程](https://yuan.ga/v2ray-complete-tutorial/)
+- [油管视频-V2Ray官方脚本搭建教程](https://www.youtube.com/watch?v=Mm6OWeo8dYU)
+
+### 客户端
+
+[神一样的工具们](https://www.v2ray.com/awesome/tools.html) 官方文档里也放了链接，下面列一下我自己用的：
+
+- [yanue/V2rayU](https://github.com/yanue/V2rayU/releases) Mac 最新一次更新 20190920
+- [2dust/v2rayNG](https://github.com/2dust/v2rayNG/releases) Andriod 最新一次更新 20191101
+- [v2ray/v2ray-core](https://github.com/v2ray/v2ray-core/releases)
 
 ## 服务端 ss 一键安装脚本
 
@@ -168,17 +245,8 @@ KCPTUN常用功能及命令：
 - [Kcptun 服务端一键安装脚本](https://blog.kuoruan.com/110.html)
 - [KCPTUN](https://lvii.gitbooks.io/outman/content/kcptun.html)
 
-### BBR
 
-我选用的 BBR 加速的方式
-
-- BBR 安装：
-
-```shell
-wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && ./bbr.sh
-```
-
-## 客户端
+## ss 客户端
 
 ### 客户端下载
 
@@ -232,6 +300,7 @@ Docker方式
 
 ## 参考
 
+- [haoel-科学上网](https://github.com/haoel/haoel.github.io) 耗子叔写的
 - [聪聪-SS/SSR 简介](https://congcong0806.github.io/2018/04/20/SS/)
 - [写给非专业人士看的 Shadowsocks 简介](http://vc2tea.com/whats-shadowsocks/)
 - [VPS+ShadowsocksR 搭建自己的 VPN](https://www.liaoyuqin.com/post/tools/ha-bi-da-ti-zi)
