@@ -194,6 +194,7 @@ keywords:
 - [字幕库](https://www.zimuku.cn/newsubs) 搜索字幕
 - [人人字幕组](http://www.zimuzu.io/) 搜索字幕
 - [SubHD](http://subhd.com/) 字幕搜索
+- [tunefind](https://www.tunefind.com/) 这是一个影视剧配乐自动检索的网页，在你看剧听到自己喜欢的BGM但又不知道叫什么名字时就能派上用场！
 
 ## 技术社区
 
