@@ -147,7 +147,7 @@ brew install autojump # Mac
 [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 
 ```shell
-git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
 
 在 `~/.zshrc` 中配置

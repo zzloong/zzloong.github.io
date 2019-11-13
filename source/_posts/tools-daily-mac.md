@@ -276,6 +276,8 @@ NightOwl ：一款让 Mojave 深色模式更加智能的神器，可以将当前
 - [How can I show typing keyboard in record screen](https://apple.stackexchange.com/questions/52618/how-can-i-show-typing-keyboard-in-record-screen)
 - [官宣-keycastr/keycastr](https://github.com/keycastr/keycastr)
 
+`brew cask install keycastr`
+
 ## Mac 相关好文
 
 - [推荐-Mac OS X 配置指南 | Mac OS X Setup Guide](https://wild-flame.github.io/guides/docs/mac-os-x-setup-guide/guide-introduction)
