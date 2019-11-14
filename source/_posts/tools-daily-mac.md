@@ -133,6 +133,97 @@ Shift 键类似于可视模式，比如在某个位置点击光标并按住 Shif
 
 ## 日常软件
 
+### Homebrew & Cask & launchrocket
+
+在安装其他软件之前，这个首先要介绍安装一下，可以理解为 Mac 平台下的包管理器，用命令行可以安装一下软件工具。
+
+[Homebrew-官网](https://brew.sh/index_zh-cn)安装 brew 命令：
+
+```shell
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+[Homebrew cask](http://caskroom.io/)可以优雅、简单、快速的安装和管理 OS X 图形界面程序，比如 Google Chrome 和 Dropbox，安装 cask 命令：
+
+```shell
+brew tap caskroom/cask
+```
+
+常用命令：
+
+```shell
+brew search xxx // 搜索
+brew cask search xxx // 搜索
+brew list --versions // 查看安装过的包列表，同时显示版本号
+brew update // 更新 brew
+brew upgrade <package_name> // 更新用brew安装的软件
+brew cleanup // 清理旧版本的包缓存时，清除安装包
+brew cask cleanup // 清除安装包
+brew doctor // 检测
+brew outdated // 看一下哪些软件可以升级
+brew info xxx // 查看某个软件信息
+brew cask info xxx // 查看某个软件信息
+brew unlink vim
+```
+
+更多命令可以通过`man brew`查看：
+
+- [brew 命令官网](https://docs.brew.sh/Manpage)
+- [SF-homebrew的tap功能详解](https://segmentfault.com/a/1190000012826983)
+- [CSDN-mac的homebrew命令详解&全部选项翻译](https://blog.csdn.net/beyond__devil/article/details/52649362)
+- [HelloDog-macOS 使用 Homebrew 的经验分享](https://wsgzao.github.io/post/homebrew/)
+
+Homebrew 能够安装哪些软件：
+
+- `brew search xxx`
+- 在[官网](https://formulae.brew.sh/formula/)浏览
+- 在[Homebrew formulas index](https://brewformulas.org/)查看详细的使用信息
+
+测试安装是否成功：
+
+```shell
+brew install wget
+brew cask install google-chrome
+brew cask install cakebrew # brew
+brew cask install launchrocket # 管理 brew 安装的 service 的工具，安装之后可以看所有的 service 的运行状态
+```
+
+- brew 方式安装的软件都在`/usr/local/Cellar`目录下，执行`brew link xxx`，则会在`/usr/local/share`创建软连接。
+- brew cask 方式安装的软件在`/usr/local/Caskroom`目录下
+
+Homebrew已成为Mac开发用户必不可少的工具, 大部分开发工具的安装和环境构建都非常方便. 但是如果配合[Cakebrew](https://www.cakebrew.com/)和[LaunchRocket]((https://github.com/jimbojsb/launchrocket), 那将会更方便管理。
+
+[brew和brew cask有什么区别？](https://www.zhihu.com/question/22624898)：[cask](http://caskroom.io/) 更偏向图形化软件的安装。
+
+### Homebrew 源加速
+
+我目前采用的加速方法，可以查看这篇文章 [Mac 环境对 Github Homebrew 等终端工具的加速设置](https://michael728.github.io/2019/11/13/tools-tips-mac-accelate/)
+
+还可以用修改原的方式加速，效果并不好，具体参考：[阿里镜像源-brew](https://opsx.alibaba.com/mirror)
+
+参考：
+
+- [Homebrew有比较快的源（mirror）吗？](https://www.zhihu.com/question/31360766)
+- [Homebrew Cask 源使用帮助](http://mirrors.ustc.edu.cn/help/homebrew-cask.git.html)
+- [Homebrew专栏](https://sspai.com/topic/181)
+- [使用brew cask来安装Mac应用](http://blog.devtang.com/2014/02/26/the-introduction-of-homebrew-and-brewcask/)
+
+### 拓展预览程序
+
+```shell
+brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize webpquicklook qlvideo provisionql quicklookapk
+```
+
+安装 Git 工具：
+
+```shell
+brew install git-extras
+```
+
+- [插键-sindresorhus/quick-look-plugins](https://github.com/sindresorhus/quick-look-plugins)
+- [git-extras](https://github.com/tj/git-extras/blob/master/Commands.md) 提供了一些有用和有趣的命令，例如 `git summary`
+- [程序员内功系列--常用命令行工具](https://xiaozhou.net/learn-the-command-line-tools-md-2018-10-11.html)
+
 ### 分屏软件
 
 目前在用的是一款付费软件 [magnet](http://magnet.crowdcafe.com/#download)，也不贵，6元，感觉还挺好用，下面是它的常用快捷键：
