@@ -305,3 +305,5 @@ Docker方式
 - [写给非专业人士看的 Shadowsocks 简介](http://vc2tea.com/whats-shadowsocks/)
 - [VPS+ShadowsocksR 搭建自己的 VPN](https://www.liaoyuqin.com/post/tools/ha-bi-da-ti-zi)
 - [Ubuntu 16.04下Shadowsocks服务器端安装及优化](https://www.polarxiong.com/archives/Ubuntu-16-04%E4%B8%8BShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BC%98%E5%8C%96.html)
+
+<a href="https://www.vultr.com/?ref=7488919"><img src="https://www.vultr.com/media/banners/banner_728x90.png" width="728" height="90"></a>

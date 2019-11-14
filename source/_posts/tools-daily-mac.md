@@ -246,6 +246,10 @@ NightOwl ：一款让 Mojave 深色模式更加智能的神器，可以将当前
 参考：
 - [popclip扩展官网](https://pilotmoon.com/popclip/extensions/)
 
+### Pock
+
+[Pock](https://github.com/pigigaldi/Pock) Mac 的 touchbar 增加一点用途，显示 Dock 的应用图标~推荐！
+
 ###  PinPoint
 鼠标指针修改
 
@@ -283,3 +287,4 @@ NightOwl ：一款让 Mojave 深色模式更加智能的神器，可以将当前
 - [推荐-Mac OS X 配置指南 | Mac OS X Setup Guide](https://wild-flame.github.io/guides/docs/mac-os-x-setup-guide/guide-introduction)
 - [你每天都能用上的 Mac 快捷键](https://sspai.com/topic/145)
 - [少数派-macOS 上都有哪些既免费、又实用的工具？| 新手问号](https://sspai.com/post/41477)
+- [柠檬精选](https://lemon.qq.com/lab/)
