@@ -10,6 +10,8 @@ Vultr 选择的是日本的节点，发现速度比较不错，油管视频 1080
 
 ![](https://ws3.sinaimg.cn/large/006tNbRwly1fyh2t0f4hgj328o0qcdpb.jpg)
 
+<a href="https://www.vultr.com/?ref=7488919"><img src="https://www.vultr.com/media/banners/banner_800x418.png" width="800" height="418"></a>
+
 <!-- more -->
 
 我自搭梯子，选择的是：~~`Shadowsocks-libev+开启simple-obs插键+BBR加速`~~
@@ -306,4 +308,4 @@ Docker方式
 - [VPS+ShadowsocksR 搭建自己的 VPN](https://www.liaoyuqin.com/post/tools/ha-bi-da-ti-zi)
 - [Ubuntu 16.04下Shadowsocks服务器端安装及优化](https://www.polarxiong.com/archives/Ubuntu-16-04%E4%B8%8BShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BC%98%E5%8C%96.html)
 
-<a href="https://www.vultr.com/?ref=7488919"><img src="https://www.vultr.com/media/banners/banner_728x90.png" width="728" height="90"></a>
+<a href="https://www.vultr.com/?ref=7488919"><img src="https://www.vultr.com/media/banners/banner_800x418.png" width="800" height="418"></a>
