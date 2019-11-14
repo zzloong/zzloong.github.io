@@ -73,7 +73,12 @@ mvn compile
 - 然后在 IDEA 的 configuration 中添加一个 remote 配置，连接到 1044 端口
 - 接着就可以在 IDEA 中运行 debug 调试了
 
+## 总结
+
+看视频的过程中，UP 主阅读源码的过程中说到了设计模式的看法，有时候设计模式你一开始不一定会用，但是要能从命名上一眼能知道类是干嘛用的！这就好比是行业的“黑话”一样~
+
 ## 参考
 
 - [what-are-java-command-line-options-to-set-to-allow-jvm-to-be-remotely-debugged](https://stackoverflow.com/questions/138511/what-are-java-command-line-options-to-set-to-allow-jvm-to-be-remotely-debugged)
 - [B站-大牛Java程序员1小时让你get“解决一切Java问题的能力”](https://www.bilibili.com/video/av68843080)
+- [IDEA 远程调试](https://blog.csdn.net/kefengwang/article/details/81213014) 推荐！
