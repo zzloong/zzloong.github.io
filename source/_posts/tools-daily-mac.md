@@ -204,6 +204,10 @@ Downie：下载各网站视频且更新频繁；
 
 文件加密软件： [encrypto](https://macpaw.com/encrypto) 免费的加密软件
 
+### iMazing
+
+[Mac/Win]备份/管理iOS设备 iTunes 的替代品
+
 ### licecap
 
 一款用来制作 Gif 动态图片的小软件：
@@ -269,9 +273,12 @@ NightOwl ：一款让 Mojave 深色模式更加智能的神器，可以将当前
 
 - [Telegram使用指南](https://www.jianshu.com/p/9be7ab548e90)
 
-### iMazing
+### TinyPNG4Mac
+[kyleduo/TinyPNG4Mac](https://github.com/kyleduo/TinyPNG4Mac/blob/master/README_ZH.md) 进行图片压缩的
 
-[Mac/Win]备份/管理iOS设备 iTunes 的替代品
+```
+brew cask install tinypng4mac
+```
 
 ### keycastr
 
