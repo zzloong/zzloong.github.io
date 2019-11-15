@@ -8,10 +8,11 @@ keywords:
 
 ## Git 基础学习系列
 
-- [Git 基础 —— 安装 配置 别名 对象](https://www.cnblogs.com/michael-xiang/p/10465857.html)
-- [Git 基础 —— 常用命令](https://www.cnblogs.com/michael-xiang/p/10465865.html)
-- [Git 基础 —— 常见使用场景](https://www.cnblogs.com/michael-xiang/p/10465872.html)
-- [Git基础 —— Github 的使用](https://www.cnblogs.com/michael-xiang/p/10465882.html)
+- [Git 基础 —— 安装 配置 别名 对象](https://michael728.github.io/2019/11/14/git-install-config/)
+- [Git 基础 —— 常用命令](https://michael728.github.io/2019/11/14/git-useful-commands/)
+- [Git 基础 —— 常见使用场景](https://michael728.github.io/2019/11/14/git-usage-examples/)
+- [Git基础 —— Github 的使用](https://michael728.github.io/2019/11/14/git-github-experiance/)
+
 
 ## Github  的利用
 [Github feature 官宣](https://github.com/features)，介绍了 Github 的主要特性。
