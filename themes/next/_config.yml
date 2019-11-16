@@ -654,7 +654,7 @@ calendar:
 disqus:
   enable: enable
   shortname: michaelxiang
-  count: true
+  count: false
   lazyload: true
 
 # DisqusJS
