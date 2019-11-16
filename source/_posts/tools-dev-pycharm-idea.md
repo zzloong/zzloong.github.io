@@ -110,10 +110,11 @@ Java 头信息设置：
 
 ```java
 /**
- * Description:
- * User: ${USER}
- * Date: ${YEAR}-${MONTH}-${DAY}
- * Time: ${TIME}
+ * description: 
+ * 
+ * @author Michael
+ * @date ${DATE}
+ * @time ${TIME}
  */
 ```
 
