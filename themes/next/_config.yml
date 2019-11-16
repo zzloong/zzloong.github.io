@@ -859,8 +859,8 @@ rating:
 # https://notes.doublemine.me/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud
 leancloud_visitors:
   enable: false
-  app_id: 7CDtrbb4U7nQzOdctmXXnMqt-gzGzoHsz
-  app_key: ISgUUtg79U9Eq0ActHmVRtmN
+  app_id: #7CDtrbb4U7nQzOdctmXXnMqt-gzGzoHsz
+  app_key: #ISgUUtg79U9Eq0ActHmVRtmN
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
   # If you don't care about security in leancloud counter and just want to use it directly
   # (without hexo-leancloud-counter-security plugin), set `security` to `false`.
