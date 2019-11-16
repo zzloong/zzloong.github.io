@@ -776,7 +776,7 @@ likely:
 # cd themes/next
 # git clone https://github.com/theme-next/theme-next-needmoreshare2 source/lib/needsharebutton
 needmoreshare2:
-  enable: true
+  enable: false
   postbottom:
     enable: true
     options:
