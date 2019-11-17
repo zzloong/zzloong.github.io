@@ -126,6 +126,8 @@ npm info hexo-cli # 查看hexo-cli模块的信息
 
 ## Hexo 写作技巧
 - [Sanarous-hexo博客Next主题进阶写作技巧](https://bestzuo.cn/posts/3147047336.html)
+- [NexT 主题内置标签](https://blog.lihj.me/post/next-tag-plugin-instruction.html)
+- [Hexo 搭建个人博客系列：写作技巧篇](http://yearito.cn/posts/hexo-writing-skills.html)
 
 ### Note
 
@@ -217,6 +219,20 @@ tabs:
     labels: true
   border_radius: 0
 ```
+
+语法：
+```
+{% tabs [Unique name], [index] %}
+<!-- tab [Tab caption]@[icon] -->
+Any content (support inline tags too).
+<!-- endtab -->
+{% endtabs %}
+```
+
+- `Unique name` 为每个标签页组唯一的名称
+- `index` 为初始激活的标签页
+- `Tab caption` 为标签页名称，不指定时为所属标签页组名称加索引
+- `icon` 为 `Font awesome图标`，可选
 
 源码示例：
 ```
