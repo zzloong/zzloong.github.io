@@ -11,9 +11,13 @@ keywords:
   - tutorial
 ---
 
+![](https://gitee.com/michael_xiang/images/raw/master/dj-4595492_640.jpg)
+
 ## 前言
 
 Windows 上的磁盘格式，默认一般都是 NTFS 格式。Mac 能够直接从 NTFS 格式的磁盘拷贝文件，但是不支持直接从 Mac 上拷贝文件到 NTFS 磁盘。
+
+<!-- more -->
 
 {% note success no-icon %}
 最早在 OSX 10.5的时候，OSX 其实原生就支持直接写入 NTFS 的盘的，后来由于微软的限制，把这个功能给屏蔽了，我们可以通过命令行手动打开这个选项。
