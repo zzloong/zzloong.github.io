@@ -101,7 +101,7 @@ call plug#end()
 
 - [scrooloose/nerdtree](https://github.com/scrooloose/nerdtree) 文件管理器 nerdtree
 
-> - :NERDTree 即可打开当前编辑文件所在的目录
+> - `:NERDTree` 即可打开当前编辑文件所在的目录
 > - 按住 Ctrl, 双击 w 可以在两个窗口之间切换
 > - 把光标移动到该文件，然后按 o，即可在右边窗口打开该文件
 > - 在该窗口直接按 q 即可退出
