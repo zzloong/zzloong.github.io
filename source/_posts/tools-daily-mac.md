@@ -212,8 +212,26 @@ Homebrew已成为Mac开发用户必不可少的工具, 大部分开发工具的�
 ### 拓展预览程序
 
 ```shell
-brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize webpquicklook qlvideo provisionql quicklookapk
+brew cask install qlcolorcode \
+                  qlstephen \ 
+                  qlmarkdown \ 
+                  quicklook-json \ 
+                  qlimagesize \ 
+                  qlvideo \ 
+                  provisionql \ 
+                  quicklookapk \
+                  betterzip \
 ```
+
+- qlcolorcode 预览代码时带有语法高亮
+- qlstephen 预览无拓展名的纯文本文件插件
+- qlmarkdown
+- quicklook-json 预览JSON文件
+- qlimagesize 在预览窗口显示图片分辨率及文件大小，并在Finder中显示图片的格式
+- qlvideo 让QuickLook兼容.mkv等非原生支持的视频格式，但并不能正常播放，只能显示出一些视频的缩略图和信息
+- provisionql 预览iOS / macOS应用和配置信息
+- quicklookapk 预览Android APK文件
+- betterzip 查看Zip压缩文件的信息以及文件目录
 
 安装 Git 工具：
 
@@ -221,9 +239,10 @@ brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize we
 brew install git-extras
 ```
 
-- [插键-sindresorhus/quick-look-plugins](https://github.com/sindresorhus/quick-look-plugins)
 - [git-extras](https://github.com/tj/git-extras/blob/master/Commands.md) 提供了一些有用和有趣的命令，例如 `git summary`
 - [程序员内功系列--常用命令行工具](https://xiaozhou.net/learn-the-command-line-tools-md-2018-10-11.html)
+- [Brew安装快速预览插件](https://chad-it.github.io/2018/06/26/Brew%E5%AE%89%E8%A3%85%E5%BF%AB%E9%80%9F%E9%A2%84%E8%A7%88%E6%8F%92%E4%BB%B6/)
+- [sindresorhus/quick-look-plugins](https://github.com/sindresorhus/quick-look-plugins)
 
 ### 分屏软件
 
