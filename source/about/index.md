@@ -62,7 +62,7 @@ date: 2015-11-26 20:31:49
 ![公众号](https://gitee.com/michael_xiang/images/raw/master/微信公众号.jpg)
 <!-- endtab -->
 <!-- tab 微信号@wechat -->
-![wechat](https://gitee.com/michael_xiang/images/raw/master/微信二维码-翔.jpeg)
+![wechat](https://gitee.com/michael_xiang/images/raw/master/微信二维码-翔-250-250.jpeg)
 <!-- endtab -->
 <!-- tab Trick@gift -->
 选项卡 3** 哇，你找到我了！φ(≧ω≦*)♪～还没想好放什么
