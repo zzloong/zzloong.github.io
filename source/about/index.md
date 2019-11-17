@@ -62,7 +62,7 @@ date: 2015-11-26 20:31:49
 ## 其他
 
 - [博客建站日志](https://michael728.github.io/2016/09/03/blog-logfile/) 记录了博客重大的修改记录、文章的打赏记录
-- 本章评论采用 Disqus，网络环境 OK，才能看到评论
+- 本章评论采用 Disqus，如有需要，可以阅读这篇文章实现科学上网 [ss+vps+mac](https://michael728.github.io/2019/04/27/tools-ss-vps/)
 
 ----
 
