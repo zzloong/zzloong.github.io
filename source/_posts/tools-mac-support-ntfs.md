@@ -1,14 +1,12 @@
 ---
 title: Mac 免费支持 NTFS 格式的移动硬盘/U盘
-date: 2019-11-14 15:05:50
-tags: [Mac, Tools]
-categories: ToolsDev
+date: 2019-11-14 21:36:50
+tags: [Mac, Tools, NTFS]
+categories: ToolsDaily
 keywords:
   - mac
   - config
-  - develop
-  - app
-  - tutorial
+  - ntfs
 ---
 
 ![](https://gitee.com/michael_xiang/images/raw/master/dj-4595492_640.jpg)
