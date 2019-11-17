@@ -1,5 +1,5 @@
 ---
-title: Mac 免费支持 NTFS 格式的移动硬盘/U盘
+title: Mac 免费支持 Windows 可用的移动硬盘/U盘
 date: 2019-11-17 21:36:50
 tags: [Mac, Tools, NTFS]
 categories: ToolsDaily
@@ -29,6 +29,14 @@ Windows 上的磁盘格式，默认一般都是 NTFS 格式。Mac 能够直接�
 - 开源免费的 [mounty](https://mounty.app/)-`brew cask install mounty`，但是這個免費的好像更新不頻繁了，最近一次还是 2018年9月份，现在都是2019年11月份了，最新的系統测试不OK。
 
 偶然发现有办法可以通过设置，让 Mac 免费支持 NTFS，在最新的系统 `macOS Catalina(10.15.1)`  测试 OK 🤡 
+
+这时候有两个场景：
+
+1.你的移动硬盘或者U盘可以格式化位 `ExFAT` 格式，因为 Windows 和 Mac 都支持这种格式。
+
+![](https://gitee.com/michael_xiang/images/raw/master/0VXNij.png)
+
+2.移动硬盘或者U盘上的内容比较多，不方便转移后，进行格式化，这时候，就需要通过如下的方法进行设置了。
 
 ## 配置
 
