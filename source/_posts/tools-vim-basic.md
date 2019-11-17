@@ -12,6 +12,7 @@ Vim 学习系列：
 
 - [Vim 基础](https://michael728.github.io/2018/12/02/tools-vim-basic/)
 - [Vim 插件及配置](https://michael728.github.io/2018/12/02/tools-vim-plugin-config/)
+- [neovim 安装及插键配置](https://michael728.github.io/2019/11/17/tools-vim-plugin-neovim-plug/)
 
 <!-- more -->
 

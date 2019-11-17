@@ -1,23 +1,24 @@
 ---
-title: NeoVim 安装及配置
+title: neovim 安装及插键配置
 date: 2019-11-17 16:56:31
-tags: [Vim, Tools, NeoVim]
+tags: [Vim, Tools, neovim]
 categories: [ToolsDev]
 keywords:
 ---
 
-![](https://ws1.sinaimg.cn/mw690/6d9475f6ly1fxsp8yn8bdj20hs0bu42h.jpg)
+![neovim](https://gitee.com/michael_xiang/images/raw/master/v2-e5494a3e5fcf280a2be79e929b193293_1200x500.jpg)
 
 Vim 学习系列：
 
 - [Vim 基础](https://michael728.github.io/2018/12/02/tools-vim-basic/)
 - [Vim 插件及配置](https://michael728.github.io/2018/12/02/tools-vim-plugin-config/)
+- [neovim 安装及插键配置](https://michael728.github.io/2019/11/17/tools-vim-plugin-neovim-plug/)
 
 <!-- more -->
 
 ## 安装 NeoVim
 
-neovim 是目前流行的一个 vim 的加强版本。
+Vim 主要开发目前就一个人，开发效率低，年久失修。为了让 Vim 有一个快速的迭代速度，neovim 应运而生。
 
 [安装](https://github.com/neovim/neovim/wiki/Installing-Neovim)：
 
@@ -107,8 +108,11 @@ call plug#end()
 
 - [Shougo/deoplete.nvim](https://github.com/Shougo/deoplete.nvim) 自动补全插键
 
-参考：
+之前的[文章](https://michael728.github.io/2018/12/02/tools-vim-plugin-config/)也写了一些插键的使用。
+
+## 参考
 
 - [Mac的VIM中delete键失效的原因和解决方案](http://cenalulu.github.io/linux/why-my-backspace-not-work-in-vim/)
 - [Vim 插键及配置](https://michael728.github.io/2018/12/02/tools-vim-plugin-config/)
-- [Linux 下 Neovim 安装与配置 Python 开发环境指南](https://jdhao.github.io/2018/09/05/centos_nvim_install_use_guide/)
+- [jdhao——Linux 下 Neovim 安装与配置 Python 开发环境指南](https://jdhao.github.io/2018/09/05/centos_nvim_install_use_guide/)
+- [Timothy——从Vim到NeoVim](https://xiaozhou.net/from-vim-to-neovim-2016-05-21.html)
