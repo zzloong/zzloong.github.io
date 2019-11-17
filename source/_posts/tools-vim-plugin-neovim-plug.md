@@ -110,6 +110,10 @@ call plug#end()
 
 之前的[文章](https://michael728.github.io/2018/12/02/tools-vim-plugin-config/)也写了一些插键的使用。
 
+## 最后
+
+放上我的 Vim 配置文件地址：[my-config-files/vim/](https://github.com/Michael728/my-config-files/tree/master/vim)
+
 ## 参考
 
 - [Mac的VIM中delete键失效的原因和解决方案](http://cenalulu.github.io/linux/why-my-backspace-not-work-in-vim/)
