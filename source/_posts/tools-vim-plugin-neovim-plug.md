@@ -76,7 +76,7 @@ ln -s ~/.vimrc ~/.config/nvim/init.vim
 :PlugInstall
 # 检查状态
 :PlugStatus
-# 删除插键（需要先将 ~/.config/neovim/init.vim` 中注释掉相关插键）
+# 删除插键（需要先将 ~/.config/nvim/init.vim 中注释掉相关插键）
 :PlugClean
 # 更新插键
 : PlugUpdate
