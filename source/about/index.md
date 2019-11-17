@@ -57,11 +57,11 @@ date: 2015-11-26 20:31:49
 
 ## 二维码
 
-{% tabs 选项卡, 2 %}
-<!-- tab -->
+{% tabs 选项卡, 1 %}
+<!-- tab 公众号 -->
 ![公众号](https://gitee.com/michael_xiang/images/raw/master/微信公众号.jpg)
 <!-- endtab -->
-<!-- tab -->
+<!-- tab 微信号 -->
 ![wechat](https://gitee.com/michael_xiang/images/raw/master/微信二维码-翔.jpeg)
 <!-- endtab -->
 <!-- tab -->
