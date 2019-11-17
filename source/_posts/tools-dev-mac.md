@@ -20,48 +20,7 @@ keywords:
 
 ## 支持 NTFS 磁盘
 
-最早在 OSX 10.5的时候，OSX 其实原生就支持直接写入 NTFS 的盘的，后来由于微软的限制，把这个功能给屏蔽了，我们可以通过命令行手动打开这个选项。
-
-Windows 上的磁盘格式，默认一般都是 NTFS 格式。Mac 能够直接从 NTFS 格式的磁盘拷贝文件，但是不支持直接从 Mac 上拷贝文件到 NTFS 磁盘。
-
-1.查看磁盘的 Volume Name
-
-```
-diskutil list
-```
-
-![](https://gitee.com/michael_xiang/images/raw/master/xEKXmB.png)
-
-可以看到的这个磁盘名叫做 `Seagate翔`。
-
-{% note warning no-icon %}
-如果 Volume Name 有空格，用 `\040` 表示空格。
-{% endnote %}
-
-2.更新 `/etc/fstab` 文件
-
-```
-sudo vi /etc/fstab
-```
-
-添加：
-
-```
-LABEL=Seagate翔 none ntfs rw,auto,nobrowse
-```
-
-- `rw` 表示把这个分区挂载为可读写的 ntfs 格式
-- `nobrowse` 这个代表了在 finder 里不显示这个分区，这个选项非常重要，如果不打开的话挂载是不会成功的
-
-3.将移动硬盘/USB拔出重插，然后在 Finder->前往->前往文件夹，输入：`/Volumes`，这时候可以看到我的移动硬盘，拖动它至Finder的边栏『个人收藏』，后面就可以方便打开和推出。
-
-![](https://gitee.com/michael_xiang/images/raw/master/rXEzLY.png)
-
-4.将磁盘快捷方式添加到桌面：
-
-```shell
-sudo ln -s /Volumes/Seagate翔 ~/Desktop/Seagate翔
-```
+阅读文章 [Mac 免费支持 NTFS 格式的移动硬盘/U盘](https://michael728.github.io/2019/11/17/tools-mac-support-ntfs/)
 
 ## 图床
 
