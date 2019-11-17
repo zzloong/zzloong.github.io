@@ -96,6 +96,7 @@ v2ray 配置生成器：https://intmainreturn0.com/v2ray-config-gen/
 - [白话文教程](https://toutyrater.github.io/)
 - [白话文教程-社区版](https://guide.v2fly.org/)
 - [V2Ray完全使用教程](https://yuan.ga/v2ray-complete-tutorial/)
+- [服务端搭建Shadowsocks和V2Ray详解](https://www.yeahwu.com/posts/8f7ac171.html) 这位博主，貌似真的把可用的账号提供出来了！
 - [油管视频-V2Ray官方脚本搭建教程](https://www.youtube.com/watch?v=Mm6OWeo8dYU)
 
 ### 客户端
