@@ -11,7 +11,9 @@ keywords:
 
 ![](https://gitee.com/michael_xiang/images/raw/master/dj-4595492_640.jpg)
 
+{% cq %}
 [图片链接](https://pixabay.com/photos/dj-music-turntable-jockey-volume-4595492/)
+{% endcq %}
 
 ## 前言
 
