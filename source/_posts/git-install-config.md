@@ -265,7 +265,7 @@ Github 现在创建仓库时，可以选择生成什么 `.gitignore` ，附上�
 
 此外，还要配置指定全局的忽略文件配置在哪儿：
 ```
-git config --global core.excludesfile/Users/michael/.gitignore_global
+git config --global core.excludesfile /Users/michael/.gitignore_global
 ```
 
 或者编辑全局配置文件 `~/.gitconfig`:

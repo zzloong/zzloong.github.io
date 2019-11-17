@@ -28,6 +28,8 @@ keywords:
 
 ## 免密登录
 
+安装 Homebrew 的指导见 [Mac 配置教程-日常篇](https://michael728.github.io/2018/12/08/tools-daily-mac/)
+
 ```shell
 brew install ssh-copy-id
 ssh-copy-id root@1.2.3.4
@@ -61,7 +63,31 @@ Host ss
 
 - [Hack](https://github.com/source-foundry/Hack) 专为在源代码中使用而设计的开源字体
 
-## alfred
+## Git
+
+- [下载安装](https://git-scm.com/downloads)
+
+```shell
+$ ssh-keygen -t rsa -C "649168982@qq.com"
+$ git config --global user.name "Michael728"
+$ git config --global user.email "649168982@qq.com"
+```
+
+- 我的 Git 配置文件在：[my-config-files/git](https://github.com/Michael728/my-config-files/tree/master/git)
+- 更多的设置，阅读 [https://michael728.github.io/2019/11/14/git-install-config/](https://michael728.github.io/2019/11/14/git-install-config/)
+
+### FAQ
+
+Q1： `git status`乱码
+执行：`git config --global core.quotepath false`
+参考：[Git Status 中文乱码解决](http://blog.crhan.com/2012/09/git-status-%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E8%A7%A3%E5%86%B3/)
+
+Q2：Github 下载速度慢
+
+- [加快国内访问Github网站的速度](https://aoenian.github.io/2018/05/12/github-access-fast/)
+- [国内为何访问Github如此慢](https://www.wangmaoxian.com/201808/%E5%9B%BD%E5%86%85%E4%B8%BA%E4%BD%95%E8%AE%BF%E9%97%AEGithub%E5%A6%82%E6%AD%A4%E6%85%A2/)
+
+## [alfred](https://www.alfredapp.com/)
 
 - 唤起快捷键设为：command双击
 - 输入框：`lock`，锁屏
@@ -87,6 +113,7 @@ MDN：https://developer.mozilla.org/zh-CN/search?q={query}
 
 参考：
 - [掘金-Mac 提升开发效率的小工具](https://juejin.im/post/5b0e99436fb9a009e405dbb6)
+
 
 ### 剪贴板历史
 
@@ -169,11 +196,32 @@ Alfred使用参考：
 - [Alfred神器使用手册](http://louiszhai.github.io/2018/05/31/alfred/#%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85alfred)
 - [Mac效率神器Alfred系列教程---文件搜索](https://www.jianshu.com/p/2ce1dd633f4f)
 
-## Beyond Compare
+## [Beyond Compare](https://www.scootersoftware.com/download.php)
 
-Beyond Compare：完美的diff工具；
+Beyond Compare：非常好用的diff工具；
 
-## Charles
+```
+cd /Applications/Beyond\ Compare.app/Contents/MacOS/
+mv BCompare BCompare.real
+vim BCompare
+```
+
+添加如下内容：
+
+```
+#!/bin/bash 
+rm "/Users/$(whoami)/Library/Application Support/Beyond Compare/registry.dat" 
+"`dirname "$0"`"/BCompare.real &
+```
+
+- 第二行即删除注册信息. 
+- 第三行则为启动真实的 BCompare 文件.
+
+参考：
+- [CSDN——Beyond Compare for mac 无限试用方法](https://blog.csdn.net/machh/article/details/89707351)
+- [诗意——Beyond Compare for Mac 无限试用方法](https://www.seidea.com/2017/03/23/beyond-compare-for-mac-%E6%97%A0%E9%99%90%E8%AF%95%E7%94%A8%E6%96%B9%E6%B3%95/)
+
+## [Charles](https://www.charlesproxy.com/download/latest-release/)
 
 - [Charles 注册码/破解](https://www.jianshu.com/p/89111882fa99)
 
@@ -194,29 +242,6 @@ Mac 上的 Finder 的增强版本，FTP 工具，官网有[视频介绍](https:/
 
 - [go2shell官网](http://zipzapmac.com/go2shell)
 - [Mac通过安装Go2Shell实现“在当前目录打开iTerm2”](https://www.cnblogs.com/shengulong/p/6655558.html)
-
-## Git
-
-- [下载安装](https://git-scm.com/downloads)
-
-```shell
-$ ssh-keygen -t rsa -C "649168982@qq.com"
-$ git config --global user.name "Michael728"
-$ git config --global user.email "649168982@qq.com"
-```
-
-我的 Git 配置文件在：[my-config-files/git](https://github.com/Michael728/my-config-files/tree/master/git)
-
-### FAQ
-
-Q1： `git status`乱码
-执行：`git config --global core.quotepath false`
-参考：[Git Status 中文乱码解决](http://blog.crhan.com/2012/09/git-status-%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E8%A7%A3%E5%86%B3/)
-
-Q2：Github 下载速度慢
-
-- [加快国内访问Github网站的速度](https://aoenian.github.io/2018/05/12/github-access-fast/)
-- [国内为何访问Github如此慢](https://www.wangmaoxian.com/201808/%E5%9B%BD%E5%86%85%E4%B8%BA%E4%BD%95%E8%AE%BF%E9%97%AEGithub%E5%A6%82%E6%AD%A4%E6%85%A2/)
 
 ## iTerm2
 
@@ -287,6 +312,12 @@ redis 数据库客户端
 ## MySQL
 
 - [sequelpro](https://www.sequelpro.com/) mysql 客户端，颜值高。免费
+- [navicat-premium](http://download3.navicat.com/download/navicat121_premium_en.dmg) 虽然收费，但是真的好用！
+
+navicat 无限制试用，参考
+- [NavicatPremium12无限重置试用脚本（MacOS版）](https://zhile.io/2018/08/24/navicat-premium-reset-free-trial.html)
+- [Navicat12 无限试用](https://blog.cat73.org/20171219/2017121901.navicat-crack/)
+- [Navicat premium 12 for mac 无限试用](https://www.cnblogs.com/blueoceansky/p/10783209.html)
 
 ## Node
 
@@ -355,62 +386,81 @@ echo 'export PATH="~/anaconda3/bin:$PATH"' >> ~/.bash_profile
 
 Markdown 编辑器： [typora官网](https://typora.io/)
 
-## 安装 macvim 和 vim
+## neovim 相关
 
-```shell
-brew install macvim
+neovim 是目前流行的一个 vim 的加强版本。
+
+[安装](https://github.com/neovim/neovim/wiki/Installing-Neovim)：
+
+```
+brew install neovim
 ```
 
-[Homebrew formulas index-macvim](https://brewformulas.org/Macvim)已经明确指出，这么安装和`brew install vim`的`vim`冲突，所有某些博客文章中安装`macvim`的指导说需要先安装`vim`的说法是有问题的，我那么执行时就报错了：
+neovim 的官方配置文件在 `/Users/michael/.config/nvim/init.vim`
 
-```shell
-This formula is in conflict with the following
+```
+# edit ~/.zshrc
+alias vim='nvim'
+alias vi='nvim'
 ```
 
-错误提示：
-
-```shell
-Updating Homebrew...
-Error: Cannot install macvim because conflicting formulae are installed.
-  vim: because vim and macvim both install vi* binaries
-
-Please `brew unlink vim` before continuing.
+检查：
+```
+nvim +checkhealth
 ```
 
-我先执行了`brew install vim`，然后通过`brew unlink vim`去除了`/usr/local/share/`创建的 vim 相关的软连接，避免和`macvim`冲突。然后又通过`brew install macvim`安装了`macvim`。
+支持 Python 语言：
 
-如果你想采用`macvim`代替`vim`，需要：
-
-```shell
-brew unlink vim
-brew link macvim
-alias vim='mvim -v' # 加入 zsh 配置文件
+```
+pip install neovim --upgrade
 ```
 
-如果你想采用 brew 安装的 vim，替换系统默认的：
+### [插键 vim-plug](https://github.com/junegunn/vim-plug)
 
-```shell
-brew unlink mackvim
-brew link vim
-export PATH="/usr/local/Cellar/vim/8.1.0550/bin:$PATH" # 加入 zsh 配置文件
+插键没使用 Vundle，而是采用 vim-plug
+
+- Vundle是之前Vim插件管理比较流行的工具。转向使用Vim-Plug，最大的原因还在于相比Vundle，所有的插件更新和安装都是并行的，这样比Vundle效率提升了不是一点半点。
+- 此外，最令人心动的，是Vim-Plug的杀手级特性：按需加载控件，可以让你根据不同的需求，决定某些插件在什么时机开始加载，从而大大提升Vim/NeoVim的启动速度。
+
+[安装 vim-plug 的脚本](https://github.com/junegunn/vim-plug)：
+
+```
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
-安装之后，还有一些兼容性的设置需要设置才行：
-
-```shell
-vmap <C-c> "+y " 在Visual模式时，按Ctrl+c复制选择的内容
-set backspace=2 " http://cenalulu.github.io/linux/why-my-backspace-not-work-in-vim/
-set clipboard+=unnamed " 共享剪贴板 http://www.vitah.net/posts/9ddf2fa9/
+```
+# 将已有的 Vim 配置，用于 nvim
+# .vim 文件夹会存放插键相关内容，比如 vim-plug 的内容
+ln -s ~/.vim ~/.config/nvim
+ln -s ~/.vimrc ~/.config/nvim/init.vim
 ```
 
-关于 Vim 的配置及使用，可以阅读：[Vim 插键及配置](https://michael728.github.io/2018/12/02/tools-vim-plugin-config/)
+常用命令：
+```
+# 安装插键
+:PlugInstall
+# 检查状态
+:PlugStatus
+# 删除插键
+:PlugClean
+# 更新插键
+: PlugUpdate
+# 升级 vim-plug
+:PlugUpgrade
+```
+
+将需要安装的插键写入 `~/.vimrc` 的如下命令之间，然后执行 `:PlugInstall`：
+```
+call plug#begin()
+Plug 'tpope/vim-sensible'
+call plug#end()
+```
 
 参考：
 
-- [Macvim install fails on MacOS 10.14](https://github.com/Homebrew/homebrew-core/issues/32464)
-- [FAQ-macvim-dev/macvim](https://github.com/macvim-dev/macvim/wiki/FAQ)
 - [Mac的VIM中delete键失效的原因和解决方案](http://cenalulu.github.io/linux/why-my-backspace-not-work-in-vim/)
-- [macOS上安装MacVim](http://www.vitah.net/posts/9ddf2fa9/)
+- [Vim 插键及配置](https://michael728.github.io/2018/12/02/tools-vim-plugin-config/)
 
 ## zsh
 
@@ -436,10 +486,15 @@ code .vimrc
 
 ## Mac 相关好文
 
-- [推荐-Mac OS X 配置指南 | Mac OS X Setup Guide](https://wild-flame.github.io/guides/docs/mac-os-x-setup-guide/guide-introduction)
+精华其实在最后 :)
+
+- [推荐-Mac OS X 配置指南 | Mac OS X Setup Guide](https://wild-flame.github.io/guides/docs/mac-os-x-setup-guide/guide-introduction) 比较系统的文章
 - [Mac开发和编程工具](http://python-web-guide.readthedocs.io/zh/latest/codingtools/codingtools.html)
 - [Mac 提升开发效率的小工具](https://juejin.im/post/5b0e99436fb9a009e405dbb6)
 - [GitBook-Mac-程序员的自我修养](https://leohxj.gitbooks.io/a-programmer-prepares/software/mac/index.html)
+- [serhii-londar/open-source-mac-os-apps](https://github.com/serhii-londar/open-source-mac-os-apps) Github 资源
+- [sb2nov/mac-setup](https://github.com/sb2nov/mac-setup) Installing Development environment on macOS [阅读](http://sourabhbajaj.com/mac-setup/) Mac 下各种编程语言开发环境配置指引
+- [donnemartin/dev-setup](https://github.com/donnemartin/dev-setup) macOS 开发环境设置
 
 ## 最后
 

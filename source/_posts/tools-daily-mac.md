@@ -164,6 +164,7 @@ brew outdated // 看一下哪些软件可以升级
 brew info xxx // 查看某个软件信息
 brew cask info xxx // 查看某个软件信息
 brew unlink vim
+brew link macvim
 ```
 
 更多命令可以通过`man brew`查看：
@@ -272,7 +273,7 @@ tracker 列表：
 
 - [Dozer](https://github.com/Mortennn/Dozer) 免费开源，`brew cask install dozer`，足够用了，推荐
 - [vanilla](https://matthewpalmer.net/vanilla/) 免费，按住 Command 键，拖动顶部状态栏图标归档之后，就会隐藏图标了。
-- Bartender：一款非常实用的 Menubar 菜单栏管理工具，付费的
+- [Bartender](https://www.macbartender.com/)：一款非常实用的 Menubar 菜单栏管理工具，付费的
 
 ### CatchMouse
 
@@ -286,6 +287,10 @@ Mac双屏时，通过快捷键快速切换到另外一屏。
 在使用一些软件时，长按 `Command` 按键，会出现快捷键菜单
 
 - [官宣-cheatsheet](https://www.mediaatelier.com/CheatSheet/)
+
+### [Clipy](https://github.com/Clipy/Clipy)
+
+Github 上面开源免费的一款剪贴板软件，简单好用！关键的是还免费，so hacker~
 
 ### Downie
 
