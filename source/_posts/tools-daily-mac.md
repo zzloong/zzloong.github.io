@@ -233,10 +233,23 @@ brew cask install qlcolorcode \
 - quicklookapk 预览Android APK文件
 - betterzip 查看Zip压缩文件的信息以及文件目录
 
-安装 Git 工具：
+### 安装一些有用的工具（包含开发工具）
 
 ```shell
+# 免密工具
+brew install ssh-copy-id
+# 安装 Git 工具
 brew install git-extras
+# 代码统计工具
+brew install cloc
+# 连接虚拟机工具
+brew install mosh
+# 键盘敲击在屏幕上显示
+brew cask install keycastr
+# 安装字体
+# https://github.com/ryanoasis/nerd-fonts#option-4-homebrew-fonts
+brew tap homebrew/cask-fonts
+brew cask install font-hack-nerd-font
 ```
 
 - [git-extras](https://github.com/tj/git-extras/blob/master/Commands.md) 提供了一些有用和有趣的命令，例如 `git summary`
