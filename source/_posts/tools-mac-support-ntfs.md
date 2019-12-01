@@ -92,4 +92,4 @@ sudo ln -s /Volumes/Seagate翔 ~/Desktop/Seagate翔
 
 ## 最后
 
-- 本文地址 [Mac 免费支持 NTFS 格式的移动硬盘/U盘](https://michael728.github.io/2019/11/14/tools-mac-support-ntfs/)
+- 本文地址 [Mac 免费支持 Windows 可用的移动硬盘/U盘](https://michael728.github.io/2019/11/14/tools-mac-support-ntfs/)

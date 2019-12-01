@@ -59,8 +59,23 @@ source ~/.zshrc
     sslVerify = false
 ```
 
+还有一种方法，只给部分域名配置代理，这样可以避免克隆国内仓库时，速度不会受到影响：
+
+```
+git config --global http.https://github.com.proxy socks5://127.0.0.1:1087
+git config --global https.https://github.com.proxy socks5://127.0.0.1:1087
+```
+
+取消 Git 代理设置：
+
+```
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
+
 ## 参考
 
 - [使用代理加速 Mac 终端下载速度](https://jdhao.github.io/2019/10/10/mac_proxy_in_terminal/)
+- [GitHub克隆clone太慢添加代理加速访问](https://blog.gobyte.cn/post/1a22163b.html)
 
 <a href="https://www.vultr.com/?ref=7488919"><img src="https://www.vultr.com/media/banners/banner_728x90.png" width="728" height="90"></a>

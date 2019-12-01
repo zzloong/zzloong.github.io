@@ -455,6 +455,15 @@ VCS -> Import into Version Control -> Share Porject on GitHub
 - [Intellij IDEA神器常用技巧八-2018版本新增快捷键](https://my.oschina.net/Mkeeper/blog/1837432)
 - [挖掘IntelliJ IDEA的调试功能](http://qinghua.github.io/intellij-idea-debug/)
 
+### DEBUG 模式下提前返回，而不终止程序
+
+在 Frames 窗口下，选择当前的 Frame，右击，选择 `Force Return`。
+
+这个功能在调试的时候十分有用，既可节约运行的时间，避免程序重启，又可以避免程序走到后面不想调试的步骤去。
+
+参考：
+- [Intellij IDEA 在DEBUG模式下如何不执行后续代码直接停止程序？](https://segmentfault.com/q/1010000011000876)
+
 ### 查看继承关系
 
 快捷键：`Ctrl+H`
@@ -647,7 +656,14 @@ System.getenv("HOME_TEST");
 
 ### Q3: 找不到提示
 
-- [IntelliJ cannot find any declarations](https://stackoverflow.com/questions/37282285/intellij-cannot-find-any-declarations)
+[IntelliJ cannot find any declarations](https://stackoverflow.com/questions/37282285/intellij-cannot-find-any-declarations)
+
+- Right-click src folder
+- Mark Directory as > Sources Root
+
+### Q4: IDEA编译通过能运行但是出现红色下划线
+
+原因就是可能没有清除原来的历史缓存，导致一些错误，解决方法是：File-Invalidate Caches，然后重启IDEA
 
 ## 最后
 

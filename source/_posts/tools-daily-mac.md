@@ -393,6 +393,10 @@ NightOwl ：一款让 Mojave 深色模式更加智能的神器，可以将当前
 
 - [Snap-Mac平台下的快捷键设置App-在Mac下使用机械键盘！](https://zhuanlan.zhihu.com/p/28602277)
 
+### SketchBook
+
+[SketchBook](https://sketchbook.com/) 画图软件，需要配合手绘板等工具使用。在看教程时，看到老师用这个软件手写一些流程图啥的用到的。
+
 ### Typora
 
 [Typora](https://typora.io/)：Markdown 编辑器。
