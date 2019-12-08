@@ -79,6 +79,8 @@ Github 的合并策略：
 ![](https://ws4.sinaimg.cn/large/006tNc79ly1fzdhzsv3llj30q50oiqex.jpg)
 上面，仅仅是 Github 的 MR 策略，与 Gitlab 的策略也是有所区别的。
 
+> 可以根据软件包发布时是从什么分支上发布的，分为主干开发和分支开发，从主干分支上出包发布，就叫主干开发，从特性分支上出包的，就叫分支开发。
+
 ## 启用 issue 跟踪需求和任务
 仓库的 settings 页面，有启用 issue 的按钮，默认是勾选的，可以 `set up template`，可以选择预设的模板。模板文件是放在仓库的 .github 文件夹中，可以参考 [vue 项目的模板](https://github.com/vuejs/vue/tree/dev/.github)
 

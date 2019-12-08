@@ -256,7 +256,7 @@ File-Invalidate Caches
 
 在菜单栏 `File` 下面有一个选项是 `Power Save Mode`，这个叫「省电模式」，如果不小心勾选了这个选项，那么会关掉代码检查和代码提示等功能，所以需要注意。
 
-## 快捷键
+## 快捷菜单
 
 Mac 的 `Command` 键一般是对应了 Win 的 `Ctrl` 键，在 Win 上，还可以用 `Alt+<n>` 打开相关窗口，在 Mac 上同样要使用 `Command+<n>`。
 
@@ -276,8 +276,8 @@ Mac 的 `Command` 键一般是对应了 Win 的 `Ctrl` 键，在 Win 上，还�
 
 - `alt+↑/↓`: 快速在方法间跳转 ★★
 - `alt+p`：打开Python控制台 ★★★
-- `alt+insert` 生成代码(如get,set方法,构造函数等) 或者右键（Generate），在 mac 上是 `ctrl+n` ★★
-- `alt+enter`万能键，不同场景有不同的表现方式，在还没import(install)模块名上使用会import(install) 相对应的模块，在方法名上使用补注释，在测试中使用帮你补充断言代码……不管出错了不知道怎么办，知道怎么办想这么办时都按下这个快捷键，有惊喜，万能纠错键 ★★★
+- `alt+insert` 生成代码(如 get, set 方法,构造函数等) 或者右键（Generate），在 mac 上是 `ctrl+n` ★★★
+- `alt+enter` 万能键，任何地方都可以尝试使用，不同场景有不同的表现方式，比如自动导包等功能，不管出错了不知道怎么办，知道怎么办想这么办时都按下这个快捷键，有惊喜，万能纠错键 ★★★
 - `alt+f7` 找当前变量、方法在哪些地方用了 `find usaged` ★★★
 - `alt+f12` 打开命令行终端(view->tool window) ★★★
 - `ctrl+space` 万能提示键，基本代码补全
@@ -302,24 +302,26 @@ Mac 的 `Command` 键一般是对应了 Win 的 `Ctrl` 键，在 Win 上，还�
 - 换行
   - `shift+enter` 向下另起一行 ★★★
   - `ctrl+alt+enter` 向上另起一行 ★★★
-- `crtl+q`查询documentation
+- `crtl+q` 查询documentation
 - `ctrl+鼠标点击` 查看内置函数啥的
 - `ctrl+alt+←/→` 快速跳转光标刚刚所在行 ★★★
-- `ctrl+alt+l`，格式化代码 ★★★
-- `ctrl+alt+o` 优化 imports `optimize imports`，优化导入的类和包
+- `ctrl+alt+b` 所有的实现类（Implementation）★★★
+- `ctrl+alt+h` 谁调用了这个方法，查看调用层次（Call Hierarchy）★★
+- `ctrl+alt+L`，格式化代码（Reformat Code） ★★★
+- `ctrl+alt+o` 优化 imports `Optimize Imports`，优化导入的类和包 ★
 - `ctrl+shift+enter` 补全语句，`complete current statement` 不管光标是不是在行尾，可以补全必要的字符，比如行尾的分号 ★★
 - `ctrl+shift+b` 查看接口中方法的实现方法；
 - `ctrl+shift+u`：大小写转换，在 `Edit->Toggle Case` 中能看到选项 ★
 - `ctrl+shift+v`：从最近的缓冲区粘贴
 - `ctrl+shift+backspace` 快速跳转到最后修改的地方 ★★★
 - `ctrl+shift+v` 在 Pycharm 中，访问历史粘贴板 ★★
-- `ctrl+shift+/-` ：代码块折叠★
-- `ctrl+alt+shit+j`：多目标选择选择的词，或者用`alt+鼠标点击`也可以实现效果，`Select All occurrences`★★
-- `ctrl+alt+shit+t`：重构利器！★★★
-- `shift+f6`：文件重命名★★★
+- `ctrl+shift+/-` 代码块折叠★
+- `ctrl+alt+shit+j` 多目标选择选择的词，或者用`alt+鼠标点击`也可以实现效果，`Select All occurrences`★★
+- `ctrl+alt+shit+t` 重构利器
+- `shift+f6`：文件重命名 ★★★
 - `shift+f2`：跳转到上一个高亮错误 或 警告位置
 - 搜索
-  - `shift` 双击，搜索一切，不管是IDE功能、文件、方法、变量，它都能搜索，使用频率很高的一个快捷键,！可以按最近使用过的文件名, 类名, 方法名等去搜索定位! 注意，这个搜索不支持搜索关键字的内容。★★★
+  - `shift` 双击，搜索一切，不管是 IDE 功能、快捷键、文件、方法、变量，它都能搜索，使用频率很高的一个快捷键！可以按最近使用过的文件名, 类名, 方法名等去搜索定位! ★★★
   - `ctrl＋n`：快速按照名字搜索类
   - `ctrl＋shift＋n`：快速搜索文件
   - `ctrl+shift+f`: 在整个项目中 或 指定目录里 进行全局搜索 ★★★
@@ -334,6 +336,12 @@ Mac 的 `Command` 键一般是对应了 Win 的 `Ctrl` 键，在 Win 上，还�
 万能接错/生成返回值变量。创建对象时，可以先 `new` 后`alter+enter`，IDEA 会自动补全，直接让你输入对象名：
 
 ![](https://ws1.sinaimg.cn/large/6d9475f6ly1fyq399jc4eg20lm06xdy8.gif)
+
+### 其他
+
+- `scroll from source`，点击这个按钮，可以快速跳转到打开的文件所在的文件夹中，非常有用提高效率的按钮 ★★★
+
+![](https://gitee.com/michael_xiang/images/raw/master/VB32tM.png)
 
 ## 模板
 
@@ -417,6 +425,15 @@ VCS -> Import into Version Control -> Share Porject on GitHub
 
 会将代码仓库提交到 GitHub 上，新建一个仓库
 
+### 使用 Git 工具
+
+- 查找背锅侠：Annotate/Blame
+- 选中 Annotate 的 Commit，点击 Show Diff 观察差异（`Ctrl+D`）
+- 查看当前文件的历史版本：工具栏有个时间标志，Show History，查看最近是否有人修改过，通过 `Ctrl+D` 查看对比——`Alt+H`
+- 高级筛选方式查找 commit 记录
+- 显示差异： Show Diff —— `Ctrl+D`
+- 右键菜单中有一个 Open On Github，跳转到正在浏览的行所在的文件，方便分享讨论具体问题
+
 ## 调试
 
 ![](https://ws4.sinaimg.cn/large/006tNbRwly1fyq27kq7glj30hs0950th.jpg)
@@ -430,6 +447,23 @@ VCS -> Import into Version Control -> Share Porject on GitHub
 7. `stop` Command+F2 停止
 8. `view breakpoints` 查看所有断点，可以在运行时选择哪些断点暂停略过；
 9. `mute breakpoints` 所有断点失效/生效的切换；
+
+### 调试器是什么
+
+debugger 调试器，“除虫器”，调试器是用来告诉 JVM，请你在具体的哪个断点处停下来
+
+- 堆 Heap: 所有对象都在堆上分配
+- 栈 Stack：先进后出 LIFO 后进先出，`Last In First Out`
+- 线程：每个线程会有一个方法栈，出栈，后进先出，你自己的是 main 线程，观察这个方法栈即可；
+- 栈帧 Stack Frame：方法栈中的每一个小方块，局部变量仅存在于方法的栈帧中，当方法运行完，栈帧就会被丢弃
+
+
+可以修改执行结果，修改执行流程中的值：
+- 右击调试器中的变量，`View/Edit Text`
+- 右击调试器中的变量，`Set Value`
+
+跳转到源代码
+- 右击调试器中的变量，`Jump to Type Source`
 
 ### 条件断点
 
