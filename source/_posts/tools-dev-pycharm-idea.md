@@ -101,7 +101,7 @@ Python 头信息设置：
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # @Date    : ${DATE} ${TIME}
-# @Author  : Michael
+# @Author  : ${USER}
 # @File    : ${NAME}.py
 # @Software: ${PRODUCT_NAME}
 ```
@@ -112,14 +112,11 @@ Java 头信息设置：
 /**
  * description: 
  * 
- * @author Michael
+ * @author ${USER}
  * @date ${DATE}
  * @time ${TIME}
  */
 ```
-
-- [PyCharm创建.py自动添加文件头注释](https://blog.csdn.net/qq_36482772/article/details/67218214)
-- [IntelliJ IDEA文件头注释模板](https://blog.csdn.net/totally123/article/details/53466011)
 
 ### 自动编译
 
@@ -127,9 +124,9 @@ Java 头信息设置：
 
 ![](https://gitee.com/michael_xiang/images/raw/master/idea-compile.jpg)
 
-### import 每个类而非整个包
+### import 每个类而非整个包，少用通配符
 
-settings—Editor—Colors Style—Java—Imports—Class count to use import with ‘*’ 设置大一点。
+`settings > Editor > Colors Style > Java > Imports > Class count to use import with ‘*’` 设置大一点。
 
 当 Java 类中 import 某个包下的类超过这里设置的个数，就会换成用星号来代替，比如 `import java.util.*`
 
@@ -653,7 +650,7 @@ System.getenv("HOME_TEST");
 - Browse repositories：弹出插键仓库中所有插键列表供下载安装。
 - Install plugin from disk：浏览本地的插键文件进行安装。
 
-推荐插键：
+实用插键：
 
 - BashSupport
 - [Dash](https://zealdocs.org/): `ctrl+shift+h`
@@ -663,39 +660,37 @@ System.getenv("HOME_TEST");
 - Lombok plugin
 - [FindBugs-IDEA](https://plugins.jetbrains.com/plugin/3847-findbugs-idea) 代码 Bug 检查
 - Mongo
-- [Material Theme](https://plugins.jetbrains.com/plugin/8006-material-theme-ui) 主题插键
 - CamelCase 将不是驼峰格式的名称，快速转成驼峰格式，安装好后，选中要修改的名称，按快捷键 `shift+alt+u`。
-- Rainbow Brackets 彩虹括号
+- Rainbow Brackets 彩虹括号，这个插件方便查看括号的匹配
 - [Alibaba Java Coding Guidelines](https://www.cnblogs.com/jajian/p/8081658.html)
 - Maven Helper：安装之后，直接打开pom文件，即可查看依赖数，还能自动分析是否存在 jar 包冲突，查看[idea 中解决maven 包冲突的问题](https://blog.csdn.net/sunpeng_sp/article/details/77393348)
+- VisualVM Launcher 对于经常实用 visualvm 进行性能调优和 debug 的场景，这个快速启动 visualvm 并打开正在调试的应用的按钮。
 - String Manipulation：字符串转换工具，安装好插件后，选中需要处理的内容后，按快捷键 `Alt+m`，即可弹出工具功能列表
+
+主题插件：
+- Dracula Theme 吸血鬼主题插件，各 IDE 都有适配的主题，非常推荐！
+- [Material Theme](https://plugins.jetbrains.com/plugin/8006-material-theme-ui) 主题插键
+
+折腾插件：
+- IDE Feature Trainer 安装之后，可以在 `View > Tool Windows > Learn` 里打开练习页面，了解 IDEA 的快捷键。
+- CodeGlance 可以在编辑区的右边增加一个类似 VSCode 的缩略图的效果，拖动比较方便。
 - AceJump：允许您快速将光标导航到编辑器中可见的任何位置，只需点击`ctrl +;`，然后输入一个你想要跳转到的字符，之后键入匹配的字符就跳转到你想要挑战的地方了
 - activate-power-mode：写代码的时候，就会附加一些狂拽炫酷屌炸天的效果
 
-参考
-
-- [hollis-IntelliJ IDEA 18 周岁，吐血推进珍藏已久的必装插件](https://www.hollischuang.com/archives/3220)
-
 ## FAQ
 
-### Q1: intellj Idea中给新建的项目导入jar包？
+### Q: intellj Idea中给新建的项目导入jar包？
 
 - [推荐intellij idea Project Structure 讲解](https://www.cnblogs.com/zadomn0920/p/6196962.html)
 
-### Q2: IDEA如何快速生成Get/Set方法？
-
-- [Intellij IDEA 生成Get/Set方法快捷键](http://blog.csdn.net/qq_34273222/article/details/60577679)
-
-`Alt + Insert` 组合，可唤出选择面板
-
-### Q3: 找不到提示
+### Q: 找不到提示
 
 [IntelliJ cannot find any declarations](https://stackoverflow.com/questions/37282285/intellij-cannot-find-any-declarations)
 
 - Right-click src folder
 - Mark Directory as > Sources Root
 
-### Q4: IDEA编译通过能运行但是出现红色下划线
+### Q: IDEA编译通过能运行但是出现红色下划线
 
 原因就是可能没有清除原来的历史缓存，导致一些错误，解决方法是：File-Invalidate Caches，然后重启IDEA
 
