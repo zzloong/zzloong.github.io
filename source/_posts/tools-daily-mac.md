@@ -244,12 +244,28 @@ brew install git-extras
 brew install cloc
 # 连接虚拟机工具
 brew install mosh
+# 多终端会话软件 tmux
+brw install tmux
+# 视频下载工具 https://github.com/ytdl-org/youtube-dl
+brew install youtube-dl
+# 纠正输入的命名 https://github.com/nvbn/thefuck
+brew install thefuck
+# HTTP 请求工具 https://github.com/jakubroztocil/httpie
+brew install httpie
+# 全文搜索工具，find 命令对全文搜索有心无力
+brew install ack
 # 键盘敲击在屏幕上显示
 brew cask install keycastr
 # 安装字体
 # https://github.com/ryanoasis/nerd-fonts#option-4-homebrew-fonts
 brew tap homebrew/cask-fonts
 brew cask install font-hack-nerd-font
+# 安装 docker https://docs.docker.com/docker-for-mac/
+brew cask install docker
+# 下载工具 qBittorrent增强版 https://github.com/c0re100/qBittorrent-Enhanced-Edition
+brew cask install c0re100-qbittorrent
+# 终端
+brew cask install iTerm2
 ```
 
 - [git-extras](https://github.com/tj/git-extras/blob/master/Commands.md) 提供了一些有用和有趣的命令，例如 `git summary`

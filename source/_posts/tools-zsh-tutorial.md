@@ -87,7 +87,11 @@ cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 
 如何修改zsh主题呢？
 
-编辑`~/.zshrc`文件，将`ZSH_THEME="candy"`,即将主题修改为`candy`。我采用的`steeef`。
+编辑`~/.zshrc`文件，将`ZSH_THEME="candy"`,即将主题修改为`candy`。我采用的`ys`。
+
+其他好玩的主题：
+- [romkatv/powerlevel10k](https://github.com/romkatv/powerlevel10k#oh-my-zsh) 比较强大酷炫的主题，使用方法看 README
+
 
 ### zsh扩展
 

@@ -76,7 +76,7 @@ cp -r src/* dest
 cp -nrf a.txt b.txt
 ```
 
-系统默认给`cp`命令设置了别名`cp -i`，所以，复制时有冲突需要确认，使用如下方式即可不改变别名，也实现默认覆盖：
+系统默认给`cp`命令设置了别名`cp -i`，所以，复制时有冲突需要确认，使用如下方式实现默认覆盖：
 ```
 /bin/cp xx yy
 ```
@@ -86,6 +86,35 @@ cp -nrf a.txt b.txt
 - [Linux命令详解之—cp命令](https://www.linuxdaxue.com/linux-command-intro-cp.html)
 - [Linux命令命令大全-cp命令](http://man.linuxde.net/cp)
 - [Linux 使用 cp 命令强制覆盖功能](https://blog.csdn.net/xinluke/article/details/52229431)
+
+## curl
+
+发出 Get 请求，服务器返回的内容会在命令行输出：
+
+```
+curl https://www.example.com
+```
+
+- `-o` 将服务器的回应保存成文件，等同于 wget 命令；
+- `-O` 将服务器的回应保存成文件，并将 URL 的最后部分当作文件名；
+- `-i` 显示 HTTP Response 的头信息，连同网页代码一起；
+- `-A` 指定 User-Agent；
+- `-H` 添加 HTTP 请求的标头；
+- `-d` 发送 POST 请求的数据体；
+- `-F` 用来向服务器上传二进制文件；
+- `-k` 指定跳过 SSL 检测；
+- `-u` 指定服务器认证的用户名和密码；
+- `-x` 指定 HTTP 请求的代理；
+- `-X` 支持其他动词，比如 POST，发送表单信息，`curl -X POST --data "data=xxx" example.com/form.cgi`
+- `-v` 显示一次 HTTP 通信的整个过程，包括端口连接和 HTTP Request 头信息；
+
+Tips:
+- FireFox/Chrome的Dev Tools可以直接把请求复制成 curl 的命令，然后可以直接在 shell 里运行
+- Postman 也可以把保存的请求复制成 curl 命令，方便在服务器中调试；
+
+参考：
+- [阮一峰 - curl 的用法指南](http://www.ruanyifeng.com/blog/2019/09/curl-reference.html)
+- [阮一峰 - curl网站开发指南](http://www.ruanyifeng.com/blog/2011/09/curl.html)
 
 ## crontab
 
