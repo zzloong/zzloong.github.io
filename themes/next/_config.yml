@@ -653,7 +653,7 @@ calendar:
 
 # Disqus
 disqus:
-  enable: enable
+  enable: false
   shortname: michaelxiang
   count: false
   lazyload: true
@@ -699,7 +699,7 @@ valine:
 
 # LiveRe comments system
 # You can get your uid from https://livere.com/insight/myCode (General web site)
-#livere_uid: your uid
+livere_uid: MTAyMC8yODgyMC81Mzkw"
 
 # Gitment
 # Introduction: https://github.com/imsun/gitment
