@@ -437,6 +437,18 @@ echo -e "\033[41;37mMichael翔\033[0m"
 
 - [shell脚本中echo显示内容带颜色](https://www.cnblogs.com/lr-ting/archive/2013/02/28/2936792.html)
 
+## 切割大文件与合并压缩文件
+
+```shell
+# 切割
+split -b 90m -d janusgraph-0.4.0-hadoop2.zip janusgraph-0.4.0-hadoop2-split.
+split -b 90m -d jdk-8u232-linux-x64.tar.gz jdk-8u232-linux-x64-split.
+
+# 合并
+cat janusgraph-0.4.0-hadoop2-split* >> janusgraph-0.4.0-hadoop2.zip
+cat jdk-8u232-linux-x64-split* >> jdk-8u232-linux-x64.tar.gz
+```
+
 ## FAQ
 
 ### Q:Linux各目录的作用

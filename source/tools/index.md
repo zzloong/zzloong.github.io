@@ -96,6 +96,7 @@ keywords:
 - [API-POI搜索服务](http://jwd.funnyapi.com/#/index) 经纬度行政区域查询 任意提交一个经纬度坐标和一个关键词（比如美食）获得周边相关服务的位置和简介信息
 - [JianshuRSS](http://jianshu.milkythinking.com/) 添加简书专题、文集或者作者的订阅，发现自[一个生物医学IT者的博客](http://www.bioinit.com/post/rss-tutorial)
 - [pythontutor](http://www.pythontutor.com/) 可以看到 Python 执行的步骤信息
+- [Codeimg.io](https://codeimg.io/) 帮你把源代码转换成漂亮图片格式的在线工具，以便于在社交网络分享 
 
 ### Linux
 

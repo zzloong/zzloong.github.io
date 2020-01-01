@@ -127,7 +127,7 @@ lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen
 ## 探秘 .git 目录
 `.git` 裸仓库文件夹，反映了 Git 良好的文件存储机制。
 
-- `HEAD` 文件，指向当前所在的分支，表示一个「引用」。例如当前在 develop 分支，HEAD 内容就是 `ref: refs/heads/develop`
+- `HEAD` 文件，指向**当前所在的分支**，类似一个活动的指针，表示一个「引用」。例如当前在 `develop` 分支，HEAD 内容就是 `ref: refs/heads/develop`
 - `config` 文件，是本地仓库的配置文件，`git config --local --list`
 - `refs` 文件夹，包含了 `heads` 和 `tags` 文件夹。`heads` 归档的分支，`tags` 归档的标签，也叫做「里程碑」。
   - `heads` 文件夹下有多个文件，每个文件和仓库本地存在的分支名一致，文件内容是 commit id。文件当中存放的其实是这个分支的指针指向的 commit id。`git branch -av` 可以看到分支信息和 commit id。它是个 `commit` 类型的对象。

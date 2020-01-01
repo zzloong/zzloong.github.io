@@ -205,6 +205,16 @@ git clone file:///Users/michael/Code/Git-Geek/666-backup/zhineng.git git_learngi
 
 - [从一个git仓库迁移到另外一个git仓库](https://blog.csdn.net/samxx8/article/details/72329002)
 
+## 本地代码库关联到另外的一个代码库
+
+```shell
+cd existing_repo
+git remote rename origin old-origin
+git remote add origin ssh://git@github.com:2222/Michael/my-config-files.git
+git push -u origin --all
+git push -u origin --tags 
+```
+
 ## Git FAQ
 ### git merge和git rebase的区别
 rebase 跟 merge 的区别你们可以理解成有两个书架，你需要把两个书架的书整理到一起去，第一种做法是 merge ，比较粗鲁暴力，就直接腾出一块地方把另一个书架的书全部放进去，虽然暴力，但是这种做法你可以知道哪些书是来自另一个书架的；第二种做法就是rebase ，他会把两个书架的书先进行比较，按照购书的时间来给他重新排序，然后重新放置好，这样做的好处就是合并之后的书架看起来很有逻辑，但是你很难清晰的知道哪些书来自哪个书架的。

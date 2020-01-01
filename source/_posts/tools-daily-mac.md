@@ -275,6 +275,10 @@ NightOwl ：一款让 Mojave 深色模式更加智能的神器，可以将当前
 
 [SketchBook](https://sketchbook.com/) 画图软件，需要配合手绘板等工具使用。在看教程时，看到老师用这个软件手写一些流程图啥的用到的。
 
+### The Unarchiver
+
+解压软件，在 App Store 中即可下载。
+
 ### Typora
 
 [Typora](https://typora.io/)：Markdown 编辑器。
