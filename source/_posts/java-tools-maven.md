@@ -9,6 +9,8 @@ categories:
 ---
 
 
+![Maven](https://gitee.com/michael_xiang/images/raw/master/dLVeb2.jpg)
+
 ## 简介
 
 Maven是Java项目构建工具，可以用于管理Java依赖，还可以用于编译、打包以及发布Java项目，类似于JavaScript生态系统中的NPM。
