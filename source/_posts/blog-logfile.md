@@ -8,6 +8,8 @@ top: false
 thumbnail: https://images.pexels.com/photos/313773/pexels-photo-313773.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb
 ---
 
+![Maven](https://gitee.com/michael_xiang/images/raw/master/dLVeb2.jpg)
+
 ## 建站笔记
 
 - [Hexo 搭建 Blog 精简笔记](https://www.cnblogs.com/michael-xiang/p/10464518.html)
@@ -15,6 +17,10 @@ thumbnail: https://images.pexels.com/photos/313773/pexels-photo-313773.jpeg?w=12
 ## 站点管理
 
 - [百度统计](https://tongji.baidu.com/web/18360470/overview/index?siteId=12775404&fromMenu=top)
+
+## 资源索引
+
+- [那些年我剁手的极客时间课程](https://michael728.github.io/2019/09/01/resource-it-geektime/) 有极客时间课程返利链接
 
 ## 建站日志
 
