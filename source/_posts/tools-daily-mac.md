@@ -11,7 +11,7 @@ keywords:
   - tutorial
 ---
 
-![](https://ws1.sinaimg.cn/large/6d9475f6ly1fxzdl7bi66j20hs0bu0tc.jpg)
+![](https://gitee.com/michael_xiang/images/raw/master/computer-mac.jpg)
 
 今年终于在推出 2018 款 MBP 时，看到升级了 CPU，我就果断下手「拔草」。本文记录使用 Mac 的一些配置，会长期更新。
 
@@ -32,12 +32,9 @@ keywords:
 - Ctrl 多用于命令行快捷键，Command 多用于图形化快捷键
 - 选中桌面的所有需归档资料，`Command+Sshift+n`，会将文件归档到一个文件夹下
 - 调度中心设置：右 `control`，显示桌面
-
-![](https://ws4.sinaimg.cn/large/006tNbRwly1fx3vz0aqxxj30ib0e3ac9.jpg)
-
 - 触发角
 
-![](https://ws3.sinaimg.cn/large/006tNbRwly1fx3w2dz0uxj30ha05n42k.jpg)
+![](https://gitee.com/michael_xiang/images/raw/master/YtXi85.png)
 
 - 辅助功能-鼠标与控制板-触控板选项-启用拖移
 - `Option+Command+v` 类似剪切的功能，就是粘贴后，原来文件会被剪切过来。复制文件后，除了用快捷键，还可以在文件夹空白处右键，然后再按住 `「⌥」`，原本的「粘贴项目」就变成了「将项目移动到这里」
@@ -59,8 +56,6 @@ keywords:
   - `command+shift+D` 桌面
   - `command+shift+A` 程序
 
-
-
 ### 终端快捷键
 
 - `Ctrl + A`：移动到行首
@@ -81,14 +76,12 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 打开「安全性与隐私」，发现久违的「任何来源」回来了。
 
-![](https://ws4.sinaimg.cn/large/006tNbRwly1fxza98jbbyj30id0fkgn2.jpg)
-
 ### 改建
 
 为了将外置键盘和Mac键盘的option键、command键保持一致的顺序，做如下修改：
 设置-键盘-修饰键-选择键盘（选择外设键盘）-调整顺序
 
-![](https://ws3.sinaimg.cn/large/006tNbRwly1fx3w3kaveuj30bh07g432.jpg)
+![](https://gitee.com/michael_xiang/images/raw/master/09O85q.png)
 
 - [Mac系统切换机械键盘win和alt键](https://www.jianshu.com/p/66922b2bc8c3)
 
@@ -123,11 +116,12 @@ Shift 键类似于可视模式，比如在某个位置点击光标并按住 Shif
 
 ### Tab 键适用于所有控制
 
-全键盘控制改为「所有控制」
+偏好设置->键盘->快捷键 全键盘控制改为「所有控制」
 
-![](https://ws3.sinaimg.cn/large/006tNc79ly1g1wrc2k3asj30ie0frgnj.jpg)
+![](https://gitee.com/michael_xiang/images/raw/master/xSF60o.png)
 
 ### 其他
+
 - [如何更改 Mac 帐户和个人文件夹的名称](https://mp.weixin.qq.com/s?__biz=MzAxNzcwMTA4Ng==&mid=2247487924&idx=1&sn=af93e65636277a8905a0389cefca2c7f&chksm=9be0d005ac9759134369439e40684ed8b41dfa81bd9a47e82bcd7568b72629dcb15a02df5f4f&mpshare=1&scene=1&srcid=#rd)
 - [Mac修改账户名称和个人目录后，进不去系统怎么办？](https://mp.weixin.qq.com/s?__biz=MzAxNzcwMTA4Ng==&mid=2247487924&idx=2&sn=f4af05656734f3743bc2861c56db501b&chksm=9be0d005ac9759134b4d6b103fb9402af27e592fa6c41dbba77491e1fc9d62b0388bb99b262d&mpshare=1&scene=1&srcid=#rd)
 

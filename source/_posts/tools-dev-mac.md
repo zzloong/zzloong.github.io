@@ -11,7 +11,7 @@ keywords:
   - tutorial
 ---
 
-![](https://ws1.sinaimg.cn/large/6d9475f6ly1g225ynphtlj20hs0bt75w.jpg)
+![](https://gitee.com/michael_xiang/images/raw/master/computer-mac.jpg)
 
 将 Mac 日常使用的软件和开发软件区分开，将之前写的 Mac 配置的文章分成了两篇：
 
