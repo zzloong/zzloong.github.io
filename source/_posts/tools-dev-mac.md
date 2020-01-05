@@ -233,6 +233,18 @@ brew cask install iTerm2
 - [Brew安装快速预览插件](https://chad-it.github.io/2018/06/26/Brew%E5%AE%89%E8%A3%85%E5%BF%AB%E9%80%9F%E9%A2%84%E8%A7%88%E6%8F%92%E4%BB%B6/)
 - [sindresorhus/quick-look-plugins](https://github.com/sindresorhus/quick-look-plugins)
 
+## 安装 JDK
+
+参考：
+- [CSDN-MAC安装JDK及环境变量配置](https://blog.csdn.net/vvv_110/article/details/72897142)
+- [Java升级那么快，多个版本如何灵活切换和管理？](https://mp.weixin.qq.com/s?__biz=Mzg3NjIxMjA1Ng==&mid=2247484027&idx=1&sn=38d690c414e3ed299175d85334db08a6&chksm=cf34f84cf843715a29f376bd684cff9ffdf4a6494072f4b3b3dec69e2eff83c96474330b30fb&mpshare=1&scene=1&srcid=&sharer_sharetime=1574228561311&sharer_shareid=ae8eb1508a08c1b134df82bb484ea38d#rd) Jabba jenv sdkman 提供了切换功能
+
+在 Mac 上默认的安装位置在：
+
+```shell
+ls -1 /Library/Java/JavaVirtualMachines
+```
+
 ## [alfred](https://www.alfredapp.com/)
 
 - 唤起快捷键设为：command双击

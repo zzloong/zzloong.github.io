@@ -449,6 +449,40 @@ cat janusgraph-0.4.0-hadoop2-split* >> janusgraph-0.4.0-hadoop2.zip
 cat jdk-8u232-linux-x64-split* >> jdk-8u232-linux-x64.tar.gz
 ```
 
+## 修改文件句柄数
+
+有时候需要修改文件的最大打开数量
+
+查看目前的限制：
+
+```shell
+ulimit -n
+```
+
+方法一：
+
+```shell
+ulimit -n 65535
+```
+
+这种方法仅针对本次开机有效，重启之后就无效了。
+
+方法二：
+
+打开 `/etc/security/limits.conf`，添加如下内容到文件最后：
+
+```shell
+* soft nofile 65535
+* hard nofile 65535
+* soft nproc 65535
+* hard nproc 65535
+```
+
+- `*`      代表针对所有用户 
+- `noproc` 是代表最大进程数 
+- `nofile` 是代表最大文件打开数
+- soft 和 hard 一起设置才好使
+
 ## FAQ
 
 ### Q:Linux各目录的作用

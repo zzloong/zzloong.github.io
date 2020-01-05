@@ -94,13 +94,15 @@ public class HelloWorld {
 
 ## Profile 配置文件
 
-官方文档中有关于 [Profile](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config-profile-specific-properties) 的描述。 `Prorile` 有 `轮廓、外形、简况`的含义，这里我就把它理解为「配置描述」好了。
+官方文档中有关于 [Profile](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-external-config-profile-specific-properties) 的描述。 `Prorile` 有 `轮廓、外形、简况`的含义，这里我就把它理解为「配置描述」好了。`src/main/resources` 目录是 Spring Boot 的配置目录，Spring Boot 的默认配置文件位置为：`src/main/resources/application.properties`。
 
 在实际项目中，生产、beta 不同环境将采用不同的配置，比如数据库配置等等。这时候，我们只需要创建多分 Profile 文件即可。
 
 除了 `application.properties` 文件，配置文件还可以采用下面的命名规则`application-{profile}.properties`。Environment 中具有一组可选的值。如果没有设置需要激活什么配置文件，就默认激活 `default` 配置，即 `application-default.properties`。
 
-指定的配置文件都是从同一个位置被激活，即从标准的配置文件 `application.properties`。
+{% note info%}
+指定的配置文件都是从同一个位置被激活，即从标准的配置文件 `application.properties`，这一点要记住！
+{% endnote %}
 
 如果指定了多个配置文件，采取 `last-win` 策略，即「最后获胜侧率」。这句话意思是什么呢，就是说，在你的 `application.properties` 中如果指定了激活好几个配置文件，那么，最后指定的那个配置文件才会生效。
 
@@ -117,6 +119,8 @@ server.port=8081
 ```shell
 #server.port=8082
 ```
+
+> Spring Boot 的配置文件除了可以使用 properties 文件之外，还支持的 YAML 文件
 
 ### 通过 application.prperties 指定 Profile
 
@@ -136,7 +140,9 @@ spring.profiles.active=dev
 
 除了上面在 `application.properties` 指定激活的配置外，还可以在 Envirionment 中设置相关环境变量激活：
 
-![environment](https://ws1.sinaimg.cn/large/6d9475f6ly1g4rkbpct96j20wv0dbdie.jpg)
+```shell
+spring.profiles.active=dev
+```
 
 经过测试，我在 Environment 中设置环境变量激活了 `Dev` 的配置，然后在 `application.properties` 激活的是 `Prod` 的配置，最终控制台日志显示， `Dev` 配置被激活。
 
@@ -148,7 +154,9 @@ spring.profiles.active=dev
 java -jar spring-boot-hello-world-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev
 ```
 
-补充一点，我们有时候利用 `java` 方式启动时，会带参数 `-D`，这个怎么理解呢？
+在命令行方式启动 Spring Boot 应用时，连续的两个减号 `--` 就是对 `application.properties` 中的属性值进行赋值的标识。通过命令行来修改属性值是Spring Boot 非常重要的一个特性，通过此特性，理论上已经使得我们应用的属性在启动前是可变的，所以其中端口号也好、数据库连接也好，都是可以在应用启动时发生改变。
+
+补充：我们有时候利用 `java` 方式启动时，会带参数 `-D`，这个怎么理解呢？
 
 > use -D to define system properties
 
@@ -156,8 +164,9 @@ java -jar spring-boot-hello-world-0.0.1-SNAPSHOT.jar --spring.profiles.active=de
 
 - [java程序启动参数-D详解](https://blog.csdn.net/fenglongmiao/article/details/80511512)
 - [Why do JVM arguments start with “-D”?](https://stackoverflow.com/questions/44745261/why-do-jvm-arguments-start-with-d)
+- [Spring Boot 配置文件中的花样，看这一篇足矣！](https://mp.weixin.qq.com/s?__biz=MzAxODcyNjEzNQ==&mid=2247487568&idx=1&sn=301a4e37018745ce65962fea59d209dd&chksm=9bd0bdc8aca734dec72d546ca1c7f4e6d919524db11a2ac8890a460fc09d7538fdcc15da4f4d&mpshare=1&scene=1&srcid=0611imP7tqE7INs3wcEcTS3A#rd)
 
-### 自定义属性
+### 自定义属性参数
 
 我们可以在 Profile 中指定一些 `propety` 的值，在程序中可以获取到。
 
@@ -276,12 +285,12 @@ Spring Boot 提供了很多”开箱即用“的依赖模块，都是以 `spring
 
 ### SpringBoot 目录结构
 
-目录结构理解
+常用目录结构理解：
 
-- controller：控制层，前端控制器，负责页面访问控制，主要是对外提供的API接口，用户使用服务时的入口处，可以结合swagger生成对应的API文档
-- service：业务层，逻辑层，主要是业务类代码，归档了前端控制器中相关服务的操作方法接口类，该文件夹下包含子impl文件夹，归档对应的实现接口
+- controller：控制层，前端控制器，负责页面访问控制，controller 是用来接收页面参数，并且调用逻辑处理，最后组织页面响应的地方。我们不可以在controller 进行逻辑处理，controller 只应该负责用户 API 入口和响应的处理。主要是对外提供的 API 接口，用户使用服务时的入口处，可以结合 swagger 生成对应的 API 文档
+- service：业务层，逻辑层，主要是业务类代码，归档了前端控制器中相关服务的操作方法接口类，该文件夹下包含子 impl 文件夹，归档对应的实现接口
 - domain：实体类，归档对应的实体（Entity），一个实体尝尝就对应着数据库中一张表
-- dao：数据访问层，实体类对应的数据库操作接口类，它与数据库进行交互，封装了对数据库的CURD操作
+- dao：数据访问层，实体类对应的数据库操作接口类，它与数据库进行交互，封装了对数据库的 CURD 操作
 - config：配置信息类
 - utils：工具类
 - constant：常量接口类

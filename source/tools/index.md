@@ -225,12 +225,16 @@ keywords:
 - [扫地僧的橱柜](http://ebooksplan.club/) 「每周一书」推荐的书籍评分也都不错
 - [SaltTiger](https://salttiger.com/archives/) 主要分享一些英文的 IT 电子书
 - [鸠摩-电子书搜索](https://www.jiumodiary.com/) 推荐，电子书搜索引擎,可以按照mobi, epub, pdf等格式分类
+- [虫部落 搜书](https://ebook.chongbuluo.com/)
+- [周读](http://www.ireadweek.com/) 中文电子书分享
 - [熊猫搜书](https://ebook.huzerui.com/#/) 电子书搜索
+- [三秋书屋](https://www.d4j.cn/)
 - [博客-我的小书屋](http://mebook.cc/)
 - [Kindle伴侣](http://kindlefere.com/)
 - [Library Genesis1M](http://gen.lib.rus.ec/)
 - [oreilly](https://www.oreilly.com.cn/ideas/)
 - [pythonbooks](https://pythonbooks.revolunet.com/) Python 英文技术图书
+- [ZLibray](https://b-ok.cc/) 英文书籍搜索
 - [Book see](http://en.booksee.org/)
 - [4FREE-EBOOKS Category Ebook search](http://4free-ebooks.com/)
 - [allitebooks](http://www.allitebooks.org/) 英文技术书籍下载

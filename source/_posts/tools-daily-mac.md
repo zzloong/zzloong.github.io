@@ -152,6 +152,7 @@ Shift 键类似于可视模式，比如在某个位置点击光标并按住 Shif
 ### 截图
 
 - [腾讯-截图](https://jietu.qq.com/)
+- [snipaste](https://zh.snipaste.com/) 强烈推荐，Windows 平台也有。F1 截图，F3 贴图
 
 设定了快捷键为 `Ctrl+Shift+a`
 
