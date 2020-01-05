@@ -1,5 +1,5 @@
 ---
-title: 那些做的不错的广告视频
+title: 那些做的不错的短视频
 date: 2018-11-11 18:25:40
 tags: [Video, 广告, 励志]
 categories: Life

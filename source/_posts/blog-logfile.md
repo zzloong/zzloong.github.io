@@ -21,6 +21,9 @@ thumbnail: https://images.pexels.com/photos/313773/pexels-photo-313773.jpeg?w=12
 ## 资源索引
 
 - [那些年我剁手的极客时间课程](https://michael728.github.io/2019/09/01/resource-it-geektime/) 有极客时间课程返利链接
+- [那些做的不错的短视频](https://michael728.github.io/2018/11/11/video-demo/)
+- [那些有趣的博客](https://michael728.github.io/2018/09/16/blog-interesting/)
+- [【总结】写作、阅读、工作等日常习惯](https://michael728.github.io/2018/11/16/habit-writing-reading-working/)
 
 ## 建站日志
 
