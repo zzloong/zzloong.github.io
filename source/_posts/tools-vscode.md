@@ -179,6 +179,7 @@ VS Code扩展商店：https://marketplace.visualstudio.com/vscode
 
 - AutoFileNmae:auto complete file name，自动补全文件的名字
 - [code runner](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner):`ctrl+alt+n`
+- Remote - SSH：远端连接 VM 编辑的利器！
 - Guides:显示代码对其辅助线
 - gitlens:显示代码每一行的最新修改人
 - Beautify:显示js/json/css美化，按F1

@@ -21,6 +21,8 @@ Docker 容器学习笔记系列：
 
 本文就介绍如何利用容器 Docker 来快速搭建开发测试环境。
 
+补充：关于 Mac 上 Docker 的使用，可以阅读 [docker-for-mac](https://docs.docker.com/docker-for-mac/)
+
 <!-- more -->
 
 ## MySQL

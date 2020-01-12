@@ -224,6 +224,8 @@ brew cask install font-hack-nerd-font
 brew cask install docker
 # 下载工具 qBittorrent增强版 https://github.com/c0re100/qBittorrent-Enhanced-Edition
 brew cask install c0re100-qbittorrent
+# vscode
+brew cask install visual-studio-code
 # 终端
 brew cask install iTerm2
 ```
@@ -505,7 +507,9 @@ yum install mosh # centos
 apt-get install mosh # ubuntu
 ```
 
-PS：我用这款工具的主要原因是，在家里我的 Mac 连接虚拟机的速度非常慢，ssh 到虚拟机执行命令非常卡顿，使用 mosh 之后流畅了许多。
+PS：
+- 我用这款工具的主要原因是，在家里我的 Mac 连接虚拟机的速度非常慢，ssh 到虚拟机执行命令非常卡顿，使用 mosh 之后流畅了许多。
+- CentOS 有时候还需要有 epel 源才能安装成功 `yum -y install epel-release`
 
 有时候需要服务器上需要打开防火墙的端口：
 

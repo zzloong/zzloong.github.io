@@ -28,10 +28,10 @@ keywords:
 
 ### 快捷键整理
 
-- `Enter`：选中一个文件 Enter，直接改名
-- Ctrl 多用于命令行快捷键，Command 多用于图形化快捷键
+- `Enter`：选中一个文件按下 `Enter`，直接改名
+- `Ctrl` 多用于命令行快捷键，`Command` 多用于图形化快捷键
 - 选中桌面的所有需归档资料，`Command+Sshift+n`，会将文件归档到一个文件夹下
-- 调度中心设置：右 `control`，显示桌面
+- 调度中心设置：右 `Ctrl`，显示桌面
 - 触发角
 
 ![](https://gitee.com/michael_xiang/images/raw/master/YtXi85.png)
@@ -42,7 +42,7 @@ keywords:
   - `Command+Delete`
   - 工具栏添加垃圾箱，然后选择待删除文件，点击垃圾箱即可删除
 - `Command+Option+c` 复制文件路径
-- 按住 Option 很多菜单会发生些小变化
+- 按住 `Option` 很多菜单会发生些小变化，比如左上角苹果图标点开，按住 `Option` 『关于本机』会变成『系统信息』
 - `Control + Command + Space` emoji 表情
 - `Command+Up`：回到上一层文件夹
 - `Command+Down`：如果是文件夹就进入文件夹，如果是文件就打开
@@ -65,7 +65,7 @@ keywords:
 - `Ctrl + N`：移动到下一行
 - `Ctrl + P`：移动到上一行
 
-### 设置允许「任何来源」的应用
+### 设置允许「任何来源」的应用 —— 解决文件已损坏报错
 
 有时候会遇到这种错误「报错：无法打开已损坏的安装包」，打开终端，键入命令，输入密码，然后回车：
 
@@ -114,11 +114,15 @@ Shift 键类似于可视模式，比如在某个位置点击光标并按住 Shif
 
 - 按住 Option 键并点按菜单栏中的电池图标，以显示电池状态菜单
 
-### Tab 键适用于所有控制
+### 增强 Tab 键 —— Tab 键适用于所有控制
 
 偏好设置->键盘->快捷键 全键盘控制改为「所有控制」
 
 ![](https://gitee.com/michael_xiang/images/raw/master/xSF60o.png)
+
+### 电脑改名
+
+电脑改名: 系统偏好设置 - 共享 - 电脑名称
 
 ### 其他
 
