@@ -129,6 +129,14 @@ Shift 键类似于可视模式，比如在某个位置点击光标并按住 Shif
 - [如何更改 Mac 帐户和个人文件夹的名称](https://mp.weixin.qq.com/s?__biz=MzAxNzcwMTA4Ng==&mid=2247487924&idx=1&sn=af93e65636277a8905a0389cefca2c7f&chksm=9be0d005ac9759134369439e40684ed8b41dfa81bd9a47e82bcd7568b72629dcb15a02df5f4f&mpshare=1&scene=1&srcid=#rd)
 - [Mac修改账户名称和个人目录后，进不去系统怎么办？](https://mp.weixin.qq.com/s?__biz=MzAxNzcwMTA4Ng==&mid=2247487924&idx=2&sn=f4af05656734f3743bc2861c56db501b&chksm=9be0d005ac9759134b4d6b103fb9402af27e592fa6c41dbba77491e1fc9d62b0388bb99b262d&mpshare=1&scene=1&srcid=#rd)
 
+## 技巧
+
+### 创建多个桌面
+
+可以创建多个桌面，使用常见快速切换。
+
+四指在触控板往上滑动，然后右上角可以点击加号新建桌面。四指左右滑动，可以在不同桌面之间切换。
+
 ## 日常软件
 
 ### 分屏软件
