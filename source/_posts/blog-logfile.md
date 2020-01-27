@@ -8,8 +8,6 @@ top: false
 thumbnail: https://images.pexels.com/photos/313773/pexels-photo-313773.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb
 ---
 
-![Maven](https://gitee.com/michael_xiang/images/raw/master/dLVeb2.jpg)
-
 ## 建站笔记
 
 - [Hexo 搭建 Blog 精简笔记](https://www.cnblogs.com/michael-xiang/p/10464518.html)
