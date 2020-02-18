@@ -85,4 +85,7 @@ hello qq
 
 
 ## 参考
+- [官宣-sed, a stream editor](http://www.gnu.org/software/sed/manual/sed.html) 权威文档
+- [CoolShell-SED 简明教程](https://coolshell.cn/articles/9104.html)
 - [看例子学sed](http://qinghua.github.io/sed/)
+- [growing-up/doc/三十分钟学会SED.md](https://github.com/mylxsw/growing-up/blob/master/doc/%E4%B8%89%E5%8D%81%E5%88%86%E9%92%9F%E5%AD%A6%E4%BC%9ASED.md)
