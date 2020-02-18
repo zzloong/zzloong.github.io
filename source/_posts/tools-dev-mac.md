@@ -228,6 +228,8 @@ brew cask install c0re100-qbittorrent
 brew cask install visual-studio-code
 # 终端
 brew cask install iTerm2
+# wireshark
+brew cask install wireshark
 ```
 
 - [git-extras](https://github.com/tj/git-extras/blob/master/Commands.md) 提供了一些有用和有趣的命令，例如 `git summary`
@@ -246,6 +248,10 @@ brew cask install iTerm2
 ```shell
 ls -1 /Library/Java/JavaVirtualMachines
 ```
+
+## Maven
+
+Maven 的安装，可以看我的配置 repo [my-config-files/maven/](https://www.cnblogs.com/helios-fz/p/11061033.html)
 
 ## [alfred](https://www.alfredapp.com/)
 

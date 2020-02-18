@@ -30,7 +30,7 @@ keywords:
 
 - `Enter`：选中一个文件按下 `Enter`，直接改名
 - `Ctrl` 多用于命令行快捷键，`Command` 多用于图形化快捷键
-- 选中桌面的所有需归档资料，`Command+Sshift+n`，会将文件归档到一个文件夹下
+- 选中桌面的所有需归档资料，`Command+Shift+n`，会将文件归档到一个文件夹下
 - 调度中心设置：右 `Ctrl`，显示桌面
 - 触发角
 
@@ -215,6 +215,15 @@ Downie：下载各网站视频且更新频繁；
 
 文件加密软件： [encrypto](https://macpaw.com/encrypto) 免费的加密软件
 
+### firefox
+
+火狐的浏览器还是不错的，尽管主力还是 Chrome，用火狐主要是因为国内不需要梯子也可以账号同步。但是国内和国际版，账号系统没打通的，要想使用国际版的账号，那么可以在设置-》首选项-》同步中，找到「切换至全球服务」，然后登陆即可。
+
+下载：[现在火狐浏览器国际版去哪里下载？ - 马里亚纳的秋刀鱼的回答 - 知乎](https://www.zhihu.com/question/39394751/answer/365943869)
+
+参考：
+- [firefox 国际版 账户登录 国内账户 切换 同步问题](https://blog.csdn.net/u014710355/article/details/84665962)
+
 ### iMazing
 
 [Mac/Win]备份/管理iOS设备 iTunes 的替代品
@@ -244,6 +253,20 @@ $ brew cask reinstall mos
 NightOwl ：一款让 Mojave 深色模式更加智能的神器，可以将当前开启的某些软件单独设置成「始终显示为浅色」，这样，即使系统在深色模式下，这些被勾选的软件也会依然显示为浅色界面。
 
 [NightOwl](https://nightowl.kramser.xyz/)
+
+### Onedrive
+
+Onedrive 用来同步文档用的，作为「同步盘」使用，我用来存储电子书，还不错。它的在线版需要梯子才能访问，但是客户端使用是OK的，安卓客户端/、Mac 客户端也都有。
+
+它的汉化有些含义不是很好理解，这里做个简要记录：
+- 「始终保留在此设备上」 表示将文件的状态和在线（远端）不关联，及时远端删除了，本设备上的该文件也还在；
+- 「释放空间」 表示将文件从本机上删除，节省本机的空间，但是远端文件并没删除；
+- 「保持脱机」 脱机保存到你的电脑。这意味着，即使未连接到 Internet，也可以随时打开和更改它们。重新连接网络时，OneDrive 将根据脱机时所做的任何更改更新联机版本。
+
+在没有 Internet 连接时脱机文件会很方便，但它们也会占用你电脑上的空间
+
+参考：
+- [OneDrive 图标的含义是什么？](https://support.office.com/zh-cn/article/OneDrive-%E5%9B%BE%E6%A0%87%E7%9A%84%E5%90%AB%E4%B9%89%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F-11143026-8000-44f8-aaa9-67c985aa49b3)
 
 ### PopClip
 
@@ -295,6 +318,7 @@ NightOwl ：一款让 Mojave 深色模式更加智能的神器，可以将当前
 - [Telegram使用指南](https://www.jianshu.com/p/9be7ab548e90)
 
 ### TinyPNG4Mac
+
 [kyleduo/TinyPNG4Mac](https://github.com/kyleduo/TinyPNG4Mac/blob/master/README_ZH.md) 进行图片压缩的
 
 ```

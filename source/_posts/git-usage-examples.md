@@ -215,6 +215,39 @@ git push -u origin --all
 git push -u origin --tags 
 ```
 
+## 仓库设置多个远端仓库
+
+```shell
+git remote add github git@github.com:Michael728/awesome-books-for-me.git
+git push -u github master
+git remote add gitee git@gitee.com:michael_xiang/awesome-books-for-me.git
+git push -u gitee master
+```
+
+## Git lfs 管理大文件
+
+Git LFS（Large File Storage, 大文件存储）是 Github 开发的一个 Git 的扩展，用于实现 Git 对大文件的支持。
+
+Git LFS可以把音乐、图片、视频等指定的任意文件存在 Git 仓库之外，而在 Git 仓库中用一个占用空间 1KB 不到的文本指针来代替文件的存在。
+
+通过把大文件存储在 Git 仓库之外，可以减小 Git 仓库本身的体积，使克隆 Git 仓库的速度加快，也使得 Git 不会因为仓库中充满大文件而损失性能。
+
+使用细节，可以看码云的介绍：[Git LFS 操作指南](https://gitee.com/help/articles/4235#article-header0)
+
+常用命令：
+```shell
+# 使用 Git LFS 管理指定的文件
+git lfs track "*.psd"
+# 查看当前使用 Git LFS 管理的匹配列表
+git lfs track
+# 不再使用 Git LFS 管理指定的文件
+git lfs untrack "*.psd"
+# 类似 git status，查看当前 Git LFS 对象的状态
+git lfs status
+# 枚举目前所有被 Git LFS 管理的具体文件
+git lfs ls-files
+```
+
 ## Git FAQ
 ### git merge和git rebase的区别
 rebase 跟 merge 的区别你们可以理解成有两个书架，你需要把两个书架的书整理到一起去，第一种做法是 merge ，比较粗鲁暴力，就直接腾出一块地方把另一个书架的书全部放进去，虽然暴力，但是这种做法你可以知道哪些书是来自另一个书架的；第二种做法就是rebase ，他会把两个书架的书先进行比较，按照购书的时间来给他重新排序，然后重新放置好，这样做的好处就是合并之后的书架看起来很有逻辑，但是你很难清晰的知道哪些书来自哪个书架的。
