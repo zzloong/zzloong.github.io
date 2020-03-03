@@ -14,8 +14,6 @@ categories:
 
 ### 国内
 
-- [Python之禅](https://foofish.net/)
-- [卡瓦邦噶](https://www.kawabangga.com/) SRE
 - [TaoBeier-moelove](http://moelove.info/) CICD
 - [wklken](http://www.wklken.me/)
 - [刘江的博客](http://www.liujiangblog.com/blog/)
@@ -37,14 +35,15 @@ categories:
 - [James](https://www.b-list.org/weblog/)Django 核心团队的成员
 - [The Standard Python Library](http://effbot.org/librarybook/) Python 标准模块的介绍
 
+## 安卓
+
+- [刘望舒的博客](http://liuwangshu.cn/)
+
 ## DevOps
 
 - [Vnimos's blog](https://vnimos.cn/)-OpenStack DevOps 博主介绍了很多这方面的文章
-- [杜屹东的博客](https://www.duyidong.com/)-好像是一位专门从事 DevOps 的前辈，从他博客中一篇文章，突然理解了 DevOps 的「含义」
-
 ## Web
 
-- [晚晴幽草](http://jeffjade.com/)
 - [geekplux](https://geekplux.com/atom.xml)
 
 ## 后端开发
@@ -64,7 +63,6 @@ categories:
 
 ## 数学
 
-- [谢益辉](https://yihui.name/)-RStudio
 - [Matrix67](https://www.matrix67.com/blog/)-数学爱好者
 
 ## ML

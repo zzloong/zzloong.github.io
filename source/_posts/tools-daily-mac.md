@@ -187,6 +187,9 @@ tracker 列表：
 ### 状态栏图标管理
 
 - [Dozer](https://github.com/Mortennn/Dozer) 免费开源，`brew cask install dozer`，足够用了，推荐
+
+Dozer 的用法也很简单，只需要按住 Command 键，然后将应用图标拖动至它显示的两个圆点之间，那么这之间的图标就会隐藏。我给它设置了一个快捷键 `Command+Shift+H`
+
 - [vanilla](https://matthewpalmer.net/vanilla/) 免费，按住 Command 键，拖动顶部状态栏图标归档之后，就会隐藏图标了。
 - [Bartender](https://www.macbartender.com/)：一款非常实用的 Menubar 菜单栏管理工具，付费的
 
