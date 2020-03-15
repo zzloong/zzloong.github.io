@@ -517,12 +517,18 @@ System.getenv("HOME_TEST");
 不推荐使用 IDEA 自带的 Maven 配置。在 Settings -> Build Excution Deployment -> Build Tools -> Maven 中修改：
 
 - `Maven home directory` maven 安装目录
-- `User settings file` 勾选 Override，改为自己的 settings.xml 文件
+- `User settings file` 勾选 Override，改为自己的 `settings.xml` 文件
 - `Local repository` 依赖包存储位置
 
 在 Settings -> Build Excution Deployment -> Build Tools -> Maven -> Importing 中：
 
 - 勾选 `Import Maven projects automatically` pom 文件增加了新依赖，会自动下载；
+
+为了避免每次打开或者新建项目时，都要设置一次 Maven 的配置，可以给 IDEA 设置默认 maven 版本：
+- 选择 `File -> Other Settings -> Settings For New Projects... -> Build,Execution,Deployment -> Build Tools -> Maven`，找到 maven 配置的地方，选择需要默认配置的版本，保存。至此便完成了默认 maven 版本的配置。
+
+参考：
+- [CSDN - IDEA 配置自定义maven](https://blog.csdn.net/wuyujin1997/article/details/98472420)
 
 ## 高效定位代码-无处不在的跳转
 
@@ -646,26 +652,29 @@ System.getenv("HOME_TEST");
 
 插键说明：
 
-- Install JetBrains plugin：弹出IntelliJ IDEA 公司自行开发的插件仓库列表，供下载安装。
-- Browse repositories：弹出插键仓库中所有插键列表供下载安装。
-- Install plugin from disk：浏览本地的插键文件进行安装。
+- `Install JetBrains plugin`：弹出IntelliJ IDEA 公司自行开发的插件仓库列表，供下载安装。
+- `Browse repositories`：弹出插键仓库中所有插键列表供下载安装。
+- `Install plugin from disk`：浏览本地的插键文件进行安装。
 
 实用插键：
 
-- BashSupport
-- [Dash](https://zealdocs.org/): `ctrl+shift+h`
+- Lombok plugin
+- [TestMe](https://github.com/wrdv/testme-idea) Junit 等测试工具的生成插件,支持 `Junit4/5,TestNG,Spock` 等测试框架代码的生成
+- [Free MyBatis plugin](https://plugins.jetbrains.com/plugin/8321-free-mybatis-plugin) 快速从代码跳转到mapper及从mapper返回代码
+- [GitToolBox](https://github.com/zielu/GitToolBox) Git 功能增强，比如可以在状态栏显示当前光标所在行的修改者
+- [Alibaba Java Coding Guidelines](https://www.cnblogs.com/jajian/p/8081658.html) 编码规范检查
+- CamelCase 将不是驼峰格式的名称，快速转成驼峰格式，安装好后，选中要修改的名称，按快捷键 `Shift+Alt+U`
 - [Key Promoter X](https://plugins.jetbrains.com/plugin/9792-key-promoter-x) 快捷键提示
 - [Statistic](https://plugins.jetbrains.com/plugin/4509-statistic) 代码统计
 - [CheckStyle-IDEA](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea) 代码样式检查
-- Lombok plugin
+- [Dash](https://zealdocs.org/): `ctrl+shift+h`
 - [FindBugs-IDEA](https://plugins.jetbrains.com/plugin/3847-findbugs-idea) 代码 Bug 检查
 - Mongo
-- CamelCase 将不是驼峰格式的名称，快速转成驼峰格式，安装好后，选中要修改的名称，按快捷键 `shift+alt+u`。
 - Rainbow Brackets 彩虹括号，这个插件方便查看括号的匹配
-- [Alibaba Java Coding Guidelines](https://www.cnblogs.com/jajian/p/8081658.html)
 - Maven Helper：安装之后，直接打开pom文件，即可查看依赖数，还能自动分析是否存在 jar 包冲突，查看[idea 中解决maven 包冲突的问题](https://blog.csdn.net/sunpeng_sp/article/details/77393348)
 - VisualVM Launcher 对于经常实用 visualvm 进行性能调优和 debug 的场景，这个快速启动 visualvm 并打开正在调试的应用的按钮。
 - String Manipulation：字符串转换工具，安装好插件后，选中需要处理的内容后，按快捷键 `Alt+m`，即可弹出工具功能列表
+- BashSupport
 
 主题插件：
 - Dracula Theme 吸血鬼主题插件，各 IDE 都有适配的主题，非常推荐！
@@ -676,6 +685,9 @@ System.getenv("HOME_TEST");
 - CodeGlance 可以在编辑区的右边增加一个类似 VSCode 的缩略图的效果，拖动比较方便。
 - AceJump：允许您快速将光标导航到编辑器中可见的任何位置，只需点击`ctrl +;`，然后输入一个你想要跳转到的字符，之后键入匹配的字符就跳转到你想要挑战的地方了
 - activate-power-mode：写代码的时候，就会附加一些狂拽炫酷屌炸天的效果
+
+参考
+- [那些提高效率的Idea插件](https://blog.imcompany.cn/post/na-xie-ti-gao-xiao-lu-de-ideacha-jian/)
 
 ## FAQ
 
@@ -710,3 +722,4 @@ System.getenv("HOME_TEST");
 - [挖掘IntelliJ IDEA的调试功能](http://qinghua.github.io/intellij-idea-debug/)
 - [IDEA 注册-lanyu](http://idea.lanyus.com/)
 - [Github-judasn/IntelliJ-IDEA-Tutorial](https://github.com/judasn/IntelliJ-IDEA-Tutorial/blob/master/keymap-introduce.md)
+- [IntelliJ IDEA 2019.3.3 便携增强版](https://www.ghpym.com/idea.html)
