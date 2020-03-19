@@ -19,7 +19,7 @@ keywords:
 
 ## Elasticsearch
 
-官方的[Elasticsearch Reference](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html) 文档是相当全面了，而且，不同版本都可以切换，真是赞！如果英文的不想看，还提供了中文版的 [Elasticsearch: 权威指南](https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html)，虽然可能版本不是最新的，但是了解基本概念也是有帮助的。
+官方的[Elasticsearch Reference](https://www.elastic.co/guide/en/elasticsearch/reference/index.html) 提供了不同版本的文档连接，真是赞！如果英文的不想看，还提供了中文版的 [Elasticsearch: 权威指南](https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html)，虽然可能版本不是最新的，但是了解基本概念也是有帮助的。
 
 Elasticsearch 包里自包含了 OpenJDK 的包，在 Elacticsearch 目录下的 `jdk` 目录中。如果你想要使用你自己配置好的 Java 版本，需要设置 `JAVA_HOME` 环境变量。
 
@@ -32,7 +32,7 @@ Elasticsearch 包里自包含了 OpenJDK 的包，在 Elacticsearch 目录下的
 官网的下载地址简直是龟速，发现我司的[镜像站](https://mirrors.huaweicloud.com/elasticsearch/)上提供了安装包，试用后安利，速度不错：
 
 ```shell
-wget https://mirrors.huaweicloud.com/elasticsearch/7.3.0/
+wget https://mirrors.huaweicloud.com/elasticsearch/7.3.0/elasticsearch-7.3.0-linux-x86_64.tar.gz
 wget https://mirrors.huaweicloud.com/elasticsearch/7.3.0/elasticsearch-7.3.0-linux-x86_64.tar.gz.sha512
 # 验证安装包的完整性，如果没问题，会输出 OK
 shasum -a 512 -c elasticsearch-7.3.0-linux-x86_64.tar.gz.sha512
@@ -42,6 +42,8 @@ cp -R elasticsearch-7.3.0 es-node2
 mv elasticsearch-7.3.0 es-node3
 chown -R michael es-node* # 因为以 root 用户启动不了 ES
 ```
+
+PS：如果是 Mac 平台，则下载包 `https://mirrors.huaweicloud.com/elasticsearch/7.3.0/elasticsearch-7.3.0-darwin-x86_64.tar.gz`
 
 下文的 `$ES_HOME` 就是指这里 tar 包解压后的文件夹目录，目录组成：
 
@@ -219,7 +221,7 @@ cluster.initial_master_nodes: ["node-1"]
 如果插键安装慢，可以先下载下来，再安装：
 
 ```shell
-wget https://artifacts.elastic.co/downloads/elasticsearch-plugins/analysis-icu/analysis-icu-7.1.0.zip
+wget https://artifacts.elastic.co/downloads/elasticsearch-plugins/analysis-icu/analysis-icu-7.3.0.zip
 ./bin/elasticsearch-plugin install file://file path Of analysis-icu-7.1.0.zip
 ```
 
