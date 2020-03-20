@@ -23,7 +23,7 @@ keywords:
 
 Elasticsearch 包里自包含了 OpenJDK 的包，在 Elacticsearch 目录下的 `jdk` 目录中。如果你想要使用你自己配置好的 Java 版本，需要设置 `JAVA_HOME` 环境变量。
 
-官方文档的 `Set up Elasticsearch` 下面有安装的指导，具体页面 [Installing Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html) 中提供了多种安装包对应的指导链接！本文就先选择 [tar 包](https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html)的方式安装。
+官方文档的 `Set up Elasticsearch` 下面有安装的指导，具体页面 [Installing Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/7.3/install-elasticsearch.html) 中提供了多种安装包对应的指导链接！本文就先选择 [tar 包](https://www.elastic.co/guide/en/elasticsearch/reference/7.3/targz.html)的方式安装。
 
 由于本地机器有限，我们在同一台机器上模拟出 3 个节点，安装 ES 集群。
 
