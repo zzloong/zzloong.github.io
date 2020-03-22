@@ -18,19 +18,6 @@ keywords:
     </a>
 </p>
 
-<!-- 徽章（Badge） -->
-<p align="center">
-  <a href="https://michael728.github.io/">
-    <img src="https://img.shields.io/badge/%E5%8D%9A%E5%AE%A2-Blog-brightgreen" alt="Blog">
-  </a>
-  <a href="#公众号">
-    <img src="https://img.shields.io/badge/%E5%85%AC%E4%BC%97%E5%8F%B7-Coder%E9%AD%94%E6%B3%95%E9%99%A2-blue" alt="公众号">
-  </a>
-  <a href="#">
-    <img alt="GitHub" src="https://img.shields.io/github/license/awesome-wiki/awesome-wiki-bookmarks">
-  </a>
-</p>
-
 > 希望收藏爱好着能发现有用的东西，也欢迎你推荐你正在使用的 「利器」！
 
 其他分享：
