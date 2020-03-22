@@ -393,7 +393,7 @@ codeblock:
 # Wechat Subscriber
 wechat_subscriber:
   enable: true
-  qcode: /images//wechat-qcode.jpg
+  qcode: /images//wechat-subscribe.jpg
   description: 欢迎订阅 ヾﾉ≧∀≦)o
 
 # Reward (Donate)
