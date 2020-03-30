@@ -73,9 +73,23 @@ git config --global --unset http.proxy
 git config --global --unset https.proxy
 ```
 
+## 补充
+
+最近看到一篇文章说配置 DNS 可以解决 DNS 被污染的问题：
+
+国内
+- 阿里: 223.5.5.5
+- 114: 114.114.114.114
+- DNSpod DNS+: 119.29.29.29
+
+国外
+- Google：8.8.8.8
+- CloudFlare: 1.1.1.1
+
 ## 参考
 
 - [使用代理加速 Mac 终端下载速度](https://jdhao.github.io/2019/10/10/mac_proxy_in_terminal/)
 - [GitHub克隆clone太慢添加代理加速访问](https://blog.gobyte.cn/post/1a22163b.html)
+- [玩转 DNS ，顺利打开各种网站](https://mp.weixin.qq.com/s?__biz=MzI5MDM4NTYwOA==&mid=2247490173&idx=1&sn=9519518ab8e5d7ee3f7cd71cff370783&chksm=ec21e1dadb5668cc94bf2512460272d79484a8b6756bff904ee4461bbe8bfcb85d903146125d&mpshare=1&scene=1&srcid=&sharer_sharetime=1584440373309&sharer_shareid=ae8eb1508a08c1b134df82bb484ea38d#rd)
 
 <a href="https://www.vultr.com/?ref=7488919"><img src="https://www.vultr.com/media/banners/banner_728x90.png" width="728" height="90"></a>
