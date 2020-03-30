@@ -11,9 +11,13 @@ keywords:
   - tutorial
 ---
 
+![daniel-mayovskiy-ai6IRDJQMKw-unsplash](https://gitee.com/michael_xiang/images/raw/master/uPic/daniel-mayovskiy-ai6IRDJQMKw-unsplash.jpg)
+
 ## 背景
 
 最近 Mac 升级系统之后，导致软件都得重装。发现 Homebrew 安装软件很多都是去 Github 上下载，怎么加速呢？简要做个备忘吧。
+
+<!-- more -->
 
 ## 步骤
 
@@ -85,6 +89,8 @@ git config --global --unset https.proxy
 国外
 - Google：8.8.8.8
 - CloudFlare: 1.1.1.1
+
+经过我的测试，貌似效果并不明显，因此放到补充内容里吧。
 
 ## 参考
 
