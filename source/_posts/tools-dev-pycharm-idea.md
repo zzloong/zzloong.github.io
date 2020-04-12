@@ -661,17 +661,19 @@ System.getenv("HOME_TEST");
 - Lombok plugin
 - [TestMe](https://github.com/wrdv/testme-idea) Junit 等测试工具的生成插件,支持 `Junit4/5,TestNG,Spock` 等测试框架代码的生成
 - [Free MyBatis plugin](https://plugins.jetbrains.com/plugin/8321-free-mybatis-plugin) 快速从代码跳转到mapper及从mapper返回代码
+- [Mybatis Log](https://blog.csdn.net/qq_22194659/article/details/89011988) 在控制台打印mybatis的脚本日志，需要配置才能在控制台输出，[参考](https://blog.csdn.net/VICHOU_FA/article/details/79285749)
 - [GitToolBox](https://github.com/zielu/GitToolBox) Git 功能增强，比如可以在状态栏显示当前光标所在行的修改者
 - [Alibaba Java Coding Guidelines](https://www.cnblogs.com/jajian/p/8081658.html) 编码规范检查
 - CamelCase 将不是驼峰格式的名称，快速转成驼峰格式，安装好后，选中要修改的名称，按快捷键 `Shift+Alt+U`
 - [Key Promoter X](https://plugins.jetbrains.com/plugin/9792-key-promoter-x) 快捷键提示
 - [Statistic](https://plugins.jetbrains.com/plugin/4509-statistic) 代码统计
 - [CheckStyle-IDEA](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea) 代码样式检查
-- [Dash](https://zealdocs.org/): `ctrl+shift+h`
 - [FindBugs-IDEA](https://plugins.jetbrains.com/plugin/3847-findbugs-idea) 代码 Bug 检查
-- Mongo
+- [jclasslib](https://my.oschina.net/leon1314/blog/1817046) IDEA 如何使用jclasslib 插件查看 Java 字节码
 - Rainbow Brackets 彩虹括号，这个插件方便查看括号的匹配
 - Maven Helper：安装之后，直接打开pom文件，即可查看依赖数，还能自动分析是否存在 jar 包冲突，查看[idea 中解决maven 包冲突的问题](https://blog.csdn.net/sunpeng_sp/article/details/77393348)
+- [Dash](https://zealdocs.org/): `ctrl+shift+h`
+- Mongo
 - VisualVM Launcher 对于经常实用 visualvm 进行性能调优和 debug 的场景，这个快速启动 visualvm 并打开正在调试的应用的按钮。
 - String Manipulation：字符串转换工具，安装好插件后，选中需要处理的内容后，按快捷键 `Alt+m`，即可弹出工具功能列表
 - BashSupport
