@@ -431,7 +431,7 @@ VCS -> Import into Version Control -> Share Porject on GitHub
 - 显示差异： Show Diff —— `Ctrl+D`
 - 右键菜单中有一个 Open On Github，跳转到正在浏览的行所在的文件，方便分享讨论具体问题
 
-## 调试
+## 调试&源码阅读技巧
 
 ![](https://ws4.sinaimg.cn/large/006tNbRwly1fyq27kq7glj30hs0950th.jpg)
 
@@ -502,11 +502,22 @@ debugger 调试器，“除虫器”，调试器是用来告诉 JVM，请你在�
 - [IDEA查看接口或类的继承实现关系图](https://blog.csdn.net/Jae_Wang/article/details/80058541)
 - [IntelliJ IDEA 中如何查看一个类的所有继承关系(当前类的所有继承关系图)](https://blog.csdn.net/qq_27093465/article/details/52857307)
 
+还有一个更加厉害的功能 `show diagram`，可以查看继承链。鼠标右键中有 `Diagrams` 的菜单。快捷键：`Ctrl+Alt+Shift+U`
+
+![8pbmj6](https://gitee.com/michael_xiang/images/raw/master/uPic/8pbmj6.png)
+
+- 蓝色实线是指继承关系
+- 绿色实线表示的是接口的继承关系
+- 绿色虚线是指接口实现关系
+
+![IDOb18](https://gitee.com/michael_xiang/images/raw/master/uPic/IDOb18.png)
+
+详细介绍参考：
+- [cnblogs-使用IntelliJ IDEA查看类的继承关系图形](https://www.cnblogs.com/deng-cc/p/6927447.html)
+
 ### 设置程序环境变量
 
 Run->Edit Configurations->Environment->Environment variables
-
-![](https://ws2.sinaimg.cn/large/006tNbRwly1fya63mb1dzj30xq0c6whi.jpg)
 
 ```java
 System.getenv("HOME_TEST");
@@ -536,13 +547,9 @@ System.getenv("HOME_TEST");
 
 `ctrl+alt+左右方括号`：
 
-![](https://ws3.sinaimg.cn/large/006tNbRwly1fya57dy739j309u07wn05.jpg)
-
 ### 查看快捷键
 
 `ctrl+shift+a`：搜搜快捷键
-
-![](https://ws2.sinaimg.cn/large/006tNbRwly1fya59cv3pwj30bu05iq5q.jpg)
 
 ### 查看最近文件
 
@@ -553,13 +560,7 @@ System.getenv("HOME_TEST");
 
 `ctrl+shift+backspace` 快速跳转到最后修改的地方
 
-![](https://ws3.sinaimg.cn/large/006tNbRwly1fya5ck67t0j309b0d6gry.jpg)
-
 ### 利用书签跳转
-
-![](https://ws3.sinaimg.cn/large/006tNbRwly1fya5e3cuvmj30ik07i3yz.jpg)
-
-![](https://ws4.sinaimg.cn/large/006tNbRwly1fya5f37d10j305u07vgls.jpg)
 
 - `F11`：添加、取消书签
 - `ctrl+f11`：添加、取消有标记的书签
@@ -568,8 +569,6 @@ System.getenv("HOME_TEST");
 ### 添加收藏 Favorites
 
 `alt+shift+f`：add to favorities
-
-![](https://ws3.sinaimg.cn/large/006tNbRwly1fya5h1gwvhj30if059wes.jpg)
 
 ### 编辑区和文件区的跳转
 
@@ -581,8 +580,6 @@ System.getenv("HOME_TEST");
 ### 类搜索
 
 `ctrl+n`：快速搜索类
-
-![](https://ws4.sinaimg.cn/large/006tNbRwly1fya5iswva8j309606qad5.jpg)
 
 ### 文件搜索
 
@@ -598,8 +595,6 @@ System.getenv("HOME_TEST");
 有时候可能需要在源码分析时想要搜索 Maven 依赖包中的内容，只要如下设置即可扩大搜索范围：
 
 `ctrl+shift+f` ->`scope`->`All Places`
-
-![](https://ws1.sinaimg.cn/large/6d9475f6ly1g34o5yp49vj211a0g0wix.jpg)
 
 ## 重构
 
@@ -622,7 +617,6 @@ System.getenv("HOME_TEST");
 ### 多光标选中
 
 - 多光标
-![](https://ws2.sinaimg.cn/large/006tNbRwly1fya5oimsitetj30lj0hq180.jpg)
 
 按住 `Alt` 键，可以快速实现多光标、块选择。
 
@@ -635,8 +629,6 @@ System.getenv("HOME_TEST");
 如下图圈出的数字 n，可以使用`alt+<n>`的方式快捷使用，替代鼠标操作。
 
 注意，Mac  使用的是 `command+<n>`方式；
-
-![](https://ws2.sinaimg.cn/large/006tNbRwly1fya5prmf14j30gz0fnabn.jpg)
 
 #### 打开收藏 ★★★
 
@@ -656,8 +648,7 @@ System.getenv("HOME_TEST");
 - `Browse repositories`：弹出插键仓库中所有插键列表供下载安装。
 - `Install plugin from disk`：浏览本地的插键文件进行安装。
 
-实用插键：
-
+插键列表：
 - Lombok plugin
 - [TestMe](https://github.com/wrdv/testme-idea) Junit 等测试工具的生成插件,支持 `Junit4/5,TestNG,Spock` 等测试框架代码的生成
 - [Free MyBatis plugin](https://plugins.jetbrains.com/plugin/8321-free-mybatis-plugin) 快速从代码跳转到mapper及从mapper返回代码
@@ -677,16 +668,17 @@ System.getenv("HOME_TEST");
 - VisualVM Launcher 对于经常实用 visualvm 进行性能调优和 debug 的场景，这个快速启动 visualvm 并打开正在调试的应用的按钮。
 - String Manipulation：字符串转换工具，安装好插件后，选中需要处理的内容后，按快捷键 `Alt+m`，即可弹出工具功能列表
 - BashSupport
+- IDE Feature Trainer 安装之后，可以在 `View > Tool Windows > Learn` 里打开练习页面，了解 IDEA 的快捷键。
+- CodeGlance 可以在编辑区的右边增加一个类似 VSCode 的缩略图的效果，拖动比较方便。
+- AceJump：允许您快速将光标导航到编辑器中可见的任何位置，只需点击`ctrl +;`，然后输入一个你想要跳转到的字符，之后键入匹配的字符就跳转到你想要挑战的地方了
+- activate-power-mode：写代码的时候，就会附加一些狂拽炫酷屌炸天的效果
 
 主题插件：
 - Dracula Theme 吸血鬼主题插件，各 IDE 都有适配的主题，非常推荐！
 - [Material Theme](https://plugins.jetbrains.com/plugin/8006-material-theme-ui) 主题插键
 
 折腾插件：
-- IDE Feature Trainer 安装之后，可以在 `View > Tool Windows > Learn` 里打开练习页面，了解 IDEA 的快捷键。
-- CodeGlance 可以在编辑区的右边增加一个类似 VSCode 的缩略图的效果，拖动比较方便。
-- AceJump：允许您快速将光标导航到编辑器中可见的任何位置，只需点击`ctrl +;`，然后输入一个你想要跳转到的字符，之后键入匹配的字符就跳转到你想要挑战的地方了
-- activate-power-mode：写代码的时候，就会附加一些狂拽炫酷屌炸天的效果
+
 
 参考
 - [那些提高效率的Idea插件](https://blog.imcompany.cn/post/na-xie-ti-gao-xiao-lu-de-ideacha-jian/)
