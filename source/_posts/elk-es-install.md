@@ -30,7 +30,9 @@ Elasticsearch 7.x 包里自包含了 OpenJDK 的包。如果你想要使用你�
 
 > 由于实验机器有限，可以在同一台机器上模拟出 3 个节点，安装 ES 集群。
 
-## 准备工作
+## 安装 ES
+
+### 准备工作
 
 {% note info %}
 
@@ -44,7 +46,7 @@ Caused by: java.lang.RuntimeException: can not run elasticsearch as root
 
 如果需要新建用户的话可以运行 `sudo adduser es`，修改 es 用户的密码：`sudo passwd es`。
 
-## 下载 ES 安装包
+### 下载 ES 安装包
 
 安装包下载地址：
 - [官方-Past Releases](https://www.elastic.co/cn/downloads/past-releases#elasticsearch) 官网的下载地址简直是龟速
@@ -95,7 +97,7 @@ xattr -d -r com.apple.quarantine <archive-or-directory>
 └── README.textile
 ```
 
-## 使用命令行运行 Elasticsearch
+### 使用命令行运行 Elasticsearch
 
 首先，我们先运行一个节点起来。
 
@@ -103,7 +105,7 @@ xattr -d -r com.apple.quarantine <archive-or-directory>
 ./bin/elasticsearch
 ```
 
-## 检查一下运行状态
+### 检查一下运行状态
 
 ```shell
 curl -X GET "localhost:9200/?pretty"
@@ -133,7 +135,7 @@ curl -X GET "localhost:9200/?pretty"
 
 如果你是在服务器上部署的 ES，那么，在你的工作机上目前还无法调用通 `<IP>:9200`，需要一些配置才可以。后面会介绍。
 
-## 作为守护进程运行
+### 作为守护进程运行
 
 要将 ES 作为守护程序运行，请在命令行中指定 `-d`，指定 `-p` 参数，将进程 ID 记录到 `pid` 文件：
 
@@ -148,20 +150,6 @@ curl -X GET "localhost:9200/?pretty"
 ```shell
 pkill -F pid
 ```
-
-## 在命令行配置 ES
-
-ES 默认会加载位于 `$ES_HOME/config/elasticsearch.yml` 的配置文件。
-
-任何能够通过配置文件设置的内容，都可以通过命令行使用 `-E` 的语法进行指定：
-
-```shell
-./bin/elasticsearch -d -Ecluster.name=my_cluster -Enode.name=node_1
-```
-
-{% note info %}
-通常，任何群集范围的设置（如 cluster.name）都应添加到 `elasticsearch.yml` 配置文件中，而任何特定的节点设置（如 node.name）都可以在命令行中指定
-{% endnote %}
 
 ## 配置 ES
 
@@ -189,6 +177,20 @@ path.data: /var/lib/elasticsearch
 path.logs: /var/log/elasticsearch
 ```
 
+### 使用命令行配置 ES
+
+ES 默认会加载位于 `$ES_HOME/config/elasticsearch.yml` 的配置文件。
+
+任何能够通过配置文件设置的内容，都可以通过命令行使用 `-E` 的语法进行指定：
+
+```shell
+./bin/elasticsearch -d -Ecluster.name=my_cluster -Enode.name=node_1
+```
+
+{% note info %}
+通常，任何群集范围的设置（如 cluster.name）都应添加到 `elasticsearch.yml` 配置文件中，而任何特定的节点设置（如 node.name）都可以在命令行中指定
+{% endnote %}
+
 ### JVM 配置
 
 [JVM 参数设置](https://www.elastic.co/guide/en/elasticsearch/reference/current/jvm-options.html#jvm-options)可以通过 `jvm.options` 文件（推荐方式）或者 `ES_JAVA_OPTS` 环境变量来修改。
@@ -211,9 +213,7 @@ ES 使用 `Xms(minimum heap size)` 和 `Xmx(maxmimum heap size)` 设置堆大小
 -Xmx2g
 ```
 
-### 配置项
-
-#### cluster.name
+### cluster.name
 
 `cluster.name` 设置[集群名称](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.name.html)。一个节点只能加入一个集群中，默认的集群名称是 `elasticsearch`.
 
@@ -225,7 +225,7 @@ cluster.name: michael-es
 确保节点的集群名称要设置正确，这样才能加入到同一个集群中
 {% endnote %}
 
-#### node.name
+### node.name
 
 `node.name` 可以配置每个[节点的名称](https://www.elastic.co/guide/en/elasticsearch/reference/current/node.name.html)。用来提供可读性高的 ES 实例名称，默认名称是机器的 `hostname`，可以自定义：
 
@@ -235,7 +235,7 @@ node.name: node-1
 
 > 集群中每个节点的名称都不要相同
 
-#### network.host
+### network.host
 
 `network.host` 设置访问的[地址](https://www.elastic.co/guide/en/elasticsearch/reference/current/network.host.html)。我们需要设定 ES 运行绑定的 Host，默认是无法公开访问的，默认是回环地址 `127.0.0.1`。如果要和其他节点形成集群，建议设置为主机的公网 IP 或 `0.0.0.0`：
 
@@ -245,7 +245,7 @@ network.host: 0.0.0.0
 
 > 更多的网络设置可以阅读 [Network Settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html)
 
-#### http.port
+### http.port
 
 `http.port` ，默认端口是 9200 ：
 
@@ -257,7 +257,7 @@ http.port: 9200
 注意：这是指 http 端口，如果采用 REST API 对接 ES，那么就是采用的 http 协议
 {% endnote%}
 
-#### Important discovery and cluster formation settings
+### Important discovery and cluster formation settings
 
 有两种重要的发现和集群形成配置，以便集群中的节点能够彼此发现和选择一个主节点。[Important discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/discovery-settings.html)
 
@@ -300,19 +300,6 @@ cluster.initial_master_nodes: ["node-1"]
 - [Bootstrapping a cluster](https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-discovery-bootstrap-cluster.html)
 - [Discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-settings.html)
 
-## 安装插键
-
-```shell
-./bin/elasticsearch-plugin install analysis-icu
-```
-
-如果插键安装慢，可以先下载下来，再安装：
-
-```shell
-wget https://artifacts.elastic.co/downloads/elasticsearch-plugins/analysis-icu/analysis-icu-7.3.0.zip
-./bin/elasticsearch-plugin install file://file path Of analysis-icu-7.1.0.zip
-```
-
 ## 集群配置
 
 分别进入对应 es-node2 和 es-node3 的文件夹，设置如下：
@@ -348,6 +335,19 @@ mkdir -p data/data{1,2,3}
 ./bin/elasticsearch -E node.name=node-1 -E cluster.name=michael-es -E path.data=data/data1 -E path.logs=logs/logs1 -d -p pid1
 ./bin/elasticsearch -E node.name=node-2 -E cluster.name=michael-es -E path.data=data/data2 -E path.logs=logs/logs2 -E http.port=9201 -d -p pid2
 ./bin/elasticsearch -E node.name=node-3 -E cluster.name=michael-es -E path.data=data/data3 -E path.logs=logs/logs3 -E http.port=9202 -d -p pid3
+```
+
+## 安装插键
+
+```shell
+./bin/elasticsearch-plugin install analysis-icu
+```
+
+如果插键安装慢，可以先下载下来，再安装：
+
+```shell
+wget https://artifacts.elastic.co/downloads/elasticsearch-plugins/analysis-icu/analysis-icu-7.3.0.zip
+./bin/elasticsearch-plugin install file://file path Of analysis-icu-7.1.0.zip
 ```
 
 ## ES-FAQ
