@@ -635,7 +635,7 @@ System.getenv("HOME_TEST");
 
 ## 必备插件
 
-关于插键，单独总结了
+关于插键，单独总结了关于[插键的文章](https://michael728.github.io/2020/05/05/tools-dev-pycharm-idea-plugins/)
 
 ## FAQ
 
