@@ -1,6 +1,6 @@
 # 指定构建环境是Node.js，当前版本是稳定版
 anguage: node_js
-node_js: stable
+node_js: "13.13.0"
 
 env:
  global:
