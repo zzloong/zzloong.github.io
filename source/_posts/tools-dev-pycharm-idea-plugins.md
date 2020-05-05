@@ -1,6 +1,6 @@
 ---
 title: JetBrains PyCharm/IDEA 常用插键总结
-date: 2020-05-05 22:46:02
+date: 2020-05-05 22:30:02
 tags:
   - IDE
   - IDEA
@@ -35,7 +35,7 @@ IDEA 有用一套非常强大的[插件市场](https://plugins.jetbrains.com/)�
 
 - [TestMe](https://github.com/wrdv/testme-idea) Junit 等测试工具的生成插件,支持 `Junit4/5,TestNG,Spock` 等测试框架代码的生成
 
----
+### 数据库相关
 
 - [Free MyBatis plugin](https://plugins.jetbrains.com/plugin/8321-free-mybatis-plugin) 快速从代码跳转到 mapper 及从 mapper 返回代码
 
@@ -44,7 +44,12 @@ IDEA 有用一套非常强大的[插件市场](https://plugins.jetbrains.com/)�
 - [Mybatis Log](https://blog.csdn.net/qq_22194659/article/details/89011988) 
  在控制台打印mybatis的脚本日志，需要配置才能在控制台输出，[参考](https://blog.csdn.net/VICHOU_FA/article/details/79285749)
 
----
+
+----
+
+- Mongo
+
+### 代码提示
 
 - [Codota](https://www.codota.com/) 可以搜索知名开源项目中该类或者方法的使用案例
 
@@ -52,21 +57,9 @@ IDEA 有用一套非常强大的[插件市场](https://plugins.jetbrains.com/)�
 
 - [GitToolBox](https://github.com/zielu/GitToolBox) Git 功能增强，比如可以在状态栏显示当前光标所在行的修改者
 
----
+### 编码规范
 
 - [Alibaba Java Coding Guidelines](https://www.cnblogs.com/jajian/p/8081658.html) 编码规范检查
-
----
-
-- CamelCase 将不是驼峰格式的名称，快速转成驼峰格式，安装好后，选中要修改的名称，按快捷键 `Shift+Alt+U`
-
----
-
-- [Key Promoter X](https://plugins.jetbrains.com/plugin/9792-key-promoter-x) 快捷键提示
-
----
-
-- [Statistic](https://plugins.jetbrains.com/plugin/4509-statistic) 代码统计
 
 ---
 
@@ -75,6 +68,27 @@ IDEA 有用一套非常强大的[插件市场](https://plugins.jetbrains.com/)�
 ---
 
 - [FindBugs-IDEA](https://plugins.jetbrains.com/plugin/3847-findbugs-idea) 代码 Bug 检查
+
+
+### 编辑效率
+
+- CamelCase 将不是驼峰格式的名称，快速转成驼峰格式，安装好后，选中要修改的名称，按快捷键 `Shift+Alt+U`
+
+### 使用技巧
+
+- [Key Promoter X](https://plugins.jetbrains.com/plugin/9792-key-promoter-x) 快捷键提示
+
+---
+
+- IDE Feature Trainer 安装之后，可以在 `View > Tool Windows > Learn` 里打开练习页面，了解 IDEA 的快捷键。
+
+----
+
+- [Dash](https://zealdocs.org/): `ctrl+shift+h`
+
+----
+
+- [Statistic](https://plugins.jetbrains.com/plugin/4509-statistic) 代码统计
 
 ---
 
@@ -90,27 +104,15 @@ IDEA 有用一套非常强大的[插件市场](https://plugins.jetbrains.com/)�
 
 ---
 
-- [Dash](https://zealdocs.org/): `ctrl+shift+h`
-
----
-
-- Mongo
-
----
-
 - VisualVM Launcher 对于经常实用 visualvm 进行性能调优和 debug 的场景，这个快速启动 visualvm 并打开正在调试的应用的按钮。
 
 ---
 
 - String Manipulation：字符串转换工具，安装好插件后，选中需要处理的内容后，按快捷键 `Alt+m`，即可弹出工具功能列表
 
----
+### 语言支持
 
 - BashSupport
-
----
-
-- IDE Feature Trainer 安装之后，可以在 `View > Tool Windows > Learn` 里打开练习页面，了解 IDEA 的快捷键。
 
 ---
 
@@ -120,7 +122,7 @@ IDEA 有用一套非常强大的[插件市场](https://plugins.jetbrains.com/)�
 
 - AceJump：允许您快速将光标导航到编辑器中可见的任何位置，只需点击`ctrl +;`，然后输入一个你想要跳转到的字符，之后键入匹配的字符就跳转到你想要挑战的地方了
 
----
+### 花里胡哨
 
 - activate-power-mode：写代码的时候，就会附加一些狂拽炫酷屌炸天的效果
 
