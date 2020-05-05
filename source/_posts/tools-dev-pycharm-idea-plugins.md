@@ -6,7 +6,7 @@ tags:
   - IDEA
   - Pycharm
 categories: ToolsDev
-keywords: [pycharm,idea,plugin]
+keywords: [pycharm, idea, plugin]
 ---
 
 > 工欲善其事必先利其器
