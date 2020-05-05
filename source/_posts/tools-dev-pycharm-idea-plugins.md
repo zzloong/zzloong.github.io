@@ -57,15 +57,20 @@ Mongo
 
 ---
 
-[Dash](https://zealdocs.org/): `ctrl+shift+h`
-
----
-
 CamelCase：将不是驼峰格式的名称，快速转成驼峰格式，安装好后，选中要修改的名称，按快捷键 `Shift+Alt+U`
 
 ---
 
 String Manipulation：字符串转换工具，安装好插件后，选中需要处理的内容后，按快捷键 `Alt+m`，即可弹出工具功能列表
+
+---
+
+anyrule：该插键在 VSCode 也有提供，可以用来搜索适合场景的正则表达式
+- 新建一个文件（因为 anyrule 一定要在文本环境下才能生成正则表达式），然后按下快捷键 `Alt+a` 功能键，这时候就会弹出 anyrule 正则表达式搜索框（anyrule 生成的是 javascript 的正则表达式，如果需要用到 Java 中。需要将最前面和最后面的"/"去掉）
+- 理解这个表达式的运行原理，点击右下角的"图解正则"。（就是将刚才any-rule生成的正则表达式填入 https://regexper.com/
+
+参考：
+- [嗨：VSCode和IDEA都请安装上这个神奇的插件](https://mp.weixin.qq.com/s/h7RBvJ20NfQxwTYXaa0eiA)
 
 ### 编码规范
 
@@ -128,11 +133,13 @@ Maven Helper：安装之后，直接打开pom文件，即可查看依赖数，�
 
 Restful Tookit：编写 RESTful 接口必不可少的插件，编写完接口当然还需要调试，可以搭配HTTP Client 一起使用
 
+---
+
+[Dash](https://zealdocs.org/): `ctrl+shift+h`
+
 ### 语言支持
 
 BashSupport
-
-
 
 ### 花里胡哨
 
