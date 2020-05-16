@@ -10,9 +10,13 @@ keywords:
   - 效率工具
 ---
 
+![cmder](https://gitee.com/michael_xiang/images/raw/master/uPic/9bt2Mf.png)
+
 ## 概述
 
-Windows 的命令终端确实不太好用，这也是很多人吐槽 Windows 的一个槽点。今天安利一款叫 [Cmder](http://cmder.net/)的神器，希望它能让你在 Windows 上的开发体验提升一点！Cmder 现在确实也成为了我工作中的一款必备软件。
+Windows 的命令终端确实不太好用，这也是很多人吐槽 Windows 的一个槽点。今天安利一款叫 Cmder(http://cmder.net/) 的神器，希望它能让你在 Windows 上的开发体验提升一点！Cmder 现在确实也成为了我工作中的一款必备软件。
+
+<!-- more -->
 
 Cmder 的优势主要有：
 
@@ -157,4 +161,3 @@ co=checkout
 
 - [Win下必备神器之Cmder](https://jeffjade.com/2016/01/13/2016-01-13-windows-software-cmder/)
 - [简书-cmder 一个比cmd强n倍的神器](https://www.jianshu.com/p/7a706c0a3411)
-- [Babun，一个开箱即用的 Windows Shell](
