@@ -394,7 +394,7 @@ codeblock:
 wechat_subscriber:
   enable: true
   qcode: /images//wechat-subscribe.jpg
-  description: 欢迎订阅 ヾﾉ≧∀≦)o
+  description:  ヾﾉ≧∀≦)o  欢迎订阅公众号「Coder魔法院」☑工具控 ☑编程 ☑读书☑电影
 
 # Reward (Donate)
 reward_settings:
