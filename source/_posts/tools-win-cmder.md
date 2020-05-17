@@ -35,7 +35,7 @@ Cmder 的优势主要有：
 
 > 默认会跳转至 Github(https://github.com/cmderdev/cmder/releases/tag/v1.3.14)。国内下载速度比较慢，如果有需要，可以在公众号后台回复 `cmder` 即可获得百度云的下载链接。
 
-![公众号](https://gitee.com/michael_xiang/images/raw/master/uPic/扫码_搜索联合传播样式-标准色版.png)
+![公众号](https://gitee.com/michael_xiang/images/raw/master/uPic/XiIO0t.png)
 
 安装：
 
