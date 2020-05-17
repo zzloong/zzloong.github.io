@@ -31,7 +31,7 @@ Cmder 的优势主要有：
 
 ## 安装
 
-官网主页上(http://cmder.net/)提供下载，有两个版本 mini 与 full 版，full 版本自带了 msysgit 工具，推荐下载。
+官网主页上提供下载，有两个版本 mini 与 full 版，full 版本自带了 msysgit 工具，推荐下载。
 
 > 默认会跳转至 Github(https://github.com/cmderdev/cmder/releases/tag/v1.3.14)。国内下载速度比较慢，如果有需要，可以在公众号后台回复 `cmder` 即可获得百度云的下载链接。
 
@@ -51,7 +51,7 @@ Cmder 的优势主要有：
 Cmder.exe /REGISTER ALL
 ```
 
-经过上面的设置，你可以在需要打开终端的文件夹下，右键菜单中看到 `Cmder Here`，免去原来还需要路径跳转的繁琐步骤。
+经过上面的设置，在需要打开终端的文件夹下，你就可以在右键菜单中看到 `Cmder Here`，免去原来还需要在终端中输入路径进行跳转的繁琐步骤！
 
 ![cmder-here](https://gitee.com/michael_xiang/images/raw/master/uPic/cmder-here.png)
 
@@ -67,21 +67,21 @@ set LANG=zh_CN.UTF-8
 
 > Win+Alt+P 是打开设置的快捷键，或者在顶部/底部右击点击 settings, 也可以进入设置页面
 
-### 默认终端
+### 默认终端设置、默认目录设置
 
-可以选择默认的终端，比如设置 `Cmder As Admin` 作为默认选项；
+选择默认的终端，比如设置 `Cmder As Admin` 作为默认选项；
 
 ![默认终端](https://gitee.com/michael_xiang/images/raw/master/uPic/默认终端.png)
 
-可以更改默认开启是所在目录，选择对应终端，增加这个内容即可 `-new_console:d:D:`，默认开启在 D 盘根目录：
+更改默认开启 cmder 时默认的目录，选择对应终端，增加`-new_console:d:D:` 即可，默认在 D 盘根目录：
 
 ![默认目录](https://gitee.com/michael_xiang/images/raw/master/uPic/默认目录.png)
 
-### alias 设置
+### 别名（alias）设置
 
-在 `Cmder` 终端，输入 `alias` 可以看到默认的一些别名设置。可以根据个人需要，自定义一些别名，提升开发效率！
+在 `Cmder` 终端，输入 `alias` 可以看到默认的一些别名设置。可以根据个人需要，自定义常用命令行操作的别名，提升开发效率！
 
-进入 Cmder 安装目录->config，`user-aliases.cmd` 文件可以定义常用命令的别名，如下是我的一些示例：
+依次进入 `Cmder 安装目录->config`，`user-aliases.cmd` 文件中定义了命令的别名，如下是我的一些示例，你也可以根据你的需要进行自定义：
 
 ```shell
 2c=cd /d "D:\020-Code"
@@ -95,7 +95,7 @@ co=checkout
 ```
 
 - 快速切换至一些常用的目录；
-- git 常用命令的缩写
+- git 常用命令的缩写；
 
 > 系统默认的有一个别名设置比较有用，`e.` 可以快速打开文件夹。
 
@@ -111,7 +111,7 @@ co=checkout
 
 ### 主题
 
-主题，我使用的是 Dracula 吸血鬼主题（https://draculatheme.com/cmder）。顺便安利这款主题，它也提供了 VSCode/IDEA/Pycharm 等一系列 IDE 软件对应的主题！
+主题，我使用的是 Dracula 吸血鬼主题（https://draculatheme.com/cmder）。 顺便安利这款主题，它也提供了 VSCode/IDEA/Pycharm 等一系列 IDE 软件对应的主题！
 
 ![安装主题](https://gitee.com/michael_xiang/images/raw/master/uPic/安装主题.png)
 
@@ -132,7 +132,7 @@ co=checkout
 
 ### 快速复制/粘贴
 
-下面这两个功能很常用，比 Windows 终端的复制和粘贴方便太多了：
+下面这两个功能很常用，比 Windows 终端的复制和粘贴好用太多：
 
 - 鼠标左键选中需要复制的内容，即可将终端的内容快速复制至剪贴板；
 - 鼠标右键即可将剪贴板的内容快速粘贴；
