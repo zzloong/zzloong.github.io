@@ -35,11 +35,13 @@ Cmder 的优势主要有：
 
 > 默认会跳转至 Github(https://github.com/cmderdev/cmder/releases/tag/v1.3.14)。国内下载速度比较慢，如果有需要，可以在公众号后台回复 `cmder` 即可获得百度云的下载链接。
 
+![公众号](https://gitee.com/michael_xiang/images/raw/master/uPic/扫码_搜索联合传播样式-标准色版.png)
+
 安装：
 
 - 解压下载下来的压缩包至你一般安装软件的文件夹，比如 `C:\Program Files`
 - 配置系统的环境变量，在 Path 中新增：`C:\Program Files\cmder`
-- `Win+r` 输入 cmder 即可打开 cmder 客户端了，可以将快捷方式固定至任务栏；
+- `Win+R` 输入 cmder 即可打开 cmder 客户端了，可以将快捷方式固定至任务栏；
 
 ## 配置
 
@@ -115,7 +117,7 @@ co=checkout
 
 ![安装主题](https://gitee.com/michael_xiang/images/raw/master/uPic/安装主题.png)
 
-- Win+Alt+P
+- `Win+Alt+P`
 - 点击 `Import`
 - 选择 `Dracula.xml`
 
@@ -152,10 +154,11 @@ co=checkout
 - Ctrl+W：关闭页签;
 - Ctrl+Tab：切换页签;
 - Ctrl+1：快速切换到第 1 个页签，`Ctrl+n` 快速切换到第 n 个页签；
-- Ctr+r：历史命令搜索;
+- Ctr+R：历史命令搜索;
 - Ctrl+滑鼠滚轮：字体的快速放大/缩写；
 - Alt+F4：关闭所有页签
 - Alt+enter：切换到全屏状态；
+- Win+Alt+P：进入cmder设置菜单；
 
 ## 参考
 
