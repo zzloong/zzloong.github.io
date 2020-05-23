@@ -47,6 +47,8 @@ MIT 与 BSD 类似，但是比 BSD 协议更加宽松，是目前最少限制的
 因此，一些公司往往需要小心 GPL（GPL、AGPL、SSPL）的使用
 {% endnote %}
 
+开源中国有一篇文章介绍 [MIT 协议](https://mp.weixin.qq.com/s/0dfv2rOLaPhZbSJPd33H6w)，推荐阅读~
+
 ## 总结
 
 放两张关于开源协议的总结，非常简洁易懂：
