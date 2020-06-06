@@ -1,7 +1,7 @@
 ---
 title: Git 的 cherry-pick 命令还没用过？快来看看它的厉害！
-date: 2019-11-14 20:21:24
-tags: [Git,vps]
+date: 2020-06-06 20:21:24
+tags: [Git]
 categories: ToolsDev
 keywords:
 ---
