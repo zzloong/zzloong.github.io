@@ -1,7 +1,7 @@
 ---
 title: Git 基础 —— 常用命令
 date: 2019-11-14 19:21:24
-tags: [ss,vps]
+tags: [Git]
 categories: ToolsDev
 keywords:
 ---
@@ -11,7 +11,7 @@ keywords:
 - [Git 基础 —— 安装 配置 别名 对象](https://michael728.github.io/2019/11/14/git-install-config/)
 - [Git 基础 —— 常用命令](https://michael728.github.io/2019/11/14/git-useful-commands/)
 - [Git 基础 —— 常见使用场景](https://michael728.github.io/2019/11/14/git-usage-examples/)
-- [Git基础 —— Github 的使用](https://michael728.github.io/2019/11/14/git-github-experiance/)
+- [Git 基础 —— Github 的使用](https://michael728.github.io/2019/11/14/git-github-experiance/)
 
 
 ## git init

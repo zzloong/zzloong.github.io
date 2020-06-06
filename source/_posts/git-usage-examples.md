@@ -1,7 +1,7 @@
 ---
 title: Git 基础 —— 常见使用场景
 date: 2019-11-14 20:21:24
-tags: [ss,vps]
+tags: [Git]
 categories: ToolsDev
 keywords:
 ---
@@ -11,7 +11,7 @@ keywords:
 - [Git 基础 —— 安装 配置 别名 对象](https://michael728.github.io/2019/11/14/git-install-config/)
 - [Git 基础 —— 常用命令](https://michael728.github.io/2019/11/14/git-useful-commands/)
 - [Git 基础 —— 常见使用场景](https://michael728.github.io/2019/11/14/git-usage-examples/)
-- [Git基础 —— Github 的使用](https://michael728.github.io/2019/11/14/git-github-experiance/)
+- [Git 基础 —— Github 的使用](https://michael728.github.io/2019/11/14/git-github-experiance/)
 
 
 ## 突然插入 Bugifx 工作，回退工作目录
@@ -147,10 +147,13 @@ git push -f
 参考：[git 远程仓库版本的回退以及git reset 几种常用方式记录](https://www.cnblogs.com/chenfulin5/p/6732036.html)
 
 ## cherry-pick
+
 将某一提交点的修改拿到当前分支上：
 `git cherry-pick <commit id>`
 
 这会将那次的提交与当前内容进行合并，然后生成一个新的 commit。
+
+关于这个命令，专门总结了一篇 []()
 
 ## 查找 Git 仓库的活跃贡献者
 输出git repo中前十位最活跃的提交者：
