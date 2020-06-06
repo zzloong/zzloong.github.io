@@ -6,11 +6,11 @@ categories: ToolsDev
 keywords:
 ---
 
+![cherry](https://gitee.com/michael_xiang/images/raw/master/uPic/BDuC2R.png)
+
 ## 前言
 
 最近一周在对项目的代码做一些构建工程的整改，一些通用的代码往往经常需要在代码库中的各个分支进行提交。没接触过 `cherry-pick` 功能时，往往需要你反复切换分支，在各个分支上进行相关内容的修改。这样的操作不仅繁琐，而且修改的地方一多，极易出错！
-
-![cherry](https://gitee.com/michael_xiang/images/raw/master/uPic/BDuC2R.png)
 
 ## cherry-pick 的理解
 
