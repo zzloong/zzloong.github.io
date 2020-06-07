@@ -49,6 +49,7 @@ git config --global user.email "649168982@qq.com"
 运行 `git config --help` 可以看到帮助文档，比如，配置错误了，可以删除：`git config --unset usr.name` 将 `usr.name` 删除，应该是 `user.name`。
 
 ### 生成 SSH Key
+
 1.先查看有没有 SSH Key，`ls -al ~/.ssh`，如果没有，采用如下方法生成。
 2.生成 ssh 公钥，不要重命名生成的文件，否则会导致 ssh 方式下载 Git 代码库失败：
 ```
@@ -60,6 +61,7 @@ ssh-keygen -t rsa -C "649168982@qq.com"
 - `-C` 后面是个注释信息，并不一定要和你 Git 账户的邮箱或者 Git 账户名保持一致，只是常常是和你账户邮箱保持一致，这样设置，就能知道这个公钥被绑定在哪个 Git 账户上了。
 
 3.生成公钥之后，拷贝公钥的内容，粘贴到你 [Github  账户的 SSH Key 设置](https://github.com/settings/keys)中；
+
 ```
 pbcopy < ~/.ssh/id_rsa.pub
 ```
@@ -76,6 +78,7 @@ pbcopy < ~/.ssh/id_rsa.pub
 - [archlinux-SSH keys (简体中文)](https://wiki.archlinux.org/index.php/SSH_keys_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87))
 
 ### Git 配置别名
+
 `git config`命令可以轻松为每一个命令设置别名。例如：
 ```
 git config --global alias.co checkout
@@ -85,6 +88,7 @@ git config --global alias.st status
 ```
 
 演示将git visual定义为 gitk 的别名：
+
 ```
 git config --global alias.visual '!gitk'
 ```
@@ -118,6 +122,7 @@ git config --global alias.visual '!gitk'
 ```
 
 我们可以体验一个 `log` 的别名命令设置：
+
 ```
 lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 ```
@@ -125,6 +130,7 @@ lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen
 这是超厉害的别名缩写命令，试试现在的 `git lg` 有多酷炫吧！
 
 ## 探秘 .git 目录
+
 `.git` 裸仓库文件夹，反映了 Git 良好的文件存储机制。
 
 - `HEAD` 文件，指向**当前所在的分支**，类似一个活动的指针，表示一个「引用」。例如当前在 `develop` 分支，HEAD 内容就是 `ref: refs/heads/develop`
@@ -132,7 +138,9 @@ lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen
 - `refs` 文件夹，包含了 `heads` 和 `tags` 文件夹。`heads` 归档的分支，`tags` 归档的标签，也叫做「里程碑」。
   - `heads` 文件夹下有多个文件，每个文件和仓库本地存在的分支名一致，文件内容是 commit id。文件当中存放的其实是这个分支的指针指向的 commit id。`git branch -av` 可以看到分支信息和 commit id。它是个 `commit` 类型的对象。
   - `tags` 中也有多个文件，文件名和存在 `tag` 名一致，内容也是 commit id。它也是个 `commit` 类型的对象。
-- objects 文件夹（核心），存放所有的 git 对象，对象哈希值前 2 位作为文件夹名称，后 38 位作为对象文件名, 可通过 `git cat-file -p <2位+38位>` 命令查看文件内容。`git cat-file -t <2位+38位>` 查看对象类型，这是一个 `tree` 类型的对象。内容本身是一个 `blob` 对象。任何文件的内容相同，在 Git 眼里，它就是唯一的一个 `blob` 对象。
+- `objects` 文件夹（核心），存放所有的 git 对象，对象哈希值前 2 位作为文件夹名称，后 38 位作为对象文件名, 可通过 `git cat-file -p <2位+38位>` 命令查看文件内容。`git cat-file -t <2位+38位>` 查看对象类型，这是一个 `tree` 类型的对象。内容本身是一个 `blob` 对象。任何文件的内容相同，在 Git 眼里，它就是唯一的一个 `blob` 对象。
+
+> 利用 `git ls-files -s` 可以查看文件的关联联系，有利于窥视 Git 的内部状态，同时，它可以方便利用 `git cat-file -p 散列值` 查看对象内容。
 
 还有一些暂可以不了解的文件：
 - `COMMIT_EDITMSG` 文件
@@ -143,15 +151,29 @@ lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen
 - `info` 文件夹
 - `logs` 文件夹
 
+### Git 对象类型
+
+Git 放在对象库（object store）里的对象只有四种类型：
+- 块 blob：文件的每一个版本表示一个 blob 对象。一个 blob 对象保存的是一个文件的数据
+- 目录树 tree：一个目录树对象代表一层目录信息。
+- 提交 commit：一个提交对象保存版本库每一次变化的元数据，包括作者、提交者等信息。每一个提交对象指向一个目录树对象。
+- 标签 tag：一个标签对象分配一个任意的可读性高的名字给一个指定对象，通常是一个提交对象。
+
 ### 知道了一个 sha1 值，如何查看它的对象类型、对象内容、对象大小？
+
 - `git cat-file -t` 命令 ， 查看 git 对象的类型
 - `git cat-file -p` 命令， 查看 git 对象的内容
 - `git cat-file -s` 命令， 查看 git 对象的大小
 
 ### Git 对象彼此关系
+
 `commit ` `tree` `blob` 三个对象之间的关系：
 ![](https://ws1.sinaimg.cn/mw690/6d9475f6ly1fzb6eybuywj212t0my435.jpg)
 一次 commit id 对应一棵树（`tree`），一次快照，整个项目的快照，包含了哪些文件夹（`tree`）、哪些文件（`blob`）。`blob` 可以看做是一个文件，但是和文件名是没关系的，不管文件名是什么，只要文件内容相同，就是一个 `blob`，这种设计大大节约了存储空间。
+
+### Git 的索引
+
+Git 的索引不包含任何文件内容，它仅仅追踪你想要提交的那些内容。但执行 `git commit` 命令的时候，Git 会通过检查索引而不是工作目录来找到要提交的内容。
 
 ### 实验
 新建一个 git 仓库，创建一个 doc 文件夹，在 doc 文件夹中创建 readme 文件
@@ -181,8 +203,17 @@ blob
 
 扩充：我又将之前 doc 文件夹的 readme 文件复制在仓库的根目录下，此时在 `git add readme` 之后，文件对象仍然无变化；但是，当 commit 之后，文件对象变多了，多了 1 个 commit，1个 tree 对象。这个多出来的 tree 对象，就是因为工作目录变化了，那么就多出来了一个 tree 对象。
 
+## Git 中的文件分类
+
+Git 将所有文件分为 3 类：
+- 已追踪的 tracked：指已经在版本库中的文件或者已经暂存到索引中的文件。利用 `git add somefile` 将新文件添加为已追踪文件
+- 被忽略的 ignored：
+- 未被追踪的 untracked：不在前两类中的文件就是未被追踪的文件
+
 ## HEAD 与 branch
+
 ### 分离头指针
+
 ```
 $ git checkout 20824e0
 Note: checking out '20824e0'.
@@ -195,6 +226,7 @@ state without impacting any branches by performing another checkout.
 `detached HEAD`就表示你当前处于「分离头指针」的状态。,其实，「分离头指针」就是表示正工作在一个没有分支的情况下，没有与分支进行挂钩, HEAD 没有指向任何分支。 处于「分离头指针」状态进行提交后，当你切换到其他分支，例如 `git checkout master` ，之前产生的 commit 可能会被 Git 当为垃圾清除掉。
 
 ### 分离头指针的应用场景
+
 在处于分支头指针状态时，你产生了一次 commit `0635f24`，当你切换到其他分支后，有可能就找不到刚刚的提交了，你用 `gitk --all` 之后，看不到刚刚的提交的。
 
 如果想保存刚刚的提交，需要使用如下命令将其与分支挂钩：
@@ -205,11 +237,13 @@ git branch <new-branch-name> 0635f24
 如果临时想基于某个 commit 做变更，试试新方案是否可行，就可以采用分离头指针的方式。测试后发现新方案不成熟，直接 reset 回其他分支即可，省却了建、删分支的麻烦。
 
 ### 进一步理解 HEAD 和 branch
-HEAD 既可以指向当前分支的最新 commit，也可以指向历史中的某一次 commit (「分离头指针」的情况)。归根结底，HEAD 指向的就是一次 commit。
+
+HEAD 既可以指向「当前分支」的最新 commit，也可以指向历史中的某一次 commit (「分离头指针」的情况)。归根结底，HEAD 指向的就是一次 commit。
 
 当我们做分支切换时，HEAD 会跟着切换。
 
 例如比较最近两次提交的差异，可以用命令：
+
 ```
 # 下面三个命令等效
 git diff xxx1 xxx2
@@ -219,6 +253,16 @@ Git diff HEAD HEAD~1
 
 - `HEAD^1` 表示 HEAD 的父亲，`HEAD^^` 表示 HEAD 父亲的父亲。
 - `HEAD^^` 和 `HEAD~2`等效。
+
+## Git 的特殊符号集
+
+Git 中有一个特殊符号集来指代引用名。
+
+- `^` 用来表示父提交，`master^1` 与 `master^2` 表示的都是 `master` 的父提交，注意了，`master^2` 并不是「爷爷」，嘿嘿
+- `~` 用来返回上一代提交，因此 `master~1` 表示父提交，`master~2` 表示的是 `master~1` 的父提交，也就是 `master` 的祖父提交！
+- `:` 可以用来指向一个产生合并冲突的文件的替代版本。
+
+> master^1 可以简写为 master^，master~1 可以简写为 master~
 
 ## Git 小技巧
 ### Git 帮助文档
@@ -244,13 +288,26 @@ gitk 后面可以跟上文件的路径， 这样能看单个文件的修改历�
 - 菜单 View ，选择 `All refs` 可以看到所有的分支演变图
 
 ### gitignore 指定不需要 Git 管理的文件 
+
 `.gitignore` 指定哪些文件不需要纳入版本管理的。
 - `*.d` 任何 `.d` 结尾的文件都不需要；
 - `*.dSYN/` 任何以 `.dSYM` 结尾的文件夹下的文件都不要；
+- 目录名由末尾的 `/` 标记。这能匹配同名的目录和子目录。 
 
-加不加 `/` 作用是不一样的，很微妙。比如，有一个文件夹叫 `doc`，那么，`.gitignore` 中写 `doc`， Git 既会忽略 doc 文件夹，也会忽略 `doc` 文件！只有 `doc/` 这么写，才会只忽略 `doc` 文件夹而不忽略 `doc` 文件，作用才很明确。
+> 加不加 `/` 作用是不一样的，很微妙。比如，有一个文件夹叫 `doc`，那么，`.gitignore` 中写 `doc`， Git 既会忽略 doc 文件夹，也会忽略 `doc` 文件！只有 `doc/` 这么写，才会只忽略 `doc` 文件夹而不忽略 `doc` 文件，作用才很明确。所以，如果要忽略的是文件夹，那么就显示的加上 `/` 吧。
 
-所以，如果要忽略的是文件夹，那么就显示的加上 `/` 吧。
+- 一个 `*` 只能匹配一个文件或目录名。
+- 起始的 `!` 取反模式。
+
+> Git 允许在版本库中任何目录下有 `.gitignore` 文件。每个文件只影响该目录及其所有子目录。
+
+场景：全局配置了忽略 *.io 的文件，但是 Dev 目录下的 driver.io 不能被忽略，该怎么办？
+
+```
+cd Dev
+# 追踪一个例外
+echo "!driver.io" >> .gitignore
+```
 
 Github 现在创建仓库时，可以选择生成什么 `.gitignore` ，附上链接作为参考：
 - [github/gitignore/maven](https://github.com/github/gitignore/blob/master/Maven.gitignore)
@@ -278,6 +335,7 @@ git config --global core.excludesfile /Users/michael/.gitignore_global
 - [Git中全局忽略.DS_Store文件](https://www.jianshu.com/p/8c0d262e49a6)
 
 ## 解决冲突的工具
+
 [diffmerge](https://sourcegear.com/diffmerge/downloads.php)是一个可以用来文件对比软件。相较于 `git mergetool` 使用的自带的界面，diffmerge 提供了一个可交互的编辑窗口，大大提高了效率。我们可以通过简单的配置，在使用 `git difftool` `git mergetool` 时，默认使用 diffmerge 工具来进行展示差异。当然，你要是有钱，也可以选择 Beyond Compare 来作为对比软件。
 
 选择 OS X 10.6+ Installer (Intel)	版本，安装好之后进行配置：

@@ -564,9 +564,18 @@ git config --global user.email "xx@mail.com"
 ### 二分查找，傻瓜式定位bug
 
 场景：定位Bug，当前版本有Bug，上个版本没有，两个版本之前有上千次commit
-二分查找，N个patch只需要测试log2N次（8k个path仅需测试13次）
-可以实现测试自动化，自动查找问题patch
-`git bisect`：自动定位，不必找原作者
+
+二分查找，N 个 patch 只需要测试 log2N 次（8k 个 path 仅需测试 13 次）
+可以实现测试自动化，自动查找问题 patch
+
+`git bisect`：只需要在初始时提供一个初始的「好」提交和「坏」提交。然后重复回答这个版本是否 OK
+
+- 使用 `git bisect start` 开始
+- `git bisect bad` 告诉是「坏」提交，默认是 `HEAD`
+- `git bisect good v1.0` 告诉 V1.0 是「好」提交
+- 反复回答 `git bisect good/bad` 告诉是「好/坏」提交
+- `git bisect reset` 恢复到分支一开始
+- `git bisect log` 记录你回答的日志
 
 ### 同时负责多个Bug的修改
 

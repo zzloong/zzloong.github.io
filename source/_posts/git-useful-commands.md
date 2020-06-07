@@ -139,9 +139,14 @@ git push origin --delete <remote_branch_name>
 
 `git add -A`相对于`git add -u`命令的优点 ： 可以提交所有被删除、被替换、被修改和新增的文件到数据暂存区，而`git add -u `只能操作跟踪过的文件。
 
+> 在发出 `git add` 命令时，每个文件的全部内容将被复制到对象库中，并且按照文件的 SHA1 名来索引。暂存一个文件也叫缓存一个文件或是把文件放进索引。与其把 `git add` 看成添加这个文件，不如看做添加这个内容
+
 ## git diff
+
 ### 比较工作区和暂存区的差异
+
 将工作区和暂存区所有文件进行比较：
+
 ```
 git diff 
 ```
@@ -203,6 +208,7 @@ git reset HEAD style.css
 ```
 
 ### 将工作区和暂存区保持一致
+
 有时候修改了文件，已经保存到暂存区，之后又在工作区进行了修改，此时，发现工作的效果不如暂存区的效果好，想要将工作区和暂存区保持一致。
 
 ```
@@ -210,9 +216,13 @@ git checkout -- <file>...
 ```
 
 其实，`git status` 都有友好的提示的：
+
 ![](https://ws3.sinaimg.cn/large/006tNc79ly1fzc741ckucj30yc0c8771.jpg)
+
 - 如果想要变更工作区的内容，那么要想到和 `checkout` 命令相关；
 - 如果想要变更暂存区的内容，那么要想到和`reset` 命令相关；
+
+> 任何时候都可以通过 git status 查询索引的状态。
 
 ### 消除最近的几次提交
 
@@ -461,6 +471,7 @@ git checkout <filename>
 参考：[在git中checkout历史版本](https://www.cnblogs.com/crazyacking/p/5620635.html)
 
 ## git log
+
 查看版本演变历史：
 ```
 git log --pretty=oneline # 检查提交日志，都在一行：<commit id> <message>
@@ -494,6 +505,13 @@ git log --all --graph
 git log --oneline --graph temp
 ```
 
+检查某个文件的历史记录：
+```
+# --follow 选项会让 Git 在日志中回溯并找到内容相关联的地整个历史记录
+git log --follow mydata
+```
+
+参考：
 - [git log命令全解析，打log还能这么随心所欲！](http://www.cnblogs.com/bellkosmos/p/5923439.html)
 - [git-scm 2.3 Git 基础 - 查看提交历史](https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%9F%A5%E7%9C%8B%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2)
 
@@ -528,8 +546,14 @@ git fetch <remote_host_name>
 
 如果你使用`clone`命令克隆了一个仓库，命令会自动将其添加为远程仓库并默认以`origin`为缩写。
 
-## Tag
+## git rev-parse
+
+`git rev-parse` 命令可以将任何形式的提交名——标签、相对名、简写或者绝对名称，转换成对象库中实际的、绝对的提交散列 ID。
+
+## git tag
+
 ### 列出标签
+
 ```
 git tag # 列出所有标签
 git tag -l 'v1.8*' # 列出以 v1.8 开头的所有标签
@@ -538,24 +562,26 @@ git tag -l 'v1.8*' # 列出以 v1.8 开头的所有标签
 ### 创建标签
 
 Git使用两种主要类型的标签：
-- 附注（annotated）标签
-- 轻量（ightweight）标签
+- 附注（annotated）标签：会创建一个标签对象
+- 轻量（ightweight）标签：轻量级标签仅仅是一个提交对象的引用，可以 `git rev-parse v1` 来查看它的 SHA1 值
 
 前者会包括一些注释信息，来进一步解释这个 tag 的作用，而后者就仅仅只是一个 tag 的名字
 
-#### 附注标签
+附注标签：
+
 ```
 git tag -a v1.4 -m 'my version 1.4'
 ```
 
 通过`git show <tag-name>`命令可以看到标签信息
 
-#### 轻量标签
+轻量标签：
+
 ```
 git tag v1.4
 ```
 
-没用`-a`、`-m`的参数，只需要提供标签名字
+没用`-a`、`-m`的参数，只需要提供标签名
 
 ### 删除标签
 ```
@@ -563,13 +589,17 @@ git tag -d <tagname>
 ```
 
 ### 补打标签
+
 #### 假设忘记给项目打标签，可以在之后加上：
+
 基于某历史节点的`commit id`补打`Tag`：
+
 ```
 git tag -a v1.2 <commit id>
 ```
 
 #### 共享标签
+
 默认情况下，`git push`命令并不会传送标签到远程服务器上。在创建完标签后你必须显示地推送标签到共享服务器上。这个过程就像共享远程分支一样，可以运行`git push origin [tagname]`
 
 如果想要一次性推送很多标签，也可以使用`--tags`选项的`git push`：
@@ -581,6 +611,26 @@ git push origin --tags
 ```
 git checkout -b <new_br> <tag_name>
 ```
+
+## 高阶命令
+
+### git bisect 
+
+二分查找，快速定位 bug 的提交
+
+场景：定位 Bug，当前版本有B ug，上个版本没有，两个版本之前有上千次 commit
+
+二分查找，N 个 patch 只需要测试 log2N 次（8k 个 path 仅需测试 13 次）
+可以实现测试自动化，自动查找问题 patch
+
+`git bisect`：只需要在初始时提供一个初始的「好」提交和「坏」提交。然后重复回答这个版本是否 OK
+
+- 使用 `git bisect start` 开始
+- `git bisect bad` 告诉是「坏」提交，默认是 `HEAD`
+- `git bisect good v1.0` 告诉 V1.0 是「好」提交
+- 反复回答 `git bisect good/bad` 告诉是「好/坏」提交
+- `git bisect reset` 恢复到分支一开始
+- `git bisect log` 记录你回答的日志
 
 参考：
 - [The Junior Git](https://thoamsy.github.io/blogs/git/)
