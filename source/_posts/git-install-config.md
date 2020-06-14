@@ -248,7 +248,7 @@ HEAD 既可以指向「当前分支」的最新 commit，也可以指向历史�
 # 下面三个命令等效
 git diff xxx1 xxx2
 git diff HEAD HEAD^
-Git diff HEAD HEAD~1
+git diff HEAD HEAD~1
 ```
 
 - `HEAD^1` 表示 HEAD 的父亲，`HEAD^^` 表示 HEAD 父亲的父亲。
@@ -259,12 +259,13 @@ Git diff HEAD HEAD~1
 Git 中有一个特殊符号集来指代引用名。
 
 - `^` 用来表示父提交，`master^1` 与 `master^2` 表示的都是 `master` 的父提交，注意了，`master^2` 并不是「爷爷」，嘿嘿
-- `~` 用来返回上一代提交，因此 `master~1` 表示父提交，`master~2` 表示的是 `master~1` 的父提交，也就是 `master` 的祖父提交！
+- `~` 用来返回上一代提交，因此 `master~1` 表示父提交；`master~2` 表示的是 `master~1` 的父提交，也就是 `master` 的祖父提交！
 - `:` 可以用来指向一个产生合并冲突的文件的替代版本。
 
 > master^1 可以简写为 master^，master~1 可以简写为 master~
 
 ## Git 小技巧
+
 ### Git 帮助文档
 
 授人以鱼不如授人以渔，先知道怎么通过帮助文档查看常用命令的说明吧：
@@ -277,6 +278,7 @@ git <cmd> -h # 显示简略的命令帮助
 ```
 
 ### gitk 图形界面
+
 gitk 后面可以跟上文件的路径， 这样能看单个文件的修改历史的具体内容。
 
 - `Patch` 表示的是「变更集」，某一次 commit 修改的文件集合；

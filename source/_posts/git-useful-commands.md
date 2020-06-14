@@ -71,10 +71,12 @@ git mv <old filename> <new filename>
 ```
 
 ## git branch
+
 - `git branch -r` 只显示远端分支，
 - `git branch -a` 显示本地分支和远程分支
 
 ### 新建分支
+
 新建 develop 分支，并切换到 develop 分支：
 ```
 git branch develop
@@ -104,14 +106,16 @@ git push --set-upstream <remote_host_name> <branch_name>
 - [Git创建远程分支](https://majing.io/questions/718)
 - [阮一峰--Git远程操作详解](http://www.ruanyifeng.com/blog/2014/06/git_remote.html)
 
-### 查看本地分支：
+### 查看本地分支
+
 ```
 git branch # 查看本地分支
 git branch -r # 查看远端分支
 git branh -av # 查看所有分支，信息详细点
 ```
 
-### 删除分支：
+### 删除分支
+
 删除本地分支：
 ```
 git branch -d develop
@@ -124,6 +128,27 @@ git push origin :<remote_branch_name>
 # 和如下命令等同
 git push origin --delete <remote_branch_name>
 ```
+
+如果待删除的分支中的提交已经存在于其他分支，那么，需要检出到那个分支，然后才可以安全的删除该分支。当然，也可以将待删除的分支先 merge 到当前分支之后，再安全删除分支。这样做，其实是为了避免提交丢失。
+
+> 意外删除分支或者其他引用后，可以使用 git reflog 命令恢复它。
+
+
+### 分支命名
+
+可以使用层次命名的方式，方便明白分支用途。比如在 bug 分支下建立不同的分支，如 `bug/pr-1023`、`bug/pr-17`。这种斜杠语法给你的分支名引进某种结构。
+
+通过如下的简写，可以一次查看所有分支信息：
+
+```
+git show-branch bug/*
+```
+
+分支名命名的注意事项：
+
+- 不能包含空格或其他特殊空白字符
+- 不能包含一些特殊含义字符，比如 `~``:``?`等
+
 
 ## git add
 
@@ -419,7 +444,7 @@ $ git pull github master --allow-unrelated-histories
 
 现在合并之后，分支演进如下：
 ![](https://ws1.sinaimg.cn/mw690/6d9475f6ly1fzcundxvl5j20qg0jc418.jpg)
-可以看到merge 这种方式新生成的 commit 有两个父亲。
+可以看到 merge 这种方式新生成的 commit 有两个父亲。
 
 现在重新启动将本地的 master 分支 push 到远端：
 ```
@@ -427,6 +452,7 @@ git push github master
 ```
 
 ## git rm
+
 从 Git 中移除某个文件，就必须从已跟踪的文件清单中删除（从暂存区域移除文件），然后提交。可以使用 `git rm` 命令完成此项工作，并连带从工作目录中删除指定的文件，以后这个文件就不会出现在 Git 库中了。
 
 当我们先把某文件从 Git 库中删除（亦即从暂存区移除），但仍然希望保留在当前工作目录中。比如当你忘记在`.gitignore`文件中将一些文件忽略，但是却不小心把大的日志文件添加到暂存区域时，这一做法很有用：
@@ -437,6 +463,7 @@ git rm --cached README
 ```
 
 ## git checkout
+
 基于某分支创建新分支：
 ```
 git checkout -b <new_branch_name> <base_branch_name>
@@ -445,7 +472,8 @@ git checkout -b <new_branch_name> <base_branch_name>
 这里的 `base_branch_name` 是指创建分支时的「基」。
 
 - 当省略时，就是基于当前分支创建；
- ```
+
+```
 git checkout -b <new_branch_name>
 ```
 
@@ -464,6 +492,7 @@ git checkout -b <name_of_branch> <commit id>
 除了有“切换”的意思，`checkout`还有一个撤销的作用。
 
 举个例子，假设我们在一个分支开发一个小功能，刚写完一半，这时候需求变了，而且是大变化，之前写的代码完全用不了，好在你刚写，甚至都没有 `git add` 进暂存区，这个时候很简单的一个操作就直接把原文件还原：
+
 ```
 git checkout <filename>
 ```
@@ -573,7 +602,7 @@ Git使用两种主要类型的标签：
 git tag -a v1.4 -m 'my version 1.4'
 ```
 
-通过`git show <tag-name>`命令可以看到标签信息
+通过 `git show <tag-name>` 命令可以看到标签信息。其实，还以通过 `git show branch_name:file_name` 查看具体分支或者标签中的文件的内容。
 
 轻量标签：
 
@@ -582,6 +611,8 @@ git tag v1.4
 ```
 
 没用`-a`、`-m`的参数，只需要提供标签名
+
+> tag 是一个静态的名字，相当于一个 snapshot 的概念，而分支是动态的。如果你创建的 tag 名和分支名一样，容易造成混淆，就必须使用索引名全称来区分它们。比如 `refs/tags/v1`、`refs/heads/v1`
 
 ### 删除标签
 ```
@@ -608,6 +639,9 @@ git push origin --tags
 ```
 
 #### 检出标签
+
+根据标签打的时间点，新建一个分支：
+
 ```
 git checkout -b <new_br> <tag_name>
 ```

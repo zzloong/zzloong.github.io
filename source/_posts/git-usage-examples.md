@@ -15,6 +15,7 @@ keywords:
 
 
 ## 突然插入 Bugifx 工作，回退工作目录
+
 - `git stash` 保存所有工作内容，放到一个特殊的区域，为了避免遗忘，可以 `git stash save [message] ` 保存一点提示信息；
 - `git stash list` 查看保存列表，如 `stash@{2}` 和 `stash@{1}`，序号中数字大的代表的是较早的 stash；
 - `git stash show stash@{0} -v` 比较当前工作目录和 stash 的内容做比较；
@@ -31,8 +32,9 @@ git stash pop|apply [stash]
 用法：
 ```
 git stash pop stash@{2}
-git stash pop = git stash pop stash@{0}
+git stash pop 
 ```
+
 我们 pop 的时候可以加具体的序号，不加序号的（缺省情况下）为 `stash@{0}`。
 
 stash 回来是有可能发生冲突的，需要解决冲突
