@@ -1,7 +1,7 @@
 ---
 title: Git使用教程笔记
 date: 2018-11-24 21:23:04
-tags: [Git, Tools]
+tags: [Git]
 categories:
 - ToolsDev
 keywords:

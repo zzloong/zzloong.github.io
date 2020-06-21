@@ -223,7 +223,7 @@ changes and commit them, and you can discard any commits you make in this
 state without impacting any branches by performing another checkout.
 ```
 
-`detached HEAD`就表示你当前处于「分离头指针」的状态。,其实，「分离头指针」就是表示正工作在一个没有分支的情况下，没有与分支进行挂钩, HEAD 没有指向任何分支。 处于「分离头指针」状态进行提交后，当你切换到其他分支，例如 `git checkout master` ，之前产生的 commit 可能会被 Git 当为垃圾清除掉。
+`detached HEAD`就表示你当前处于「分离头指针」的状态。其实，「分离头指针」就是表示正工作在一个没有分支的情况下，没有与分支进行挂钩, HEAD 没有指向任何分支。 处于「分离头指针」状态进行提交后，当你切换到其他分支，例如 `git checkout master` ，之前产生的 commit 可能会被 Git 当为垃圾清除掉。
 
 ### 分离头指针的应用场景
 
