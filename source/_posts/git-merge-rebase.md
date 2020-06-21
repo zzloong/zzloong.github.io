@@ -6,6 +6,8 @@ categories: ToolsDev
 keywords:
 ---
 
+![green-leaf-merge-git](https://gitee.com/michael_xiang/images/raw/master/uPic/green-leaf-merge-git.jpg)
+
 ## 前言
 
 Git 中的分支合并是一个场景的使用场景。
