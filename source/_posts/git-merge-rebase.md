@@ -31,7 +31,7 @@ Git 中的分支合并是一个常见的使用场景。
 
 ## fast-forward 与 --no-ff 的区别
 
-假如有有一个场景：有两个分支，master 分支和 feature 分支。现在，feautre 分支需要合并回 master 分支。
+假如有一个场景：有两个分支，master 分支和 feature 分支。现在，feautre 分支需要合并回 master 分支。
 
 ![fast-forward-初始状态](https://gitee.com/michael_xiang/images/raw/master/uPic/wOR7JK.png)
 
@@ -241,4 +241,3 @@ rebase 命令的用法也不止于此，计划后期会专门写一篇介绍她�
 ----
 
 > 生命不息，折腾不止！关注 「Coder 魔法院」，祝你 Niubilitiy ！🐂🍺
-
