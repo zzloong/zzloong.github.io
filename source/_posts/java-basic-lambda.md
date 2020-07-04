@@ -296,5 +296,51 @@ public class LambdaRef {
 
 ## Lambda 表达式调用 Arrays 的类方法
 
-Arrays 类的有些方法需要 Comparator
+Arrays 类的有些方法需要 Comparator、XxxOperator、XxxFunction 等接口的实例，这些接口都是函数式接口。因此，可以使用 Lambda 表达式来调用 Arrays 的方法。
+
+```java
+public class LambdaArrays {
+    public static void main(String[] args) {
+        String[] arr1 = new String[]{"java", "python", "rust", "go"};
+        Arrays.parallelSort(arr1, (o1, o2) -> o1.length() - o2.length());
+        System.out.println(Arrays.toString(arr1));
+        int[] arr2 = {3, -4, 25, 16, 30, 18};
+        // left 代表数组中前一个索引处的元素，计算第一个元素时，left 为 1；
+        // right 代表数组中的当前索引处的元素
+        Arrays.parallelPrefix(arr2, (left, right) -> left * right);
+        System.out.println(Arrays.toString(arr2));
+        long[] arr3 = new long[5];
+        // a 代表正在计算的元素索引
+        Arrays.parallelSetAll(arr3, a -> a * 5);
+        System.out.println(Arrays.toString(arr3));
+        
+        // 等价于用匿名内部类重写 applyAsLong 抽象方法
+        Arrays.parallelSetAll(arr3, new IntToLongFunction() {
+            @Override
+            public long applyAsLong(int value) {
+                return value * 5;
+            }
+        });
+        System.out.println(Arrays.toString(arr3));
+    }
+}
+```
+
+输出：
+```java
+[go, java, rust, python]
+[3, -12, -300, -4800, -144000, -2592000]
+[0, 5, 10, 15, 20]
+[0, 5, 10, 15, 20]
+```
+
+因为这些要出入 Comparator、XxxOperator、XxxFunction 等接口的实例往往都是一次性的，使用 Lambda 表达式也不用考虑重用等，反而让程序更加简洁了。
+
+## 总结
+
+本文主要参考的是 《疯狂 Java 讲义第 5 版》的第 6 章的面向对象下，通过实际的示例 demo 应该可以将 Lambda 的常用场景和用法掌握了。这样，看项目代码或者源码的话，会更加易于理解！基本功扎实，才能走得更快！
+
+## 参考
+
+- [To Be Top Javaer/糖块十二、Lambda表达式](http://hollischuang.gitee.io/tobetopjavaer/#/basics/java-basic/syntactic-sugar?id=%e7%b3%96%e5%9d%97%e5%8d%81%e4%ba%8c%e3%80%81lambda%e8%a1%a8%e8%be%be%e5%bc%8f)
 
