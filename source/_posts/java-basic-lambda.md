@@ -83,4 +83,17 @@ public class LambdaQs {
 }
 ```
 
+输出结果：
+```java
+oop.lambda.LambdaQs$$Lambda$1/1607521710@7ef20235
+雪糕的味道不错！
+我正在驾驶：oop.lambda.LambdaQs$$Lambda$2/1329552164@15aeb7ab
+今天天气是：「夏日晴天」
+飞机平稳飞行！
+5 + 3 = 8
+5 + 3 = 8
+```
+
 以上示例可以说明，Lambda 表达式实际上可以被当做一个具体的对象。
+ 
+ ## 

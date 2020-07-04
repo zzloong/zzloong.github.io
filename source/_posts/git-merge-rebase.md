@@ -8,8 +8,6 @@ keywords:
 
 ![green-leaf-merge-git](https://gitee.com/michael_xiang/images/raw/master/uPic/green-leaf-merge-git.jpg)
 
-# Git 基本命令 merge 和 rebase，你真的了解吗？
-
 ## 前言
 
 Git 中的分支合并是一个常见的使用场景。
@@ -18,6 +16,8 @@ Git 中的分支合并是一个常见的使用场景。
 - 远端仓库的分支 A 有其他小伙伴合入了代码，这时候，你需要和远端仓库的分支 A 进行合并；
 
 以上只是列举了分支合并的一些常见场景，关于 `merge` 和 `rebase` 命令你足够了解吗？
+
+<!-- more -->
 
 ## HEAD 的理解
 
