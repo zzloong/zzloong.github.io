@@ -223,4 +223,78 @@ public class LambdaRef {
 }
 ```
 
+## Lambda 表达式与匿名内部类的联系与区别
+
+Lambda 表达式与匿名内部类存在如下相同点：
+- Lambda 表达式与匿名内部类一样，都可以直接访问 `effectively final` 的局部变量，以及外部类的成员变量（包括示例变量和类变量）；
+- Lambda 表达式创建的对象与匿名内部类生成的对象一样，都可以直接调用从接口中继承的默认方法；
+
+Lambda 表达式与匿名内部类的区别：
+- 匿名内部类可以为任意接口创建实例，不管接口包含多少个抽象方法，只要匿名内部类实现所有抽象方法即可；但是 Lambda 表达式只能为函数式接口创建实例；
+- 匿名内部类可以为抽象类甚至普通类创建实例，但是 Lambda 表达式只能为函数式接口创建实例；
+- 匿名内部类实现的抽象方法体允许调用接口中定义的默认方法，但是 Lambda 表达式的代码块不允许调用接口中定义的默认方法；
+
+```java
+@FunctionalInterface
+interface Converter {
+    Integer convert(String from);
+}
+
+@FunctionalInterface
+interface MyTest {
+    String test(String a, int b, int c);
+}
+
+@FunctionalInterface
+interface YourTest {
+    // 抽象方法负责根据 String 参数生成一个 JFrame 返回值
+    JFrame win(String title);
+}
+
+
+public class LambdaRef {
+    public static void main(String[] args) {
+        // 1 引用类方法
+        // 下面使用 Lambda 表达式创建 Converter 对象
+        Converter converter1 = from -> Integer.valueOf(from);
+        Integer val = converter1.convert("99");
+
+        // 函数式接口中被实现方法的全部参数传给该类方法作为参数
+        Converter converter2 = Integer::valueOf;
+        Integer val2 = converter2.convert("100");
+
+        // 2 引用特定对象的实例方法
+        // 使用 Lmabda 表达式创建 Converter 对象
+        Converter converter3 = from -> "hello michael翔".indexOf(from);
+
+        // 调用 "hello michael翔"的indexOf()实例方法
+        // 函数式接口中被实现的全部参数传给该方法作为参数
+        Converter converter4 = "hello michael翔"::indexOf;
+
+        // 3 引用某类对象的实例方法
+        // 使用 Lambda 表达式创建 MyTest 对象
+        MyTest mt = (a, b, c) -> a.substring(b, c);
+        String  str = mt.test("Hello World, Hello Michael翔", 2,9);
+
+        // 上面 Lambda 表达式只有一行，因此可以使用如下引用进行替换
+        // 函数式接口中被实现方法的第一个参数作为调用者
+        // 后面的参数全部传给该方法作为参数
+        MyTest str2 = String::substring;
+
+        // 4 引用构造器
+        // 使用 Lambda 表达式创建 YourTest 对象
+        YourTest yt = a -> new JFrame(a);
+        JFrame jf = yt.win("窗口");
+
+        // 使用构造器引用进行替换
+        // 函数式接口中被实现方法的全部参数传给该构造器作为参数
+        YourTest yt2 = JFrame::new;
+        JFrame jf2 = yt.win("窗口2");
+    }
+}
+```
+
+## Lambda 表达式调用 Arrays 的类方法
+
+Arrays 类的有些方法需要 Comparator
 
