@@ -393,7 +393,7 @@ codeblock:
 # Wechat Subscriber
 wechat_subscriber:
   enable: true
-  qcode: /images/公众号-二维码-截图.png
+  qcode: https://gitee.com/michael_xiang/images/raw/master/uPic/公众号-二维码-截图.png #/images/公众号-二维码-截图.png
   description:  ヾﾉ≧∀≦)o  欢迎订阅公众号「Coder魔法院」☑工具控 ☑编程 ☑读书☑电影
 
 # Reward (Donate)
