@@ -31,7 +31,7 @@ categories: Life
 
 ![地铁](https://gitee.com/michael_xiang/images/raw/master/uPic/YTFBJp.png)
 
-![洪崖洞](https://gitee.com/michael_xiang/images/raw/master/uPic/yvhOcw.png)
+![路牌](https://gitee.com/michael_xiang/images/raw/master/uPic/yvhOcw.png)
 
 到了重庆，第一顿是在一家叫「月半（解放碑总店）」的川菜馆吃的，可谓是实惠又美味！下面这顿 98 元就搞定了！老板还热情的赠送了我们粽子和红枣，临走又送了 2 盒红枣，重庆人的火辣热情立马就赢得了好感啊！
 
