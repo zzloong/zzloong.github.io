@@ -43,3 +43,8 @@ categories: Life
 
 ![鹅岭公园](https://gitee.com/michael_xiang/images/raw/master/uPic/kIaOhg.png)
 
+![路牌](https://gitee.com/michael_xiang/images/raw/master/uPic/YgIi8o.png)
+
+「鹅岭公园」和「二厂文创园」离得比较近，紧接着我们就前往了这个网红地。确实是个网红地，很多小年轻在那里拍照，不过个人认为是个 IDEA 大于美景的去处，老楼弄点涂鸦、开了一些创意文化礼品店。
+
+![小仙女出镜](https://gitee.com/michael_xiang/images/raw/master/uPic/pu131A.png)
