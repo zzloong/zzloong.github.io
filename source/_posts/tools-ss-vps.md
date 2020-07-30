@@ -29,6 +29,8 @@ vultr速度比较：
 
 我选择的节点是日本的节点，离得近，速度能快点。
 
+建议选择 Ubuntu 18 或者 CentOS 8 开始的版本，这样就默认开启了 BBR 的设置，有加速的效果。
+
 ### 设置时区
 
 时区保持一致很重要，尤其是 v2ray 方式：
@@ -65,51 +67,11 @@ wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh
 - http://ping.pe/ping.php
 - https://www.uuidgenerator.net/
 
-## v2ray
-
-在使用 v2ray 之后，发现这个方式更加便捷一点，因为它既支持 shadowsocks 协议，又支持 vmess 协议，提供两种链接方式。
-
-于是，目前（20191103）就采用了 v2ray 的方式+bbr加速+kcptun加速，然后配置了 v2ray 和 ss 的链接方式。
-
-一键安装脚本：
-
-```shell
-bash <(curl -s -L https://git.io/v2ray.sh)
-```
-
-- v2ray 端口：62666
-- 选择安装 ss
-- ss 端口：62888
-
-v2ray 配置生成器：https://intmainreturn0.com/v2ray-config-gen/
-
-- 输入 v2ray url 可生成 vmess URL 链接 / 输入 v2ray qr 可生成二维码链接
-- 输入 v2ray ssqr 可生成 Shadowsocks 二维码链接
-
-相关路径：
-
-- 在 Linux 中，日志通常在 `/var/log/v2ray/access.log` 文件中
-
-### 教程
-
-- [v2ray 官方文档](https://www.v2ray.com/chapter_00/install.html)
-- [白话文教程](https://toutyrater.github.io/)
-- [白话文教程-社区版](https://guide.v2fly.org/)
-- [V2Ray完全使用教程](https://yuan.ga/v2ray-complete-tutorial/)
-- [服务端搭建Shadowsocks和V2Ray详解](https://www.yeahwu.com/posts/8f7ac171.html) 这位博主，貌似真的把可用的账号提供出来了！
-- [油管视频-V2Ray官方脚本搭建教程](https://www.youtube.com/watch?v=Mm6OWeo8dYU)
-
-### 客户端
-
-[神一样的工具们](https://www.v2ray.com/awesome/tools.html) 官方文档里也放了链接，下面列一下我自己用的：
-
-- [yanue/V2rayU](https://github.com/yanue/V2rayU/releases) Mac 最新一次更新 20190920
-- [2dust/v2rayNG](https://github.com/2dust/v2rayNG/releases) Andriod 最新一次更新 20191101
-- [v2ray/v2ray-core](https://github.com/v2ray/v2ray-core/releases)
-
-## 服务端 ss 一键安装脚本
+## shadowsocks
 
 ### 安装 ss
+
+在 VPS 机器上安装好 ss 客户端：
 
 ```shell
 wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh
@@ -117,7 +79,15 @@ chmod +x shadowsocks-all.sh
 ./shadowsocks-all.sh 2>&1 | tee shadowsocks-all.log
 ```
 
-按照提示，一部一部设置好端口、密码等。注意，选择 `Shadowsocks-libev` 版本。
+**注意，建议选择 `Shadowsocks-libev` 版本。**
+
+按照提示，设置好端口、密码、选择加载 simple-obfs 插件。
+
+卸载的命令：
+
+```
+./shadowsocks-all.sh uninstall
+```
 
 ### ss 服务端相关配置
 
@@ -169,7 +139,7 @@ ss 服务端配置参考：
 
 ### kcptun
 
-最近试用了 kcptun 加速后，发现效果不错，于是抛弃了 BBR 加速的方式。
+除了上面介绍的 BBR 加速方式之外，还有 kcptun 的加速。二者选择一种即可。
 
 ![kcptun原理](https://gitee.com/michael_xiang/images/raw/master/T0EYuk.jpg)
 
@@ -183,8 +153,8 @@ chmod +x ./kcptun.sh
 配置：
 
 - 端口：默认29900，即为KCPTUN与其客户端连接使用的端口，默认即可，这个端口号其实也是有用的，客户端启用 kcptun 插件时，端口要写这个，而不是 ss 的端口号！！！
-- 要加速的地址：默认127.0.0.1。
-- 要加速的端口：设置为你的SS/SSR使用的端口，这里要注意！！！
+- 要加速的地址：默认 `127.0.0.1`。
+- 要加速的端口：设置为你的 SS/SSR 使用的端口，这里要注意！！！
 - 密码：自己设置，用于KCPTUN客户端连接使用，不要使用默认密码。
 - 加密方式选择：较强的加密方式会影响网速，建议默认aes或不加密。
 - 加速模式：默认fast即可。随后可以手动修改为其它模式，测试加速效果。
@@ -284,6 +254,48 @@ simple-obfs 插键选项：
 obfs=http;obfs-host=www.bing.com
 ```
 
+## v2ray 方式
+
+在使用 v2ray 之后，发现这个方式更加便捷一点，因为它既支持 shadowsocks 协议，又支持 vmess 协议，提供两种链接方式。
+
+于是，目前（20191103）就采用了 v2ray 的方式+bbr加速+kcptun加速，然后配置了 v2ray 和 ss 的链接方式。
+
+一键安装脚本：
+
+```shell
+bash <(curl -s -L https://git.io/v2ray.sh)
+```
+
+- v2ray 端口：62666
+- 选择安装 ss
+- ss 端口：62888
+
+v2ray 配置生成器：https://intmainreturn0.com/v2ray-config-gen/
+
+- 输入 v2ray url 可生成 vmess URL 链接 / 输入 v2ray qr 可生成二维码链接
+- 输入 v2ray ssqr 可生成 Shadowsocks 二维码链接
+
+相关路径：
+
+- 在 Linux 中，日志通常在 `/var/log/v2ray/access.log` 文件中
+
+### 教程
+
+- [v2ray 官方文档](https://www.v2ray.com/chapter_00/install.html)
+- [白话文教程](https://toutyrater.github.io/)
+- [白话文教程-社区版](https://guide.v2fly.org/)
+- [V2Ray完全使用教程](https://yuan.ga/v2ray-complete-tutorial/)
+- [服务端搭建Shadowsocks和V2Ray详解](https://www.yeahwu.com/posts/8f7ac171.html) 这位博主，貌似真的把可用的账号提供出来了！
+- [油管视频-V2Ray官方脚本搭建教程](https://www.youtube.com/watch?v=Mm6OWeo8dYU)
+
+### 客户端
+
+[神一样的工具们](https://www.v2ray.com/awesome/tools.html) 官方文档里也放了链接（这个连接需要 FQ 才能打开），下面列一下我自己用的：
+
+- [yanue/V2rayU](https://github.com/yanue/V2rayU/releases) Mac 最新一次更新 20190920
+- [2dust/v2rayNG](https://github.com/2dust/v2rayNG/releases) Andriod 最新一次更新 20191101
+- [v2ray/v2ray-core](https://github.com/v2ray/v2ray-core/releases)
+
 ## FAQ
 
 ### 查看日志
@@ -299,6 +311,9 @@ Docker方式
 - [docker文档](https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository)
 - [docker-ss-搜索结果](https://hub.docker.com/search/?isAutomated=0&isOfficial=0&page=1&pullCount=1&q=shadowsocks&starCount=0)
 
+网关方式：
+- [油管达人分析的各种方式的优缺点](https://www.youtube.com/watch?v=f9ohvZyQrmY&list=PLqybz7NWybwUgR-S6m78tfd-lV4sBvGFG&index=3) 他最推荐的还是网关方式
+
 ## 参考
 
 - [haoel-科学上网](https://github.com/haoel/haoel.github.io) 耗子叔写的
@@ -306,3 +321,5 @@ Docker方式
 - [写给非专业人士看的 Shadowsocks 简介](http://vc2tea.com/whats-shadowsocks/)
 - [VPS+ShadowsocksR 搭建自己的 VPN](https://www.liaoyuqin.com/post/tools/ha-bi-da-ti-zi)
 - [Ubuntu 16.04下Shadowsocks服务器端安装及优化](https://www.polarxiong.com/archives/Ubuntu-16-04%E4%B8%8BShadowsocks%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BC%98%E5%8C%96.html)
+- [秋水逸冰-使用 Docker 快速部署 Shadowsocks-libev + v2ray-plugin](https://teddysun.com/569.html)
+- [使用docker快速部署shadowsocks-libev+v2ray-plugin代理](https://ssu.tw/index.php/archives/31/)
