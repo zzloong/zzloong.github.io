@@ -312,7 +312,7 @@ Docker方式
 - [docker-ss-搜索结果](https://hub.docker.com/search/?isAutomated=0&isOfficial=0&page=1&pullCount=1&q=shadowsocks&starCount=0)
 
 网关方式：
-- [油管达人分析的各种方式的优缺点](https://www.youtube.com/watch?v=f9ohvZyQrmY&list=PLqybz7NWybwUgR-S6m78tfd-lV4sBvGFG&index=3) 他最推荐的还是网关方式
+- [油管达人分析的各种方式的优缺点](https://www.youtube.com/watch?v=f9ohvZyQrmY&list=PLqybz7NWybwUgR-S6m78tfd-lV4sBvGFG&index=3) 他最推荐的还是网关方式，此外还有 trojan、软路由等方式
 
 ## 参考
 
