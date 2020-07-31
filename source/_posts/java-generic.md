@@ -208,7 +208,7 @@ private static void showKeyValue1(Card<Number> card){
 }
 // 测试
 Card<Integer> card2 = new Card<>(2);
-System.out.println("card2 id is: "+card2.getId());
+System.out.println("card2 id is: " + card2.getId());
 
 showKeyValue1(card2);
 ```
@@ -220,6 +220,10 @@ Generic<java.lang.Integer> cannot be applied to Card<java.lang.Number>
 ```
 
 通过提示信息我们可以看到 `Card<Integer>` 不能被看作为 `Card<Number>` 的子类。
+
+{% note warning no-icon %}
+如果 Apple 是 Fruit 的一个子类型（子类或者子接口），G 是一个具有泛型声明的类或接口，`G<Apple>` 并不是 `G<Fruit>` 的子类型！这一点值得注意，因为与大部分人第一感觉是不同的。
+{% endnote %}
 
 如何解决上面的问题呢？我们需要在逻辑上引入一个同时是 `Card<Number>` 和 `Card<Interger` 父类的引用类型。由此，类型通配符产生了：
 

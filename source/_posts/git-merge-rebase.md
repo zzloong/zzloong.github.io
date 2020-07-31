@@ -237,6 +237,7 @@ rebase 命令的用法也不止于此，计划后期会专门写一篇介绍她�
 - [分支的合并](https://backlog.com/git-tutorial/cn/stepup/stepup1_4.html)
 - [Gitlab-Fast-forward merge requests](https://docs.gitlab.com/ee/user/project/merge_requests/fast_forward_merge.html)
 - [颜海镜-图解4种git合并分支方法](https://yanhaijing.com/git/2017/07/14/four-method-for-git-merge/)
+- [Sync with a remote Git repository (fetch, pull, update)](https://www.jetbrains.com/help/idea/sync-with-a-remote-repository.html#update) IDEA 的帮助文档
 
 ----
 
