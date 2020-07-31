@@ -285,6 +285,8 @@ public class Apple<T extends Number> {
 
 上面的知识点可以概括为 PECS 原则，方便记忆。Producer 生产者，则用 extends，Conumer 消费者，则用 super。这里为何说是生产者？为何说是消费者呢？理解的关键点在于角度，这是操作 list 的结果看的。因为 extends 主要用于 get 元素，super 主要用于 add 元素~
 
+详细理解这里的 PECS 原则，还可以阅读参考列表中的文章。
+
 ### 泛型方法
 
 在一些情况下，定义类、接口时没有使用泛型形参，但定义方法时想自己定义泛型形参，这也是可以的。Java 5 提供了对泛型方法的支持。
