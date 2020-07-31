@@ -45,7 +45,9 @@ gitbook builid --debug //输出错误信息
 
 - 与github集成，参考文章[chengweiBlog-GitHub 集成](http://www.chengweiyang.cn/gitbook/gitbook.com/config/github.html)
 - 安装gitbook插键，参考文章[chengweiBlog-book.json](http://www.chengweiyang.cn/gitbook/customize/book.json.html)
-- 在书籍根目录创建`book.json`:
+- 在书籍根目录创建`book.json`。
+
+book.json 示例：
 ```
 {
   "gitbook": "3.2.3",
@@ -70,17 +72,13 @@ gitbook builid --debug //输出错误信息
     }
   }
 }
-
-
 ```
 
 ## gitbook插键
 
 ### disqus插键
 
-按照前面参考文章安装`disqus`插键时，使用命令`npm install gitbook-plugin-disqus`会默认安装disqus的最新版本，然后`hexo serve`时，就会报错：
-
-![](https://ws1.sinaimg.cn/large/6d9475f6gy1fv29yxr7wvj20fv09tgnf.jpg)
+按照前面参考文章安装`disqus`插键时，使用命令`npm install gitbook-plugin-disqus`会默认安装disqus的最新版本，然后`gitbook serve`时，就会报错：
 
 ```
 info: loading plugin "disqus"... ERROR
@@ -91,12 +89,9 @@ Error: GitBook doesn't satisfy the requirements of this plugin: >=4.0.0-alpha
 1. 想要尝试升级gitbook的版本，通过`gitbook ls-remote`查看可以安装的版本，然后利用`gitbook fetch 4.0.0-alpha.6`安装，尽管我用` gitbook uninstall 3.2.3`卸载了旧版本，安装之后不明白为何还是使用的3.2.3的稳定版本，后来用尝试创建[软连接解决](https://huataihuang.gitbooks.io/cloud-atlas/develop/doc/gitbook/gitbook_discussions.html)依然存在问题，没继续升级gitbook版本；
 2. 查看[disqus-plugin文档](https://www.npmjs.com/package/gitbook-cli)没有解决，查看[disqus项目issue](https://github.com/GitbookIO/plugin-disqus/issues/10)，有人给出了答案，“1.0.1”版本需要gitbook的版本">=4.0.0-alpha"，可以通过`"plugins": ["disqus@0.1.0"]`的方式，指定安装旧版本的disqus插键解决这个问题。
 
-后来看到[disqus插键官网文档](https://plugins.gitbook.com/plugin/disqus)，发现明明有写这些的，自己没注意到，**文档多重要**：
+后来看到[disqus插键官网文档](https://plugins.gitbook.com/plugin/disqus)，发现明明有写这些的，自己没注意到，**文档多重要**.
 
-![](https://ws1.sinaimg.cn/large/6d9475f6gy1fv2cmzp2uoj20co0aemxc.jpg)
-
-> 我们也可以通过@符号来指定插件的版本号，如："plugins1@0.1.1", 这个特性在使用一个旧版本的gitbook时是非常有用的
-
+> 我们也可以通过@符号来指定插件的版本号，如："plugins1@0.1.1", 这个特性在使用一个旧版本的 gitbook 时是非常有用的
 
 ## PS
 
@@ -106,9 +101,14 @@ npm install jquery@3.0.0
 ```
 如果加上`-g`参数，表示安装到全局目录中
 
+## 更新
+
+- 20200731：gitbook 已经该版本了，不支持上面介绍的这种方式了，登录他们官网可以查看如何使用。
+
 ## 参考
 
 - [gitbook的使用和常用插件](https://dancon.gitbooks.io/git-books/content/in_action/gitbook%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html)
+- [简书/GitBook插件整理](https://www.jianshu.com/p/427b8bb066e6)
 - [npm 安装指定版本](https://blog.csdn.net/xuaner8786/article/details/81630445)
 - [用github写开源书籍](https://www.leolan.top/index.php/posts/30.html)
 - [zhangjikai-更多插件介绍](https://gitbook.zhangjikai.com/plugins.html#disqus)
