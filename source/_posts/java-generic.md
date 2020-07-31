@@ -225,7 +225,9 @@ Generic<java.lang.Integer> cannot be applied to Card<java.lang.Number>
 如果 Apple 是 Fruit 的一个子类型（子类或者子接口），G 是一个具有泛型声明的类或接口，`G<Apple>` 并不是 `G<Fruit>` 的子类型！这一点值得注意，因为与大部分人第一感觉是不同的。
 {% endnote %}
 
-如何解决上面的问题呢？我们需要在逻辑上引入一个同时是 `Card<Number>` 和 `Card<Interger` 父类的引用类型。由此，类型通配符产生了：
+如何解决上面的问题呢？
+
+我们需要在逻辑上引入一个同时是 `Card<Number>` 和 `Card<Interger` 父类的引用类型。由此，「类型通配符」产生了：
 
 ```java
 // 其实，这里不用通配符，直接是 Card 也会 OK
@@ -238,7 +240,7 @@ private static void showKeyValue1(Card<?> card){
 
 #### 通配符上界
 
-为了表示限制类型，泛型提供了被限制的通配符。通配符上界使用 `<? extends T>` 的格式，意思是需要一个T类型或者T类型的子类，一般T类型都是一个具体的类型。示例如下：
+为了表示限制类型，泛型提供了被限制的通配符。通配符上界使用 `<? extends T>` 的格式，意思是需要一个 T 类型或者 T 类型的子类，一般T 类型都是一个具体的类型。示例如下：
 
 ```java
 public void printIntValue(List<? extends Number> list) {
@@ -256,6 +258,7 @@ public void printIntValue(List<? extends Number> list) {
 
 ```java
 public void fillNumberList(List<? super Number> list) {
+    // Number 及它子类的实例就可以加入 list 中
     list.add(new Integer(0));
     list.add(new Float(1.0));
 }
@@ -277,6 +280,10 @@ public class Apple<T extends Number> {
 ```
 
 ![Jietu20190713-111233-bound.jpg](https://i.loli.net/2019/07/13/5d294c385b14039332.jpg)
+
+#### 总结
+
+上面的知识点可以概括为 PECS 原则，方便记忆。Producer 生产者，则用 extends，Conumer 消费者，则用 super。这里为何说是生产者？为何说是消费者呢？理解的关键点在于角度，这是操作 list 的结果看的。因为 extends 主要用于 get 元素，super 主要用于 add 元素~
 
 ### 泛型方法
 
@@ -377,6 +384,7 @@ static <T> void test(Collection<? extends T> from, Collection<T> to) {
 
 - [Oracle-Generics Documentation](https://docs.oracle.com/javase/tutorial/java/generics/index.html)
 - [CSDN-java 泛型详解-绝对是对泛型方法讲解最详细的，没有之一](https://blog.csdn.net/s10461/article/details/53941091)
+- [知乎/Java 泛型 <? super T> 中 super 怎么 理解？与 extends 有何不同？](https://www.zhihu.com/question/20400700/answer/117464182) 关于泛型 PECS 原则讲解比较详细
 - [CSDN-ShuSheng007-秒懂Java泛型](https://blog.csdn.net/ShuSheng0007/article/details/80720406#%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E4%B8%80%E4%B8%AA%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95)
 - [掘金-深入理解Java泛型](https://juejin.im/post/5b614848e51d45355d51f792)
 - [重新认识Java——泛型（基础、使用和实现原理）](http://hinylover.space/2016/06/25/relearn-java-generic-1/)
