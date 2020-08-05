@@ -67,6 +67,14 @@ Java 是严格区分大小写的，未设置时，输入 `str` 时，它不会�
 这个设置是非常有帮助的，强烈推荐设置。可以顺带勾选上 `Show the documentation`，这样在补充时，也会显示文档。
 {% endnote %}
 
+### 取消单行方法折叠的设置
+
+IDEA 中对于单行方法会默认折叠，使代码更紧凑。但是我阅读代码时，不太喜欢这种默认设置。可以根据如下设置修改：
+
+Settings->Editor->General->Code Folding->One-line methods，取消勾选即可
+
+![6Ky7B7](https://gitee.com/michael_xiang/images/raw/master/uPic/6Ky7B7.png)
+
 ### 自动导包 `import popup`
 
 `Editor->General->Auto Import->Python->Show import popup`
@@ -157,6 +165,10 @@ Java 头信息设置：
 
 - `C:\Program Files\Git\bin\bash.exe` 修改为 `Git bash` 的终端；
 - `"C:\Windows\System32\cmd.exe" /k ""%CMDER_ROOT%\vendor\init.bat""` 修改为 `Cmder` 的终端，这种方式就会弹出 Cmder 的窗口，需要配置系统变量 `CMDER_ROOT`，值为：`D:\Green-SF\cmder`。
+
+设置 Terminal 窗口字体和大小：Editor-->Color Scheme-->Console Font，在右侧面板修改Font为自己想要的字体。
+
+![RkZGhw](https://gitee.com/michael_xiang/images/raw/master/uPic/RkZGhw.png)
 
 参考：
 
@@ -268,7 +280,7 @@ Mac 的 `Command` 键一般是对应了 Win 的 `Ctrl` 键，在 Win 上，还�
 
 - `alt+↑/↓`: 快速在方法间跳转 ★★
 - `alt+p`：打开Python控制台 ★★★
-- `alt+insert` 生成代码(如 get, set 方法,构造函数等) 或者右键（Generate），在 mac 上是 `ctrl+n` ★★★
+- `alt+insert` 生成代码(如 get, set 方法,构造函数等) 或者右键（Generate），在 Mac 上是 `ctrl+n` ★★★
 - `alt+enter` 万能键，任何地方都可以尝试使用，不同场景有不同的表现方式，比如自动导包等功能，不管出错了不知道怎么办，知道怎么办想这么办时都按下这个快捷键，有惊喜，万能纠错键 ★★★
 - `alt+f7` 找当前变量、方法在哪些地方用了 `find usaged` ★★★
 - `alt+f12` 打开命令行终端(view->tool window) ★★★
@@ -671,3 +683,4 @@ System.getenv("HOME_TEST");
 - [IDEA 注册-lanyu](http://idea.lanyus.com/)
 - [Github-judasn/IntelliJ-IDEA-Tutorial](https://github.com/judasn/IntelliJ-IDEA-Tutorial/blob/master/keymap-introduce.md)
 - [IntelliJ IDEA 2019.3.3 便携增强版](https://www.ghpym.com/idea.html)
+- [张振伟的博客/IDEA](https://zhangzw.com/tags/IDEA/) 作者写了很多 IDEA 使用技巧的文章，推荐

@@ -203,7 +203,9 @@ git rebase origin/feature feature
 
 ![no-ff 合并](https://gitee.com/michael_xiang/images/raw/master/uPic/hkVfzT.png)
 
-因为分叉了，采用 `git pull` 时也没法 `fast-forward` 合并，只能采用 `no-ff` 方式合并，最后的提交历史就会像上图那样。会产生一个合并提交。同时，分支图也显得稍微杂乱了一点，因为 feature 分支不是一条直线了。但是，其实也有好处，可以实际的看出来合并的提交历史。该选择哪个，往往取决于团队的选择策略。
+因为分叉了，采用 `git pull` 时默认也没法 `fast-forward` 合并，只能采用 `no-ff` 方式合并，最后的提交历史就会像上图那样。会产生一个合并提交。同时，分支图也显得稍微杂乱了一点，因为 feature 分支不是一条直线了。但是，其实也有好处，可以实际的看出来合并的提交历史。该选择哪个，往往取决于团队的选择策略。
+
+> 养成习惯，使用 `git pull --rebase` 方式同步远端分支也是一个不错的习惯，这样，就不会多出多余的 commit 记录了。具体可以看这篇文章 [博客园/聊下git pull --rebase](https://www.cnblogs.com/wangiqngpei557/p/6056624.html)
 
 ### rebase 总结
 

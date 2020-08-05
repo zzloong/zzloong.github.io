@@ -211,6 +211,13 @@ Windows系统挺好用的，并不像有些程序员说的那么不堪，尽管�
 
 ## Windows 下的开发工具
 
+### 软件安装
+
+- [Scoop](https://scoop.sh/)
+
+参考：
+- [装机软件合集](http://193824.xyz/2019/09/11/%E8%A3%85%E6%9C%BA%E8%BD%AF%E4%BB%B6%E5%90%88%E9%9B%86/)
+
 ### 控制台
 
 - [cmder](http://cmder.net/)     如果厌倦了Windows下控制台丑陋不方便的样子，可以试试这个,强烈安利！这是一篇比较好的介绍文章[Win下必备神器之Cmder](http://www.jeffjade.com/2016/01/13/2016-01-13-windows-software-cmder/)

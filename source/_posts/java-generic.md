@@ -252,6 +252,13 @@ public void printIntValue(List<? extends Number> list) {
 
 此处，未知类型一定是 `Number` 的子类型，因此，可以把 `Number` 称为这个通配符的上界(`upper bnound`)。
 
+写入操作过以上给定的赋值语句，你能把一个什么类型的元素合法地插入到 list 中呢？
+- 你不能插入一个 Integer 元素，因为 list 可能指向 `List<Double>`。
+- 你不能插入一个 Double 元素，因为 list 可能指向 `List<Integer>`。
+- 你不能插入一个 Number 元素，因为 list 可能指向 `List<Integer>`。
+
+你不能往 `List<? extends T>` 中插入任何类型的对象，因为你不能保证列表实际指向的类型是什么，你并不能保证列表中实际存储什么类型的对象。唯一可以保证的是，你可以从中读取到 T 或者 T 的子类。
+
 #### 通配符下界
 
 除了可以指定通配符的上限之外，Java 还允许指定通配符的下限。通配符下界使用 `<? super T>` 的格式，意思是需要一个T类型或者 T 类型的父类，一般 T 类型都是一个具体的类型。示例如下：
@@ -281,11 +288,19 @@ public class Apple<T extends Number> {
 
 ![Jietu20190713-111233-bound.jpg](https://i.loli.net/2019/07/13/5d294c385b14039332.jpg)
 
-#### 总结
+#### 总结 PECS
 
-上面的知识点可以概括为 PECS 原则，方便记忆。Producer 生产者，则用 extends，Conumer 消费者，则用 super。这里为何说是生产者？为何说是消费者呢？理解的关键点在于角度，这是操作 list 的结果看的。因为 extends 主要用于 get 元素，super 主要用于 add 元素~
+{% note success no-icon %}
 
-详细理解这里的 PECS 原则，还可以阅读参考列表中的文章。
+上面的知识点可以概括为 PECS 原则，方便记忆。
+- Producer 生产者，则用 extends。因为你想从列表中获取 T 类型的的元素。看着就像是「生产」元素的效果。不能明确存入元素的类型，因此它的主要总用不在「存」。
+- Conumer 消费者，则用 super。想把 T 类型的子元素放入到列表中。不能保证明确读取到的元素的类型，因此它的主要作用不在于「读」。
+
+{% endnote %}
+
+详细理解这里的 PECS 原则，还可以阅读：
+- [知乎/Java 泛型 <? super T> 中 super 怎么 理解？与 extends 有何不同？](https://www.zhihu.com/question/20400700/answer/117464182)。
+- [并发编程网/泛型中? super T和? extends T的区别](http://ifeve.com/difference-between-super-t-and-extends-t-in-java/) [原文 URL](https://stackoverflow.com/questions/4343202/difference-between-super-t-and-extends-t-in-java)
 
 ### 泛型方法
 
@@ -386,7 +401,6 @@ static <T> void test(Collection<? extends T> from, Collection<T> to) {
 
 - [Oracle-Generics Documentation](https://docs.oracle.com/javase/tutorial/java/generics/index.html)
 - [CSDN-java 泛型详解-绝对是对泛型方法讲解最详细的，没有之一](https://blog.csdn.net/s10461/article/details/53941091)
-- [知乎/Java 泛型 <? super T> 中 super 怎么 理解？与 extends 有何不同？](https://www.zhihu.com/question/20400700/answer/117464182) 关于泛型 PECS 原则讲解比较详细
 - [CSDN-ShuSheng007-秒懂Java泛型](https://blog.csdn.net/ShuSheng0007/article/details/80720406#%E5%A6%82%E4%BD%95%E8%B0%83%E7%94%A8%E4%B8%80%E4%B8%AA%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95)
 - [掘金-深入理解Java泛型](https://juejin.im/post/5b614848e51d45355d51f792)
 - [重新认识Java——泛型（基础、使用和实现原理）](http://hinylover.space/2016/06/25/relearn-java-generic-1/)

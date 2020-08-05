@@ -179,3 +179,5 @@ Annotation 处理器在处理 Annotation 时可以根据源文件中的Annotatio
 - [啥？听说你还在手写复杂的参数校验？](https://mp.weixin.qq.com/s?__biz=MzU4ODI1MjA3NQ==&mid=2247484955&idx=1&sn=29b0f228415abd8542d07c898e6398ba&chksm=fdded0dfcaa959c9d9fc9d04130409c392460561bdce53996261fe8973b81f4811a8ebe5c357&scene=21#wechat_redirect)
 - [使用 spring validation 完成数据后端校验](https://www.cnkirito.moe/spring-validation/)
 - [csdn-Bean Validation——自定义注解](https://blog.csdn.net/ZZY1078689276/article/details/79064835)
+
+生命不息，折腾不止！关注 「Coder 魔法院」，祝你 Niubilitiy ！🐂🍺

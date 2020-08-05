@@ -240,9 +240,7 @@ git reset HEAD style.css
 git checkout -- <file>...
 ```
 
-其实，`git status` 都有友好的提示的：
-
-![](https://ws3.sinaimg.cn/large/006tNc79ly1fzc741ckucj30yc0c8771.jpg)
+其实，`git status` 都有友好的提示的:
 
 - 如果想要变更工作区的内容，那么要想到和 `checkout` 命令相关；
 - 如果想要变更暂存区的内容，那么要想到和`reset` 命令相关；
@@ -283,8 +281,8 @@ git commit --amend
 `git commit --amend`命令本质上是用新的 commit 应该是替代了上一次的提交，不只是修改 message。比如上一次提交时有几个文件没有 add 以及 commit，可以重新进行 add 之后再 `commit --amend` 提交。但这次提交之后，在分支的 git log 中，不会增加一次新的 commit（因为被替换了嘛），看着效果相当于在父 commit 的基础上进行的修改。
 
 ### 修改历史提交的 message 信息：
-![](https://ws1.sinaimg.cn/mw690/6d9475f6ly1fzbz3iinr0j20pg0hwdhz.jpg)
-如图，想要修改 be4c 这次提交的 message 信息，那么可以使用 `git rebase` 命令，因为 `be4c` 这次提交会被新的提交替换掉，所以，「变基」操作的「基」要选择它的父提交，`85807`：
+
+可以使用 `git rebase` 命令：
 ```
 git rebase -i 8580
 ```
@@ -300,18 +298,18 @@ Successfully rebased and updated refs/heads/master.
 ```
  
  `git log -3` 查看最近的3次提交，变为这样了，会发现，倒数第二次的 message 信息修改 OK 了，最新一次的 message 虽然没变，但其实，`commit id` 都发生了变化，「替换」的概念要记得。
-![](https://ws2.sinaimg.cn/large/006tNc79ly1fzbzb6tgbxj30wu0hqdin.jpg)
+
 git rebase 工作的过程中，就是用了「分离头指针」。rebase 意味着基于新 base 的 commit 来变更部分 commits。它处理的时候，把 HEAD 指向base 的 commit，此时如果该 commit 没有对应branch，就处于分离头指针的状态，然后重新一个一个生成新的 commit，当rebase 创建完最后一个 commit 后，结束分离头状态，Git 让变完基的分支名指向 HEAD
 
 PS：对于团队中公用的分支，例如发布分支等，禁用 rebase，因为这样会破坏历史的 commit  信息的，将来要溯源、基于构建历史拉取补丁分支等就会带来极大不便。
 
 ### 连续多个 commit  合并
-![](https://ws3.sinaimg.cn/large/006tNc79ly1fzbzitp4n0j30q407cdha.jpg)
+
 目前 commit 还在本地，没有 push 到团队分支上，想要将网页相关的 commit 合并成一个，就是从图中 `55a9` 开始的6个 commit 合成一个：
 ```
 git rebase -i 7e7a
 ```
-![](https://ws1.sinaimg.cn/large/006tNc79ly1fzbzrbwrd3j30yg0n643u.jpg)
+
 ```
 $ git rebase -i 7e7a
 [detached HEAD 1c102e6] Create a complete web page
@@ -324,18 +322,16 @@ $ git rebase -i 7e7a
  create mode 100755 大嘴猴-头像-logo.jpg
 Successfully rebased and updated refs/heads/master.
 ```
-![](https://ws4.sinaimg.cn/large/006tNc79ly1fzbztd0xd7j30ru046mxz.jpg)
 
 变基过程中有可能会遇到冲突的，只要解决冲突即可，解决冲突的时候，只需要先修改有冲突的文件的内容，然后执行 `git add <file_with_conflict>`即可，不要再 `git commit`，否则多出来 commit 的，然后接着 `git base --continue`即可，参考[简书-git rebase解决合并冲突](https://www.jianshu.com/p/4c30eb30323a)
 
 ### 历史中不连续的 commit  合并
 将历史中和 readme 相关的 commit 合并，就是下图中52af 7e7a 03be 这三个 commit。
-![](https://ws4.sinaimg.cn/large/006tNc79ly1fzbztd0xd7j30ru046mxz.jpg)
 
 ```
 git rebase -i 52af # 因为52af 是首个，没有父亲，因此需要补充一下
 ```
-![](https://ws1.sinaimg.cn/large/006tNc79ly1fzc05snpqgj30se07q40c.jpg)
+
 ```
 $ git status
 interactive rebase in progress; onto 52af14b
@@ -360,9 +356,9 @@ $ git rebase --continue
 Successfully rebased and updated refs/heads/master.
 ```
 最终整理成了两个 commit：
-![](https://ws2.sinaimg.cn/large/006tNc79ly1fzc0bfti81j30p802a74n.jpg)
+
 有意思的发现，有两个 commit 是没有祖先的：
-![](https://ws4.sinaimg.cn/large/006tNc79ly1fzc0d7cbf2j30j004oaag.jpg)
+
 如果将 temp 分支、js01 tag 删掉，Git 会清理掉下面那个树。
 
 ## git pull
@@ -411,7 +407,7 @@ $ git push origin --tags
 ```
 
 可能会遇到 `rejected` 的 error，因为远端包含了一些本地是没有的变更，比如，创建远端仓库时，在远端仓库的 master 分支上新建了文件，比如 License，而本地是没有这次提交的：
-![](https://ws1.sinaimg.cn/large/006tNc79ly1fzcu3d1mg1j311608o40c.jpg)
+
 把远端拉取下来：
 ```
 git fetch github master
@@ -423,7 +419,7 @@ git fetch <远端主机名> <远端分支名>
 ```
 
 `non-fast-forward` 表示，你本地 master 分支的演进不是基于远端 master 分支进行的，二者是割裂的，经过 fetch 之后，通过 `gitk --all` 可以看到：
-![](https://ws1.sinaimg.cn/mw690/6d9475f6ly1fzcu7h3riij20nw062q47.jpg)
+
 解决这个问题，可以通过 rebase 或者 merge 的方式解决，现在先采用 merge 的方式：
 
 ```
@@ -443,7 +439,7 @@ $ git pull github master --allow-unrelated-histories
 ```
 
 现在合并之后，分支演进如下：
-![](https://ws1.sinaimg.cn/mw690/6d9475f6ly1fzcundxvl5j20qg0jc418.jpg)
+
 可以看到 merge 这种方式新生成的 commit 有两个父亲。
 
 现在重新启动将本地的 master 分支 push 到远端：
@@ -646,6 +642,10 @@ git push origin --tags
 git checkout -b <new_br> <tag_name>
 ```
 
+参考：
+- [The Junior Git](https://thoamsy.github.io/blogs/git/)
+- [6 Git 基础 - 打标签](https://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E6%89%93%E6%A0%87%E7%AD%BE)
+
 ## 高阶命令
 
 ### git bisect 
@@ -666,9 +666,17 @@ git checkout -b <new_br> <tag_name>
 - `git bisect reset` 恢复到分支一开始
 - `git bisect log` 记录你回答的日志
 
-参考：
-- [The Junior Git](https://thoamsy.github.io/blogs/git/)
-- [6 Git 基础 - 打标签](https://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E6%89%93%E6%A0%87%E7%AD%BE)
+## 小众命令
+
+### 清除未跟踪文件
+
+有时候一个仓库目录下莫名会多出一些你不想要的文件，这些文件常常是未跟踪的文件。怎么快速将它们删除呢？
+
+```shell
+git clean -df
+```
+
+将未跟踪的目录及文件删除，可以加 `-n` 选项，先查看有哪些文件将被删除运行！
 
 ## 最后
 - [Git使用教程笔记](https://michael728.github.io/2018/11/24/git-advance/)

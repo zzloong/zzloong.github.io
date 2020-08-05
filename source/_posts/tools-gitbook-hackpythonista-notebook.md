@@ -108,8 +108,8 @@ npm install jquery@3.0.0
 ## 参考
 
 - [gitbook的使用和常用插件](https://dancon.gitbooks.io/git-books/content/in_action/gitbook%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html)
+- [博客园/GitBook插件整理 - book.json配置](https://www.cnblogs.com/mingyue5826/p/10307051.html)
 - [简书/GitBook插件整理](https://www.jianshu.com/p/427b8bb066e6)
 - [npm 安装指定版本](https://blog.csdn.net/xuaner8786/article/details/81630445)
 - [用github写开源书籍](https://www.leolan.top/index.php/posts/30.html)
 - [zhangjikai-更多插件介绍](https://gitbook.zhangjikai.com/plugins.html#disqus)
-- [gitbook-plugin-anchor-navigation-ex](https://github.com/zq99299/gitbook-plugin-anchor-navigation-ex/blob/master/doc/config.md)

@@ -79,18 +79,29 @@ git config --global --unset https.proxy
 
 ## 补充
 
-最近看到一篇文章说配置 DNS 可以解决 DNS 被污染的问题：
+这个 [repo](https://github.com/521xueweihan/GitHub520#%E4%BA%8C%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95) 放了 Github 加速的 DNS 配置，以备特殊时期使用：
 
-国内
-- 阿里: 223.5.5.5
-- 114: 114.114.114.114
-- DNSpod DNS+: 119.29.29.29
+```
+# GitHub520 Host Start
+185.199.108.154               github.githubassets.com
+199.232.68.133                camo.githubusercontent.com
+199.232.68.133                github.map.fastly.net
+199.232.69.194                github.global.ssl.fastly.net
+140.82.112.4                  github.com
+140.82.113.5                  api.github.com
+199.232.68.133                raw.githubusercontent.com
+199.232.68.133                user-images.githubusercontent.com
+199.232.68.133                favicons.githubusercontent.com
+199.232.68.133                avatars5.githubusercontent.com
+199.232.68.133                avatars4.githubusercontent.com
+199.232.68.133                avatars3.githubusercontent.com
+199.232.68.133                avatars2.githubusercontent.com
+199.232.68.133                avatars1.githubusercontent.com
+199.232.68.133                avatars0.githubusercontent.com
+# Star me GitHub url: https://github.com/521xueweihan/GitHub520
+# GitHub520 Host End
+```
 
-国外
-- Google：8.8.8.8
-- CloudFlare: 1.1.1.1
-
-经过我的测试，貌似效果并不明显，因此放到补充内容里吧。
 
 ## 参考
 
