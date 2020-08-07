@@ -182,12 +182,131 @@ public class InstanceTest {
 }
 ```
 
-如果上面例子，将实例初始化块和实例变量声明顺序调换，输出就会变为 1
+如果上面例子，将实例初始化块和实例变量声明顺序调换，输出就会变为 1。
+
+创建 Java 对象时，系统先为该对象的所有实例变量分配内存（前提是该类已被加载过），接着程序对这些实例变量进行初始化：先执行实例初始化块或声明实例变量时指定的初始值（按照它们在源码中的先后顺序赋值），然后再执行构造器里指定的初始值。
 
 {% note success no-icon %}
-
-创建 Java 对象时，系统纤维该对象的所有实例变量分配内存（前提是该类已被加载过），接着程序对这些实例变量进行初始化：先执行实例初始化块或声明实例变量时指定的初始值（按照它们在源码中的先后顺序赋值），然后再执行构造器里指定的初始值。
 
 实际上实例初始化块是一个假象，使用 `javac` 命令编译 Java 类后，该 Java 类中的实例初始化块会消失—实例初始化块中代码会被“还原”到每个构造器中，且位于构造器所有代码的前面。
 
 {% endnote%}
+
+## 类初始化的时机
+
+Java 程序首次通过下面 6 种方式使用某个类或接口时，系统就会初始化该类或接口：
+1. 创建类的实例。包括使用 new 操作符来创建实例、通过反射创建实例、通过反序列化创建实例
+2. 调用某个类的类方法（静态方法）
+3. 调用某个类的类变量，或为该类变量赋值
+4. 使用反射方式来强制创建某个类或接口对应的 `java.lang.Class` 对象。例如 `Class.forName("Person")`
+5. 初始化某个类的子类。（就是前面介绍过的，该子类的所有父类都会被初始化）
+6. 直接使用 `java.exe` 命令运行某个主类
+
+{% note warning no-icon %}
+对于 `final` 型的类变量，**如果该类变量的值在编译时就确定了**，那么，这个类变量相当于「宏变量」。Java 编译器会在编译时直接将该类变量出现的地方替换为它实际的值。因此，程序使用这种静态变量不会导致该类的初始化。
+{% endnote %}
+
+栗子：
+```java
+class MyTest {
+    static {
+        System.out.println("静态初始化块");
+    }
+
+    static final String compileConstant = "类初始化 demo";
+}
+
+public class ComileConstantTest {
+    public static void main(String[] args) {
+        System.out.println(MyTest.compileConstant);
+    }
+}
+```
+
+输出：
+```
+类初始化 demo
+```
+
+由此可见，的确没有初始化 MyTest 类。
+
+> 当类变量使用了 `final` 修饰，并且，它的值在编译时就能确定，那么它的值在编译时就确定了，程序中使用它的地方相当于使用了常量。
+
+如果上面栗子中代码改为如下：
+```java
+static final String compileConstant = System.currentTimeMillis() + "";
+```
+
+这时候输出就是：
+```
+静态初始化块
+1596804413248
+```
+
+因为上面 `compileConstant` 修改之后，它的值必须在运行时才能确定，因此，触发了 MyTestg 类的初始化。
+
+此外，`ClassLoader` 类的 `loadClass()` 方法来加载某个类时，该方法只是加载类，并不会执行类的初始化。使用 `Class.forName()` 静态方法再回强制初始化类。
+
+栗子：
+
+```java
+package class_load;
+
+/**
+ * description:
+ *
+ * @author Michael
+ * @date 2020/8/7
+ * @time 8:54 下午
+ */
+class Tester {
+    static {
+        System.out.println("Tester 类的静态初始化块");
+    }
+}
+
+public class ClassLoadTest {
+    public static void main(String[] args) throws ClassNotFoundException {
+        ClassLoader cl = ClassLoader.getSystemClassLoader();
+        cl.loadClass("class_load.Tester");
+        System.out.println("系统加载 Tester 类");
+        Class.forName("class_load.Tester");
+    }
+}
+```
+
+输出：
+```
+系统加载 Tester 类
+Tester 类的静态初始化块
+```
+
+经测试可以发现，`loadClass` 方法确实没有触发类的初始化，而 `Class.forName` 则会初始化 `Tester` 类。
+
+## 类加载器
+
+类加载器负责将 `.class` 文件（可能在磁盘上，也可能在网络上）加载到内存中，并为之生成 `java.lang.Class` 对象。
+
+### 类加载机制
+
+类加载器负责加载所有的类，系统为所有被载入内存中的类生成一个 `java.lang.Class` 对象/实例。一旦一个类被载入 JVM 中，同一个类就不会再次被载入。正是因为有这样的缓存机制存在，所以 Class 修改之后，必须重启 JVM 修改才会生效。
+
+类加载器加载 `Class` 大致经过如下步骤：
+
+![类加载机制](https://gitee.com/michael_xiang/images/raw/master/uPic/类加载机制.png)
+
+> 开发者也可以通过继承 `ClassLoader` 来自定义类加载器。因为暂时未涉及这块，本文暂且略过。
+
+## 总结
+
+本文重点是了解了类初始化的流程，同时，也结合栗子比较了与实例初始化的区别。类初始化块、实例初始化块、构造器的执行顺序也是面试题常考的内容。最后补充了类加载机制的内容，暂时仅是了解。
+
+绘图采用的 [ProcessOn](https://www.processon.com/i/55ddb6bae4b04fe84c504c5f) 在线绘制，安利~
+
+---
+
+> 生命不息，折腾不止！关注 「Coder 魔法院」，祝你 Niubilitiy ！🐂🍺
+
+## 参考
+
+- 《疯狂 Java 讲义》第四版，18 章
