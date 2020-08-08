@@ -6,7 +6,7 @@ categories:
 -  Java
 ---
 
-类初始化基本知识
+![车](https://gitee.com/michael_xiang/images/raw/master/uPic/pexels-maria-varshavskaya-4931004 (1).jpg)
 
 <!-- more -->
 
