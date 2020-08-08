@@ -9,11 +9,15 @@ keywords:
   - annotation
 ---
 
+![Pexels 上的 Jeremy Bishop 拍摄的图片](https://gitee.com/michael_xiang/images/raw/master/uPic/pexels-jeremy-bishop-2922672.jpg)
+
 ## 简介
 - Annotation 是从 JDK 5.0 引入的。
 - 注解使得我们可以以编译器验证的格式存储程序的额外信息。注解可以生成描述符文件，甚至是新的类定义，并且有助于减轻编写“样板”代码的负担。
 
 比如，我们项目中常常使用的 `lombok` 包中的注解，`@Data`、`@NoArgsConstructor`、`@AllArgsConstructor` 等注解，大大简化了代码，省了很多操作。
+
+<!-- more -->
 
 ## 基本注解
 
@@ -180,4 +184,6 @@ Annotation 处理器在处理 Annotation 时可以根据源文件中的Annotatio
 - [使用 spring validation 完成数据后端校验](https://www.cnkirito.moe/spring-validation/)
 - [csdn-Bean Validation——自定义注解](https://blog.csdn.net/ZZY1078689276/article/details/79064835)
 
-生命不息，折腾不止！关注 「Coder 魔法院」，祝你 Niubilitiy ！🐂🍺
+----
+
+> 生命不息，折腾不止！关注 「Coder 魔法院」，祝你 Niubilitiy ！🐂🍺
