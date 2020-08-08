@@ -8,8 +8,6 @@ categories:
 
 ![pexels-maria-varshavskaya](https://gitee.com/michael_xiang/images/raw/master/uPic/pexels-maria-varshavskaya-4931004.jpg)
 
-<!-- more -->
-
 ## JVM 和类
 
 当使用 java 命令运行 Java 程序时，会启动一个 Java 虚拟机进程。同一个 JVM 的所有线程、所有变量都处于同一个进程里，他们都使用该 JVM 进程的内存区。当系统出现如下情况时，JVM 进程将被终止。
@@ -20,6 +18,8 @@ categories:
 - 程序所在平台强制结束了 JVM 进程
 
 > 两个运行的 Java 程序处于两个不同的 JVM 进程中，两个 JVM 之间并不会共享数据。
+
+<!-- more -->
 
 ## 类的加载
 
