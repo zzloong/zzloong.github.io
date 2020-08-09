@@ -67,8 +67,10 @@ Class 类提供了大量的**实例方法**来获取该 Class 对象所对应类
 
 方法就不一一介绍了，详细可阅读 [Java Class API](https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html)。
 
-{ % note success % }
+{% note info no-icon %}
+
 观察上面方法的描述，其实大体可以总结出来，带 `Declared` 字眼的方法呢，返回的内容就不受访问权限的控制！
+
 {% endnote %}
 
 #### 方法理解
@@ -121,8 +123,8 @@ public class CreateObjectTest {
 
 > Spring 框架就采用读取配置文件的内容，然后通过反射来创建对象。
 
-{% note warning %}
 
+{% note warning no-icon %}
 通常没有必要使用反射来创建对象，因为反射创建对象时性能要稍低。实际上，只有当程序需要动态创建某个类的对象时才会考虑使用反射。通常在开发通用性比较广的框架、基础平台时可能会大量使用反射。
 
 {% endnote %}
