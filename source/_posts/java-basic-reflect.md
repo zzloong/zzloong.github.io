@@ -1,12 +1,12 @@
 ---
-title: Java 基础 —— 注解 Annotation
-date: 2020-07-04 12:49:10
+title: Java 基础 —— 反射
+date: 2020-08-09 12:49:10
 tags:
-  - 注解
+  - 反射
 categories:
   - Java
 keywords:
-  - annotation
+  - reflect
 ---
 
 ![远方](https://gitee.com/michael_xiang/images/raw/master/uPic/looking-glass-918878_640.jpg)
@@ -89,6 +89,43 @@ clazz.getMethod("info", String.class);
 
 看了上面的例子，应该可以看懂 `Method getMethod(String name, Class<?> ... parameterTypes)` 这个方法如何使用了吧。这里仅是概览一下方法，下文会有更详细的示例。
 
+## 使用反射生成并操作对象
+
+Class 对象通过上面介绍的方法，可以获得该类里的方法（由 `Method` 对象表示）、构造器（由 `Constructor` 对象表示）、成员变量（由 `Field` 对象表示），这三个类都位于 `java.lang.reflect` 包下，并实现了 `java.lang.reflect.Member` 接口。
+
+程序可以通过 `Method` 对象来执行对应的方法，通过 `Constructor` 对象来调用对应的构造器创建实例，能通过 `Field` 对象直接访问并修改对象的成员变量值。
+
+### 创建对象
+
+先使用 Class 对象获取指定的 Constructor 对象，再调用 Constructor 对象的 `newInstance()` 方法来创建该 Class 对象对应类的实例！
+
+定义一个方法用来创建对应类名的 Java 对象：
+
+```java
+public class CreateObjectTest {
+
+    static Object createObject(String clazzName) throws Exception {
+        // 根据全限定的类名获取对应的 Class 对象
+        Class<?> clazz = Class.forName(clazzName);
+        // 使用 clazz 对应类的无参构造器创建实例
+        return clazz.getConstructor().newInstance();
+    }
+
+    public static void main(String[] args) throws Exception {
+        Object s = createObject("reflect.Student");
+    }
+}
+```
+
+其实，如果想调用有参的构造器创建对象，只要用上面介绍过的方法去获取有参的 `Contructor` 对象即可。然后调用 `newInstance` 方法时，传入对应的实参就行。
+
+> Spring 框架就采用读取配置文件的内容，然后通过反射来创建对象。
+
+{ % note warn %}
+
+通常没有必要使用反射来创建对象，因为反射创建对象时性能要稍低。实际上，只有当程序需要动态创建某个类的对象时才会考虑使用反射。通常在开发通用性比较广的框架、基础平台时可能会大量使用反射。
+
+{ % endnote % }
 
 ----
 
