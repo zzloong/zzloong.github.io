@@ -105,7 +105,7 @@ Class 对象通过上面介绍的方法，可以获得该类里的方法（由 `
 
 Student.java:
 ```java
-public class Student extends Person {
+public class Student{
     String name;
 
     public Student() {
@@ -201,6 +201,73 @@ Method 的 `invoke()` 方法来调用对应方法时，Java 会要求程序具�
 
 {% endnote %}
 
+### 访问成员变量值
+
+通过 Class 对象的 `getFields()` 或 `getField()` 方法可以获取该类所包括的全部成员变量或指定成员变量。Field 提供了下面两组方法来读取或设置成员变量值。
+- `getXxx(Object obj)` 获取 `obj` 对象的该成员的变量值。此处 Xxx 对应 8 中基本类型，如果该成员变量类型是引用类型，则取消 get 后面的 Xxx
+- `setXxx(Object obj, Xxx val)` 将 `obj` 对象的该成员变量设置成 val 值。如果该成员变量类型是引用类型，则取消 set 后面的 Xxx
+
+栗子：
+```java
+class Person {
+    private String name;
+    private Integer age;
+
+    public Person() {
+    }
+
+    public Person(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+}
+
+public class FieldTest {
+    public static void main(String[] args) throws Exception {
+        // 创建一个 Person 对象
+        Person p = new Person();
+        // 获取 Class 对象
+        Class<Person> personClazz = Person.class;
+        // 使用 getDeclaredField() 方法获取 private 类型的成员变量
+        Field nameFiled = personClazz.getDeclaredField("name");
+        // 能够获取到并不代表能够访问成员变量，需要设置可访问才行，否则会报错：
+        // Class reflect.FieldTest can not access a member of class reflect.Person with modifiers "private"
+        nameFiled.setAccessible(true);
+        nameFiled.set(p, "Michael");
+        Field ageFiled = personClazz.getDeclaredField("age");
+        ageFiled.setAccessible(true);
+        // 调用 setInt() 方法为 p 对象的 age 成员变量设置值
+        // ageFiled.setInt(p, 30);
+        ageFiled.set(p, 30);
+        System.out.println(p);
+
+    }
+}
+```
+
+上面代码中，如果使用 `ageFiled.setInt(p,30)` 则会报如下错误：
+```
+Exception in thread"main"java.lang.IllegalArgumentException:Can not set java.lang.Integer field reflect.Person.age to(int)30
+at sun.reflect.UnsafeFieldAccessorImpl.throwSetIllegalArgumentException(UnsafeFieldAccessorImpl.java:167)
+at sun.reflect.UnsafeFieldAccessorImpl.throwSetIllegalArgumentException(UnsafeFieldAccessorImpl.java:191)
+at sun.reflect.UnsafeObjectFieldAccessorImpl.setInt(UnsafeObjectFieldAccessorImpl.java:114)
+at java.lang.reflect.Field.setInt(Field.java:949)
+at reflect.FieldTest.main(FieldTest.java:50)
+```
+
+因为 `age` 不是基本类型，要用上面那种写法才会 OK。
+
+## 参考
+
+- [腾讯云社区/深入理解 Java 反射：Field （成员变量）](https://cloud.tencent.com/developer/article/1015078)
 
 ----
 
