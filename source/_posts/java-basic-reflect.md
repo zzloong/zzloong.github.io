@@ -101,7 +101,28 @@ Class 对象通过上面介绍的方法，可以获得该类里的方法（由 `
 
 先使用 Class 对象获取指定的 Constructor 对象，再调用 Constructor 对象的 `newInstance()` 方法来创建该 Class 对象对应类的实例！
 
-定义一个方法用来创建对应类名的 Java 对象：
+看个栗子：
+
+Student.java:
+```java
+public class Student extends Person {
+    String name;
+
+    public Student() {
+    }
+
+    private Student(String name) {
+        System.out.println("My name is: " + name);
+
+    }
+
+    public void hello(String content) {
+        System.out.println("name: " + name + " say :" + content);
+    }
+}
+```
+
+CreateObjectTest.java:
 
 ```java
 public class CreateObjectTest {
@@ -125,11 +146,61 @@ public class CreateObjectTest {
 
 
 {% note warning no-icon %}
+
 通常没有必要使用反射来创建对象，因为反射创建对象时性能要稍低。实际上，只有当程序需要动态创建某个类的对象时才会考虑使用反射。通常在开发通用性比较广的框架、基础平台时可能会大量使用反射。
 
 {% endnote %}
 
 ### 调用方法
+
+通过反射调用方法其实和上面的步骤差不多：获得某个类的 Class 对象，通过该对象的 `getMethods()` 方法或者 `getMethod()` 方法获取全部方法或指定方法。具体语法在上面介绍过。方法返回值是 `Method` 数组或者 `Method` 对象。
+
+每个 `Method` 对象对应一个方法，程序通过该 `Method` 调用它对应的方法。`Method` 包含一个 `invoke()` 方法，方法签名如下：
+- `Object invoke(Object obj,Object ... args)`：`obj` 是执行该方法的主调，`args` 是执行该方法时传入的实参。
+
+接上面的示例继续完善，CreateObjectTest.java：
+
+```java
+public class CreateObjectTest {
+
+    static Object createObject(String clazzName) throws Exception {
+        Class<?> clazz = Class.forName(clazzName);
+        return clazz.getConstructor().newInstance();
+    }
+
+    static void methodTest(Object target) throws Exception {
+        // 通过实例的 `getClass` 方法获取 Class 对象
+        Class<?> clazz = target.getClass();
+        // 通过 Class 对象获取对应类的 Method 对象
+        Method mtd = clazz.getMethod("hello", String.class);
+        // 调用 Method 对象的 invoke 方法，传入方法实参
+        mtd.invoke(target, "测试");
+    }
+
+    public static void main(String[] args) throws Exception {
+        Object s = createObject("reflect.Student");
+        methodTest(s);
+    }
+}
+```
+
+输出：
+```
+name: null say :测试
+```
+
+这里因为调用的是 Student 无参构造器，因此 name 为空。
+
+Method 的 `invoke()` 方法来调用对应方法时，Java 会要求程序具有调用该方法的权限。默认情况，`private` 方法是无权调用的。可以通过先调用 Method 对象的 `setAccessible(boolean flag)` 方法取消 Java 语言的访问权限检查（设为 `false` 时，不检查）。
+
+> Spring 框架将成员变量的值以及依赖对象等都放在配置文件中，然后采用上面方式进行创建对象、赋值成员变量的。这也是 Spring 框架 IoC 的秘密。
+
+{% note info no-icon %}
+
+上面这个是《疯狂 Java 讲义》中的提示，从这提示里可以看到，反射的重点意义其实不在于它能够创建对象、赋值变量，因为这通过构造器等也能做，我觉得它存在的主要意义在于能够在**运行时**动态地执行创建对象、赋值变量等操作。
+
+{% endnote %}
+
 
 ----
 
