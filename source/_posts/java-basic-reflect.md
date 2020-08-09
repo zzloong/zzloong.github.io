@@ -127,6 +127,8 @@ public class CreateObjectTest {
 
 { % endnote % }
 
+### 调用方法
+
 ----
 
 > 生命不息，折腾不止！关注 「Coder 魔法院」，祝你 Niubilitiy ！🐂🍺
