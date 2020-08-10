@@ -295,9 +295,14 @@ public class ArrayTest {
 }
 ```
 
+## 其他
+
+- `java.lang.reflect` 包下还有 Proxy 类和一个 `InvocationHandler` 接口，通过他们可以生成 JDK 动态代理或动态代理对象。代理对象具有原本对象的执行方法之外，还增加了可以增加以下额外的行为（AOP 里方法在执行目标前、之后插入一些通用处理的效果）。
+
 ## 参考
 
 - [腾讯云社区/深入理解 Java 反射：Field （成员变量）](https://cloud.tencent.com/developer/article/1015078)
+- 《疯狂 Java 讲义》第四版，18 章
 
 ----
 
