@@ -318,16 +318,17 @@ static void fromArrayToCollection(Object[] a, Collection<Object> c) {
 }
 ```
 
-`Collection<String>` 并不是 `Collection<Object>` 的子类型，所以上面这个方法只能将
-`Object[]` 数组中的元素复制到元素为 `Object`(`Object` 的子类也不行)的 Collection 集合中。所以，下面这么写将会引起编译错误：
+下面这么写将会引起编译错误：
 
 ```java
 String[] strArr = {"a","b"};
 List<String> strList = new ArrayList<>();
 // Collection<String>对象不能当成 Collection<Oject>使用
-fromArrayToCollection(strArr,strList);
+fromArrayToCollection(strArr, strList);
 System.out.println(strList);
 ```
+
+`Collection<String>` 并不是 `Collection<Object>` 的子类型，所以上面这个方法只能将 `Object[]` 数组中的元素复制到元素为 `Object` 的 Collection 集合中。
 
 `Collection<Object> c` 改为通配符 `Collection<?> c` 是否可行呢？也不行。
 
@@ -355,8 +356,7 @@ static <T> void fromArrayToCollection(T[] a, Collection<T> c) {
 public class Main {
     public static void main(String[] args) {
 
-
-		List<String> as = new ArrayList<>();
+        List<String> as = new ArrayList<>();
         List<Object> ao = new ArrayList<>();
 
         // 下面会编译错误
