@@ -265,6 +265,36 @@ at reflect.FieldTest.main(FieldTest.java:50)
 
 因为 `age` 不是基本类型，要用上面那种写法才会 OK。
 
+### 操作数组
+
+在 `java.lang.reflect` 包下提供了一个 Array 类，Array 对象可以代表所有的数组。可以通过 Array 动态地创建数组、操作数组元素。
+
+- `static Object newInstance(Class<?> componentType,int ... length)`：创建一个具有指定的元素类型、指定维度的新数组
+- `static xxx getXxx(Object  array, int index)`：返回 array 数组中第 index 个元素。其中，xxx 是各种基本数据类型，如果数据元素时引用类型，则方法为 `get(Object array, int index)`
+- `static setXxx(Object array, int index, xxx value)`：设置 array 数组中第 index 个元素值为 value。xxx 表示基本类型，如果是引用引用类型，则方法为 `set(Object array, int index, Object value)`。
+
+具体的用法，可以阅读 [java.lang.reflect.Array](https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Array.html)
+
+栗子：
+
+```java
+public class ArrayTest {
+    public static void main(String[] args) {
+        try {
+            Object arr = Array.newInstance(String.class, 10);
+            Array.set(arr, 5, "反射测试");
+            Array.set(arr, 6, "数组学习");
+            Object c1 = Array.get(arr, 5);
+            Object c2 = Array.get(arr, 6);
+            System.out.println(c1);
+            System.out.println(c2);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}
+```
+
 ## 参考
 
 - [腾讯云社区/深入理解 Java 反射：Field （成员变量）](https://cloud.tencent.com/developer/article/1015078)
