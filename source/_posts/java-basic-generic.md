@@ -308,7 +308,7 @@ public class Apple<T extends Number> {
 
 判断一个方法是否是泛型方法关键看方法返回值前面有没有使用 `<>` 标记的类型，有就是，没有就不是。
 
-假设需要实现这样一个方法：将一个 Object 数组所有的元素天际到一个 Collection 集合中。
+假设需要实现这样一个方法：将一个 Object 数组所有的元素添加到一个 Collection 集合中。
 
 ```java
 static void fromArrayToCollection(Object[] a, Collection<Object> c) {
