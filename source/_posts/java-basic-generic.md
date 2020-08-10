@@ -11,6 +11,8 @@ keywords:
   - Generic
 ---
 
+![pastries-模板](https://gitee.com/michael_xiang/images/raw/master/uPic/pastries-756601_640.jpg)
+
 ## 泛型概念
 
 泛型（ `Generic`）是一种编译器机制，您可通过该机制获取通用的代码并参数化（或模板化）剩余部分，从而以一种一般化方式创建（和使用）一些类型的实体（比如类或接口和方法）。这种编程方法被称为泛型编程。
