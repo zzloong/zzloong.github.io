@@ -208,13 +208,9 @@ HDR电视标准：
 | 美的 | [BCD-513WTPZM（E)](https://item.jd.com/100007002216.html) | 513L | `648*833*1898` | 2019 | 4099（20200816） | 99% | 赠品赠送 10 年核心部件质保 | 1 级（0.89） | 十字对开门 | 变温区（珍品、自由鲜） |
 | 美的 | [**BCD-540WKPZM(E)**](https://item.jd.com/100012751422.html#crumb-wrap) | 540L | `658*910*1793` | 2019 | 4399（20200816） | 99% | 赠品赠送 10 年核心部件质保 | 1 级（0.86） | 对开门 | 超磁电离净味技术 |
 
-
-
-- [海尔 BCD-595WFPB](https://item.jd.com/100012284466.html?cu=true&utm_source=zhuanlan.zhihu.com&utm_medium=tuiguang&utm_campaign=t_1001542270_1000026263_0_1947853281&utm_term=a8476cf85be94dc1bc8f7a16b40c285a) 595 升/双开门/干湿分离、双变频、净味、悬停门、二级能效 4300 深度 65.1-70cm/宽度 65.1-70cm/高度 170.1-180cm
-- [海尔 BCD-408WBPBU1](https://item.jd.com/100006925429.html) 408 升/多门、变温空间、 一级能效 4099
-- [美的 BCD-531WKPZM(E)](https://item.jd.com/100002152187.html#crumb-wrap) 531 升/双开门/干湿分离、双变频、净味、WIFI、1 级能效
-- [容声BCD-452WD16MPA](https://detail.tmall.com/item.htm?id=614373441133&ali_trackid=2:mm_13902370_1047600261_109797750278,1ujVEROYpTG0:1597575395_126_988540951&unid=1ujVEROYpTG0&ak=27860155&bxsign=tbk1597575395763cea6b3f0b946edc7ffd18f5ac64c3e95&skuId=4501521551731) 452升/多门/双变频、WiFi、母婴变温空间 5799
+> 一般对开门的款式，都没有单独的变温区
 
 ### 参考
 
 - [什么值得买/装修系列专题｜2020年冰箱选购推荐（6.29更新）](https://post.smzdm.com/p/a078pm9r/p2/#comments)
+- [知乎/出木衫同学/家电选购终极指南——冰箱篇](https://zhuanlan.zhihu.com/p/28035403)
