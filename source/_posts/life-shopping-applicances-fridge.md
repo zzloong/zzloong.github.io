@@ -20,7 +20,7 @@ categories: Life
 
 按照冰箱门类型设计进行划分：
 - 双门冰箱：一般上冷藏，下冷冻，通常无变温室
-![cF8LH7](https://gitee.com/michael_xiang/images/raw/master/uPic/cF8LH7.png)
+![双门](https://gitee.com/michael_xiang/images/raw/master/uPic/cF8LH7.png)
 
 - 三门冰箱：比双门冰箱多了一个中间的变温室，可以调节不同温度使用
 ![三门](https://gitee.com/michael_xiang/images/raw/master/uPic/TGy1lp.png)
