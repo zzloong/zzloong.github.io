@@ -6,13 +6,13 @@ date: 2020-08-21 21:29:08
 categories: Life
 ---
 
-![frog-1729802_640](https://gitee.com/michael_xiang/images/raw/master/uPic/frog-1729802_640.jpg)
+![frog-ice-fridge](https://gitee.com/michael_xiang/images/raw/master/uPic/frog-1729802_640.jpg)
 
 ## 冰箱
 
-冰箱可谓是现代家庭必不可少的一件电器，最近花了点时间了解了一下现在冰箱的一些常见卖点功能。这里总结分享出来，方便其他有需要的同学作参考。
+冰箱可谓是现代家庭必不可少的一件电器，最近花时间了解了一下现在冰箱的常见卖点功能。这里总结分享出来，方便其他有需要的同学作参考。重点不是推荐具体型号的冰箱，而是方便大家选购适合自己需求的产品~
 
-> 不了解不知道，一了解吓一跳。小时候电视剧里出现的高大上的对开门大冰箱，如今二三千也可以入手了！
+> 不了解不知道，一了解吓一跳。小时候电视剧里出现的高大上的对开门大冰箱，如今二三千也可以入手！
 
 <!-- more -->
 
@@ -20,19 +20,19 @@ categories: Life
 
 按照冰箱门类型设计进行划分：
 - 双门冰箱：一般上冷藏，下冷冻，通常无变温室
-![双门](https://gitee.com/michael_xiang/images/raw/master/uPic/cF8LH7.png)
+![双门-图源自网络](https://gitee.com/michael_xiang/images/raw/master/uPic/cF8LH7.png)
 
 - 三门冰箱：比双门冰箱多了一个中间的变温室，可以调节不同温度使用
-![三门](https://gitee.com/michael_xiang/images/raw/master/uPic/TGy1lp.png)
+![双门-图源自网络](https://gitee.com/michael_xiang/images/raw/master/uPic/TGy1lp.png)
 
 - 对开门冰箱：体积大、性价比高，缺少变温室
-![对开门](https://gitee.com/michael_xiang/images/raw/master/uPic/AeGl35.png)
+![双门-图源自网络](https://gitee.com/michael_xiang/images/raw/master/uPic/AeGl35.png)
 
 - 十字对开门冰箱：对开门冰箱的进阶版，分区更为合理，一般也有独立变温室
-![十字门](https://gitee.com/michael_xiang/images/raw/master/uPic/msG1fr.png)
+![双门-图源自网络](https://gitee.com/michael_xiang/images/raw/master/uPic/msG1fr.png)
 
 - 多门冰箱：有时也称法式多门，一般 4 门起
-![多门](https://gitee.com/michael_xiang/images/raw/master/uPic/5MgKIb.png)
+![双门-图源自网络](https://gitee.com/michael_xiang/images/raw/master/uPic/5MgKIb.png)
 
 > 假设倾向大容量冰箱，食材管理比较精细化的可以选择多门和十字对开门，粗放式的同学可以选择对开门
 
