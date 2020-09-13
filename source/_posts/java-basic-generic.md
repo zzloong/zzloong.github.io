@@ -385,7 +385,7 @@ static <T> void test(Collection<? extends T> from, Collection<T> to) {
 }
 ```
 
-`Collection<? extends T>`这种采用类型通配符并设置通配符上限的表示方式，只要 test 方法的第一个 Collection 集合里的元素类型是后一个 Collection 集合里元素类型的子类即可。
+`Collection<? extends T>` 这种采用类型通配符并设置通配符上限的表示方式，只要 test 方法的第一个 Collection 集合里的元素类型是后一个 Collection 集合里元素类型的子类即可。
 
 ## 补充
 
