@@ -333,6 +333,8 @@ JobDetail jobDetail = JobBuilder.newJob(QuartzHelloJob.class)
 - 对于 Job 而言，一个 Job 可以对应多个 Trigger；
 - 对于 Trigger 而言，一个 Trigger 只能对应一个 Job；
 
+> Trigger 和 Job 因此就是「多对一」的关系
+
 Scheduler 的创建方式：
 （1） StdSchdulerFactory：Quartz 默认的 SchdulerFactory
 - 使用一组参数（`java.util.Properties`）来创建和初始化 Quartz 调度器；
@@ -419,6 +421,10 @@ Quartz 监听器主要有 `JobListener`、`TriggerListener`、`SchedulerListener
 - 全局监听器能够接收到所有的 Job/Trigger 的事件通知
 - 非全局监听器只能接收到在其上注册的 Job 或 Trigger 事件，不在其上注册的 Job 或 Trigger 则不会进行监听。 
 
+监听器的用法步骤大致如下：
+- 新建一个类，实现监听器接口 `xxxListener`；
+- 通过监听管理器创建并注册监听器
+
 ### JobListener
 
 任务调度过程中，与任务 Job 相关事件包括：
@@ -431,6 +437,28 @@ JobListener 接口包含几个重要的方法声明：
 - `jobExecutedVetoed` 方法：Scheduler 在 JobDetail 即将被执行，但又被 TriggerListener 否决时调用该方法；
 - `jobWasExecuted` 方法：Scheduler 在 JobDetail 被执行之后调用该方法；
 
+### TriggerListener
+
+TriggerListener 包含几个方法：
+- `getName`：获取触发器的名称
+- `triggerFired` 方法：当与监听器相关联的 Trigger 被触发，Job 上的 `execute()` 方法将被执行时，Scheduler 就调用该方法；
+- `vetoJobExecution` 方法：在 Trigger 触发后，Job 将要被执行时由 Scheduler 调用这个方法。TriggerListener 给了一个选择去否决 Job 的执行。假如这个方法返回 true，这个 Job 将不会被此次 Trigger 触发而得到执行；
+- `triggerMisfired` 方法：Scheduler 调用这个方法是在 Trigger 错过触发时。
+- `triggerComplete` 方法：Trigger 被触发并且完成了 Job 的执行时，Scheduler 调用这个方法；
+
+### SchedulerListener
+
+SchedulerListener 会在 Scheduler 的生命周期中关键事件发生时被调用。与 Scheduler 有关的时间包括：
+- 增加一个 Job/Trigger
+- 删除一个 Job/Trigger
+- Scheduler 发生错误
+- 关闭 Scheduler 等
+
+## 示例代码
+
+完整示例代码：https://github.com/Michael728/java-middleware-demos/tree/master/quartz-demos
+
 ## 参考
 
 - [B 站/任务调度 Quartz 视频教程全集（21P）| 3 小时从入门到精通](https://www.bilibili.com/video/BV1St411g72Z?p=5)
+- [博客园/Quartz的基本使用之入门（2.3.0版本）](https://www.cnblogs.com/zhanghaoliang/p/7886110.html)
