@@ -257,15 +257,15 @@ http.port: 9200
 注意：这是指 http 端口，如果采用 REST API 对接 ES，那么就是采用的 http 协议
 {% endnote%}
 
-### Important discovery and cluster formation settings
+### discovery.seed_hosts 发现设置
 
 有两种重要的发现和集群形成配置，以便集群中的节点能够彼此发现和选择一个主节点。[Important discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/discovery-settings.html)
 
-- `discovery.seed_hosts`
+`discovery.seed_hosts` 是组件集群时比较重要的配置，用于启动当前节点时，发现其他节点的初始列表。
 
 开箱即用，无需任何网络配置， ES 将绑定到可用的环回地址，并将扫描本地端口 9300 - 9305，以尝试连接到同一服务器上运行的其他节点。 这无需任何配置即可提供自动群集的体验。
 
-如果要与其他主机上的节点组成集群，你应使用 `discovery.seed_hosts` 设置，来提供集群中其他主机的列表，这些主机符合主机要求并且可能处于活动状态且可达，以便寻址[发现过程](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-hosts-providers.html)。 此设置应该是群集中所有符合主机资格的节点的地址的列表。 每个地址可以是IP地址，也可以是通过DNS解析为一个或多个IP地址的主机名（`hostname`）。
+如果要与其他主机上的节点组成集群，则必须设置 `discovery.seed_hosts`，来提供集群中其他主机的列表，这些主机符合主机要求并且可能处于活动状态且可达，以便寻址[发现过程](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-hosts-providers.html)。 此设置应该是群集中所有符合主机资格的节点的地址的列表。 每个地址可以是 IP 地址，也可以是通过 DNS 解析为一个或多个 IP 地址的主机名（`hostname`）。
 
 配置集群的主机地址，配置之后集群的主机之间可以自动发现（可以带上端口，例如 `192.168.1.10:9200`）：
 
@@ -277,11 +277,13 @@ discovery.seed_hosts: ["192.168.3.43"]
 
 必须至少配置 `[discovery.seed_hosts，discovery.seed_providers，cluster.initial_master_nodes]` 中的一个。
 
-- `cluster.initial_master_nodes`
+### cluster.initial_master_nodes
 
-首次启动全新的 ES 集群时，会出现一个[集群引导/cluster bootstrapping](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-bootstrap-cluster.html)步骤，该步骤确定了在第一次选举中的主节点的集合。 在开发模式下，没有进行发现设置，此步骤由节点本身自动执行。 由于这种自动引导从本质上讲是[不安全的](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-quorums.html)，因此当您在[生产模式](https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html#dev-vs-prod-mode)下第一次启动全新的群集时，你必须显式列出符合资格的主机节点。使用 `cluster.initial_master_nodes` 设置来设置此列表。**重新启动集群或将新节点添加到现有集群时，不应使用此设置**
+首次启动全新的 ES 集群时，会出现一个[集群引导/集群选举/cluster bootstrapping](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-bootstrap-cluster.html)步骤，该步骤确定了在第一次选举中的符合主节点资格的节点集合。在[开发模式](https://www.elastic.co/guide/en/elasticsearch/reference/7.3/bootstrap-checks.html#dev-vs-prod-mode)下，如果没有进行发现设置，此步骤由节点本身自动执行。由于这种自动引导从本质上讲是[不安全的](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-quorums.html)，因此当您在[生产模式](https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html#dev-vs-prod-mode)下第一次启动全新的群集时，你必须显式列出符合资格的主机节点。使用 `cluster.initial_master_nodes` 设置来设置该列表。**重新启动集群或将新节点添加到现有集群时，不应使用此设置**
 
-初始主节点应通过其 `node.name` 标识，默认为其主机名。 确保 `cluster.initial_master_nodes` 中的值与 `node.name` 完全匹配
+`cluster.initial_master_nodes`: 初始的候选 master 节点列表。初始主节点应通过其 `node.name` 标识，默认为其主机名。 确保 `cluster.initial_master_nodes` 中的值与 `node.name` 完全匹配
+
+> 如果未设置 initial_master_nodes，那么在启动新节点时会尝试发现已有的集群。如果节点找不到可以加入的集群，将定期记录警告消息。
 
 ```shell
 $ egrep -v "^#|^$" config/elasticsearch.yml
@@ -381,6 +383,8 @@ Q3：`master_not_discovered_exception`
 
 ## 参考
 
+- [ES-CN 官网/Elasticsearch 集群协调迎来新时代](https://www.elastic.co/cn/blog/a-new-era-for-cluster-coordination-in-elasticsearch) 对于 ES7 的集群发现机制介绍较为详细
+- [learnku/Elasticsearch中文文档-7.3版本](https://learnku.com/docs/elasticsearch73/7.3) 推荐
 - [程序羊-CentOS7上ElasticSearch安装填坑记](https://www.jianshu.com/p/04f4d7b4a1d3) FAQ 有帮助
 - [极客时间-Elasticsearch核心技术与实战](https://time.geekbang.org/course/detail/197-102661) 这篇文章阐述了 ES 集群的主节点的仲裁等知识
 - [搭建ELFK日志采集系统](https://jeremy-xu.oschina.io/2018/10/%E6%90%AD%E5%BB%BAelfk%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86%E7%B3%BB%E7%BB%9F/)
