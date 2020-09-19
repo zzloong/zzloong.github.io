@@ -34,7 +34,7 @@ Elasticsearch 7.x 包里自包含了 OpenJDK 的包。如果你想要使用你�
 
 ### 准备工作
 
-{% note info %}
+{% note warning %}
 
 不能使用 root 用户启动 es，否则会报错：
 
@@ -52,7 +52,7 @@ Caused by: java.lang.RuntimeException: can not run elasticsearch as root
 - [官方-Past Releases](https://www.elastic.co/cn/downloads/past-releases#elasticsearch) 官网的下载地址简直是龟速
 - [华为镜像站](https://mirrors.huaweicloud.com/elasticsearch/) 下载速度不错，推荐
 
-下面的步骤参考 [Set up Elasticsearch » Installing Elasticsearch » Install Elasticsearch from archive on Linux or MacOS](https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html)
+下面的步骤参考 [Set up Elasticsearch » Installing Elasticsearch » Install Elasticsearch from archive on Linux or MacOS](https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html)，选择的安装包是 elasticsearch-7.3.0 版本。
 
 ```shell
 # 下载安装包
@@ -69,17 +69,17 @@ mv elasticsearch-7.3.0 es-node3
 chown -R es es-node*
 ```
 
-{% note warning %}
-如果是 Mac 平台，则下载包 elasticsearch-{version}-darwin-x86_64.tar.gz。
+{% note info %}
+如果是 Mac 平台，则下载包 `elasticsearch-{version}-darwin-x86_64.tar.gz`。
 
 macOS Catalina 在你第一次运行 es 时，会弹出对话框阻止运行，你需要到设置-》安全隐私中允许才行。为了阻止这种告警，可以运行如下的命令：
 
-```
+```shell
 xattr -d -r com.apple.quarantine <archive-or-directory>
 ```
 {% endnote %}
 
-- `$ES_HOME` 是指这里 tar 包解压后的文件夹目录
+- `$ES_HOME` 是指 es 的安装包 tar 包解压后的文件夹目录。
 
 解压后的[目录组成](https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html#targz-layout)：
 
@@ -97,12 +97,26 @@ xattr -d -r com.apple.quarantine <archive-or-directory>
 └── README.textile
 ```
 
-### 使用命令行运行 Elasticsearch
+### 运行 Elasticsearch
 
-首先，我们先运行一个节点起来。
+我们先运行一个节点：
 
 ```shell
 ./bin/elasticsearch
+```
+
+如果要将 ES 作为守护程序运行，请在命令行中指定 `-d`，指定 `-p` 参数，将进程 ID 记录到 `pid` 文件：
+
+```shell
+./bin/elasticsearch -d -p pid
+```
+
+日志在 `$ES_HOME/logs` 目录中。
+
+如果要停止 ES，运行如下的命令：
+
+```shell
+pkill -F pid
 ```
 
 ### 检查一下运行状态
@@ -133,25 +147,9 @@ curl -X GET "localhost:9200/?pretty"
 }
 ```
 
-如果你是在服务器上部署的 ES，那么，在你的工作机上目前还无法调用通 `<IP>:9200`，需要一些配置才可以。后面会介绍。
+如果你是在远端服务器上部署的 ES，那么，此时在你本地的工作机上还无法调通 `<IP>:9200`，需要一些配置才可以。后面会介绍。
 
-### 作为守护进程运行
-
-要将 ES 作为守护程序运行，请在命令行中指定 `-d`，指定 `-p` 参数，将进程 ID 记录到 `pid` 文件：
-
-```shell
-./bin/elasticsearch -d -p pid
-```
-
-日志在 `$ES_HOME/logs` 目录中。
-
-如果想停止  ES，运行如下的命令：
-
-```shell
-pkill -F pid
-```
-
-## 配置 ES
+## ES 配置相关
 
 官网关于配置的内容主要有两处：
 - [Configuraing Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html)
@@ -177,11 +175,33 @@ path.data: /var/lib/elasticsearch
 path.logs: /var/log/elasticsearch
 ```
 
-### 使用命令行配置 ES
+### JVM 配置
 
-ES 默认会加载位于 `$ES_HOME/config/elasticsearch.yml` 的配置文件。
+[JVM 参数设置](https://www.elastic.co/guide/en/elasticsearch/reference/current/jvm-options.html#jvm-options)可以通过 `jvm.options` 文件（推荐方式）或者 `ES_JAVA_OPTS` 环境变量来修改。
 
-任何能够通过配置文件设置的内容，都可以通过命令行使用 `-E` 的语法进行指定：
+`jvm.options` 位于 
+- `$ES_HOME/config/jvm.options` 当通过 `tar` or `zip` 包安装
+- `/etc/elasticsearch/jvm.options` 当通过 Debian or RPM packages
+
+官网也介绍了如何[设置堆大小](https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html)。
+
+默认情况，ES 告诉 JVM 使用一个最小和最大都为 1GB 的堆。但是到了生产环境，这个配置就比较重要了，确保 ES 有足够堆空间可用。
+
+ES 使用 `Xms(minimum heap size)` 和 `Xmx(maxmimum heap size)` 设置堆大小。你应该将这两个值设为同样的大小。
+
+**`Xms` 和 `Xmx` 不能大于你物理机内存的 50%。**
+
+设置的示例：
+```shell
+-Xms2g 
+-Xmx2g
+```
+
+### elasticsearch.yml 配置
+
+ES 默认会加载位于 `$ES_HOME/config/elasticsearch.yml` 的配置文件（下文介绍的配置就是在该文件中）。
+
+任何能够通过配置文件设置的内容，都可以通过命令行使用 `-E` 的语法进行指定，例如：
 
 ```shell
 ./bin/elasticsearch -d -Ecluster.name=my_cluster -Enode.name=node_1
@@ -191,29 +211,7 @@ ES 默认会加载位于 `$ES_HOME/config/elasticsearch.yml` 的配置文件。
 通常，任何群集范围的设置（如 cluster.name）都应添加到 `elasticsearch.yml` 配置文件中，而任何特定的节点设置（如 node.name）都可以在命令行中指定
 {% endnote %}
 
-### JVM 配置
-
-[JVM 参数设置](https://www.elastic.co/guide/en/elasticsearch/reference/current/jvm-options.html#jvm-options)可以通过 `jvm.options` 文件（推荐方式）或者 `ES_JAVA_OPTS` 环境变量来修改。
-
-`jvm.options` 位于 
-- `config/jvm.options` 当通过 `tar` or `zip` 包安装
-- `/etc/elasticsearch/jvm.options` 当通过 Debian or RPM packages
-
-官网也介绍了如何[设置堆大小](https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html)。
-
-默认情况，ES 告诉 JVM 使用一个最小和最大都为 1GB 的堆。但是到了生产环境，这个配置就比较重要了，确保 ES 有足够堆空间可用。
-
-ES 使用 `Xms(minimum heap size)` 和 `Xmx(maxmimum heap size)` 设置堆大小。你应该将这两个值设为同样的大小。
-
-- `Xms` 和 `Xmx` 不能大于你物理机内存的 50%。
-
-设置的示例：
-```
--Xms2g 
--Xmx2g
-```
-
-### cluster.name
+- `cluster.name`
 
 `cluster.name` 设置[集群名称](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.name.html)。一个节点只能加入一个集群中，默认的集群名称是 `elasticsearch`.
 
@@ -225,7 +223,9 @@ cluster.name: michael-es
 确保节点的集群名称要设置正确，这样才能加入到同一个集群中
 {% endnote %}
 
-### node.name
+----
+
+- `node.name`
 
 `node.name` 可以配置每个[节点的名称](https://www.elastic.co/guide/en/elasticsearch/reference/current/node.name.html)。用来提供可读性高的 ES 实例名称，默认名称是机器的 `hostname`，可以自定义：
 
@@ -235,7 +235,9 @@ node.name: node-1
 
 > 集群中每个节点的名称都不要相同
 
-### network.host
+---
+
+- `network.host`
 
 `network.host` 设置访问的[地址](https://www.elastic.co/guide/en/elasticsearch/reference/current/network.host.html)。我们需要设定 ES 运行绑定的 Host，默认是无法公开访问的，默认是回环地址 `127.0.0.1`。如果要和其他节点形成集群，建议设置为主机的公网 IP 或 `0.0.0.0`：
 
@@ -245,7 +247,9 @@ network.host: 0.0.0.0
 
 > 更多的网络设置可以阅读 [Network Settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html)
 
-### http.port
+---
+
+- `http.port`
 
 `http.port` ，默认端口是 9200 ：
 
@@ -257,7 +261,9 @@ http.port: 9200
 注意：这是指 http 端口，如果采用 REST API 对接 ES，那么就是采用的 http 协议
 {% endnote%}
 
-### discovery.seed_hosts 发现设置
+----
+
+- `discovery.seed_hosts` 发现设置
 
 有两种重要的发现和集群形成配置，以便集群中的节点能够彼此发现和选择一个主节点。[Important discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/discovery-settings.html)
 
@@ -277,13 +283,20 @@ discovery.seed_hosts: ["192.168.3.43"]
 
 必须至少配置 `[discovery.seed_hosts，discovery.seed_providers，cluster.initial_master_nodes]` 中的一个。
 
-### cluster.initial_master_nodes
+----
+
+- `cluster.initial_master_nodes`
 
 首次启动全新的 ES 集群时，会出现一个[集群引导/集群选举/cluster bootstrapping](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-bootstrap-cluster.html)步骤，该步骤确定了在第一次选举中的符合主节点资格的节点集合。在[开发模式](https://www.elastic.co/guide/en/elasticsearch/reference/7.3/bootstrap-checks.html#dev-vs-prod-mode)下，如果没有进行发现设置，此步骤由节点本身自动执行。由于这种自动引导从本质上讲是[不安全的](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-quorums.html)，因此当您在[生产模式](https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html#dev-vs-prod-mode)下第一次启动全新的群集时，你必须显式列出符合资格的主机节点。使用 `cluster.initial_master_nodes` 设置来设置该列表。**重新启动集群或将新节点添加到现有集群时，不应使用此设置**
 
 `cluster.initial_master_nodes`: 初始的候选 master 节点列表。初始主节点应通过其 `node.name` 标识，默认为其主机名。 确保 `cluster.initial_master_nodes` 中的值与 `node.name` 完全匹配
 
 > 如果未设置 initial_master_nodes，那么在启动新节点时会尝试发现已有的集群。如果节点找不到可以加入的集群，将定期记录警告消息。
+
+关于 `cluster.initial_master_nodes` 可以查看如下资料
+
+- [Bootstrapping a cluster](https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-discovery-bootstrap-cluster.html)
+- [Discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-settings.html)
 
 ```shell
 $ egrep -v "^#|^$" config/elasticsearch.yml
@@ -295,12 +308,7 @@ discovery.seed_hosts: ["192.168.3.43"]
 cluster.initial_master_nodes: ["node-1"]
 ```
 
-经过上面的配置，这时候就可以使用 `http://192.168.3.43:9200/` 看到结果了。
-
-关于 cluster.initial_master_nodes 可以查看如下资料
-
-- [Bootstrapping a cluster](https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-discovery-bootstrap-cluster.html)
-- [Discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-settings.html)
+经过上面的配置，这时候就可以使用 `http://<remote host>:9200/` 看到结果了（我远端机器 IP 为 `192.168.3.43`）。
 
 ## 集群配置
 
@@ -354,14 +362,14 @@ wget https://artifacts.elastic.co/downloads/elasticsearch-plugins/analysis-icu/a
 
 ## ES-FAQ
 
-Q1：`[1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]`
+### Q1：`[1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]`
 
 ```shell
 echo "vm.max_map_count=262144" > /etc/sysctl.conf
 sysctl -p
 ```
 
-Q2：`max file descriptors [4096] for elasticsearch process is too low, increase to at least [65536]`
+### Q2：`max file descriptors [4096] for elasticsearch process is too low, increase to at least [65536]`
 
 ```shell
 sudo vim /etc/security/limits.conf
@@ -373,18 +381,18 @@ sudo vim /etc/security/limits.conf
 * hard memlock unlimited
 ```
 
-Q3：`master_not_discovered_exception`
+### Q3：`master_not_discovered_exception`
 
 主节点指定的名字要保证存在，别指定了不存在的节点名。
 
 ## 总结
 
-本文是通过 tar 包方式安装的，发现，还不如用 RPM 包来的方便。不过配置的内容其实差不多，区别可能就是，RPM 包方式，可以直接用 systemctl 的命令查看状态、重启等。
+本文是通过 tar 包方式安装的，安装目录相对集中、配置方便。用 RPM 包安装的话，可以直接用 systemctl 的命令查看 ES 状态、对其重启等。
 
 ## 参考
 
-- [ES-CN 官网/Elasticsearch 集群协调迎来新时代](https://www.elastic.co/cn/blog/a-new-era-for-cluster-coordination-in-elasticsearch) 对于 ES7 的集群发现机制介绍较为详细
 - [learnku/Elasticsearch中文文档-7.3版本](https://learnku.com/docs/elasticsearch73/7.3) 推荐
+- [ES-CN 官网/Elasticsearch 集群协调迎来新时代](https://www.elastic.co/cn/blog/a-new-era-for-cluster-coordination-in-elasticsearch) 对于 ES7 的集群发现机制介绍较为详细，推荐
 - [程序羊-CentOS7上ElasticSearch安装填坑记](https://www.jianshu.com/p/04f4d7b4a1d3) FAQ 有帮助
 - [极客时间-Elasticsearch核心技术与实战](https://time.geekbang.org/course/detail/197-102661) 这篇文章阐述了 ES 集群的主节点的仲裁等知识
 - [搭建ELFK日志采集系统](https://jeremy-xu.oschina.io/2018/10/%E6%90%AD%E5%BB%BAelfk%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86%E7%B3%BB%E7%BB%9F/)
