@@ -61,25 +61,22 @@ wget https://mirrors.huaweicloud.com/elasticsearch/7.3.0/elasticsearch-7.3.0-lin
 # 验证安装包的完整性，如果没问题，会输出 OK
 shasum -a 512 -c elasticsearch-7.3.0-linux-x86_64.tar.gz.sha512
 tar -xzf elasticsearch-7.3.0-linux-x86_64.tar.gz
-# 将目录复制三份，作为三个节点
-cp -R elasticsearch-7.3.0 es-node1
-cp -R elasticsearch-7.3.0 es-node2
-mv elasticsearch-7.3.0 es-node3
+# 将目录复制三份，作为三个节点，后面配置 ES 集群时，对应了三个 ES 实例
+cp -R elasticsearch-7.3.0 es-7.3.0-node-1
+cp -R elasticsearch-7.3.0 es-7.3.0-node-2
+mv elasticsearch-7.3.0 es-7.3.0-node-3
 # 因为以 root 用户启动不了 ES
-chown -R es es-node*
+chown -R es es-7.3.0*
 ```
 
 {% note info %}
 如果是 Mac 平台，则下载包 `elasticsearch-{version}-darwin-x86_64.tar.gz`。
 
-macOS Catalina 在你第一次运行 es 时，会弹出对话框阻止运行，你需要到设置-》安全隐私中允许才行。为了阻止这种告警，可以运行如下的命令：
+MacOS Catalina 在你第一次运行 es 时，会弹出对话框阻止运行，你需要到设置-》安全隐私中允许才行。为了阻止这种告警，可以运行如下的命令：xattr -d -r com.apple.quarantine <$ES_HOME or archive-or-directory>
 
-```shell
-xattr -d -r com.apple.quarantine <archive-or-directory>
-```
 {% endnote %}
 
-- `$ES_HOME` 是指 es 的安装包 tar 包解压后的文件夹目录。
+> `$ES_HOME` 是指 es 的安装包 tar 包解压后的文件夹目录。
 
 解压后的[目录组成](https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html#targz-layout)：
 
@@ -99,7 +96,7 @@ xattr -d -r com.apple.quarantine <archive-or-directory>
 
 ### 运行 Elasticsearch
 
-我们先运行一个节点：
+我们先运行一个节点，创建 ES 单机版实例：
 
 ```shell
 ./bin/elasticsearch
@@ -130,7 +127,7 @@ curl -X GET "localhost:9200/?pretty"
 ```shell
 {
     "name": "node-1",
-    "cluster_name": "michael-es",
+    "cluster_name": "appsearch-7.3.2",
     "cluster_uuid": "GlzI_v__QJ2s9ewAgomOqg",
     "version": {
         "number": "7.3.0",
@@ -147,7 +144,7 @@ curl -X GET "localhost:9200/?pretty"
 }
 ```
 
-如果你是在远端服务器上部署的 ES，那么，此时在你本地的工作机上还无法调通 `<IP>:9200`，需要一些配置才可以。后面会介绍。
+如果你是在远端服务器上部署的 ES，那么，此时在你本地的工作机上还无法调通 `<IP>:9200`，需要对 ES 进行相关配置才能访问，下文会介绍。
 
 ## ES 配置相关
 
@@ -199,47 +196,45 @@ ES 使用 `Xms(minimum heap size)` 和 `Xmx(maxmimum heap size)` 设置堆大小
 
 ### elasticsearch.yml 配置
 
-ES 默认会加载位于 `$ES_HOME/config/elasticsearch.yml` 的配置文件（下文介绍的配置就是在该文件中）。
+ES 默认会加载位于 `$ES_HOME/config/elasticsearch.yml` 的配置文件。
 
-任何能够通过配置文件设置的内容，都可以通过命令行使用 `-E` 的语法进行指定，例如：
+备注：任何能够通过配置文件设置的内容，都可以通过命令行使用 `-E` 的语法进行指定，例如：
 
 ```shell
 ./bin/elasticsearch -d -Ecluster.name=my_cluster -Enode.name=node_1
 ```
 
-{% note info %}
-通常，任何群集范围的设置（如 cluster.name）都应添加到 `elasticsearch.yml` 配置文件中，而任何特定的节点设置（如 node.name）都可以在命令行中指定
-{% endnote %}
+---
 
 - `cluster.name`
 
-`cluster.name` 设置[集群名称](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.name.html)。一个节点只能加入一个集群中，默认的集群名称是 `elasticsearch`.
+`cluster.name` 设置[集群名称](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.name.html)。一个节点只能加入一个集群中，默认的集群名称是 `elasticsearch`。
 
 ```shell
-cluster.name: michael-es
+cluster.name: appsearch-7.3.2
 ```
 
 {% note info %}
-确保节点的集群名称要设置正确，这样才能加入到同一个集群中
+确保节点的集群名称要设置正确，这样才能加入到同一个集群中。上面示例就自定义了集群名称为 appsearch-7.3.2。
 {% endnote %}
 
 ----
 
 - `node.name`
 
-`node.name` 可以配置每个[节点的名称](https://www.elastic.co/guide/en/elasticsearch/reference/current/node.name.html)。用来提供可读性高的 ES 实例名称，默认名称是机器的 `hostname`，可以自定义：
+`node.name` 可以配置每个[节点的名称](https://www.elastic.co/guide/en/elasticsearch/reference/current/node.name.html)。用来提供可读性高的 ES 实例名称，它默认名称是机器的 `hostname`，可以自定义：
 
 ```shell
 node.name: node-1
 ```
 
-> 集群中每个节点的名称都不要相同
+> 同一集群中的节点名称不能相同
 
 ---
 
 - `network.host`
 
-`network.host` 设置访问的[地址](https://www.elastic.co/guide/en/elasticsearch/reference/current/network.host.html)。我们需要设定 ES 运行绑定的 Host，默认是无法公开访问的，默认是回环地址 `127.0.0.1`。如果要和其他节点形成集群，建议设置为主机的公网 IP 或 `0.0.0.0`：
+`network.host` 设置访问的[地址](https://www.elastic.co/guide/en/elasticsearch/reference/current/network.host.html)。默认仅绑定在回环地址 `127.0.0.1` 和 `[::1]`。如果需要从其他服务器上访问以及多态机器搭建集群，我们需要设定 ES 运行绑定的 Host，节点需要绑定非回环的地址。建议设置为主机的公网 IP 或 `0.0.0.0`：
 
 ```shell
 network.host: 0.0.0.0
@@ -265,18 +260,18 @@ http.port: 9200
 
 - `discovery.seed_hosts` 发现设置
 
-有两种重要的发现和集群形成配置，以便集群中的节点能够彼此发现和选择一个主节点。[Important discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/discovery-settings.html)
+有两种重要的发现和集群形成配置，以便集群中的节点能够彼此发现并且选择一个主节点。[官网/Important discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/discovery-settings.html)
 
 `discovery.seed_hosts` 是组件集群时比较重要的配置，用于启动当前节点时，发现其他节点的初始列表。
 
-开箱即用，无需任何网络配置， ES 将绑定到可用的环回地址，并将扫描本地端口 9300 - 9305，以尝试连接到同一服务器上运行的其他节点。 这无需任何配置即可提供自动群集的体验。
+开箱即用，无需任何网络配置， ES 将绑定到可用的环回地址，并将扫描本地端口 `9300 - 9305`，以尝试连接到同一服务器上运行的其他节点。 这无需任何配置即可提供自动群集的体验。
 
-如果要与其他主机上的节点组成集群，则必须设置 `discovery.seed_hosts`，来提供集群中其他主机的列表，这些主机符合主机要求并且可能处于活动状态且可达，以便寻址[发现过程](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-hosts-providers.html)。 此设置应该是群集中所有符合主机资格的节点的地址的列表。 每个地址可以是 IP 地址，也可以是通过 DNS 解析为一个或多个 IP 地址的主机名（`hostname`）。
+如果要与其他主机上的节点组成集群，则必须设置 `discovery.seed_hosts`，用来提供集群中的其他主机列表（它们是符合主机资格要求的`master-eligible`并且可能处于活动状态的且可达的，以便寻址[发现过程](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-hosts-providers.html)）。此设置应该是群集中所有符合主机资格的节点的地址的列表。 每个地址可以是 IP 地址，也可以是通过 DNS 解析为一个或多个 IP 地址的主机名（`hostname`）。
 
 配置集群的主机地址，配置之后集群的主机之间可以自动发现（可以带上端口，例如 `192.168.1.10:9200`）：
 
 ```shell
-discovery.seed_hosts: ["192.168.3.43"]
+discovery.seed_hosts: ["192.168.3.112"]
 ```
 
 > the default discovery settings are unsuitable for production use; at least one of [discovery.seed_hosts, discovery.seed_providers, cluster.initial_master_nodes] must be configured
@@ -287,48 +282,59 @@ discovery.seed_hosts: ["192.168.3.43"]
 
 - `cluster.initial_master_nodes`
 
-首次启动全新的 ES 集群时，会出现一个[集群引导/集群选举/cluster bootstrapping](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-bootstrap-cluster.html)步骤，该步骤确定了在第一次选举中的符合主节点资格的节点集合。在[开发模式](https://www.elastic.co/guide/en/elasticsearch/reference/7.3/bootstrap-checks.html#dev-vs-prod-mode)下，如果没有进行发现设置，此步骤由节点本身自动执行。由于这种自动引导从本质上讲是[不安全的](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-quorums.html)，因此当您在[生产模式](https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html#dev-vs-prod-mode)下第一次启动全新的群集时，你必须显式列出符合资格的主机节点。使用 `cluster.initial_master_nodes` 设置来设置该列表。**重新启动集群或将新节点添加到现有集群时，不应使用此设置**
+首次启动全新的 ES 集群时，会出现一个[集群引导/集群选举/cluster bootstrapping](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-bootstrap-cluster.html)步骤，该步骤确定了在第一次选举中的符合主节点资格的节点集合。在[开发模式](https://www.elastic.co/guide/en/elasticsearch/reference/7.3/bootstrap-checks.html#dev-vs-prod-mode)下，如果没有进行发现设置，此步骤由节点本身自动执行。由于这种自动引导从本质上讲是[不安全的](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-quorums.html)，因此当您在[生产模式](https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html#dev-vs-prod-mode)下第一次启动全新的群集时，你必须显式列出符合资格的主机节点。使用 `cluster.initial_master_nodes` 设置来设置该列表。**重新启动集群或将新节点添加到现有集群时，你不应使用此设置**
 
 `cluster.initial_master_nodes`: 初始的候选 master 节点列表。初始主节点应通过其 `node.name` 标识，默认为其主机名。 确保 `cluster.initial_master_nodes` 中的值与 `node.name` 完全匹配
 
-> 如果未设置 initial_master_nodes，那么在启动新节点时会尝试发现已有的集群。如果节点找不到可以加入的集群，将定期记录警告消息。
+> 如果未设置 `cluster.initial_master_nodes`，那么在启动新节点时会尝试发现已有的集群。如果节点找不到可以加入的集群，将定期记录警告消息。
 
 关于 `cluster.initial_master_nodes` 可以查看如下资料
 
 - [Bootstrapping a cluster](https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-discovery-bootstrap-cluster.html)
 - [Discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-settings.html)
 
+----
+
+经过上面的配置，集群中的一个节点已经配置好了，预览一下配置：
+
 ```shell
 $ egrep -v "^#|^$" config/elasticsearch.yml
-cluster.name: michael-es
+cluster.name: appsearch-7.3.2
 node.name: node-1
 network.host: 0.0.0.0
 http.port: 9200
-discovery.seed_hosts: ["192.168.3.43"]
+discovery.seed_hosts: ["192.168.3.112"]
 cluster.initial_master_nodes: ["node-1"]
 ```
 
-经过上面的配置，这时候就可以使用 `http://<remote host>:9200/` 看到结果了（我远端机器 IP 为 `192.168.3.43`）。
+经过上面的配置，这时候就可以使用 `http://<remote host>:9200/` 看到结果了（我远端机器 IP 为 `192.168.3.112`）。
 
-## 集群配置
+## 集群
 
-分别进入对应 es-node2 和 es-node3 的文件夹，设置如下：
+集群的主要配置项上面已经介绍的差不多了，同时也给出了一些文档拓展阅读。实际的生产环境中，配置稍微会复杂点，下面补充一些配置项的介绍。需要说明的是，下面的一些配置即使不配置，ES 的集群也可以成功启动起来了。
+
+- []()
+
+
+## 创建集群
+
+分别进入对应 es-7.3.0-node-2 和 es-7.3.0-node-3 的文件夹，设置如下：
 
 ```shell
 # es-node2
-cluster.name: michael-es
+cluster.name: appsearch-7.3.2
 node.name: node-2
 network.host: 0.0.0.0
-discovery.seed_hosts: ["192.168.3.43"]
+discovery.seed_hosts: ["192.168.3.112"]
 
 # es-node3
-cluster.name: michael-es
+cluster.name: appsearch-7.3.2
 node.name: node-3
 network.host: 0.0.0.0
-discovery.seed_hosts: ["192.168.3.43"]
+discovery.seed_hosts: ["192.168.3.112"]
 ```
 
-我们通过访问 `http://192.168.3.43:9200/_cat/nodes`查看集群是否 OK：
+我们通过访问 `http://192.168.3.112:9200/_cat/nodes`查看集群是否 OK：
 
 ```shell
 172.20.0.1 18 98 35 1.16 0.69 0.58 dim - node-2
@@ -336,15 +342,17 @@ discovery.seed_hosts: ["192.168.3.43"]
 172.20.0.1 19 98 35 1.16 0.69 0.58 dim * node-1
 ```
 
-有没有发现，我并没有给 `es-node2` 和 `es-node3` 明确的指定端口，为什么在一台机器上也成功启动了这两个节点？因为 Elasticsearch 会取用 9200~9299 这个范围内的端口，如果 9200 被占用，就选择 9201，依次类推。
+有没有发现，我并没有给 `node-2` 和 `node-3` 明确指定端口，为什么在一台机器上也成功启动了这两个节点？
 
-其实，还有一个跟简单的方法创建集群，我们首先将上面运行的三个节点停止掉，然后进入 es-node1 文件夹下：
+因为 Elasticsearch 会取用 9200~9299 这个范围内的端口，如果 9200 被占用，就选择 9201，依次类推。
+
+补充：其实，还有一个更简单的方法创建集群，我们首先将上面运行的三个节点停止掉，然后进入 es-7.3.0-node-1 文件夹下：
 
 ```shell
 mkdir -p data/data{1,2,3}
-./bin/elasticsearch -E node.name=node-1 -E cluster.name=michael-es -E path.data=data/data1 -E path.logs=logs/logs1 -d -p pid1
-./bin/elasticsearch -E node.name=node-2 -E cluster.name=michael-es -E path.data=data/data2 -E path.logs=logs/logs2 -E http.port=9201 -d -p pid2
-./bin/elasticsearch -E node.name=node-3 -E cluster.name=michael-es -E path.data=data/data3 -E path.logs=logs/logs3 -E http.port=9202 -d -p pid3
+./bin/elasticsearch -E node.name=node-1 -E cluster.name=appsearch-7.3.2 -E path.data=data/data1 -E path.logs=logs/logs1 -d -p pid1
+./bin/elasticsearch -E node.name=node-2 -E cluster.name=appsearch-7.3.2 -E path.data=data/data2 -E path.logs=logs/logs2 -E http.port=9201 -d -p pid2
+./bin/elasticsearch -E node.name=node-3 -E cluster.name=appsearch-7.3.2 -E path.data=data/data3 -E path.logs=logs/logs3 -E http.port=9202 -d -p pid3
 ```
 
 ## 安装插键
