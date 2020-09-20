@@ -11,21 +11,34 @@ keywords:
 
 ## Node
 
-**默认情况**，一个节点 [Node](https://www.elastic.co/guide/en/elasticsearch/reference/7.3/modules-node.html#voting-only-node) 包含下面所有的类型：`master-eligible, data, ingest, and machine learning (if available)`。
+**默认情况**，一个节点 [Node](https://www.elastic.co/guide/en/elasticsearch/reference/7.3/modules-node.html#voting-only-node) 包含下面所有的角色：`master-eligible, data, ingest, and machine learning (if available)`。
+
+| 节点类型          | 配置参数    | 默认值                       |
+| ----------------- | ----------- | ---------------------------- |
+| master eligible   | node.master | true                         |
+| data              | node.data   | true                         |
+| ingest            | node.ingest | true                         |
+| coodrinating only | 无          | 设置上面三个参数全部为 false |
+| machine learning  | node.ml     | true (需要 enable x-pack)    |
 
 {% note info %}
 随着群集的增长，尤其是如果您有大量机器学习工作，需要考虑将具有主机资格（`master-eligible`）的节点专用，将它与专用数据的节点（`data nodes`）和专用机器学习的节点（`machine learning nodes`）分开。
 
-我理解，这里的专用（`dedicated`）一词就是表示，将一个节点的角色不要设置那么多，主节点资格的节点就是用于当主节点，而不是同时具有着数据节点的角色！
+我理解，这里的专用（`dedicated`）一词就是表示，将一个节点的角色不要设置那么多，主节点资格的节点就是用于当主节点，而不是同时设置数据节点的角色！
 {% endnote%}
 
-本文 ES 是 7.3.0 版本，查看官方文档，发现 ES 7.9.0 的配置就有点区别了。
+本文 ES 是 7.3.0 版本，查看官方文档，发现 ES 7.9.0 的配置和它是有点区别的。
 
 ## master-eligible node
 
 `master-eligible node`：默认值就是 `true`。具有该角色的节点表示它有资格被选举为 `mater node`。备注：`eligible` 一词表示符合条件的含义。
 
-主节点负责集群范围内的轻量级操作，例如创建或删除索引，跟踪哪些节点是集群的一部分以及确定将哪些分片分配给哪些节点。**拥有稳定的主节点对于群集健康非常重要。**
+主节点负责维护集群的状态，集群范围内的轻量级操作，例如：
+- 创建或删除索引，
+- 跟踪哪些节点是集群的一部分
+- 确定将哪些分片分配给哪些节点。
+
+**拥有稳定的主节点对于群集健康非常重要。**
 
 在[主节点选举过程中](https://www.elastic.co/guide/en/elasticsearch/reference/7.3/modules-discovery.html)，任何一个非 `voting-only` 的 `master-eligible` 节点都可能被选为主节点。
 
@@ -90,7 +103,11 @@ cluster.remote.connect: false
 
 ## Data Node
 
-数据节点包含包含您已建立索引的文档的分片。数据节点处理与数据相关的操作，例如 CRUD，搜索和聚合。这些操作是 I/O，内存和 CPU 密集型的。**监视这些资源并在过载时添加更多数据节点非常重要。**
+数据节点包含包含您已建立索引的文档的分片。数据节点处理与数据相关的操作，例如：
+- CRUD，
+- 搜索和聚合。
+
+这些操作是 I/O，内存和 CPU 密集型的。**监视这些资源并在过载时添加更多数据节点非常重要。**
 
 具有专用数据节点的主要好处是将主节点角色和数据节点角色分开。 参考如下配置：
 ```yaml
@@ -140,6 +157,14 @@ node.ml: false
 cluster.remote.connect: false 
 ```
 
+## 单一职责节点
+
+一个节点只承担一个角色，总结图：
+
+![单一职责](https://gitee.com/michael_xiang/images/raw/master/uPic/dt7Hon.png)
+
 ## 参考
 
 - [官宣-Elasticsearch Reference [7.3] » Modules » Node](https://www.elastic.co/guide/en/elasticsearch/reference/7.3/modules-node.html#coordinating-node)
+- [learnku-笔记五十二：集常见的集群部署方式](https://learnku.com/articles/40718)
+- [Elasticsearch集群规划求助](https://elasticsearch.cn/question/8487)

@@ -211,7 +211,7 @@ ES 默认会加载位于 `$ES_HOME/config/elasticsearch.yml` 的配置文件。
 `cluster.name` 设置[集群名称](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.name.html)。一个节点只能加入一个集群中，默认的集群名称是 `elasticsearch`。
 
 ```shell
-cluster.name: appsearch-7.3.2
+cluster.name: search-7.3.2
 ```
 
 {% note info %}
@@ -220,9 +220,7 @@ cluster.name: appsearch-7.3.2
 
 ----
 
-- `node.name`
-
-`node.name` 可以配置每个[节点的名称](https://www.elastic.co/guide/en/elasticsearch/reference/current/node.name.html)。用来提供可读性高的 ES 实例名称，它默认名称是机器的 `hostname`，可以自定义：
+`node.name`：可以配置每个[节点的名称](https://www.elastic.co/guide/en/elasticsearch/reference/current/node.name.html)。用来提供可读性高的 ES 实例名称，它默认名称是机器的 `hostname`，可以自定义：
 
 ```shell
 node.name: node-1
@@ -232,9 +230,7 @@ node.name: node-1
 
 ---
 
-- `network.host`
-
-`network.host` 设置访问的[地址](https://www.elastic.co/guide/en/elasticsearch/reference/current/network.host.html)。默认仅绑定在回环地址 `127.0.0.1` 和 `[::1]`。如果需要从其他服务器上访问以及多态机器搭建集群，我们需要设定 ES 运行绑定的 Host，节点需要绑定非回环的地址。建议设置为主机的公网 IP 或 `0.0.0.0`：
+`network.host`：设置访问的[地址](https://www.elastic.co/guide/en/elasticsearch/reference/current/network.host.html)。默认仅绑定在回环地址 `127.0.0.1` 和 `[::1]`。如果需要从其他服务器上访问以及多态机器搭建集群，我们需要设定 ES 运行绑定的 Host，节点需要绑定非回环的地址。建议设置为主机的公网 IP 或 `0.0.0.0`：
 
 ```shell
 network.host: 0.0.0.0
@@ -244,9 +240,7 @@ network.host: 0.0.0.0
 
 ---
 
-- `http.port`
-
-`http.port` ，默认端口是 9200 ：
+`http.port` 默认端口是 9200 ：
 
 ```shell
 http.port: 9200
@@ -258,9 +252,7 @@ http.port: 9200
 
 ----
 
-- `discovery.seed_hosts` 发现设置
-
-有两种重要的发现和集群形成配置，以便集群中的节点能够彼此发现并且选择一个主节点。[官网/Important discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/discovery-settings.html)
+`discovery.seed_hosts`：发现设置。有两种重要的发现和集群形成配置，以便集群中的节点能够彼此发现并且选择一个主节点。[官网/Important discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/discovery-settings.html)
 
 `discovery.seed_hosts` 是组件集群时比较重要的配置，用于启动当前节点时，发现其他节点的初始列表。
 
@@ -268,7 +260,7 @@ http.port: 9200
 
 如果要与其他主机上的节点组成集群，则必须设置 `discovery.seed_hosts`，用来提供集群中的其他主机列表（它们是符合主机资格要求的`master-eligible`并且可能处于活动状态的且可达的，以便寻址[发现过程](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-hosts-providers.html)）。此设置应该是群集中所有符合主机资格的节点的地址的列表。 每个地址可以是 IP 地址，也可以是通过 DNS 解析为一个或多个 IP 地址的主机名（`hostname`）。
 
-配置集群的主机地址，配置之后集群的主机之间可以自动发现（可以带上端口，例如 `192.168.1.10:9200`）：
+配置集群的主机地址，配置之后集群的主机之间可以自动发现（可以带上端口，例如 `192.168.1.10:9300`）：
 
 ```shell
 discovery.seed_hosts: ["192.168.3.112"]
@@ -280,32 +272,40 @@ discovery.seed_hosts: ["192.168.3.112"]
 
 ----
 
-- `cluster.initial_master_nodes`
+`cluster.initial_master_nodes`: 初始的候选 master 节点列表。初始主节点应通过其 `node.name` 标识，默认为其主机名。确保 `cluster.initial_master_nodes` 中的值与 `node.name` 完全匹配。
 
-首次启动全新的 ES 集群时，会出现一个[集群引导/集群选举/cluster bootstrapping](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-bootstrap-cluster.html)步骤，该步骤确定了在第一次选举中的符合主节点资格的节点集合。在[开发模式](https://www.elastic.co/guide/en/elasticsearch/reference/7.3/bootstrap-checks.html#dev-vs-prod-mode)下，如果没有进行发现设置，此步骤由节点本身自动执行。由于这种自动引导从本质上讲是[不安全的](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-quorums.html)，因此当您在[生产模式](https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html#dev-vs-prod-mode)下第一次启动全新的群集时，你必须显式列出符合资格的主机节点。使用 `cluster.initial_master_nodes` 设置来设置该列表。**重新启动集群或将新节点添加到现有集群时，你不应使用此设置**
+首次启动**全新的 ES 集群**时，会出现一个[集群引导/集群选举/cluster bootstrapping](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-bootstrap-cluster.html)步骤，该步骤确定了在第一次选举中的符合主节点资格的节点集合。在[开发模式](https://www.elastic.co/guide/en/elasticsearch/reference/7.3/bootstrap-checks.html#dev-vs-prod-mode)下，如果没有进行发现设置，此步骤由节点本身自动执行。由于这种自动引导从本质上讲是[不安全的](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-quorums.html)，因此当您在[生产模式](https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html#dev-vs-prod-mode)下第一次启动全新的群集时，你必须显式列出符合资格的主节点。也就是说，需要使用 `cluster.initial_master_nodes` 设置来设置该主节点列表。**重新启动集群或将新节点添加到现有集群时，你不应使用此设置**
 
-`cluster.initial_master_nodes`: 初始的候选 master 节点列表。初始主节点应通过其 `node.name` 标识，默认为其主机名。 确保 `cluster.initial_master_nodes` 中的值与 `node.name` 完全匹配
+> 在新版 7.x 的 ES 中，对 ES 的集群发现系统做了调整，不再有 `discovery.zen.minimum_master_nodes` 这个控制集群脑裂的配置，转而由集群自主控制，并且新版在启动一个新的集群的时候需要有 `cluster.initial_master_nodes` 初始化集群主节点列表。如果一个集群一旦形成，你不该再设置该配置项，应该移除它。该配置项仅仅是集群第一次创建时设置的。
 
-> 如果未设置 `cluster.initial_master_nodes`，那么在启动新节点时会尝试发现已有的集群。如果节点找不到可以加入的集群，将定期记录警告消息。
+{% note warning %}
+`cluster.initial_master_nodes` 该配置项并不是需要每个节点设置保持一致，设置需谨慎，如果其中的主节点关闭了，可能会导致其他主节点也会关闭。因为一旦节点初始启动时设置了这个参数，它下次启动时还是会尝试和当初指定的主节点链接，当链接失败时，自己也会关闭！
 
-关于 `cluster.initial_master_nodes` 可以查看如下资料
+因此，为了保证可用性，预备做主节点的节点不用每个上面都配置该配置项！保证有的主节点上就不设置该配置项，这样当有主节点故障时，还有可用的主节点不会一定要去寻找初始节点中的主节点！
+{% endnote%}
+
+关于 `cluster.initial_master_nodes` 可以查看如下资料：
 
 - [Bootstrapping a cluster](https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-discovery-bootstrap-cluster.html)
 - [Discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-settings.html)
 
 ----
 
-经过上面的配置，集群中的一个节点已经配置好了，预览一下配置：
+集群中的一个节点已经配置好了，预览一下配置：
 
 ```shell
 $ egrep -v "^#|^$" config/elasticsearch.yml
-cluster.name: appsearch-7.3.2
+cluster.name: search-7.3.2
 node.name: node-1
+node.master: true
+node.data: false
+node.ingest: false
 network.host: 0.0.0.0
-http.port: 9200
 discovery.seed_hosts: ["192.168.3.112"]
 cluster.initial_master_nodes: ["node-1"]
 ```
+
+> node-1 节点仅仅是一个 master 节点，它不是一个数据节点。
 
 经过上面的配置，这时候就可以使用 `http://<remote host>:9200/` 看到结果了（我远端机器 IP 为 `192.168.3.112`）。
 
@@ -313,7 +313,7 @@ cluster.initial_master_nodes: ["node-1"]
 
 集群的主要配置项上面已经介绍的差不多了，同时也给出了一些文档拓展阅读。实际的生产环境中，配置稍微会复杂点，下面补充一些配置项的介绍。需要说明的是，下面的一些配置即使不配置，ES 的集群也可以成功启动起来了。
 
-- []()
+- [Elasticsearch 集群中节点角色的介绍](https://michael728.github.io/2020/09/20/elk-es-node-cluster/)
 
 
 ## 创建集群
@@ -321,15 +321,21 @@ cluster.initial_master_nodes: ["node-1"]
 分别进入对应 es-7.3.0-node-2 和 es-7.3.0-node-3 的文件夹，设置如下：
 
 ```shell
-# es-node2
-cluster.name: appsearch-7.3.2
+# node-2
+cluster.name: search-7.3.2
 node.name: node-2
+node.master: true
+node.data: true
+node.ingest: false
 network.host: 0.0.0.0
 discovery.seed_hosts: ["192.168.3.112"]
 
-# es-node3
-cluster.name: appsearch-7.3.2
+# node-3
+cluster.name: search-7.3.2
 node.name: node-3
+node.master: true
+node.data: true
+node.ingest: false
 network.host: 0.0.0.0
 discovery.seed_hosts: ["192.168.3.112"]
 ```
@@ -337,10 +343,16 @@ discovery.seed_hosts: ["192.168.3.112"]
 我们通过访问 `http://192.168.3.112:9200/_cat/nodes`查看集群是否 OK：
 
 ```shell
-172.20.0.1 18 98 35 1.16 0.69 0.58 dim - node-2
-172.20.0.1 14 98 35 1.16 0.69 0.58 dim - node-3
-172.20.0.1 19 98 35 1.16 0.69 0.58 dim * node-1
+192.168.3.112 10 100 6 2.71   m  * node-1
+192.168.3.112 26 100 6 2.71   d  - node-3
+192.168.3.112 28 100 6 2.71   dm - node-2
 ```
+
+插键显示结果：
+
+![集群](https://gitee.com/michael_xiang/images/raw/master/uPic/y6jIhn.png)
+
+> 五角星表示该节点是主节点，圆圈表示该节点是数据节点
 
 有没有发现，我并没有给 `node-2` 和 `node-3` 明确指定端口，为什么在一台机器上也成功启动了这两个节点？
 
@@ -354,6 +366,12 @@ mkdir -p data/data{1,2,3}
 ./bin/elasticsearch -E node.name=node-2 -E cluster.name=appsearch-7.3.2 -E path.data=data/data2 -E path.logs=logs/logs2 -E http.port=9201 -d -p pid2
 ./bin/elasticsearch -E node.name=node-3 -E cluster.name=appsearch-7.3.2 -E path.data=data/data3 -E path.logs=logs/logs3 -E http.port=9202 -d -p pid3
 ```
+
+### 集群探索
+
+我手动将上面的 node-1 实例给停止了，观察一下目前集群的状态：
+
+
 
 ## 安装插键
 
