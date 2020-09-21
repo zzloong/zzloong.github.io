@@ -286,7 +286,7 @@ discovery.seed_hosts: ["192.168.3.112"]
 
 首次启动**全新的 ES 集群**时，会出现一个[集群引导/集群选举/cluster bootstrapping](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-bootstrap-cluster.html)步骤，该步骤确定了在第一次选举中的符合主节点资格的节点集合。在[开发模式](https://www.elastic.co/guide/en/elasticsearch/reference/7.3/bootstrap-checks.html#dev-vs-prod-mode)下，如果没有进行发现设置，此步骤由节点本身自动执行。由于这种自动引导从本质上讲是[不安全的](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-quorums.html)，因此当您在[生产模式](https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html#dev-vs-prod-mode)下第一次启动全新的群集时，你必须显式列出符合资格的主节点。也就是说，需要使用 `cluster.initial_master_nodes` 设置来设置该主节点列表。**重新启动集群或将新节点添加到现有集群时，你不应使用此设置**
 
-> 在新版 7.x 的 ES 中，对 ES 的集群发现系统做了调整，不再有 `discovery.zen.minimum_master_nodes` 这个控制集群脑裂的配置，转而由集群自主控制，并且新版在启动一个新的集群的时候需要有 `cluster.initial_master_nodes` 初始化集群主节点列表。如果一个集群一旦形成，你不该再设置该配置项，应该移除它。该配置项仅仅是集群第一次创建时设置的。
+> 在新版 7.x 的 ES 中，对 ES 的集群发现系统做了调整，不再有 `discovery.zen.minimum_master_nodes` 这个控制集群脑裂的配置，转而由集群自主控制，并且新版在启动一个新的集群的时候需要有 `cluster.initial_master_nodes` 初始化集群主节点列表。如果一个集群一旦形成，你不该再设置该配置项，应该移除它。该配置项仅仅是集群第一次创建时设置的！集群形成之后，这个配置也会被忽略的！
 
 {% note warning %}
 `cluster.initial_master_nodes` 该配置项并不是需要每个节点设置保持一致，设置需谨慎，如果其中的主节点关闭了，可能会导致其他主节点也会关闭。因为一旦节点初始启动时设置了这个参数，它下次启动时还是会尝试和当初指定的主节点链接，当链接失败时，自己也会关闭！
@@ -319,18 +319,21 @@ cluster.initial_master_nodes: ["node-1"]
 
 > node-1 节点仅仅是一个 master 节点，它不是一个数据节点。
 
-经过上面的配置，这时候就可以使用 `http://<remote host>:9200/` 看到结果了（我远端机器 IP 为 `192.168.3.112`）。
+经过上面的配置，这时候就可以使用 `http://<host IP>:9200/` 看到结果了。
 
-## 集群
+### 其他
 
-集群的主要配置项上面已经介绍的差不多了，同时也给出了一些文档拓展阅读。实际的生产环境中，配置稍微会复杂点，下面补充一些配置项的介绍。需要说明的是，下面的一些配置即使不配置，ES 的集群也可以成功启动起来了。
+集群的主要配置项上面已经介绍的差不多了，同时也给出了一些文档拓展阅读。实际的生产环境中，配置稍微会复杂点，下面补充一些配置项的介绍。需要说明的是，下面的一些配置即使不配置，ES 的集群也可以成功启动的。
 
-- [Elasticsearch 集群中节点角色的介绍](https://michael728.github.io/2020/09/20/elk-es-node-cluster/)
-
+- [Elasticsearch 集群中节点角色的介绍](https://michael728.github.io/2020/09/20/elk-es-node-cluster/) 对上文中的 `node.master` 等配置做了介绍。如果本地仅是简单测试使用，上文中的 `node.master/node.data/node.ingest` 不用配置也没影响。
 
 ## 创建集群
 
-分别进入对应 es-7.3.0-node-2 和 es-7.3.0-node-3 的文件夹，设置如下：
+实验机器有限，我们在同一台机器上创建三个 ES 实例来创建集群。前面已经启动了一个节点，并且设置了初始主节点为它自己。下面再创建两个 ES 实例，分别明确指定了这些实例的 `http.port` 和 `transport.port`。**`discovery.seed_hosts`**明确指定好实例的端口对测试集群的高可用性很关键。
+
+> 如果后期有新节点加入，新节点的 `discovery.seed_hosts` 没必要包含所有的节点，只要它里面包含集群中已有的节点信息，新节点就能发现整个集群了。
+
+分别进入对应 `es-7.3.0-node-2` 和 `es-7.3.0-node-3` 的文件夹，设置如下：
 
 ```shell
 # node-2
@@ -340,7 +343,9 @@ node.master: true
 node.data: true
 node.ingest: false
 network.host: 0.0.0.0
-discovery.seed_hosts: ["192.168.3.112"]
+http.port: 9201
+transport.port: 9301
+discovery.seed_hosts: ["127.0.0.1:9300","127.0.0.1:9301","127.0.0.1:9302"]
 
 # node-3
 cluster.name: search-7.3.2
@@ -349,20 +354,24 @@ node.master: true
 node.data: true
 node.ingest: false
 network.host: 0.0.0.0
-discovery.seed_hosts: ["192.168.3.112"]
+http.port: 9202
+transport.port: 9302
+discovery.seed_hosts: ["127.0.0.1:9300","127.0.0.1:9301","127.0.0.1:9302"]
 ```
 
-我们通过访问 `http://192.168.3.112:9200/_cat/nodes`查看集群是否 OK：
+我们通过访问 `http://127.0.0.1:9200/_cat/nodes` 查看集群是否 OK：
 
 ```shell
-192.168.3.112 10 100 6 2.71   m  * node-1
-192.168.3.112 26 100 6 2.71   d  - node-3
-192.168.3.112 28 100 6 2.71   dm - node-2
+192.168.3.112 25 87 13 4.29   dm - node-3
+192.168.3.112 26 87 16 4.29   dm - node-2
+192.168.3.112 35 87 16 4.29   m  * node-1
 ```
+
+> `http://127.0.0.1:9200/_nodes` 将会显示节点更多的详情信息
 
 插键显示结果：
 
-![集群](https://gitee.com/michael_xiang/images/raw/master/uPic/y6jIhn.png)
+![集群](https://gitee.com/michael_xiang/images/raw/master/uPic/aPk5ub.png)
 
 > 五角星表示该节点是主节点，圆圈表示该节点是数据节点
 
