@@ -256,6 +256,21 @@ http.port: 9200
 注意：这是指 http 端口，如果采用 REST API 对接 ES，那么就是采用的 http 协议
 {% endnote%}
 
+
+----
+
+#### transport.port
+
+REST 客户端通过 HTTP 将请求发送到您的 Elasticsearch 集群，但是接收到客户端请求的节点不能总是单独处理它，通常必须将其传递给其他节点以进行进一步处理。它使用传输网络层（transport networking layer）执行此操作。传输层用于集群中节点之间的所有内部通信，与远程集群节点的所有通信，以及 Elasticsearch Java API 中的 TransportClient。
+
+`transport.port` 绑定端口范围。默认为 9300-9400
+
+```shell
+transport.port: 9300
+```
+
+> 因为要在一台机器上创建是三个 ES 实例，这里明确指定每个实例的接口。
+
 ----
 
 #### `discovery.seed_hosts`
@@ -268,10 +283,10 @@ http.port: 9200
 
 如果要与其他主机上的节点组成集群，则必须设置 `discovery.seed_hosts`，用来提供集群中的其他主机列表（它们是符合主机资格要求的`master-eligible`并且可能处于活动状态的且可达的，以便寻址[发现过程](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-hosts-providers.html)）。此设置应该是群集中所有符合主机资格的节点的地址的列表。 每个地址可以是 IP 地址，也可以是通过 DNS 解析为一个或多个 IP 地址的主机名（`hostname`）。
 
-配置集群的主机地址，配置之后集群的主机之间可以自动发现（可以带上端口，例如 `192.168.1.10:9300`）：
+配置集群的主机地址，配置之后集群的主机之间可以自动发现（可以带上端口，例如 `127.0.0.1:9300`）：
 
 ```shell
-discovery.seed_hosts: ["192.168.3.112"]
+discovery.seed_hosts: ["127.0.0.1:9300","127.0.0.1:9301"]
 ```
 
 > the default discovery settings are unsuitable for production use; at least one of [discovery.seed_hosts, discovery.seed_providers, cluster.initial_master_nodes] must be configured
@@ -299,12 +314,22 @@ discovery.seed_hosts: ["192.168.3.112"]
 - [Bootstrapping a cluster](https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-discovery-bootstrap-cluster.html)
 - [Discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-settings.html)
 
-#### 配置预览
+#### 其他
 
-集群中的一个节点已经配置好了，预览一下配置：
+集群的主要配置项上面已经介绍的差不多了，同时也给出了一些文档拓展阅读。实际的生产环境中，配置稍微会复杂点，下面补充一些配置项的介绍。需要说明的是，下面的一些配置即使不配置，ES 的集群也可以成功启动的。
+
+- [Elasticsearch 集群中节点角色的介绍](https://michael728.github.io/2020/09/20/elk-es-node-cluster/) 对上文中的 `node.master` 等配置做了介绍。如果本地仅是简单测试使用，上文中的 `node.master/node.data/node.ingest` 不用配置也没影响。
+
+## 创建集群
+
+实验机器有限，我们在同一台机器上创建三个 ES 实例来创建集群，分别明确指定了这些实例的 `http.port` 和 `transport.port`。**`discovery.seed_hosts`**明确指定实例的端口对测试集群的高可用性很关键。
+
+> 如果后期有新节点加入，新节点的 `discovery.seed_hosts` 没必要包含所有的节点，只要它里面包含集群中已有的节点信息，新节点就能发现整个集群了。
+
+分别进入`es-7.3.0-node-1`、`es-7.3.0-node-2` 和 `es-7.3.0-node-3` 的文件夹，`config/elasticsearch.yml` 设置如下：
 
 ```shell
-$ egrep -v "^#|^$" config/elasticsearch.yml
+# es-7.3.0-node-1
 cluster.name: search-7.3.2
 node.name: node-1
 node.master: true
@@ -315,28 +340,8 @@ http.port: 9200
 transport.port: 9300
 discovery.seed_hosts: ["127.0.0.1:9300","127.0.0.1:9301","127.0.0.1:9302"]
 cluster.initial_master_nodes: ["node-1"]
-```
 
-> node-1 节点仅仅是一个 master 节点，它不是一个数据节点。
-
-经过上面的配置，这时候就可以使用 `http://<host IP>:9200/` 看到结果了。
-
-### 其他
-
-集群的主要配置项上面已经介绍的差不多了，同时也给出了一些文档拓展阅读。实际的生产环境中，配置稍微会复杂点，下面补充一些配置项的介绍。需要说明的是，下面的一些配置即使不配置，ES 的集群也可以成功启动的。
-
-- [Elasticsearch 集群中节点角色的介绍](https://michael728.github.io/2020/09/20/elk-es-node-cluster/) 对上文中的 `node.master` 等配置做了介绍。如果本地仅是简单测试使用，上文中的 `node.master/node.data/node.ingest` 不用配置也没影响。
-
-## 创建集群
-
-实验机器有限，我们在同一台机器上创建三个 ES 实例来创建集群。前面已经启动了一个节点，并且设置了初始主节点为它自己。下面再创建两个 ES 实例，分别明确指定了这些实例的 `http.port` 和 `transport.port`。**`discovery.seed_hosts`**明确指定好实例的端口对测试集群的高可用性很关键。
-
-> 如果后期有新节点加入，新节点的 `discovery.seed_hosts` 没必要包含所有的节点，只要它里面包含集群中已有的节点信息，新节点就能发现整个集群了。
-
-分别进入对应 `es-7.3.0-node-2` 和 `es-7.3.0-node-3` 的文件夹，设置如下：
-
-```shell
-# node-2
+# es-7.3.0-node-2
 cluster.name: search-7.3.2
 node.name: node-2
 node.master: true
@@ -347,7 +352,7 @@ http.port: 9201
 transport.port: 9301
 discovery.seed_hosts: ["127.0.0.1:9300","127.0.0.1:9301","127.0.0.1:9302"]
 
-# node-3
+# es-7.3.0-node-3
 cluster.name: search-7.3.2
 node.name: node-3
 node.master: true
@@ -359,7 +364,11 @@ transport.port: 9302
 discovery.seed_hosts: ["127.0.0.1:9300","127.0.0.1:9301","127.0.0.1:9302"]
 ```
 
-我们通过访问 `http://127.0.0.1:9200/_cat/nodes` 查看集群是否 OK：
+> node-1 节点仅仅是一个 master 节点，它不是一个数据节点。
+
+经过上面的配置，可以通过命令 `egrep -v "^#|^$" config/elasticsearch.yml` 检查配置项。
+
+先启动 node-1 节点，因为它设置了初始主节点的列表。这时候就可以使用 `http://<host IP>:9200/` 看到结果了。然后逐一启动 node-2 和 node-3。通过访问 `http://127.0.0.1:9200/_cat/nodes` 查看集群是否 OK：
 
 ```shell
 192.168.3.112 25 87 13 4.29   dm - node-3
