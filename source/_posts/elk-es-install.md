@@ -1,5 +1,5 @@
 ---
-title: Elasticsearch 安装及集群的配置
+title: Elasticsearch7.X 安装及集群的配置
 date: 2020-04-12 23:10:57
 categories: ELK
 tags:
