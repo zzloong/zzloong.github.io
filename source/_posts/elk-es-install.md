@@ -326,6 +326,8 @@ discovery.seed_hosts: ["127.0.0.1:9300","127.0.0.1:9301"]
 
 > 如果后期有新节点加入，新节点的 `discovery.seed_hosts` 没必要包含所有的节点，只要它里面包含集群中已有的节点信息，新节点就能发现整个集群了。
 
+### 集群配置预览
+
 分别进入`es-7.3.0-node-1`、`es-7.3.0-node-2` 和 `es-7.3.0-node-3` 的文件夹，`config/elasticsearch.yml` 设置如下：
 
 ```shell
@@ -396,12 +398,6 @@ mkdir -p data/data{1,2,3}
 ./bin/elasticsearch -E node.name=node-2 -E cluster.name=appsearch-7.3.2 -E path.data=data/data2 -E path.logs=logs/logs2 -E http.port=9201 -d -p pid2
 ./bin/elasticsearch -E node.name=node-3 -E cluster.name=appsearch-7.3.2 -E path.data=data/data3 -E path.logs=logs/logs3 -E http.port=9202 -d -p pid3
 ```
-
-### 集群探索
-
-我手动将上面的 node-1 实例给停止了，观察一下目前集群的状态：
-
-
 
 ## 安装插键
 
