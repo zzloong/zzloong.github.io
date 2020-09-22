@@ -129,6 +129,8 @@ cluster.remote.connect: false
 
 接收节点（`Ingest nodes`）可以执行由一个或多个接收处理器组成的预处理管道。根据摄取处理器执行的操作类型和所需的资源，拥有专用的摄取节点可能会很有意义，这些节点仅会执行此特定任务。
 
+> Ingest 节点也称为预处理节点。
+
 ```yaml
 node.master: false 
 node.voting_only: false 
@@ -140,7 +142,9 @@ cluster.remote.connect: false
 
 ## Coordinating only nodes
 
-如果您不具备处理主节点职责、保存数据和预处理文档的能力，那么你就剩下一个仅可路由请求的协调节点角色（coordinating only nodes），处理搜索缩减阶段、分配批量索引的。本质上，coordinating only nodes 可充当智能负载平衡器。
+如果您不具备处理主节点职责、保存数据和预处理文档的能力，那么你就剩下一个仅可路由请求的协调节点角色（`coordinating only nodes`），处理搜索缩减阶段、分配批量索引的。本质上，coordinating only nodes 可充当智能负载平衡器。
+
+> 仅协调节点也称为负载均衡节点或 Client 节点
 
 {% note warning %}
 在集群中添加过多的仅协调节点可能会增加整个集群的负担，因为选择的主节点必须等待每个节点的集群状态更新确认！仅协调节点的好处不应被夸大 —— 数据节点可以很好地达到相同的目的。

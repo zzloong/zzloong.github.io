@@ -12,9 +12,11 @@ keywords:
   - Filebeat
 ---
 
+![Search](https://gitee.com/michael_xiang/images/raw/master/uPic/pexels-andrea-piacquadio-3769697.jpg)
+
 ## 简介
 
-![ELK](https://gitee.com/michael_xiang/images/raw/master/201909078-elk.png)
+本文主要介绍 Elasticsearch 集群的搭建。通过在一台服务器上创建 3 个 ES 实例来创建一个建议的 ES 集群。
 
 ## Elasticsearch/ES
 
@@ -47,7 +49,7 @@ Caused by: java.lang.RuntimeException: can not run elasticsearch as root
 ### 下载 ES 安装包
 
 安装包下载地址：
-- [官方-Past Releases](https://www.elastic.co/cn/downloads/past-releases#elasticsearch) 官网的下载地址简直是龟速
+- [官方-Past Releases](https://www.elastic.co/cn/downloads/past-releases#elasticsearch) 官网的下载速度龟速
 - [华为镜像站](https://mirrors.huaweicloud.com/elasticsearch/) 下载速度不错，推荐
 
 下面的步骤参考 [Set up Elasticsearch » Installing Elasticsearch » Install Elasticsearch from archive on Linux or MacOS](https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html)，选择的安装包是 elasticsearch-7.3.0 版本。
@@ -70,11 +72,11 @@ chown -R es es-7.3.0*
 {% note info %}
 如果是 Mac 平台，则下载包 `elasticsearch-{version}-darwin-x86_64.tar.gz`。
 
-MacOS Catalina 在你第一次运行 es 时，会弹出对话框阻止运行，你需要到设置-》安全隐私中允许才行。为了阻止这种告警，可以运行如下的命令：xattr -d -r com.apple.quarantine <$ES_HOME or archive-or-directory>
+MacOS Catalina 在你第一次运行 ES 时，会弹出对话框阻止运行，你需要到设置-》安全隐私中允许才行。为了阻止这种告警，可以运行如下的命令：xattr -d -r com.apple.quarantine <$ES_HOME or archive-or-directory>
 
 {% endnote %}
 
-> `$ES_HOME` 是指 es 的安装包 tar 包解压后的文件夹目录。
+> `$ES_HOME` 是指 ES 的安装包 tar 包解压后的文件夹目录。
 
 解压后的[目录组成](https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html#targz-layout)：
 
@@ -390,7 +392,9 @@ discovery.seed_hosts: ["127.0.0.1:9300","127.0.0.1:9301","127.0.0.1:9302"]
 
 因为 Elasticsearch 会取用 9200~9299 这个范围内的端口，如果 9200 被占用，就选择 9201，依次类推。
 
-补充：其实，还有一个更简单的方法创建集群，我们首先将上面运行的三个节点停止掉，然后进入 es-7.3.0-node-1 文件夹下：
+补充：其实，还有一个简单的方法模拟创建集群（该方法我未测试，仅供参考）。
+
+我们首先将上面运行的三个节点停止掉，然后进入 `es-7.3.0-node-1` 文件夹下：
 
 ```shell
 mkdir -p data/data{1,2,3}
@@ -446,19 +450,8 @@ sudo vim /etc/security/limits.conf
 - [learnku/Elasticsearch中文文档-7.3版本](https://learnku.com/docs/elasticsearch73/7.3) 推荐
 - [ES-CN 官网/Elasticsearch 集群协调迎来新时代](https://www.elastic.co/cn/blog/a-new-era-for-cluster-coordination-in-elasticsearch) 对于 ES7 的集群发现机制介绍较为详细，推荐
 - [程序羊-CentOS7上ElasticSearch安装填坑记](https://www.jianshu.com/p/04f4d7b4a1d3) FAQ 有帮助
-- [极客时间-Elasticsearch核心技术与实战](https://time.geekbang.org/course/detail/197-102661) 这篇文章阐述了 ES 集群的主节点的仲裁等知识
 - [搭建ELFK日志采集系统](https://jeremy-xu.oschina.io/2018/10/%E6%90%AD%E5%BB%BAelfk%E6%97%A5%E5%BF%97%E9%87%87%E9%9B%86%E7%B3%BB%E7%BB%9F/)
 - [静觅—Ubuntu 搭建 Elasticsearch 6 集群流程](https://cuiqingcai.com/6255.html)
-- [阮一峰-全文搜索引擎 Elasticsearch 入门教程](https://www.ruanyifeng.com/blog/2017/08/elasticsearch.html)
 - [ELK 架构之 Elasticsearch 和 Kibana 安装配置](https://www.cnblogs.com/xishuai/p/elk-elasticsearch-kibana.html)
 - [使用 ELK(Elasticsearch + Logstash + Kibana) 搭建日志集中分析平台实践](https://wsgzao.github.io/post/elk/)
 - [手把手教你，在CentOS上安装ELK，进行服务器日志收集](http://www.justdojava.com/2019/08/11/elk-install/)
-
-Filebeat
-- [博客园-开始使用Filebeat](https://www.cnblogs.com/cjsblog/p/9445792.html)
-
-SpringBoot+ES
-- [【ES】Java High Level REST Client 使用示例（增加修改）](https://my.oschina.net/zhaixingzu/blog/3010467)
-- [Elasticsearch Java Rest Client 上手指南（上）](https://www.jianshu.com/p/c1f2161a5d22)
-- [博客园——springboot elasticsearch 集成注意事项](https://www.cnblogs.com/guozp/archive/2018/04/02/8686904.html)
-- [lasticsearch系列七：ES Java客户端-Elasticsearch Java client（ES Client 简介、Java REST Client、Java Client、Spring Data Elasticsearch）](https://www.cnblogs.com/leeSmall/p/9218779.html)
