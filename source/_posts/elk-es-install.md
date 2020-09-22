@@ -38,9 +38,7 @@ Elasticsearch 7.x 包里自包含了 OpenJDK 的包。如果你想要使用你�
 
 不能使用 root 用户启动 es，否则会报错：
 
-```shell
 Caused by: java.lang.RuntimeException: can not run elasticsearch as root
-```
 
 {% endnote %}
 
@@ -269,7 +267,7 @@ REST 客户端通过 HTTP 将请求发送到您的 Elasticsearch 集群，但是
 transport.port: 9300
 ```
 
-> 因为要在一台机器上创建是三个 ES 实例，这里明确指定每个实例的接口。
+> 因为要在一台机器上创建是三个 ES 实例，这里明确指定每个实例的端口。
 
 ----
 
@@ -282,6 +280,8 @@ transport.port: 9300
 开箱即用，无需任何网络配置， ES 将绑定到可用的环回地址，并将扫描本地端口 `9300 - 9305`，以尝试连接到同一服务器上运行的其他节点。 这无需任何配置即可提供自动群集的体验。
 
 如果要与其他主机上的节点组成集群，则必须设置 `discovery.seed_hosts`，用来提供集群中的其他主机列表（它们是符合主机资格要求的`master-eligible`并且可能处于活动状态的且可达的，以便寻址[发现过程](https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-hosts-providers.html)）。此设置应该是群集中所有符合主机资格的节点的地址的列表。 每个地址可以是 IP 地址，也可以是通过 DNS 解析为一个或多个 IP 地址的主机名（`hostname`）。
+
+> 当一个已经加入过集群的节点重启时，如果他无法与之前集群中的节点通信，很可能就会报这个错误 `master not discovered or elected yet, an election requires at least 2 nodes with ids from`。因此，我在一台服务器上模拟三个 ES 实例时，这个配置我明确指定了端口号。
 
 配置集群的主机地址，配置之后集群的主机之间可以自动发现（可以带上端口，例如 `127.0.0.1:9300`）：
 
