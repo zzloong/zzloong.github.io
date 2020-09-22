@@ -16,6 +16,10 @@ keywords:
 
 ## 简介
 
+首先引用 Elasticsearch （下文简称 ES）[官网](https://www.elastic.co/cn/elasticsearch/)的一段描述：
+
+> Elasticsearch 是一个分布式、RESTful 风格的搜索和数据分析引擎，能够解决不断涌现出的各种用例。 作为 Elastic Stack 的核心，它集中存储您的数据，帮助您发现意料之中以及意料之外的情况。
+
 本文主要介绍 Elasticsearch 集群的搭建。通过在一台服务器上创建 3 个 ES 实例来创建一个建议的 ES 集群。
 
 ## Elasticsearch/ES
