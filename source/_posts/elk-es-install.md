@@ -210,7 +210,7 @@ ES 默认会加载位于 `$ES_HOME/config/elasticsearch.yml` 的配置文件。
 
 ---
 
-#### `cluster.name`
+#### cluster.name
 
 `cluster.name` 设置[集群名称](https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.name.html)。一个节点只能加入一个集群中，默认的集群名称是 `elasticsearch`。
 
@@ -224,7 +224,7 @@ cluster.name: search-7.3.2
 
 ----
 
-#### `node.name`
+#### node.name
 
 `node.name`：可以配置每个[节点的名称](https://www.elastic.co/guide/en/elasticsearch/reference/current/node.name.html)。用来提供可读性高的 ES 实例名称，它默认名称是机器的 `hostname`，可以自定义：
 
@@ -236,7 +236,7 @@ node.name: node-1
 
 ---
 
-#### `network.host`
+#### network.host
 
 `network.host`：设置访问的[地址](https://www.elastic.co/guide/en/elasticsearch/reference/current/network.host.html)。默认仅绑定在回环地址 `127.0.0.1` 和 `[::1]`。如果需要从其他服务器上访问以及多态机器搭建集群，我们需要设定 ES 运行绑定的 Host，节点需要绑定非回环的地址。建议设置为主机的公网 IP 或 `0.0.0.0`：
 
@@ -248,7 +248,7 @@ network.host: 0.0.0.0
 
 ---
 
-#### `http.port`
+#### http.port
 
 `http.port` 默认端口是 9200 ：
 
@@ -277,7 +277,7 @@ transport.port: 9300
 
 ----
 
-#### `discovery.seed_hosts`
+#### discovery.seed_hosts
 
 `discovery.seed_hosts`：发现设置。有两种重要的发现和集群形成配置，以便集群中的节点能够彼此发现并且选择一个主节点。[官网/Important discovery and cluster formation settings](https://www.elastic.co/guide/en/elasticsearch/reference/current/discovery-settings.html)
 
@@ -301,7 +301,7 @@ discovery.seed_hosts: ["127.0.0.1:9300","127.0.0.1:9301"]
 
 ----
 
-#### `cluster.initial_master_nodes`
+#### cluster.initial_master_nodes
 
 `cluster.initial_master_nodes`: 初始的候选 master 节点列表。初始主节点应通过其 `node.name` 标识，默认为其主机名。确保 `cluster.initial_master_nodes` 中的值与 `node.name` 完全匹配。
 
@@ -422,14 +422,14 @@ wget https://artifacts.elastic.co/downloads/elasticsearch-plugins/analysis-icu/a
 
 ## ES-FAQ
 
-### Q1：`[1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]`
+### Q1：[1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
 
 ```shell
 echo "vm.max_map_count=262144" > /etc/sysctl.conf
 sysctl -p
 ```
 
-### Q2：`max file descriptors [4096] for elasticsearch process is too low, increase to at least [65536]`
+### Q2：max file descriptors [4096] for elasticsearch process is too low, increase to at least [65536]
 
 ```shell
 sudo vim /etc/security/limits.conf
@@ -441,7 +441,7 @@ sudo vim /etc/security/limits.conf
 * hard memlock unlimited
 ```
 
-### Q3：`master_not_discovered_exception`
+### Q3：master_not_discovered_exception
 
 主节点指定的名字要保证存在，别指定了不存在的节点名。
 
