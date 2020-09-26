@@ -15,6 +15,8 @@ keywords:
 
 [alfred](https://www.alfredapp.com/) 这款软件称为「神器」真是当之无愧。今天专门总结一下，作为之前 [Mac 配置教程-开发篇](https://michael728.github.io/2019/04/14/tools-dev-mac/) 的补充。
 
+<!-- more -->
+
 > 需要说明的是，如果你发现我介绍的功能无法使用，则代表需要花钱购买它的 Powerpack。麦哥是从淘宝购买的正版永久激活码搞定的，百十块大洋~如果你囊中羞涩，也有一些网站提供了破解版本。关注公众号回复 Alfred 会提供对应的下载网站（需要注意的是：破解版软件往往会有安全风险。）
 
 ## General 通用设置
@@ -26,17 +28,12 @@ keywords:
 
 ## Alfred 自带命令
 
-- 唤起快捷键设为：command 双击
-- 输入框：`lock`，锁屏
-- `empty` 清空回收站，瞬间强迫症患者清爽了。
-- `eject` 命令可以弹出磁盘、存储卡或者虚拟磁盘镜像，如 .dmg 挂载后的磁盘。
 - `open + 文件名`或者`空格 + 文件名` 搜索文件，`Enter` 键直接打开文件，`→`+`Reveal in Finder` 可以在文件夹中打开文件；
 - `find + 文件名` 直接在文件夹中打开文件；
 - 输入 `in` 命令，以及待搜索的文本，列出磁盘中包含该文本的相关文件，可以快速定位文件，相当于简易的终端 find 命令。
 - 输入搜索内容后，Enter 按键是直接打开文件，`Command + Enter`表示打开文件所在文件夹；
 - `/`：输入栏输入 `/`，会跳转到系统根目录；
 - `~`：输入 `~`，会进入当前用户的用户目录；
-
 
 ## Features 特性功能
 
@@ -74,7 +71,7 @@ d
 - Github Search：`https://github.com/search?utf8=%E2%9C%93&q={query}`
 - MDN：`https://developer.mozilla.org/zh-CN/search?q={query}`
 
-## Web Bookmarks
+### Web Bookmarks
 
 又是一个非常赞的功能！虽然我浏览器中已经安装了插键可以快速搜索我的书签，但是 Alfred 的作用就是，当浏览器没有打开、你正在做其他工作时想要快速打开你浏览器中的某个书签，这时候你只需要快速启动 Alfred->搜索书签的关键字->Enter 打开该书签。又是一气呵成的操作！
 
@@ -84,25 +81,65 @@ d
 
 ![bm](https://gitee.com/michael_xiang/images/raw/master/uPic/33s1ZC.png)
 
-## 剪贴板历史
+> 如果遇到权限问题，需要在系统偏好设置中`安全性与隐私->隐私->完全磁盘访问权限，勾选 Alfred 4.app`。接着在 Alfred 中输入 `Reload Alfred Cache` 后回车，Alfred 重新加载缓存就可以搜索书签
 
-有了 Alfred 的剪贴板增强，以上场景都不是问题，首先要在 Features ->; Clipboard 中打开剪贴板历史：
+### Clipboard History 剪贴板历史
 
-这里我把它们都设置为存储三个月，同时把打开剪贴板的默认快捷键为 `Command + Shift + V`。
+这个功能其实是我掏钱购买它的主要原因之一！在 Windows 上有 Ditto，但是在 Mac 上没有体验足够好的剪贴板历史工具。之前也使用了几个开源免费的剪贴板工具，但是他们有一些细节功能缺失，比如没法搜索剪贴板的历史。
 
-通过 `Command + 数字键`，就可以把它粘贴出来
+有了 Alfred 的剪贴板增强，两个场景最常用：
+- 当你需要大段编辑文字、敲代码时，不需要反复在两个页面复制、切换页面、粘贴……只需要在一个页面将想要复制的内容复制好，然后切换页面，刚刚你复制的历史片段都可以看到，大大提高了文本编辑的效率！
+- 当你需要快速找到某一天你复制过的片段时，只需要输入关键字在剪贴板历史中搜索即可~
 
-## 文本片段
+![alfred-clipboard](https://i.loli.net/2020/09/26/rZecT87wD6Nm1Hq.gif)
+
+这里我把它们都设置为存储 1 个月，同时把打开剪贴板的默认快捷键为 `Command + Shift + V`：
+
+![剪贴板设置](https://gitee.com/michael_xiang/images/raw/master/uPic/dMbZQX.png)
+
+- `Clear Now`：表示立即清空剪贴板的历史
+
+### Snippets 文本片段
 
 有一些文本是需要反复输入的，比如你的邮箱、QQ号、地址、手机号码、某个网址等信息，亦或者聊天常用语句、表情等等，这些都可以通过 Alfred 来管理，节省输入时间。
 
 ![snippets](https://gitee.com/michael_xiang/images/raw/master/uPic/NVuLa8.png)
 
-## 字典设置
+> 这个功能很强大，不止描述的那么简单，挖坑代填。目前我也没利用好这个功能。
 
-输入`define`开头，然后输入查询的单词；
+### Calculator 计算器
+
+直接在输入框中输入计算的表达式，例如 `15*3`，Alfred 会自动计算出结果：
+
+![计算结果](https://gitee.com/michael_xiang/images/raw/master/uPic/Kzzbmw.png)
+
+提供了 Advanced 增强计算的功能，自持一些高级计算的表达式，使用时以 `=` 开头，然后输入表达式，例如：`=sqrt(9)+abs(-2)`。支持这些函数：
+
+```
+sin, cos, tan, log, log2, ln, exp, abs, sqrt, asin, acos, atan, sinh, cosh, tanh, asinh, acosh, atanh, ceil, floor, round, trunc, rint, near, dtor, rtod等
+```
+
+### Dictionary 字典
+
+输入 `define` 开头，然后输入查询的单词；
 
 ![define](https://gitee.com/michael_xiang/images/raw/master/uPic/C2pSvb.png)
+
+- `Define a word`：可以自定义一个关键词来标记你要查询单词了，例如 `df`。
+
+### System 系统
+
+这个设置也很实用，通过在 Alfred 中输入一些命令来实现系统的操作，比如输入 `Empty Trash` 就是清空垃圾箱。不用担心记不住命令，因为 Alfred 是支持联想的。
+
+![系统命令](https://gitee.com/michael_xiang/images/raw/master/uPic/yJ71ij.png)
+
+常用的有：
+- `emptytrash`：清空垃圾箱
+- `lock`：锁定屏幕
+- `slppe`：休眠
+- `restart`：重启
+- `shutdown`：关机
+- `eject`：快速推出一些外界设备，比如 U 盘等
 
 ## workflow
 
