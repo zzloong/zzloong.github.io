@@ -103,9 +103,13 @@ d
 
 有一些文本是需要反复输入的，比如你的邮箱、QQ号、地址、手机号码、某个网址等信息，亦或者聊天常用语句、表情等等，这些都可以通过 Alfred 来管理，节省输入时间。
 
-![snippets](https://gitee.com/michael_xiang/images/raw/master/uPic/NVuLa8.png)
+![Snippets](https://gitee.com/michael_xiang/images/raw/master/uPic/i0SKPx.png)
 
-> 这个功能很强大，不止描述的那么简单，挖坑代填。目前我也没利用好这个功能。
+> 这个功能很强大，不止描述的那么简单。
+
+Alfred 官网 [Snippets](https://www.alfredapp.com/extras/snippets/) 提供了集合片段集合，下载后双击文件即可导入到 Alfred 中。例如，我们有时候变基文本时经常需要输入 Mac 上的一些按键符号⌘
+
+![alfred-snippsets.gif](https://i.loli.net/2020/10/03/ndU6wJa5zlIojXB.gif)
 
 ### Calculator 计算器
 
