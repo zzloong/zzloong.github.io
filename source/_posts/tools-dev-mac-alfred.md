@@ -26,14 +26,15 @@ keywords:
 
 ![通用设置](https://gitee.com/michael_xiang/images/raw/master/uPic/CzLoxh.png)
 
-## Alfred 自带命令
+## Alfred 常用命令
 
-- `open + 文件名`或者`空格 + 文件名` 搜索文件，`Enter` 键直接打开文件，`→`+`Reveal in Finder` 可以在文件夹中打开文件；
-- `find + 文件名` 直接在文件夹中打开文件；
-- 输入 `in` 命令，以及待搜索的文本，列出磁盘中包含该文本的相关文件，可以快速定位文件，相当于简易的终端 find 命令。
-- 输入搜索内容后，Enter 按键是直接打开文件，`Command + Enter`表示打开文件所在文件夹；
-- `/`：输入栏输入 `/`，会跳转到系统根目录；
+- `/`：输入 `/`，会跳转到系统根目录；
 - `~`：输入 `~`，会进入当前用户的用户目录；
+- `Open + 文件名` 或者 `空格 + 文件名` 搜索文件；
+- `Find + 文件名` 直接在文件夹中打开文件；
+- 输入 `in` 命令加空格，以及待搜索的文本，列出磁盘中包含该文本的相关文件；
+- 输入搜索内容后，`Enter` 按键是直接打开文件，`Command + Enter`表示打开文件所在文件夹；
+- `Command + L` 居中放大显示结果；
 
 ## Features 特性功能
 
@@ -59,15 +60,17 @@ d
 
 ![网站搜索](https://gitee.com/michael_xiang/images/raw/master/uPic/ad01wm.png)
 
-下面是我自定义的一些设置，方便搜索：
+日常网站：
 - 百度：`https://www.baidu.com/s?ie=utf-8&f=8&wd={query}`
 - 淘宝：`https://s.taobao.com/search?q={query}`
 - 豆瓣电影：`http://movie.douban.com/subject_search?search_text={query}&cat=1002`
 - B 站：`http://search.bilibili.com/all?keyword={query}`
 - 知乎：`https://www.zhihu.com/search?type=content&q={query}`
+- 什么值得买：`https://search.smzdm.com/?s={query}&v=b`
+
+技术网站：
 - DuckDuckGo：`https://duckduckgo.com/?q={query}`
 - Stackoverflow：`http://www.stackoverflow.com/search?q={query}`
-- Github User：`https://github.com/{query}`
 - Github Search：`https://github.com/search?utf8=%E2%9C%93&q={query}`
 - MDN：`https://developer.mozilla.org/zh-CN/search?q={query}`
 
@@ -107,7 +110,12 @@ d
 
 > 这个功能很强大，不止描述的那么简单。
 
-Alfred 官网 [Snippets](https://www.alfredapp.com/extras/snippets/) 提供了集合片段集合，下载后双击文件即可导入到 Alfred 中。例如，我们有时候变基文本时经常需要输入 Mac 上的一些按键符号⌘
+Alfred 官网 [Snippets](https://www.alfredapp.com/extras/snippets/) 提供了集合片段集合，下载后双击文件即可导入到 Alfred 中。
+
+- Emoji Pack
+- Mac Symbols
+
+例如，我们有时候变基文本时经常需要输入 Mac 上的一些按键符号⌘：
 
 ![alfred-snippsets.gif](https://i.loli.net/2020/10/03/ndU6wJa5zlIojXB.gif)
 
@@ -117,7 +125,9 @@ Alfred 官网 [Snippets](https://www.alfredapp.com/extras/snippets/) 提供了�
 
 ![计算结果](https://gitee.com/michael_xiang/images/raw/master/uPic/Kzzbmw.png)
 
-提供了 Advanced 增强计算的功能，自持一些高级计算的表达式，使用时以 `=` 开头，然后输入表达式，例如：`=sqrt(9)+abs(-2)`。支持这些函数：
+Advanced 增强计算的功能，支持一些高级计算的表达式，使用时以 `=` 开头，然后输入表达式即可，例如：`=sqrt(9)+abs(-2)`。
+
+支持这些函数：
 
 ```
 sin, cos, tan, log, log2, ln, exp, abs, sqrt, asin, acos, atan, sinh, cosh, tanh, asinh, acosh, atanh, ceil, floor, round, trunc, rint, near, dtor, rtod等
@@ -143,43 +153,19 @@ sin, cos, tan, log, log2, ln, exp, abs, sqrt, asin, acos, atan, sinh, cosh, tanh
 - `slppe`：休眠
 - `restart`：重启
 - `shutdown`：关机
-- `eject`：快速推出一些外界设备，比如 U 盘等
+- `eject`：快速推出一些外界设备，比如 U 盘、挂载的镜像
 
-## workflow
+### Terminal 终端
 
-### workflow 是什么
+可以直接在 Alfred 中输入 `>` 之后，指定 shell 命令在 Terminal 中执行。
 
-![workflow](https://gitee.com/michael_xiang/images/raw/master/uPic/TYaQGU.png)
+![Terminal](https://gitee.com/michael_xiang/images/raw/master/uPic/3vvwm7.png)
 
-上面截图是 Alfred 官网对 Workflow 的一个描述，简单描述就是，workflow 是一个类似工作流的功能，它可以根据你预设的流程进行一系列的操作来帮你实现一个功能。
+操作示例：
 
+![example](https://ftp.bmp.ovh/imgs/2020/10/6855e3274cfd9d1f.gif)
 
-
-### 日用推荐
-
-- 人民币金额大写：`cny`然后输入数字即可
-- 快递查询：输入`kd+单号`
-- [YoudaoDict](https://github.com/Rouwanzi/AlfredWorkflow_YoudaoTranslate)
-- [百度地图](https://github.com/wofeiwo/alfred-baidu-map)
-
-### 开发推荐
-
-- ip address：查看本机ip
-- [Hash](https://github.com/bigluck/alfred2-hash)：查看文件MD5值等
-- [http_status_code](https://github.com/ilstar/http_status_code):显示 http 状态码含义
-- [CodeVar](https://github.com/xudaolong/CodeVar)：
-- [encode](https://github.com/willfarrell/alfred-encode-decode-workflow)
-
-我常用的存储在这儿了：[my-config-files/alfred-work-flow](https://github.com/Michael728/my-config-files/tree/master/alfred-work-flow)
-
-下载源：
-- [Alfred官宣/workflows](https://www.alfredapp.com/workflows/)
-- [alfredworkflow](http://www.alfredworkflow.com/)
-- [workflow-list](http://www.packal.org/workflow-list)
-- [zenorocha/alfred-workflows](https://github.com/zenorocha/alfred-workflows)
-- [github/awesome-alfred-workflows](https://github.com/alfred-workflows/awesome-alfred-workflows)
-
-## 自定义终端
+默认情况是在 Mac 自带的 Terminal 中执行命令，如果你想在 Alfred 中执行，则需要通过如下命令自定义：
 
 ```shell
 on alfred_script(q)
@@ -210,11 +196,60 @@ end tell
 end alfred_script
 ```
 
+### Previews 预览
+
+Mac 预览功能也叫 `Quick Look`。当我们在 Finder 中选中一些文件之后，按住 `Space/空格键` 键，可以预览文件内容。Alfred 中这个预览功能叫 `Preview`。当我们在 Alfred 搜到一些文件之后，按一下 `Shift` 按键，就可以预览对应文件内容。同时，在 Finder 中，也可以通过 Alfred 提供的预览功能预览文件，对应快捷键是 `Command+y`。
+
+![预览](https://gitee.com/michael_xiang/images/raw/master/uPic/wvkfkB.png)
+
+## workflow
+
+### workflow 是什么
+
+![workflow](https://gitee.com/michael_xiang/images/raw/master/uPic/TYaQGU.png)
+
+上面截图是 Alfred 官网对 Workflow 的一个描述，简单描述就是，workflow 是一个类似工作流的功能，它可以根据你预设的流程进行一系列的操作来帮你实现一个功能。
+
+### 日用推荐
+
+- 人民币金额大写：`cny` 然后输入数字即可
+- 快递查询：输入`kd+单号`
+- [YoudaoDict](https://github.com/Rouwanzi/AlfredWorkflow_YoudaoTranslate)
+- [百度地图](https://github.com/wofeiwo/alfred-baidu-map)
+- [mpco/AlfredWorkflow-Recent-Documents](https://github.com/mpco/AlfredWorkflow-Recent-Documents/blob/master/README_CN.md) 快速打开最近访问的文档、文件夹、应用
+  - 输入 rr，列出当前激活应用的最近文档
+  - 输入 rf，列出最近访问的文件夹
+  - 输入 rd，列出最近打开的各种文件
+  - 输入 ra，列出最近打开的应用
+
+### 开发推荐
+
+- [ip address](https://github.com/zenorocha/alfred-workflows/blob/master/ip-address/ip-address.alfredworkflow)：查看本机 IP
+![IP](https://gitee.com/michael_xiang/images/raw/master/uPic/ptmUFi.png)
+
+- [Hash](http://www.packal.org/workflow/hash)：查看文件 MD5 值等
+- [http_status_code](https://github.com/ilstar/http_status_code)：显示 http 状态码含义
+  - 输入 httpcode + 状态码，按下 Enter 键会跳到对应网站
+- [encode](https://github.com/willfarrell/alfred-encode-decode-workflow) 字符编码（encode）、解码（decode），例如有时候一些密码、URL 中有特殊字符则可以使用它
+![encode](https://gitee.com/michael_xiang/images/raw/master/uPic/eXkrrY.png)
+
+我常用的存储在这儿了：[my-config-files/alfred-work-flow](https://github.com/Michael728/my-config-files/tree/master/alfred-work-flow)
+
+下载源：
+- [Alfred官宣/workflows](https://www.alfredapp.com/workflows/)
+- [alfredworkflow](http://www.alfredworkflow.com/)
+- [workflow-list](http://www.packal.org/workflow-list)
+- [zenorocha/alfred-workflows](https://github.com/zenorocha/alfred-workflows)
+- [github/awesome-alfred-workflows](https://github.com/alfred-workflows/awesome-alfred-workflows)
+
+## Usage 使用统计
+
+![Usage](https://gitee.com/michael_xiang/images/raw/master/uPic/LYoIRO.png)
+
 ## 参考
 - [总是在 Mac 「装机必备」看到的搜索利器 Alfred，究竟是怎么用的？| 新手问号](https://sspai.com/post/43973)
 - [效率神器 Alfred workflow 插件推荐](https://hufangyun.com/2018/alfred-workflow-recommend/)
 - [Alfred 效率神器全攻略](http://blog.surfacew.com/tool/2016/08/03/Alfred/)
 - [Alfred神器使用手册](http://louiszhai.github.io/2018/05/31/alfred/#%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85alfred)
-- [Mac效率神器Alfred系列教程---文件搜索](https://www.jianshu.com/p/2ce1dd633f4f)
 - [掘金-Mac 提升开发效率的小工具](https://juejin.im/post/5b0e99436fb9a009e405dbb6)
-- [iHTCboy/程序员的macOS系列：高效Alfred进阶](https://ihtcboy.com/2020/02/09/2020-02-09_%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84macOS%E7%B3%BB%E5%88%97%EF%BC%9A%E9%AB%98%E6%95%88Alfred%E8%BF%9B%E9%98%B6/)
+- [iHTCboy/程序员的macOS系列：高效Alfred进阶](https://ihtcboy.com/2020/02/09/2020-02-09_%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84macOS%E7%B3%BB%E5%88%97%EF%BC%9A%E9%AB%98%E6%95%88Alfred%E8%BF%9B%E9%98%B6/) 博主总结很详细，推荐

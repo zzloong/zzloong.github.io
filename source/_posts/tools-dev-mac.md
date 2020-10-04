@@ -255,7 +255,7 @@ Maven 的安装，可以看我的配置 repo [my-config-files/maven/](https://ww
 
 ## [alfred](https://www.alfredapp.com/)
 
-因为篇幅有限，专门总结了一篇介绍 alfred 的使用。
+因为篇幅有限，专门总结了一篇介绍 alfred 的使用：[]()
 
 ## [Beyond Compare](https://www.scootersoftware.com/download.php)
 
