@@ -9,7 +9,7 @@ keywords:
   - tutorial
 ---
 
-![](https://gitee.com/michael_xiang/images/raw/master/computer-mac.jpg)
+![Alfred](https://gitee.com/michael_xiang/images/raw/master/uPic/w3dQKD.png)
 
 ## 前言
 
