@@ -26,22 +26,36 @@ keywords:
 
 ![通用设置](https://gitee.com/michael_xiang/images/raw/master/uPic/CzLoxh.png)
 
-## Alfred 常用命令
+## Alfred 基本功能
 
 - `/`：输入 `/`，会跳转到系统根目录；
 - `~`：输入 `~`，会进入当前用户的用户目录；
-- `Open + 文件名` 或者 `空格 + 文件名` 搜索文件；
-- `Find + 文件名` 直接在文件夹中打开文件；
-- 输入 `in` 命令加空格，以及待搜索的文本，列出磁盘中包含该文本的相关文件；
 - 输入搜索内容后，`Enter` 按键是直接打开文件，`Command + Enter`表示打开文件所在文件夹；
 - `Command + L` 居中放大显示结果；
+
+### 搜索应用
+
+![搜索应用](https://gitee.com/michael_xiang/images/raw/master/uPic/PD2BnJ.png)
+
+### 文件搜索
+
+- `Find + 文件名`：搜索文件，Enter 确认之后，直接跳转到 Finder 中文件所在位置；
+- `Open + 文件名`：搜索文件，Enter 确认之后，直接打开该文件；
+
+![find](https://gitee.com/michael_xiang/images/raw/master/uPic/FidDNA.png)
+
+### 内容搜索
+
+输入 `in` 命令加空格，以及待搜索的文本，列出磁盘中包含该文本的相关文件：
+
+![in](https://gitee.com/michael_xiang/images/raw/master/uPic/74XFzg.png)
 
 ## Features 特性功能
 
 Features 功能很多，这里仅介绍目前个人发现的常用设置。
 
 ### Default Results 默认结果
-d
+
 这个菜单项主要是设置 Alfred 搜索结果时，默认从哪些目录搜索出结果。
 
 - `Essentials`：搜索系统偏好设置和联系人信息；
@@ -94,7 +108,7 @@ d
 - 当你需要大段编辑文字、敲代码时，不需要反复在两个页面复制、切换页面、粘贴……只需要在一个页面将想要复制的内容复制好，然后切换页面，刚刚你复制的历史片段都可以看到，大大提高了文本编辑的效率！
 - 当你需要快速找到某一天你复制过的片段时，只需要输入关键字在剪贴板历史中搜索即可~
 
-![alfred-clipboard](https://i.loli.net/2020/09/26/rZecT87wD6Nm1Hq.gif)
+![](https://ftp.bmp.ovh/imgs/2020/10/6951139ef4b30949.gif)
 
 这里我把它们都设置为存储 1 个月，同时把打开剪贴板的默认快捷键为 `Command + Shift + V`：
 
