@@ -212,11 +212,15 @@ Mac 预览功能也叫 `Quick Look`。当我们在 Finder 中选中一些文件�
 
 ### 日用推荐
 
-- 人民币金额大写：`cny` 然后输入数字即可
-- 快递查询：输入`kd+单号`
-- [YoudaoDict](https://github.com/Rouwanzi/AlfredWorkflow_YoudaoTranslate)
-- [百度地图](https://github.com/wofeiwo/alfred-baidu-map)
-- [mpco/AlfredWorkflow-Recent-Documents](https://github.com/mpco/AlfredWorkflow-Recent-Documents/blob/master/README_CN.md) 快速打开最近访问的文档、文件夹、应用
+[NumToCNY](http://www.packal.org/workflow/numtocny)：转换数字为人民币金额，`cny` 然后输入数字即可
+
+![数字转人民币](https://gitee.com/michael_xiang/images/raw/master/uPic/72kvgD.png)
+
+[YoudaoDict](https://github.com/whyliam/whyliam.workflows.youdao) 有道翻译
+
+![有道翻译](https://gitee.com/michael_xiang/images/raw/master/uPic/irarxg.png)
+
+[mpco/AlfredWorkflow-Recent-Documents](https://github.com/mpco/AlfredWorkflow-Recent-Documents/blob/master/README_CN.md) 快速打开最近访问的文档、文件夹、应用
   - 输入 rr，列出当前激活应用的最近文档
   - 输入 rf，列出最近访问的文件夹
   - 输入 rd，列出最近打开的各种文件
@@ -224,23 +228,26 @@ Mac 预览功能也叫 `Quick Look`。当我们在 Finder 中选中一些文件�
 
 ### 开发推荐
 
-- [ip address](https://github.com/zenorocha/alfred-workflows/blob/master/ip-address/ip-address.alfredworkflow)：查看本机 IP
+[ip address](https://github.com/zenorocha/alfred-workflows/blob/master/ip-address/ip-address.alfredworkflow)：查看本机 IP
+
 ![IP](https://gitee.com/michael_xiang/images/raw/master/uPic/ptmUFi.png)
 
-- [Hash](http://www.packal.org/workflow/hash)：查看文件 MD5 值等
-- [http_status_code](https://github.com/ilstar/http_status_code)：显示 http 状态码含义
-  - 输入 httpcode + 状态码，按下 Enter 键会跳到对应网站
-- [encode](https://github.com/willfarrell/alfred-encode-decode-workflow) 字符编码（encode）、解码（decode），例如有时候一些密码、URL 中有特殊字符则可以使用它
+[http_status_code](https://github.com/ilstar/http_status_code)：显示 HTTP 状态码含义
+  - 输入 `httpcode + 状态码`，按下 Enter 键会跳到对应网站
+
+![httpcode](https://gitee.com/michael_xiang/images/raw/master/uPic/a7jRch.png)
+
+[encode](https://githb.com/willfarrell/alfred-encode-decode-workflow) 字符编码（encode）、解码（decode），例如有时候一些密码、URL 中有特殊字符则可以使用它
+
 ![encode](https://gitee.com/michael_xiang/images/raw/master/uPic/eXkrrY.png)
 
-我常用的存储在这儿了：[my-config-files/alfred-work-flow](https://github.com/Michael728/my-config-files/tree/master/alfred-work-flow)
+### 下载源
 
-下载源：
-- [Alfred官宣/workflows](https://www.alfredapp.com/workflows/)
-- [alfredworkflow](http://www.alfredworkflow.com/)
-- [workflow-list](http://www.packal.org/workflow-list)
-- [zenorocha/alfred-workflows](https://github.com/zenorocha/alfred-workflows)
-- [github/awesome-alfred-workflows](https://github.com/alfred-workflows/awesome-alfred-workflows)
+- Alfred官宣/workflows：https://www.alfredapp.com/workflows/
+- alfredworkflow：http://www.alfredworkflow.com/
+- packal/workflow-list：http://www.packal.org/workflow-list
+- zenorocha/alfred-workflows：https://github.com/zenorocha/alfred-workflows
+- github/awesome-alfred-workflows：https://github.com/alfred-workflows/awesome-alfred-workflows
 
 ## Usage 使用统计
 
