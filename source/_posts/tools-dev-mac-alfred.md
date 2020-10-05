@@ -129,7 +129,7 @@ Alfred 官网 [Snippets](https://www.alfredapp.com/extras/snippets/) 提供了�
 - Emoji Pack
 - Mac Symbols
 
-例如，我们有时候变基文本时经常需要输入 Mac 上的一些按键符号⌘：
+例如，我们有时候编辑文本时经常需要输入 Mac 上的一些按键符号⌘：
 
 ![alfred-snippsets.gif](https://i.loli.net/2020/10/03/ndU6wJa5zlIojXB.gif)
 
