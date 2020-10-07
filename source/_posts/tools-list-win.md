@@ -21,6 +21,7 @@ Windows系统挺好用的，并不像有些程序员说的那么不堪，尽管�
 
 - [Listary](http://www.appinn.com/listary/)     小众软件介绍，超级好用的文件搜索工具，按下快捷键，随时搜索
 - [Everything](http://www.voidtools.com/)   也是传说中的文档搜索神器！其他功能有待开发……
+- [火柴](https://www.huochaipro.com/) 原名火萤酱，是一款类似 Mac 平台上 Alfred 的效率软件，提供了搜索、启动应用等功能
 
 ### 聊天
 
@@ -95,7 +96,8 @@ Windows系统挺好用的，并不像有些程序员说的那么不堪，尽管�
 
 ### 写作工具
 
-- [typora](https://www.typora.io/)  韩国的一款Markdown写作工具，免费的，简介好用！
+- [typora](https://www.typora.io/)  韩国的一款 Markdown 写作工具，免费的，简介好用！
+- [marktext](https://github.com/marktext/marktext) 一款开源的 Markdown 编辑工具
 - [1checker](http://www.1checker.com/Products/DownLoad?product=Desktop)     英文写作，语法校对工具
 
 ### 思维导图

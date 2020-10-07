@@ -75,3 +75,27 @@ date: 2015-11-26 20:31:49
 呦，您又来看 Michael翔啦 ！这次，留下点什么吧 (・ω・)ノ
 
 {% endnote %}
+
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
+    integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+    crossorigin="anonymous"
+></script>
+
+<div id="yiyan"></div>
+
+<script>
+    jQuery
+    .ajax({ url: "https://v1.hitokoto.cn/" })
+    .done(function(content, err) {
+        console.log("content::", content, "err::", err);
+        if (err === "success") {
+        var result = "";
+        content = JSON.parse(content);
+        result = content.hitokoto + "&nbsp;--" + content.from;
+        console.log("=result=>>", result);
+        result = content.hitokoto + "&nbsp;--" + content.from;
+        jQuery("#yiyan").html(result);
+        }
+    });
+</script>
