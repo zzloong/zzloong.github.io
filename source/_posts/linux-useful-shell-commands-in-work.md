@@ -9,6 +9,56 @@ keywords:
  - commands
 ---
 
+## 字符串相关操作
+
+### 从 URL 截取字段
+
+默认去除url的最后斜线：
+
+```shell
+url=http://xxx/patch/xxx/xxxx/
+tar_name=$(echo ${url%*/}|awk -F '/' '{print $NF}')
+```
+
+### shell 判断字符串包含
+
+```shell
+if [[ $tar =~ tar.gz ]];then echo "包含";fi
+```
+
+- [Shell判断字符串包含关系的几种方法](https://www.cnblogs.com/willhua/articles/6141046.html)
+
+### 字符串切割截取
+
+最近项目中遇到了一个问题，之前一直正常的版本号，突然格式不对，多了不必要的前缀。经过定位，发现之前写的脚本是根据下划线 `_` 分割，截取最后的一段作为版本号 version。但是使用的语法有点问题，做个笔记。
+
+```shell
+${varible##*string} 从左向右截取最后一个string后的字符串
+${varible#*string} 从左向右截取第一个string后的字符串
+${varible%%string*} 从右向左截取最后一个string后的字符串
+${varible%string*} 从右向左截取第一个string后的字符串
+```
+
+示例：有这样的一个字符串：`release_eu_1.0.0.202011221152`，它执行上面的截取操作，输出如下：
+
+```shell
+$ echo ${version##*_}
+1.0.0.202011221152
+$ echo ${version#*_}
+eu_1.0.0.202011221152
+$ echo ${version%%_*}
+release
+$ echo ${version%_*}
+release_eu
+```
+
+所以，工作中遇到的那个问题解决了，应该使用两个 `#` 的截取方式。不得不感叹，shell 真是强大。
+
+参考：
+- [cnblogs/shell 字符串分割与连接](https://www.cnblogs.com/gx-303841541/archive/2012/10/25/2738048.html)
+
+----
+
 ## 调试 bash 脚本的技巧
 
 - 加 `-x` 参数运行 bash 脚本时，会显示执行的语句
@@ -41,7 +91,7 @@ export PS4='+${BASH_SOURCE}:${LINENO}:${FUNCNAME[0]}: '
 
 - [Ubuntu终端常用的快捷键](http://www.cnblogs.com/nucdy/p/5251659.html)
 
-## ssh远程执行命令
+## ssh 远程执行命令
 
 需要远程到其他节点上执行一些 shell 命令，示例：
 
@@ -61,7 +111,7 @@ echo done
 
 - [简书-【ssh】ssh远程执行命令](https://www.jianshu.com/p/25c2407f5905)
 
-## for循环
+## for 循环
 
 ```shell
 echo "Start Datetime:" $(date +"%Y-%m-%d %H:%M:%S")
@@ -122,22 +172,8 @@ fi
 
 - [shell中if做比较](https://www.cnblogs.com/276815076/archive/2011/10/30/2229286.html)
 
-## 从URL截取字段
+----
 
-默认去除url的最后斜线：
-
-```shell
-url=http://xxx/patch/xxx/xxxx/
-tar_name=$(echo ${url%*/}|awk -F '/' '{print $NF}')
-```
-
-## shell 判断字符串包含
-
-```shell
-if [[ $tar =~ tar.gz ]];then echo "包含";fi
-```
-
-- [Shell判断字符串包含关系的几种方法](https://www.cnblogs.com/willhua/articles/6141046.html)
 
 ## Bash 加 `-xe` 表示什么意思
 
@@ -286,7 +322,7 @@ mv /etc/vsftpd/vsftpd.conf /etc/vsftpd/vsftpd.conf_bak
 grep -v "#" /etc/vsftpd/vsftpd.conf_bak > /etc/vsftpd/vsftpd.conf
 ```
 
--v 参数表示反选
+`-v` 参数表示反选
 
 ## 修改主机名
 
@@ -338,7 +374,7 @@ set -x
 head -n X | tail -n 1
 ```
 
-## 显示 Path 环境变量
+## 分行显示 Path 环境变量
 
 显示你的环境变量PATH，一个目录一行：
 
