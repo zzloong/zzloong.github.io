@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>国投资源</title>
-    <url>/2017/08/29/%E5%9B%BD%E6%8A%95%E8%B5%84%E6%BA%90/</url>
-    <content><![CDATA[<ul>
-<li>2017-08-29</li>
-</ul>
-<blockquote>
-<p>最近大盘有效突破，美元疲软，大宗商品还会有一波行情，可以暂时持有的</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>fund</category>
-      </categories>
-  </entry>
-  <entry>
     <title>黄金</title>
     <url>/2017/08/29/%E9%BB%84%E9%87%91/</url>
     <content><![CDATA[<hr>
@@ -228,7 +214,7 @@
   </entry>
   <entry>
     <title>贵州百灵</title>
-    <url>/2021/02/17/%E8%B4%B5%E5%B7%9E%E7%99%BE%E7%81%B5/</url>
+    <url>/2017/08/29/%E8%B4%B5%E5%B7%9E%E7%99%BE%E7%81%B5/</url>
     <content><![CDATA[<ul>
 <li><h6 id="2017-08-29"><a href="#2017-08-29" class="headerlink" title="2017-08-29"></a>2017-08-29</h6></li>
 </ul>
@@ -240,12 +226,35 @@
 </blockquote>
 <a id="more"></a>]]></content>
       <categories>
-        <category>stock</category>
+        <category>股票</category>
         <category>医药</category>
       </categories>
       <tags>
-        <tag>股票</tag>
         <tag>市盈率</tag>
+        <tag>基本面分析</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>京东方</title>
+    <url>/2021/02/17/%E4%BA%AC%E4%B8%9C%E6%96%B9A/</url>
+    <content><![CDATA[<a id="more"></a>
+
+<ul>
+<li><h6 id="2017-08-29"><a href="#2017-08-29" class="headerlink" title="2017-08-29"></a>2017-08-29</h6></li>
+</ul>
+<blockquote>
+<p><em>飞哥你好。京东方a中报不错，现价值得入手吗？谢谢</em></p>
+</blockquote>
+<blockquote>
+<p><strong>京东方是绩优蓝筹股，如果有长期持股的打算，作为打新舱底之类的是可以建仓的，有点类似银行股。但是因为盘子大，股性不活跃，金额变化会比较小，没耐心的人要有思想准备。</strong></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>stock</category>
+        <category>电子元器</category>
+      </categories>
+      <tags>
+        <tag>股票</tag>
       </tags>
   </entry>
 </search>
