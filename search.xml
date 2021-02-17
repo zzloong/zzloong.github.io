@@ -1,63 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>MyfirstBlog</title>
-    <url>/2021/02/15/MyfirstBlog/</url>
-    <content><![CDATA[<blockquote class="blockquote-center">
-            <i class="fa fa-quote-left"></i>
-            <p>人生乃是一面镜子，<br>从镜子里认识自己，<br>我要称之为头等大事，<br>也只是我们追求的目的！</p>
-
-            <i class="fa fa-quote-right"></i>
-          </blockquote>
-
-<div class="note success no-icon">
-            <p>success形式的类别</p>
-          </div>
-
-<ul>
-<li><i class="fa fa-pencil"></i> 铅笔</li>
-<li><i class="fa fa-cloud-upload"></i> 上传</li>
-<li><i class="fa fa-download"></i> 下载</li>
+    <title>黄金</title>
+    <url>/2017/08/29/%E9%BB%84%E9%87%91/</url>
+    <content><![CDATA[<hr>
+<h1 id="2017"><a href="#2017" class="headerlink" title="2017"></a>2017</h1><ul>
+<li>黄金在长期横盘以后，终于有效突破了<em>1300</em>大关和大平台，会是可持续的行情，至少目前是可以持有观望的。 </li>
+<li>第二次突破 </li>
 </ul>
-<span class="label primary">primary内容</span>
-
-<div class="tabs" id="选项卡"><ul class="nav-tabs"><li class="tab"><a href="#选项卡-1">选项卡 1</a></li><li class="tab active"><a href="#选项卡-2">选项卡 2</a></li><li class="tab"><a href="#选项卡-3">选项卡 3</a></li></ul><div class="tab-content"><div class="tab-pane" id="选项卡-1"><p>这是选项卡 1 内容</p></div><div class="tab-pane active" id="选项卡-2"><p>这是选项卡 2 内容</p></div><div class="tab-pane" id="选项卡-3"><p>这是选项卡 3** 哇，你找到我了！φ(≧ω≦*)♪～</p></div></div></div>
-
-<a class="btn" href="https://www.baidu.com">
-            <i class="fa fa-download fa-lg fa-fw"></i>点击下载百度
-          </a>
 ]]></content>
-      <tags>
-        <tag>Temp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Stock</title>
-    <url>/2021/02/16/Stock/</url>
-    <content><![CDATA[<p>##云天化<br>###紫金矿业 </p>
-<p>&lt; !–more–&gt;</p>
-<h2 id="tianhai-touzi"><a href="#tianhai-touzi" class="headerlink" title="tianhai touzi"></a>tianhai touzi</h2>]]></content>
       <categories>
-        <category>jinrong</category>
-        <category>jijin</category>
+        <category>投资</category>
       </categories>
       <tags>
-        <tag>stock</tag>
-        <tag>finance</tag>
+        <tag>黄金</tag>
+        <tag>技术面</tag>
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2021/02/15/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <title>国投资源</title>
+    <url>/2017/08/29/%E5%9B%BD%E6%8A%95%E8%B5%84%E6%BA%90/</url>
+    <content><![CDATA[<ul>
+<li><p>最近大盘有效突破，美元疲软，大宗商品还会有一波行情，可以暂时持有的</p>
+</li>
+</ul>
 ]]></content>
+      <categories>
+        <category>fund</category>
+      </categories>
+      <tags>
+        <tag>基金</tag>
+        <tag>有色金属</tag>
+      </tags>
   </entry>
 </search>
