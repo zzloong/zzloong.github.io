@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="cafeaa13fcd0d6a1434dbbbc6604751c">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-mac-osx.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zzloong.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":"ture","show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="问：飞哥，irr的概念是看懂了，但对于实际年化收益率，看了圈友的讨论，感觉理解上有不小出入，可以大概解答下这次母鸡金大概的年华受益范围吗？保守点就ok  【羿飞】 回答：你还是没搞明白啊，股权收益，是未知的，怎么能用年化收益率这个词呢？irr等同于年化，只不过一个是先期确定，一个是后期统计。   [Luzhibin] : 看了知乎的一种解释，irr相当于你借钱投资项目，但是这个项目一毛不挣时的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018-05-31问答记录">
+<meta property="og:url" content="http://zzloong.github.io/2018/05/31/2018-05-31/index.html">
+<meta property="og:site_name" content="龙猫学金融">
+<meta property="og:description" content="问：飞哥，irr的概念是看懂了，但对于实际年化收益率，看了圈友的讨论，感觉理解上有不小出入，可以大概解答下这次母鸡金大概的年华受益范围吗？保守点就ok  【羿飞】 回答：你还是没搞明白啊，股权收益，是未知的，怎么能用年化收益率这个词呢？irr等同于年化，只不过一个是先期确定，一个是后期统计。   [Luzhibin] : 看了知乎的一种解释，irr相当于你借钱投资项目，但是这个项目一毛不挣时的">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-05-31T15:00:00.000Z">
+<meta property="article:modified_time" content="2021-04-09T14:47:29.114Z">
+<meta property="article:author" content="小帅">
+<meta property="article:tag" content="股票">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://zzloong.github.io/2018/05/31/2018-05-31/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>2018-05-31问答记录 | 龙猫学金融</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+<a target="_blank" rel="noopener" href="https://github.com/zzloong" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">龙猫学金融</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">以梦为马，行者无疆</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-stock">
+
+    <a href="/categories/stock/" rel="section"><i class="fa fa-signal fa-fw"></i>股票</a>
+
+  </li>
+        <li class="menu-item menu-item-fund">
+
+    <a href="/categories/fund/" rel="section"><i class="fa fa-star fa-fw"></i>基金</a>
+
+  </li>
+        <li class="menu-item menu-item-investment">
+
+    <a href="/categories/investment/" rel="section"><i class="fa fa-trophy fa-fw"></i>投资</a>
+
+  </li>
+        <li class="menu-item menu-item-web">
+
+    <a href="/categories/web/" rel="section"><i class="fa fa-laptop fa-fw"></i>互联网</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://zzloong.github.io/2018/05/31/2018-05-31/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="小帅">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="龙猫学金融">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2018-05-31问答记录
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-05-31 23:00:00" itemprop="dateCreated datePublished" datetime="2018-05-31T23:00:00+08:00">2018-05-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-09 22:47:29" itemprop="dateModified" datetime="2021-04-09T22:47:29+08:00">2021-04-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Stock/" itemprop="url" rel="index"><span itemprop="name">Stock</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>8.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>8 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <a id="more"></a>
+<blockquote>
+<p><em>问：飞哥，irr的概念是看懂了，但对于实际年化收益率，看了圈友的讨论，感觉理解上有不小出入，可以大概解答下这次母鸡金大概的年华受益范围吗？保守点就ok</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：你还是没搞明白啊，股权收益，是未知的，怎么能用年化收益率这个词呢？irr等同于年化，只不过一个是先期确定，一个是后期统计。</strong></p>
+<blockquote>
+<ul>
+<li><em>[Luzhibin] : 看了知乎的一种解释，irr相当于你借钱投资项目，但是这个项目一毛不挣时的借款的年华利率，也就是这个项目的还款刚好覆盖借款本息。那么个人理解如果你不是借钱投资，那么irr就是项目按复利计算的年华收益率，不知对不对[皱眉]</em></li>
+<li><em>[羿飞] : 其实就是年化差不多一样的的算法，一个是债权，属于收益承诺。一个是股权，看实际运作回报的统计。股权是不能承诺固定收益的，承诺了属于非法集资，就违法了，红线不能碰。</em></li>
+<li><em>[WANG 回复 羿飞] : 那是否可以理解成为irr基本等同于利用业绩推算出预期年华收益率，只是不能这么说，因为不能担保兑付</em></li>
+<li><em>[羿飞 回复 WANG] : 对，一般的做法就是参考本基金其他管理产品的业绩水平。取平均值来评估。</em></li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥，既然由合伙公司作为lp投资，在项目中显示的是公司，为什么要必须要符合个人投资出资额100万的标准？</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：基金业协会的监管，是穿透的。单笔100w以上是底线。这种优质基金，大多数都是500w一笔以上才有机会参与。我们通过打包，解决了在投资时候的身份简单化，但是规定底线不能破。</strong></p>
+<blockquote>
+<ul>
+<li><em>[阿毛] : 那以后是不是每个股权类项目起投都是100万？</em></li>
+<li><em>[羿飞 回复 阿毛] : 并非如此。我说了，我是先选项目，项目定了，再研究如何分配。而不是决定哪些人投，再去找项目。<br>    顺序不同，结果不同。</em></li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥对您产品经理这个岗位熟悉吗？如果想学习这个的话有推荐的相关书籍么？谢谢！！</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：恰好我就是产品经理，如果要选中国最好的100个游戏设计产品经理，应该会有我。<br>   产品经理应该是要非常熟悉整个产品的功能定位，还有对于用户的操作习惯有感受。你还要有良好的沟通能力和情商，把你的思路说服团队，让技术人员更理解来实现。<br>   说实话这些东西都不是书本能学会的。我自己是一本产品设计方面的书都没看过的，但是我玩了20多年游戏，我懂自己要什么，懂有想通兴趣的人喜欢什么。<br>    所以要做那个领域的产品经理，就要先成为那个产品的一流用户，而不是看一本什么书。比如我要做一个什么功能，其实根本没有设计过程，我一想到这个功能的时候，一般在脑子里他就呈现出全部的页面和流程了。之后做文档把他表现出来，是一个过程，就像你在把脑子里那个东西copy出来。<br>     书里只能教你把东西copy出来的方法，而不是帮你产生那个原图。而copy的方法其实本来就不拘一格的，word文档，execel，或者绘图都可以，如果你语言表达很好，完全可以什么文案都不做，说就ok了，这个过程其实倾向于越简洁越好。<br>      好的产品经历寥寥无几，那种设计书记一年卖几百万本，木有什么意义。</strong></p>
+<blockquote>
+<ul>
+<li><em>[羿飞 回复 李陈宇] : 集中注意力，做事效率不一样的。大多数人，每天有效工作时间不足2小时。</em></li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥对分钱网这种线下抵押房产证的p2p怎么看？</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：很多做房产抵押的平台啊，业务本身没什么问题。你说这个网站不了解，没接触过，不代表没问题。因为最大的风险是道德风险，诈骗跑路跟做什么业务没关系。</strong></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：老有所养，病有所医，从一份保障计划开始，只需每年7000左右(每月600块钱)连存10年。可得到一辈子医疗账户，不管大病，小病，意外，只要住院，所有药品100%报销。每年最高150万额度，保证续保到99周岁，重疾公司免费安排三甲医院专家门诊，病房，手术。入住健保通医院，公司直接给医院结账，不用垫付医药费。<br>不管中间报了多少医药费，所交保费连本带利还是投保人的，而且享受5%-6%弹性利率，日计息，月复利，每年滚存12次。可以当做私家银行，按需领取，复利递增。<br>   综上所述，只需要年轻时每月省出几百元，可以保障一辈子的医疗费，并且解决看病难看病贵的问题！<br>大家分析下，此保可投吗？</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：一共7万块，每年利息10000，随便各种保障的保险组合，买几套比你这些好多了……</strong></p>
+<blockquote>
+<ul>
+<li><em>[东方小石] : 貌似很有诱惑力的广告，不过实际怎么样还要看具体到自己个人的保费好保险协议</em></li>
+<li><em>[神秘拖鞋] : 什么业务？</em></li>
+<li><em>[王姐] : 没有看明白，存10年钱，不是管一辈子了么？怎么还保证续保到99岁？保费等于是另外交的吗？我怎么觉得这还是一种理财呢？</em></li>
+<li><em>[天地泉] : 没太明白，感觉不太可能，是不是什么地方有限制？拿市面上终身重疾险比较，最有性价比的产品中，保费：保额，最多达到1:2.5（30岁左右为例）。你这个150万保额，重疾险对应下来就是60万的保费。怎么7万就能覆盖终身，相差太大了，而且150万还能多次用？重疾险赔1次就合同终止。感觉唯一可能是住院百万医疗险的变种产品，1万免赔额，按照尊享e生，从30岁买到99岁，估计也花了7万元，但是尊享e生不能保证续保，这个产品相当于把1年的百万医疗保险变成了终身险，粗略看似乎还行。具体是哪款产品？</em></li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥您了解过理财魔方吗？根据每个人不同的风险评级分为10个基金，可以按照自己的评级选择适合的基金，您觉得这种可以配置一些吗？？</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：没有使用过，也不认为靠谱，因为不同市场阶段是不同的基金配置比较适合。市场什么基金好，跟你自己的偏好没有任何关系，分析你的情况来决定买什么基金逻辑上貌似不合理。</strong></p>
+<blockquote>
+<ul>
+<li><em>[七灵八羅] : 1月18日杀进去1万，严格按照操作，目前这个状态</em></li>
+<li><em>[末日Skydivin</em> 回复 七灵八羅] : 不算太糟*</li>
+<li><em>[七灵八羅 回复 末日Skydivin</em>] : 仁者见仁智者见智吧，确实不算太糟，但是也不算太好，今年年初同样的时间杀进去，我还买了股票，现在已经翻红赚钱了。*</li>
+<li><em>[小五] : 就是低风险的基金投资，长久看年化8%没问题</em></li>
+<li><em>[三儿] : 能挣钱就是好基，跟什么人买有啥关系？</em></li>
+<li><em>[王威 回复 三儿] : 噱头。。让你有一种被量身打造，被定制服务的优越感，从而选择他。。</em></li>
+<li><em>[财僧 回复 七灵八羅] : 不错了，去年9月份杀进去股票池，到现在仍然亏损20%+</em></li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥好，最近半年，创业板指数涨幅持平，中证500跌了6个多点，而从一年来计，创业板涨1%，中证也是1%左右。是不是说明创业板稳住了？中证500还是在哗啦啦的下跌</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：市场热点还轮不到创业板和中证，泡泡还要积的，我已经重复过多次了，切莫着急抄底。</strong></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥，现在的券商股怎么看，pb已经破了历史大底，海通证券甚至准备破净。券商的资产主要是金融产品，质量应该远好于银行股的贷款吧。资管新规的影响对券商到底有多大呢？现在市场对券商是不是太悲观了。</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：我个人是认为比银行低估的，我会买入和持有，好的投资就是寻找错误的定价机会，而非所有人都认为好，那个时候应该卖出。</strong></p>
+<blockquote>
+<ul>
+<li><em>[李海波] : 准备分批买入，关键哪个是龙头？</em></li>
+<li><em>[大班长 回复 李海波] : 中信   海通</em></li>
+<li><em>[无敌草] : 海通被踢出上证50，指数基金要被动卖出</em></li>
+<li><em>[小五] : 买证券指数基金啊！涨起来一点不比股票少！</em></li>
+<li><em>[康平] : 海通我买了 跌得好惨</em></li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥你好，前一段时间绿地起来的时候，大家热情奔放，纷纷询问阻力位在哪里。目前解禁大棒压下来，您认为支撑位在哪里呢？不会各种没支撑吧。</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：绿地可以肯定是低估，有长期投资思想准备可以买。目前没有什么有效的技术指标，看不到支撑，也看不到阻力。</strong></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：<e type="web" href="https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FWInqORBOkGI3hNea1f4lwA" title="%E4%BD%A0%E5%8F%AF%E8%83%BD%E6%AD%A3%E5%9C%A8%E8%A2%AB%E5%B9%B3%E5%8F%B0%E5%8D%96%E7%BB%99%E6%81%B6%E9%AD%94" cache="http%3A%2F%2Fcache.zsxq.com%2F201805%2F429ba038262dd0960c887ed29f427d9315f9ffc4e541906017957dab4b8d268c" /><br>飞哥对于问中提到的平台被卖后容易爆雷怎么看，对于我们普通投资者来说应该注意哪些！！谢谢！</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：纯属瞎逼逼，这些人就是吃不到葡萄说葡萄酸的。更有实力的买入方，对于投资人来说是好事。</strong></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥，绿地控股今早到了前期低点6.97补了仓，这个向下的趋势会不会继续？飞哥怎么看这个股？</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：绿地可以肯定是低估，有长期投资思想准备可以买。目前没有什么有效的技术指标。</strong></p>
+<blockquote>
+<ul>
+<li><em>[wangL] : 房地产板块最近整体回落，绿地只是跟着地产板块一起调整而已</em></li>
+<li>*[wangL] : *</li>
+<li><em>[大班长] : 不到6倍市盈率  股息率3.3  你就当存定期 5年左右也应该翻一倍   算下来 是个年化15左右  不用怕干吧</em></li>
+<li><em>[大班长] : 还有就是 我赌中国楼市6年内不会完蛋  你们觉得呢</em></li>
+<li><em>[龙猫 回复 大班长] : 我相信你</em></li>
+<li><em>[王威 回复 大班长] : 就算6年内楼市完蛋了，那我也多了一个买房去的选择。。</em></li>
+<li><em>[！……！] : 只是不懂，为什么机构都在减持呢？</em></li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥，请问景顺长城沪深300增强和华宝资源优选混合两只基金还有持有价值吗？最近一直跌的很厉害。</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：最近的表现是市场整体回调，这俩基金综合素质还是很好的。基金投资，不要天天盯着看，做好资金计划，隔一段时间买入一些就行。</strong></p>
+<blockquote>
+<ul>
+<li><em>[风] : 有个不是暂时剔除了吗，还买？</em></li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥，个人认为重庆百货已经横盘震荡差不多了，您怎么看？如果是的话，是现在进比较好还是等有效突破前期38块钱高点再进比较好？谢谢</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：我怎么回答你啊？我们在选择适合的减持时机……</strong></p>
+<blockquote>
+<ul>
+<li><em>[三仟] : 露怯了😂我37.5都已经卖完了[捂脸]</em></li>
+<li><em>[羿飞] : 40左右，是这波行情阻力位，大家可以中期套现了。</em></li>
+<li><em>[羿飞] : 这个票票，大家普遍有50%甚至更好盈利，很开心。是抄底其他低谷票票的机遇。</em></li>
+<li><em>[三仟 回复 羿飞] : [强][强][强]</em></li>
+<li><em>[卡卡] : 40就抛[微笑]</em></li>
+<li><em>[龙猫] : 24建仓的人等你40买。磨刀霍霍。。。</em></li>
+<li><em>[天浩 回复 龙猫] : 38买的等50卖[呲牙]</em></li>
+<li><em>[龙猫 回复 天浩] : 就服你。[握手][握手][握手][握手]</em></li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥你好，咨询一下，比如一只个股去年每个季度营收10亿，净利润2亿。今年18年一季度财务报表出来了，营收20亿，净利润1亿，那么全年的营收和利润如何预估？我这里只是举了一个例子，更多的是想咨询您，如何根据单季度或者半年报，预估全年的，或者根据去年的预估今年的。</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：这个数据，并不能是固定的，因为比如一个企业，他今年10亿收入2亿利润，他打算扩展，那么这2亿投入了新设备什么的，那么就是0利润了。<br>   还有的今年本来应该10亿收入，行业情况不太好，他缩小到9亿收入了，但是他没扩张而且大量的清掉了库存，那么可能会3、4亿净利润的报表。<br>   必须要看一个行业长周期的营收和利润的平均比例，这样就不容易被短期数据忽悠。然后再分析最近为什么偏离了平均数，才能比较准确的估值。</strong></p>
+<blockquote>
+<ul>
+<li><em>[向日葵] : 飞哥回答的一针见血，找五年的业绩，在和同行业的作横竖对比</em></li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥能点评一下房地产板块吗？虽然政策上调控趋紧有利空，但是股价也已经持续下跌了很多以反映利空。从价格和盈利对比来看，我个人感觉地产板块的估值相对较低，比如万科只有10倍的市盈率，保利9倍。当然我也知道绿地是房地产板块最好的股票，已重仓，就是仍看好房地产板块，想听听飞哥的意见。</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：房地产黄金十年已经结束了，但是不代表行业衰落。是高增长阶段结束了，后面更多的就是震荡格局。所以低估的可以买，涨了以后卖掉，不做特别长期的投资即可。</strong></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：羿飞老师，听说过中投全球吗？也是个网贷平台，总部在北京，好像以线下推广为主吧，老家有个亲戚在做，推荐周围好多亲友投，也天天给我发，我一直没搭理，但挺为他们担心的，如果您了解的话请点评下这个平台</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：线下吸收资金的，绝对不要碰了，知名企业都已经在清退，你这种没听过的更是不一定哪天就跑。</strong></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥，本人29坐标苏州，大专学历，毕业8年，日企工厂基层机修技术员工作5年，管理层毕竟固定，很多老机修做了10多年还是月薪几千块最后迫于生活压力离职回老家。个人近两年经济压力不大，想离职提升一下考个在职的MBA。这种想法可行么，脱产的学习要2-3年，有点迷茫。</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：如果你已经积累了不错的经济条件，这个转型非常的积极和可行。日企论资排辈太严重了，而且你又是中国人，不会有好发展。<br>   拿到mba以后，你可以跳槽到发展前景不错的民企，很快会进入管理层的，加油！！！</strong></p>
+<blockquote>
+<ul>
+<li><em>[卡卡] : mba很少有企业认可了，主要还是看中第一学历。</em></li>
+<li><em>[kevin] : 尚德机构靠谱吗？</em></li>
+<li><em>[卡卡 回复 kevin] : 不靠谱</em></li>
+<li><em>[王姐] : 考mba的辅导机构可能差距不大，能不能考上还是要看自己有没有努力学。未来发展来说，主要看你考什么学校，考个好学校比如985的学校，算是个跳板，毕竟从大专变名牌大学硕士了，但是考个一般大学，花了十几万，没学到啥，不一定有用。现在MBA很多在职的，周末和晚上上课，也不一定非要脱产。总体来说，好学校比什么都重要。但是好学校往往要面试，对现在的工作背景有一定要求。</em></li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：老家18线县城，不过现在通高铁，从省城过去倒是挺方便的。现在有个公园旁的六层花园洋房出售，湿地公园旁，距离县城中心也不远，也就走路20来分钟，家里老人也可以住，有必要买吗，想着买了以后还要养护，就有些犹豫。</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：通高铁，不会成为彻底的遗弃城市。有老人住的话感觉可以买，一方面当存钱了，还能孝敬老人。以后也能卖掉可以变现。<br>    反正，我觉得如果涉及提高老人生活质量的事，回报率就不是很重要的指标了。</strong></p>
+<blockquote>
+<ul>
+<li><em>[木屐] : 孝顺</em></li>
+<li><em>[一蓑烟雨] : 这种县城虽然房价在涨，但估计二手脱手困难。增值的期望不要太高就好</em></li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：黄金管家无定期产品可投，有变相耍流氓的意思吧，而且app帐户混乱，无法区分自己帐户中活期与定期未到期各自多少克！飞哥，对此可否反馈一下，另国美黄金定期最高也只有180天的，其他都3.0%多息，只能忍受低息？还有其他处理方法吗？</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：不是耍流氓，是最近央行对于黄金账户进行收紧。各家应该是都在收缩普通用户投资这块了。不管是少发某种产品或者通过降息的方式把人赶走，都是在收缩的不同手法。<br>    不管可以安心的是，这几家都还算背景不错，没有我们最担心的极端风险，最多是以后没得投了。</strong></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：问下大家，用借呗投资P2P会不会被查？借到钱后需要跨行转账或体现再投资吗？</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：这两块的数据是不通的，你先提现到银行卡，然后在银行卡充值平台投资。借呗是有利可套的，养养，成本能到年化6%左右。</strong></p>
+<blockquote>
+<ul>
+<li><em>[快乐] : 借呗这种怎么养？借了还借了还？</em></li>
+<li><em>[大码头高级码农-海峰] : 养了一年还是万三[流汗]</em></li>
+<li><em>[向日葵] : 我的万1.5，额度3w2</em></li>
+<li><em>[胡波] : 大神，年化6怎么做，现在万3.5/天</em></li>
+<li><em>[胡波] : 不过可以确定的是，借呗不上征信，亲测</em></li>
+<li><em>[胡波] : 前提不逾期</em></li>
+<li><em>[羿飞] : 我利率还可以，但是额度上不去了，据说有人30w。</em></li>
+<li><em>[风之水] : 注意小额信贷上征信，还没买房或者想办信用卡的慎重</em></li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：弈飞老师您好，咨询001417和001118 二只基金均持有多年，是否继续持有还是赎回 谢谢</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：001417这波正在进行最后拉升赶顶，有点类似于半年前的50，最近比较适合套现更换了。<br>001118这个很烂，长期看业绩都没有表现好过，跑输各种指数，建议更换。</strong></p>
+<blockquote>
+<ul>
+<li><em>[雨后彩虹] : 谢谢🙏</em></li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥，有些看不懂中油工程这支股票啊，长期阴跌后，近期为什么突然拉个涨停之后就迅速回调，是庄家为了套现吗？如果油价一直维持在70美金左右，是不是有可能会对这支股票的业绩有所支撑，从而股价继续走强？还有就是如何判断石油的景气周期，是通过油价的k线图判断吗？请指教。</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：这肯定不是庄在套现，如果说洗盘有可能。庄的建仓成本是非常高的，不要拿我们散户赚几个点就跑的思路去判断庄。一个股票的主力资金，没有50%-200%的收益，是很难有大的收获的。所以当一个股票趋势起来，一般也不是涨一点点。<br>    中油工程肯定是跟原油关联性很强的，油价已经就要接近80美元左右的石油行业荣枯线，所以相关股票会有表现，至少是筑底。后面会有反复和洗盘，你天天盯着会比较难受。</strong></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥，您好！能否帮我分析下特变电工，目前亏6个点。</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：不需要太担心，受市场整体回调的大局影响被误伤，基本面来讲这个估值并不高，没有继续大幅下跌的条件。</strong></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥，华宝油气从16年5月建仓一直拿到现在，期间经历了大幅度的涨，也经历了大幅度的跌，一直没卖，最近这一波行情使得又有些浮盈了，但昨晚因欧派克有放松减产的预期，导致油价暴跌，飞哥对油价后期走势怎么看？华宝油气该卖了吗？</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：他的升值，在于赶上了油价上涨以及美元短期反弹的双重效应。这个双重优势不会持续存在，油价连续上涨幅度以及有点大了，没有一波像样的回调，我是不打算介入的。</strong></p>
+<blockquote>
+<ul>
+<li><em>[大吴] : 已经开始回调了</em></li>
+<li><em>[江水流] : 我真希望黄金盈利出手后进原油，完美对接[呲牙]</em></li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：看到圈友提到考一建，希望大家给个建议，有市政一建和园林高工两证，放到哪个省份，什么公司比较好?目前市场行情是一个什么情况?请大家各抒己见，对全国市场有个了解。</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：这个我不懂，放出来其他同专业的圈友给一些建议了。</strong></p>
+<blockquote>
+<ul>
+<li><em>[🐚] : 挂证就是了，我了解的当地差价都很大，你问全国就更疯了[捂脸]</em></li>
+<li><em>[太阳] : 大概一年大几万吧</em></li>
+<li><em>[太阳 回复 🐚] : 你在哪个省份?具体什么价位哦</em></li>
+<li><em>[yul] : 南京，挂施工公司，六七万一年</em></li>
+<li><em>[琴声飞扬] : 一建，山东国企，在岗三万，不在岗2万。一建挂证有风险，供参考</em></li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥君融理财怎么没进您的榜单啊?</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：以前有的，后来数据不太理想跌出榜单了，但是在跟踪范围内。注意一下公号主菜单的评级标准说明。榜单是优胜劣汰制，有出去的，可能是因为有其他性价比更好的出现了而已。</strong></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥你好，永泰能源在这个板块怎么样？年前咨询过您，当时被关进去了，重组失败，连吃几个板。不知道后续怎么发展？谢谢。</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：重组失败，情绪导致的有点超跌了，这个股没什么大问题，利润规模来说当前的估值并不高，不用太害怕。</strong></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥好，咨询下，存管为何要倒着走？从个人账户又回到统账了呢？这真是合规监管的要求吗？谢谢！</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：这应该是银行对平台的要求，不是平台自己的需求。具体现在说不清，江西银行一直以来使用体验还是不错的，等上线以后大家试试再说吧。</strong></p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥，有个问题搞不懂，既然朝鲜愿意放弃发展核武器，转而发展经济，为什么不优先抱紧中国的大腿而要去看特朗普反复无常的嘴脸。</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：这个问题，说明你不太了解半岛格局和现状。你想想为啥会有朝韩，这是当年抗美援朝战争的遗留物。实际上从当时的定义来讲，朝韩目前还是战争状态，也就是说，明天三排就万炮齐发到首尔，是不需要宣战的。<br>    所以，朝鲜中国俄罗斯是一方的，谈不上三排再报中国的大腿了，因为这个大腿从来就没放过。如果没有中国提供支撑，朝鲜几天就消失了。<br>    其实很多人骂三胖纯，不知道搞经济改革，说这些话的人是更纯的人。你都知道要搞经济，三胖那么多高参不知道吗？是因为敌对方美国在全球对朝鲜进行贸易封锁，不允许别人跟他做生意。<br>    其实三胖的诉求并不过份，希望能够宣布停止战争状态，恢复正常国家地位，让他跟全世界做生意。而韩国，肯定是希望能够和谈的，因为头上驾着成千上万的大炮对着，随时可能灰飞烟灭的感觉并不好。如果能够和平，朝韩都能迎来更好的发展机会，所以半岛内部是希望整合的。<br>      朝鲜希望可以和平的诉求，跟中国谈是没有用的，因为不是中国在制裁他。所以只能跟敌方谈，但韩国是没有自主权力的国家，所以只能跟他的爸爸美国谈。<br>    以上！</strong></p>
+<blockquote>
+<ul>
+<li><em>[顺] : 清透</em></li>
+<li><em>[理解能力] : 发展民生经济不是三胖关心的，只是长期封锁下来，三胖给粉丝发糖的钱都快没了…没糖的话，他的位置就………</em></li>
+<li><em>[末日Skydivin</em>] : 厉害厉害。聘礼要跟富二代的老爹谈，而不是富二代本人！*</li>
+<li><em>[啊才] : 飞哥说的很幽默啊</em></li>
+<li><em>[腾仔] : 对于美国来说，一个不发达的，拥有核武器的朝鲜比一个正常的朝鲜更有价值，因为可以随时让中国周边不安全</em></li>
+<li><em>[天宇 回复 腾仔] : 其实吧，看看美国人怎么对中国的就明白会怎样对北韩了，老美只要你改革开放就愿意放开制裁。</em></li>
+<li><em>[Kelvin Fis</em> 回复 末日Skydivin*] : 神解读*</li>
+<li><em>[末日Skydivin</em> 回复 Kelvin Fis*] : 受老师启发的*</li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><em>问：飞哥，你好，有个小问题找你咨询下：<br>本人因为工作关系在韩国常驻，发现这边的借款利率只有3%左右，虽然外国人有额度限制，但是还是能贷到60万左右的信用贷款，想着国内网贷平均也有10%左右的年化，有没有必要贷了以后换成人民币操作下?因为还没有考虑汇率风险，请给个建议，谢谢</em></p>
+<blockquote>
+<p><strong>【羿飞】 回答：其实这是可以做的，大家经常听到所谓的“热钱”就是这么来的。很多发达国家利率很低，我们这种高速发展经济体收益高，会有套利空间。<br>    你规模不大，进出比较容易，主要就是考虑汇率风险就行了。韩元不太了解，这块你要专业的人了解一下，如果相对人民币比较稳定是最好的。</strong></p>
+<blockquote>
+<ul>
+<li><em>[且慢] : 60万韩元吗[呲牙]</em></li>
+<li><em>[羿飞] : 这个回答，系统审核了n久。奇怪，没什么违禁的吧？</em></li>
+<li><em>[龙猫 回复 羿飞] : 热钱属于敏感词汇吧</em></li>
+<li><em>[无敌草] : 汇率波动是很大的风险，最好在外汇平台对冲一下，杠杆高些，可以节约资金</em></li>
+<li><em>[中国狐] : 60万人民币折合韩元要1亿多，银行贷你1个亿，瞬间好大方的感觉</em></li>
+<li><em>[王威 回复 无敌草] : 小币种在外汇平台交易成本也挺高的。另外就算真这么交易，标的也是韩元兑美元，而不是人民币，还是要扛一重汇率波动</em></li>
+<li><em>[yxs] : 如果韩元对人民币贬值的话岂不是利息都不用还了</em></li>
+<li><em>[天地泉 回复 羿飞] : 请问飞哥，能否顺便问问港币或澳门葡币兑换成人民币，这样风险更低？感觉港币或葡币相对人民币即使升值空间也有限。另外具体做法上，似乎香港本地港币兑换人民币汇差大，不如先转港币到国内再兑换成人民币划算？但是外币转国内似乎要受金额限制（最好是私对私账户），而且转到国内还要受每年5万美金兑汇限制，所以……似乎只能在香港本地换成人民币再转回国内？问题有点长，谢谢！</em></li>
+</ul>
+</blockquote>
+</blockquote>
+</blockquote>
+
+    </div>
+<div>    
+	
+    	<div>    
+	        
+		<div style="text-align:center;color: #ccc;font-size:14px;">---------- 本文结束----------		</div>    
+	
+</div>
+    
+     
+</div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>好人一生平安。</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat-pay.jpg" alt="小帅 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay-pay.jpg" alt="小帅 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>小帅
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://zzloong.github.io/2018/05/31/2018-05-31/" title="2018-05-31问答记录">http://zzloong.github.io/2018/05/31/2018-05-31/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+<div>
+	    <p id="div-border-left-red">
+	   <b>本文基于<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> 知识共享署名-相同方式共享 4.0 </a>国际许可协议发布</b><br/>
+	    </p>
+</div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%82%A1%E7%A5%A8/" rel="tag"># 股票</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/05/25/2018-05-25/" rel="prev" title="2018-05-25问答记录">
+      <i class="fa fa-chevron-left"></i> 2018-05-25问答记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/06/05/2018-06-05/" rel="next" title="2018-06-05问答记录">
+      2018-06-05问答记录 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">小帅</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zzloong" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zzloong" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zhilong_zhai@sina.com" title="E-Mail → mailto:zhilong_zhai@sina.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/yujiabeizi" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yujiabeizi" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小帅</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">15:42</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
