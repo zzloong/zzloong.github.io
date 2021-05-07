@@ -42,7 +42,7 @@
 <meta property="og:description" content="问：8月上旬把盈利30+%的潍柴出了，换了中联、柳工、徐工，目前略亏。计划这几天把目前盈利20+%的三一也出了，继续加仓中联、柳工、徐工，是否可行？  【羿飞】 回答：这样操作蛮不错的，卖出先启动的股票，布局后启动的，把一个板块利益最大化，可行。    问：羿飞，帮我分析一下600698，还能拿它吗？  【羿飞】 回答：基本上只是一个庄股壳公司，没有什么有价值的业绩可言，我个人是不会炒这种股票">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-08-30T15:00:00.000Z">
-<meta property="article:modified_time" content="2021-04-08T11:35:22.000Z">
+<meta property="article:modified_time" content="2021-04-08T11:35:22.371Z">
 <meta property="article:author" content="小帅">
 <meta property="article:tag" content="股票">
 <meta name="twitter:card" content="summary">
@@ -957,20 +957,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-count">130</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1096,6 +1096,26 @@
 
 
 
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 

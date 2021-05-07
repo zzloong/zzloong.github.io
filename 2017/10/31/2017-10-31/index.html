@@ -42,7 +42,7 @@
 <meta property="og:description" content="问：在同花顺的财务概况中飞哥常看的指标有，营业总收入，净利润，这两个是最重要的指标，能看出企业的真实价值和盈利情况。       另外也提到过销售净利率，知道企业的利润占比营收情况，看出企业的盈利周期，是准备低利润吸散户筹码，还是做高利润找信市盈率的散户接盘。       还有资产负债比率，看企业负债情况，结合营收看出企业是否融资用于扩张。       然后云天化分析中又提到了流动资产总计，看">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-10-31T15:00:00.000Z">
-<meta property="article:modified_time" content="2021-04-08T11:55:48.000Z">
+<meta property="article:modified_time" content="2021-04-08T11:55:48.057Z">
 <meta property="article:author" content="小帅">
 <meta property="article:tag" content="股票">
 <meta name="twitter:card" content="summary">
@@ -1139,20 +1139,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-count">130</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1278,6 +1278,26 @@
 
 
 
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 

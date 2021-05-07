@@ -42,7 +42,7 @@
 <meta property="og:description" content="*问：从飞哥的前期文章中提过第一次缩表对于黄金的影响甚比第一次加息的力量，最近的文章说美联储缩表是温和渐进的第一次300亿规模，相比12月的债务上限的提高微乎其微。  那就说明第一次缩表对黄金影响不大了，黄金大概运行轨迹就是横盘窄幅震荡格局了，可以这么理解吗😳*   【羿飞】 回答：这个理解可能有一定的偏差。不是说第一次缩表的影响和加息的影响力量一样，这个力量是无法衡量的。相似的这两个事情之">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-09-25T15:00:00.000Z">
-<meta property="article:modified_time" content="2021-04-08T11:50:56.000Z">
+<meta property="article:modified_time" content="2021-04-08T11:50:56.554Z">
 <meta property="article:author" content="小帅">
 <meta property="article:tag" content="股票">
 <meta name="twitter:card" content="summary">
@@ -1521,20 +1521,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-count">130</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1660,6 +1660,26 @@
 
 
 
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 

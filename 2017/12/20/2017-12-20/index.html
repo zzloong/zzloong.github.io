@@ -42,7 +42,7 @@
 <meta property="og:description" content="问：飞哥好！投资项目即是投人，除了易融项目书介绍核心团队的信息以外，能否请飞哥有时间详尽点评一下易融的核心团队，特别是吴董及祁总。  【羿飞】 回答：   [羿飞] : 「文件」 [羿飞] : 在app里点开这条的留言详情，能听下面几段录音的。 [羿飞] : 「文件」 [财僧] : 下面的文件我怎么一直播放失败 [艾迪西] : 播放语音失败 [羿飞] : 我试听成功。 [太阳] : 两个文件我">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-12-20T15:00:00.000Z">
-<meta property="article:modified_time" content="2021-04-08T11:59:42.000Z">
+<meta property="article:modified_time" content="2021-04-08T11:59:42.276Z">
 <meta property="article:author" content="小帅">
 <meta property="article:tag" content="股票">
 <meta name="twitter:card" content="summary">
@@ -1033,20 +1033,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-count">130</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1172,6 +1172,26 @@
 
 
 
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 

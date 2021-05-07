@@ -42,7 +42,7 @@
 <meta property="og:description" content="问：飞哥，之前一直看好爱钱帮，奈何长标不多。最近出了很多1年的，加息活动力度也较大，入了不少。可刚刚才发现它7月已经被收购了。。。不禁有点慌，不过看您评级反而有所上升，能否指点一下？谢谢！  【羿飞】 回答：爱钱帮规范性是比较突出的，不用那么慌张，即使是进行了并购，也是有对赌的，现团队必须要保持企业很长时间的稳定性，所以不必过于紧张。   [猫行天下] : 谢谢飞哥！👍👍👍 [晶阳] :">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-09-10T15:00:00.000Z">
-<meta property="article:modified_time" content="2021-04-08T11:48:22.000Z">
+<meta property="article:modified_time" content="2021-04-08T11:48:22.779Z">
 <meta property="article:author" content="小帅">
 <meta property="article:tag" content="股票">
 <meta name="twitter:card" content="summary">
@@ -2117,20 +2117,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-count">130</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -2256,6 +2256,26 @@
 
 
 
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 

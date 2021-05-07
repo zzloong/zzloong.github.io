@@ -42,7 +42,7 @@
 <meta property="og:description" content="问：飞哥，可否试析下港股天鸽的背书能力，比如，玖融网代收为多少时，是其可控制或承担的呢？  【羿飞】 回答：天鸽的港股市值是70多亿，自身经营业绩也算比较稳定，所以还算是个优质上市公司。在这里可能要纠正一个常见的误解，天鸽这种非控股的投资，只能算是增信，不能算是背书。    财务投资人面临比较大的损失的时候，可能会舍弃掉这笔投资，不必承担主要责任的。只有那种上市公司超过51%，达到控股的平台，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-10-25T15:00:00.000Z">
-<meta property="article:modified_time" content="2021-04-08T11:55:22.000Z">
+<meta property="article:modified_time" content="2021-04-08T11:55:22.496Z">
 <meta property="article:author" content="小帅">
 <meta property="article:tag" content="股票">
 <meta name="twitter:card" content="summary">
@@ -1154,20 +1154,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-count">130</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1293,6 +1293,26 @@
 
 
 
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 

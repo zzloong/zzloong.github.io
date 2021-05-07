@@ -42,7 +42,7 @@
 <meta property="og:description" content="问：小白提问，不管中国还是美联储，卖出美债为什么会导致美元下跌  【羿飞】 回答：有几个原因，    首先是供求关系的市场有效性，债券被大量的兑换成现金美元以后，导致市场上美元的流通量的增加，货币非常规的忽然增加以后，会形成通胀，也会形成和商品价格负相关的美元走弱。    其次就是大量的抛售美债，也会导致造成持有美元的人的恐慌，抛售所持有的美元，造成美元下跌。    所以对于美联储来说，最好是">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-10-20T15:00:00.000Z">
-<meta property="article:modified_time" content="2021-04-08T11:54:42.000Z">
+<meta property="article:modified_time" content="2021-04-08T11:54:42.209Z">
 <meta property="article:author" content="小帅">
 <meta property="article:tag" content="股票">
 <meta name="twitter:card" content="summary">
@@ -1477,20 +1477,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-count">130</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1616,6 +1616,26 @@
 
 
 
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 

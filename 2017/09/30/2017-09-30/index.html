@@ -42,7 +42,7 @@
 <meta property="og:description" content="问：飞哥，请问一线大平台是哪些，一起好，广信贷，人人贷，丁丁贷，365易贷，易融恒信，我投资的几个平台算不算一线平台？谢谢  【羿飞】 回答：这些肯定不是，一线是类似于陆金所，人人贷，微贷等。你说这几个，属于三线或者准二线平台，收益性价比比较高的。   [Lily] : 陆金所 [施] : 这些是飞哥榜单的一线风险收益比是最好的，一线已经和银行理财收益差不多了！ [财僧] : 我一直以为飞哥榜">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-09-30T15:00:00.000Z">
-<meta property="article:modified_time" content="2021-04-08T11:51:30.000Z">
+<meta property="article:modified_time" content="2021-04-08T11:51:30.417Z">
 <meta property="article:author" content="小帅">
 <meta property="article:tag" content="股票">
 <meta name="twitter:card" content="summary">
@@ -1426,20 +1426,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-count">130</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1565,6 +1565,26 @@
 
 
 
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 

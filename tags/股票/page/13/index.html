@@ -242,6 +242,126 @@
 
       <div class="post-meta">
         <time itemprop="dateCreated"
+              datetime="2017-09-30T23:00:00+08:00"
+              content="2017-09-30">
+          09-30
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2017/09/30/2017-09-30/" itemprop="url">
+            <span itemprop="name">2017-09-30问答记录</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2017-09-25T23:00:00+08:00"
+              content="2017-09-25">
+          09-25
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2017/09/25/2017-09-25/" itemprop="url">
+            <span itemprop="name">2017-09-25问答记录</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2017-09-20T23:00:00+08:00"
+              content="2017-09-20">
+          09-20
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2017/09/20/2017-09-20/" itemprop="url">
+            <span itemprop="name">2017-09-20问答记录</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2017-09-15T23:00:00+08:00"
+              content="2017-09-15">
+          09-15
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2017/09/15/2017-09-15/" itemprop="url">
+            <span itemprop="name">2017-09-15问答记录</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2017-09-10T23:00:00+08:00"
+              content="2017-09-10">
+          09-10
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2017/09/10/2017-09-10/" itemprop="url">
+            <span itemprop="name">2017-09-10问答记录</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2017-09-05T23:00:00+08:00"
+              content="2017-09-05">
+          09-05
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2017/09/05/2017-09-05/" itemprop="url">
+            <span itemprop="name">2017-09-05问答记录</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
               datetime="2017-09-01T23:00:00+08:00"
               content="2017-09-01">
           09-01
@@ -351,20 +471,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-count">130</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -490,6 +610,26 @@
 
 
 
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 

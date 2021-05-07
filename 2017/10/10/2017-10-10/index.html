@@ -42,7 +42,7 @@
 <meta property="og:description" content="问：请飞哥说说美元和美股的逻辑关系。记得好像说过美元加息导致全世界的美元回流美国，推高美股指数。好像还说过什么美元下跌释放流动性推高美股之类的，可能我概念不清，逻辑不清  【羿飞】 回答：这个问题，首先要谈股票的价格是怎么出现的。就是标的物股票的数量，以及市场中参与交易的资金总量啊。    那么我们固定股票的数量这个因素，这两年美国一直在吆喝加息，吸引全球的资金兑换美元来购买美元资产，这样对于">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-10-10T15:00:00.000Z">
-<meta property="article:modified_time" content="2021-04-08T11:53:40.000Z">
+<meta property="article:modified_time" content="2021-04-08T11:53:40.228Z">
 <meta property="article:author" content="小帅">
 <meta property="article:tag" content="股票">
 <meta name="twitter:card" content="summary">
@@ -1038,20 +1038,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-count">130</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1177,6 +1177,26 @@
 
 
 
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 

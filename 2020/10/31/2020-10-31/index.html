@@ -379,7 +379,7 @@
 <ul>
 <li><em>[羿飞] : 具体的基金，上期基金池里有呀，你没收到吗？</em></li>
 <li><em>[龙猫] : 442</em></li>
-<li><em>[xlzhang 回复 羿飞] : 基金池小助手没发给我，微信联系没理我[尴尬]，您有空的时候发我一下，谢谢。邮箱，<a href="mailto:&#x78;&#x6c;&#x7a;&#x68;&#x61;&#110;&#103;&#x38;&#49;&#53;&#x40;&#49;&#x36;&#51;&#46;&#99;&#x6f;&#109;">&#x78;&#x6c;&#x7a;&#x68;&#x61;&#110;&#103;&#x38;&#49;&#53;&#x40;&#49;&#x36;&#51;&#46;&#99;&#x6f;&#109;</a></em></li>
+<li><em>[xlzhang 回复 羿飞] : 基金池小助手没发给我，微信联系没理我[尴尬]，您有空的时候发我一下，谢谢。邮箱，<a href="mailto:&#120;&#108;&#122;&#x68;&#97;&#110;&#103;&#56;&#x31;&#53;&#x40;&#49;&#x36;&#x33;&#x2e;&#x63;&#111;&#109;">&#120;&#108;&#122;&#x68;&#97;&#110;&#103;&#56;&#x31;&#53;&#x40;&#49;&#x36;&#x33;&#x2e;&#x63;&#111;&#109;</a></em></li>
 <li><em>[陈永飞 回复 羿飞] : 飞哥好，您说的是7月份的那期吗？</em></li>
 </ul>
 </blockquote>
@@ -585,20 +585,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">124</span>
+          <span class="site-state-item-count">130</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -724,6 +724,26 @@
 
 
 
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
 
 
 
